@@ -114,6 +114,7 @@
   (setq *debug* nil))
 (define-internal-option *bug-mail-address*
 ;;; PDF page 146
+                         "Network address for KBE bug reports"
   "BUG-KBE@MIT-OZ" :sexp)
 ;;; For tracing modules during debugging
 (defmacro format-trace (tracevar format-string &rest format-args)

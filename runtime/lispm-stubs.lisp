@@ -43,3 +43,42 @@
              sys::read-end-of-file sys::pdl-overflow sys::proceed-types
              dbg::proceedable-ferror))
   (export (list s) (symbol-package s)))
+
+;;; Storage areas: one heap here.
+(defvar default-cons-area nil)
+(defvar working-storage-area nil)
+(defvar sys::property-list-area nil)
+(cl:defun make-area (&rest ignore) (declare (ignore ignore)) nil)
+
+;;; COMPILER-LET (used by kbelib.lisp around cliche definitions)
+(cl:defmacro compiler-let (bindings &body body)
+  `(sb-cltl2:compiler-let ,bindings ,@body))
+
+;;; TV user options (CHOOSE-VARIABLE-VALUES menus on the Lisp Machine).
+;;; An options alist holds entries (variable name type . data); the default
+;;; value is kept on the variable's TV:DEFAULT-VALUE property, which
+;;; ODD-OPTIONS (basic.lisp) compares against.
+(cl:defmacro define-user-option-alist (name &optional constructor)
+  (declare (ignore constructor))
+  `(defvar ,name '()))
+
+(cl:defmacro define-user-option ((var alist) default &optional type name &rest data)
+  `(progn
+     (defvar ,var ,default)
+     (setf (cl:get ',var 'tv::default-value) ,var)
+     (setq ,alist (cons (list* ',var ,name ,type ',data)
+                        (cl:remove ',var ,alist :key #'car)))
+     ',var))
+
+(cl:defun choose-user-options (&rest ignore) (declare (ignore ignore)) nil)
+
+;;; FS: pathname types for the self-test's demo files
+(cl:defmacro fs::define-canonical-type (&rest ignore)
+  (declare (ignore ignore)) nil)
+
+(export 'tv::default-value "TV")
+(export 'fs::define-canonical-type "FS")
+
+;;; ZWEI: editor definition types (deflib.lisp)
+(cl:defmacro define-editor-definition-type (&rest ignore)
+  (declare (ignore ignore)) nil)

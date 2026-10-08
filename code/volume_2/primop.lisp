@@ -184,7 +184,7 @@
 (defun 6eval (form)
   (let (fexpr)
     (cond ((self-evalling-form form)
-           (funcall (get 'k*quote '6fexpr) '',form))
+           (funcall (get 'k*quote '6fexpr) `',form))
           ((symbolp form) (6symeval form))
           ((setq fexpr (get (car form) '6fexpr))
            (funcall fexpr form))

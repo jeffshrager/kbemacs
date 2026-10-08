@@ -77,7 +77,7 @@
   (cl:if (typep c '%zl-condition) (%zl-condition-instance c) c))
 
 (cl:defun %zl-condition-matches-p (object names)
-  (cl:let ((names (cl:if (listp names) names (list names))))
+  (cl:let ((names (cl:if (cl:listp names) names (list names))))
     (cl:some (lambda (name)
                (cond ((instancep object) (typep object name))
                      ;; native CL condition

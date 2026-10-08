@@ -616,7 +616,7 @@
       (lexpr-funcall #'eval-commands (list name) ':ignore
                      #'make-program-definition args))
     (cliche-definition
-      (lexpr-funcall #'eval-commands (list name) *: ignore
+      (lexpr-funcall #'eval-commands (list name) ':ignore
                      #'make-cliche-definition  args))
     (T (complain "Cannot define a ~A" (unparse-command name))))
   (if cliche-name

@@ -98,6 +98,83 @@
   (declare (ignore sub-char arg))
   (cl:let ((*read-suppress* t)) (cl:read stream t nil t) (values)))
 
+;;;; Dots
+;;;
+;;; Zetalisp reads a token of dots, as in '(...) or (eq x '...), as a
+;;; symbol; the CL reader signals "too many dots". So in this readtable "."
+;;; is a non-terminating macro character (inside tokens like 1.5 or foo.bar
+;;; it is still a constituent), and "(" has its own list reader, which
+;;; recognizes the consing dot itself.
+
+(defvar %zl-token-readtable nil
+  "The Zetalisp readtable without the dot and list readers, for parsing
+   tokens that start with a dot (.5).")
+
+(cl:defun %zl-delimiter-p (c)
+  (or (null c)
+      (cl:member c '(#\Space #\Tab #\Newline #\Return #\Page #\Linefeed))
+      (multiple-value-bind (fn non-terminating?) (get-macro-character c)
+        (and fn (not non-terminating?)))))
+
+(cl:defun %zl-read-dot (stream char)
+  (declare (ignore char))
+  ;; Collect the token that starts with this dot.
+  (cl:let ((chars (list #\.)))
+    (loop for c = (peek-char nil stream nil nil t)
+          until (%zl-delimiter-p c)
+          do (push (read-char stream) chars)
+             (when (char= c #\/)               ;escaped character
+               (push (read-char stream t nil t) chars)))
+    (cl:let ((token (coerce (nreverse chars) 'string)))
+      (cond (*read-suppress* nil)
+            ((cl:every (lambda (c) (char= c #\.)) token)
+             (cl:if (= (length token) 1)
+                 (cl:error 'reader-error :stream stream)
+                 (cl:intern token *package*)))
+            (t (cl:let ((*readtable* %zl-token-readtable))
+                 (values (read-from-string token))))))))
+
+(cl:defun %zl-read-maybe-nothing (stream)
+  "Reads the next object, returning no values for a comment or a
+   suppressed #+ form."
+  (cl:let* ((c (read-char stream t nil t))
+            (fn (get-macro-character c)))
+    (cond (fn (funcall fn stream c))
+          (t (unread-char c stream)
+             (cl:read stream t nil t)))))
+
+(cl:defun %zl-consing-dot-p (stream)
+  "True if the stream is at a lone dot (consumes it in that case)."
+  (cl:when (eql (peek-char nil stream nil nil t) #\.)
+    (read-char stream)
+    (cl:if (%zl-delimiter-p (peek-char nil stream nil nil t))
+        t
+        (progn (unread-char #\. stream) nil))))
+
+(cl:defun %zl-read-list (stream char)
+  (declare (ignore char))
+  (cl:let ((items '()))
+    (loop
+      (cl:let ((c (peek-char t stream t nil t)))
+        (cond ((char= c #\))
+               (read-char stream)
+               (cl:return (nreverse items)))
+              ((%zl-consing-dot-p stream)
+               (cl:when (and (null items) (not *read-suppress*))
+                 (cl:error 'reader-error :stream stream))
+               (cl:let ((tail (cl:read stream t nil t)))
+                 ;; skip comments up to the close paren
+                 (loop for c2 = (peek-char t stream t nil t)
+                       until (char= c2 #\))
+                       do (cl:when (multiple-value-list (%zl-read-maybe-nothing stream))
+                            (cl:unless *read-suppress*
+                              (cl:error 'reader-error :stream stream))))
+                 (read-char stream)
+                 (cl:return (nreconc items tail))))
+              (t
+               (cl:let ((vals (multiple-value-list (%zl-read-maybe-nothing stream))))
+                 (cl:when vals (push (car vals) items)))))))))
+
 ;;;; The readtable
 
 (cl:let ((rt *zl-readtable*))
@@ -108,7 +185,10 @@
   (set-dispatch-macro-character #\# #\+ #'%zl-read-plus rt)
   (set-dispatch-macro-character #\# #\- #'%zl-read-minus rt)
   (set-dispatch-macro-character #\# #\Q #'%zl-read-lispm-only rt)
-  (set-dispatch-macro-character #\# #\M #'%zl-read-maclisp-only rt))
+  (set-dispatch-macro-character #\# #\M #'%zl-read-maclisp-only rt)
+  (setq %zl-token-readtable (copy-readtable rt))
+  (set-macro-character #\. #'%zl-read-dot t rt)
+  (set-macro-character #\( #'%zl-read-list nil rt))
 
 ;;;; Read macros defined by Zetalisp programs
 ;;;
@@ -149,7 +229,7 @@
                        readtable)
   t)
 
-(cl:defun set-syntax-/#-macro-char (char fn &optional (readtable *readtable*))
+(cl:defun |SET-SYNTAX-#-MACRO-CHAR| (char fn &optional (readtable *readtable*))
   (set-dispatch-macro-character #\# (%zl-char char)
                                 (lambda (stream c arg)
                                   (declare (ignore c arg))

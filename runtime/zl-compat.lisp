@@ -19,6 +19,15 @@
                                 (cdr form))))
     (cl:if specs (cons 'declare specs) nil)))
 
+;;;; SETF also takes #'name as a place: (setf #'sc #'show-db-context)
+
+(cl:defmacro setf (&rest pairs)
+  (cl:let ((forms (loop for (place value) on pairs by #'cddr
+                        collect (cl:if (and (consp place) (eq (car place) 'function))
+                                       `(cl:setf (fdefinition ',(cadr place)) ,value)
+                                       `(cl:setf ,place ,value)))))
+    (cl:if (cdr forms) `(progn ,@forms) (car forms))))
+
 ;;;; Lambda lists and bodies
 
 ;;; Zetalisp accepts things CL does not:
@@ -383,6 +392,10 @@
 (cl:defun subset (pred list) (cl:remove-if-not pred list))
 (cl:defun subset-not (pred list) (cl:remove-if pred list))
 (cl:defun subst (new old tree) (cl:subst new old tree :test #'equal))
+(cl:defun rest1 (l) (cdr l))
+(cl:defun rest2 (l) (cddr l))
+(cl:defun rest3 (l) (cdddr l))
+(cl:defun rest4 (l) (cddddr l))
 (cl:defun ncons (x) (list x))
 (cl:defun xcons (a b) (cons b a))
 (cl:defun copylist (list) (copy-list list))
@@ -401,6 +414,8 @@
   ;; Zetalisp: (make-list length &key area initial-value)
   (make-list-1 length (getf options :initial-value (getf options :initial-element))))
 (cl:defun make-list-1 (n init) (cl:make-list n :initial-element init))
+;;; Maclisp/Zetalisp MAP applies FN to successive tails (CL MAPL).
+(cl:defun map (fn list &rest more-lists) (apply #'mapl fn list more-lists) list)
 (cl:defun sortcar (list pred) (sort list pred :key #'car))
 (cl:defun every (list pred &optional (step #'cdr))
   (cl:do ((l list (funcall step l))) ((null l) t)
@@ -416,6 +431,10 @@
   (cl:if (null lists) nil
       (cl:remove-if-not (lambda (x) (cl:every (lambda (l) (memq x l)) (cdr lists)))
                         (car lists))))
+;;; In Zetalisp (LISTP NIL) is false: LISTP means CONSP. KBE depends on
+;;; it, e.g. FIX-UP-SEMI-KBE-/#-COMMENT-MACROS stops on (NOT (LISTP X)).
+(declaim (inline listp))
+(cl:defun listp (x) (consp x))
 (cl:defun neq (a b) (not (eq a b)))
 (cl:defun fixp (x) (integerp x))
 (cl:defun fixnump (x) (typep x 'fixnum))
@@ -453,7 +472,7 @@
   (cond ((symbolp object) (cl:get object indicator default))
         (t (getf (%zl-plist-get object) indicator default))))
 
-(cl:defun (setf get) (value object indicator &optional default)
+(cl:defun (cl:setf get) (value object indicator &optional default)
   (declare (ignore default))
   (cond ((symbolp object) (setf (cl:get object indicator) value))
         (t (cl:let ((pl (%zl-plist-get object)))
@@ -481,8 +500,15 @@
 (cl:defun plist (symbol) (symbol-plist symbol))
 (cl:defun setplist (symbol plist) (setf (symbol-plist symbol) plist))
 (cl:defun symeval (symbol) (symbol-value symbol))
-(cl:defun fsymeval (symbol) (fdefinition symbol))
-(cl:defun fset (symbol definition) (setf (fdefinition symbol) definition))
+;;; A Lisp Machine macro's function cell holds (MACRO . expander).
+(cl:defun fsymeval (symbol)
+  (cl:if (macro-function symbol)
+         (cons 'macro (macro-function symbol))
+         (fdefinition symbol)))
+(cl:defun fset (symbol definition)
+  (cl:if (and (consp definition) (eq (car definition) 'macro))
+         (setf (macro-function symbol) (cdr definition))
+         (setf (fdefinition symbol) definition)))
 (cl:defun fdefine (symbol definition &rest ignore)
   (declare (ignore ignore))
   (setf (fdefinition symbol) definition))
@@ -494,6 +520,12 @@
 
 (cl:defun %zl-package (pkg)
   (cond ((null pkg) *package*)
+        ;; KBE interns into the package of symbols it reads, as in
+        ;; (intern "~KEYWORD" (symbol-package 'keyword)). On the Lisp
+        ;; Machine those were global symbols; here they belong to the locked
+        ;; COMMON-LISP package, so such symbols go to KBE instead.
+        ((and (packagep pkg) (sb-ext:package-locked-p pkg))
+         (or (find-package "KBE") *package*))
         ((packagep pkg) pkg)
         ((and (stringp pkg) (string= pkg "")) (find-package "KEYWORD"))
         (t (or (find-package pkg)
@@ -549,6 +581,46 @@
                (setf (gethash object %zl-serials) (incf %zl-next-serial))))))
 
 (cl:defun maknum (object) (%pointer object))
+
+;;;; DEFSTRUCT (Lisp Machine style)
+;;;
+;;; The constructor is a macro taking slot names and values:
+;;;   (make-dflow-hunk start x end nil)
+;;; Options :TYPE :NAMED-LIST, :LIST, :ARRAY, :NAMED-ARRAY are mapped to
+;;; CL equivalents; other Lisp Machine options are ignored.
+
+(cl:defmacro defstruct (name-and-options &rest slots)
+  (cl:let* ((name (cl:if (consp name-and-options) (car name-and-options)
+                         name-and-options))
+            (options (cl:if (consp name-and-options) (cdr name-and-options)))
+            (cl-options '())
+            (constructor (cl:intern (cl:format nil "MAKE-~A" name)
+                                    (symbol-package name)))
+            (internal (cl:intern (cl:format nil "%MAKE-~A" name)
+                                 (symbol-package name))))
+    (dolist (o options)
+      (cl:let ((key (cl:if (consp o) (car o) o)) (arg (cl:if (consp o) (cadr o))))
+        (case key
+          (:type (case arg
+                   (:named-list (push '(:type list) cl-options) (push :named cl-options))
+                   (:list (push '(:type list) cl-options))
+                   (:named-array (push '(:type vector) cl-options) (push :named cl-options))
+                   (:array (push '(:type vector) cl-options))
+                   (t nil)))
+          (:constructor (cl:when arg (setq constructor arg)))
+          ((:conc-name :include :copier :predicate) (push o cl-options))
+          (t nil))))
+    (cl:let ((slot-names (mapcar (lambda (s) (cl:if (consp s) (car s) s)) slots)))
+      `(progn
+         (cl:defstruct (,name (:constructor ,internal (&key ,@slot-names))
+                              ,@(nreverse cl-options))
+           ,@slots)
+         (cl:defmacro ,constructor (&rest slot-value-pairs)
+           (cons ',internal
+                 (loop for (slot value) on slot-value-pairs by #'cddr
+                       collect (cl:intern (symbol-name slot) "KEYWORD")
+                       collect value)))
+         ',name))))
 
 ;;;; Strings and characters
 
@@ -640,6 +712,20 @@
                       form)))))
   (def = cl:=) (def /= cl:/=) (def < cl:<) (def > cl:>)
   (def <= cl:<=) (def >= cl:>=))
+
+;;; Arithmetic on characters, as in #.(1- #/a), gives their codes.
+(cl:defun + (&rest args)
+  (cl:if (and args (cdr args) (null (cddr args)) (numberp (car args)) (numberp (cadr args)))
+      (cl:+ (car args) (cadr args))
+      (apply #'cl:+ (mapcar #'%zl-num args))))
+(cl:defun - (a &rest args)
+  (cl:if (and (numberp a) args (null (cdr args)) (numberp (car args)))
+      (cl:- a (car args))
+      (apply #'cl:- (%zl-num a) (mapcar #'%zl-num args))))
+(cl:defun 1+ (x) (cl:1+ (%zl-num x)))
+(cl:defun 1- (x) (cl:1- (%zl-num x)))
+(define-compiler-macro 1+ (&whole form x) (cl:if (numberp x) `(cl:1+ ,x) form))
+(define-compiler-macro 1- (&whole form x) (cl:if (numberp x) `(cl:1- ,x) form))
 
 (cl:defun / (&rest args)
   "Zetalisp //: integer division truncates."

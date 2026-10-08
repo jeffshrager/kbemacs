@@ -36,17 +36,17 @@
    ;; definitions
    "DEFUN" "DEFMACRO" "DEFFLAVOR" "DEFMETHOD" "DEFWHOPPER" "DEFSTRUCT"
    ;; binding, control
-   "LET" "LET*" "DO" "DO*" "IF" "RETURN"
+   "LET" "LET*" "DO" "DO*" "IF" "RETURN" "SETF"
    ;; lists
    "MEMBER" "ASSOC" "RASSOC" "DELETE" "REMOVE" "REM" "SUBST" "EVERY" "SOME"
-   "UNION" "INTERSECTION" "MAKE-LIST"
+   "UNION" "INTERSECTION" "MAKE-LIST" "LISTP" "MAP"
    ;; symbols
    "INTERN" "MAKE-SYMBOL" "GENSYM" "GET" "REMPROP" "TYPEP"
    ;; strings, characters
    "STRING-EQUAL" "CHARACTER"
    ;; arithmetic: (// 7 2) is 3 in Zetalisp; characters compare as
    ;; numbers (we read #/a as a CL character, Zetalisp as a fixnum)
-   "/" "=" "/=" "<" ">" "<=" ">="
+   "/" "=" "/=" "<" ">" "<=" ">=" "+" "-" "1+" "1-"
    ;; I/O
    "FORMAT" "READ"
    ;; conditions
@@ -61,4 +61,6 @@
   ;; sysdef.lisp shadows <- LET LET*; KBE's own LET lives in
   ;; runtime/zl-compat.lisp (Zetalisp LET is already destructuring here).
   ;; KBE also defines these names, which are Common Lisp symbols:
-  (:shadow "<-" "DEFINE-CONDITION" "FIND" "STRING-CAPITALIZE" "WARN"))
+  (:shadow "<-" "DEFINE-CONDITION" "FIND" "STRING-CAPITALIZE" "WARN"
+           ;; KBE declares this one special (analyze.lisp):
+           "TYPE"))

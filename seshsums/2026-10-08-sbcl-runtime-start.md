@@ -99,3 +99,67 @@ cascades from a few causes:
 3. Build `runtime/demo/sqrt.kbe` and `sqrt.lisp` from `358-test.lisp`, plus a
    headless driver that reuses `run-KBE-test`.
 4. Get SQRT passing, then the other sequences.
+
+---
+
+## Second session: load errors from 171 to 30
+
+### Runtime changes
+
+- **Reader:**
+  - `...` reads as a symbol. ZL now has its own `(` list reader, which
+    handles the consing dot itself, and `.` is a non-terminating macro
+    character.
+  - The `#{` setter now has its correct name, `|SET-SYNTAX-#-MACRO-CHAR|`.
+- **Loader:**
+  - Toplevel forms are processed the way a compiler does: KBE and ZL macros
+    are expanded and `progn` subforms are handled one at a time. Toplevel
+    `(declare (special ...))` proclaims; other toplevel declarations are
+    dropped.
+  - SBCL compile-time errors are recorded as load errors.
+- **Zetalisp semantics found, each confirmed by how the KBE code depends
+  on it:**
+  - `(listp nil)` is false: `listp` means `consp`. Without this,
+    `fix-up-semi-kbe-/#-comment-macros` recursed forever on `NIL`.
+  - `map` is Maclisp's `mapl` (it maps over tails); `&*` relies on this.
+  - Arithmetic on characters (`#.(1- #/a)`) works on their codes.
+  - A Lisp Machine `defstruct` constructor is a macro taking slot/value
+    pairs.
+  - `setf` accepts `#'name` places.
+  - A macro's function cell holds `(macro . fn)`, for `fsymeval`/`fset`.
+  - `rest1` through `rest4`.
+- **Packages:**
+  - `intern` into a locked CL package (from `(symbol-package 'keyword)`)
+    goes to KBE instead.
+  - KBE shadows `TYPE`, which it declares special.
+- **Stubs:** `define-user-option(-alist)`, storage areas, `compiler-let`,
+  `fs:define-canonical-type`, `define-editor-definition-type`.
+
+### Transcription fixes
+
+Ten typo-level fixes, all checked against the scans and logged in
+`code/TRANSCRIPTION-FIXES.md`:
+
+- backquotes misread as quotes (`'',` should be `` `', ``);
+- `{ ... ]` should be `[ ... ]` in `refer.lisp`;
+- `*: ignore` should be `':ignore`;
+- a stray `:`;
+- a doc string dropped at a page break in `kmac.lisp`.
+
+To render scan pages: `gs -sDEVICE=pnggray -r110 -dFirstPage=N
+-dLastPage=N`; the PDFs are too large for direct PDF reading.
+
+### Status
+
+Everything through `volume_3/implement` and `deflib` loads without
+errors. **30 load errors** remain, all in the cliché libraries (`syslib`,
+`kbelib`, `demo-lib`): `define-cliche` now runs deep into the analyzer and
+fails on two Lisp Machine introspection functions, `ZL:ARGLIST` (18) and
+`SI:DECLARED-DEFINITION` (11).
+
+### Next
+
+1. Implement `arglist` and `si:declared-definition` (check how the
+   analyzer uses them), then reload.
+2. Once the libraries load, build the SQRT test inputs from
+   `358-test.lisp` and the headless driver.

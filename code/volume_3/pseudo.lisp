@@ -251,9 +251,9 @@
            (if (= c #/[)
                (setq string
                      (substring string 1 (1- (string-length string)))))
-           '',string))
+           `',string))
         (T (let ((thing (read-hacking-dots)))
-             '',(let ((base 10.) (*nopoint nil))
+             `',(let ((base 10.) (*nopoint nil))
                   (format nil "~S" thing))))))
 
 (defun read-matched-code (c)

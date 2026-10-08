@@ -228,7 +228,7 @@
     (segment
      (if (memq (name-symbol name) *db-segs*)
          (ncons (& (name-symbol name)))))
-    (program-definition   :
+    (program-definition
       (if (name-symbol name)
           (pl? (~01 ~segcase (??& * @seg 'lambda-exp (name-symbol name))))
           (let ((sc (default-segcase)))
@@ -383,12 +383,12 @@
 (declare (special 2codes 2result))
 (defun order-things (things)
   (cond ((null (cdr things)) [things])
-        ((let* ((2codes (over things revlist {(corr-code _) ! _]))
+        ((let* ((2codes (over things revlist [(corr-code _) ! _]))
                 (start (car (corr-code (top-segcase
                                           (get-segcase (car things))))))
                 (2result))
            (order-things1 start nil nil)
-           {(nreverse 2result) |! (over 2codes select (not (eq (car _) T))
+           [(nreverse 2result) ! (over 2codes select (not (eq (car _) T))
                                   revlist (cdr _))]))))
 ;this recursive program actually traverses a code tree looking for things.
 ;note that the decendants of a cell are ordered before it.

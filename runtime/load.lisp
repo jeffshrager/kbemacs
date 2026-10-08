@@ -52,6 +52,8 @@
              "zl-reader"))
   (compile-and-load (runtime-file (concatenate 'string f ".lisp"))))
 
+(compile-and-load (runtime-file "lispm-stubs.lisp"))
+
 ;;; Export the Zetalisp vocabulary from ZL, so KBE (which uses only ZL)
 ;;; sees it. Internal helpers are named %ZL-...
 (let ((zl (find-package "ZL")))
@@ -60,7 +62,6 @@
                 (eq (symbol-package s) (find-package "KEYWORD")))
       (export (list s) zl))))
 
-(compile-and-load (runtime-file "lispm-stubs.lisp"))
 
 ;;;; Loading Zetalisp source
 
@@ -87,6 +88,30 @@
   (let ((r (find-restart 'continue c)))
     (when r (invoke-restart r))))
 
+(defun kbe-macro-form-p (form)
+  "True for a call to a macro defined outside the COMMON-LISP package."
+  (and (consp form) (symbolp (car form))
+       (macro-function (car form))
+       (not (eq (symbol-package (car form)) (find-package "COMMON-LISP")))))
+
+(defun eval-toplevel (form)
+  "Evaluates FORM as a compiler processes a toplevel form: toplevel PROGNs
+   are processed subform by subform, and KBE/Zetalisp macros are expanded
+   first. Maclisp-style toplevel (DECLARE (SPECIAL ...)) proclaims; other
+   toplevel declarations, such as (DECLARE (DEFUN ...)) for the compiler,
+   are dropped."
+  (cond ((and (consp form) (eq (car form) 'declare))
+         (loop for spec in (cdr form)
+               when (and (consp spec) (eq (car spec) 'special))
+                 do (proclaim spec)))
+        ((and (consp form) (eq (car form) 'progn))
+         (let ((value nil))
+           (dolist (f (cdr form) value)
+             (setq value (eval-toplevel f)))))
+        ((kbe-macro-form-p form)
+         (eval-toplevel (macroexpand-1 form)))
+        (t (eval form))))
+
 (defun eval-kbe-form (form path n)
   "Evaluates FORM. SBCL reports compile-time errors in a form as
    diagnostics (and defers them to run time), so those are recorded as load
@@ -98,9 +123,9 @@
              (format t "~&;; ERROR in ~A, form ~D ~A:~%;;   ~A~%"
                      (pathname-name path) n (form-summary form) what)))
       (if *kbe-stop-on-error*
-          (handler-bind ((warning #'muffle-warning)) (eval form))
+          (handler-bind ((warning #'muffle-warning)) (eval-toplevel form))
           (handler-case
-              (handler-bind ((warning #'muffle-warning)) (eval form))
+              (handler-bind ((warning #'muffle-warning)) (eval-toplevel form))
             (error (c) (note-error c))))
       (let ((text (get-output-stream-string diagnostics)))
         (when (plusp (length text))
