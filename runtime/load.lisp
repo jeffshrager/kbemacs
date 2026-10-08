@@ -1,0 +1,176 @@
+;;; -*- Mode: LISP; Package: CL-USER -*-
+;;;
+;;; Loads the headless KBE core under SBCL:
+;;;
+;;;   sbcl --script runtime/load.lisp
+;;;
+;;; or, from a REPL, (load "runtime/load.lisp"). The module order follows
+;;; volume_1/sysdef.lisp, minus the editor, window and actor layers.
+
+(in-package :cl-user)
+
+(require :sb-cltl2)
+
+(defparameter *kbe-runtime-dir*
+  (make-pathname :name nil :type nil
+                 :defaults (or *load-truename* *default-pathname-defaults*)))
+
+(defparameter *kbe-code-dir* (merge-pathnames "../code/" *kbe-runtime-dir*))
+
+(defparameter *kbe-build-dir* (merge-pathnames "build/" *kbe-runtime-dir*))
+
+(defun runtime-file (name) (merge-pathnames name *kbe-runtime-dir*))
+
+;;;; Common Lisp parts: vendored libraries and the Zetalisp runtime
+
+(defvar *recompiled* nil
+  "Set once any runtime file is recompiled; later files then recompile too,
+   since they may depend on its packages and macros.")
+
+(defun compile-and-load (path)
+  (let ((fasl (merge-pathnames
+               (make-pathname :name (format nil "~A-~A"
+                                            (car (last (pathname-directory path)))
+                                            (pathname-name path))
+                              :type "fasl")
+               *kbe-build-dir*)))
+    (ensure-directories-exist fasl)
+    (handler-bind ((warning #'muffle-warning))
+      (when (or *recompiled*
+                (not (probe-file fasl))
+                (> (file-write-date path) (file-write-date fasl)))
+        (setq *recompiled* t)
+        (compile-file path :output-file fasl :verbose nil :print nil))
+      (load fasl))))
+
+(dolist (f '("flavors/package" "flavors/util" "flavors/kkernel"
+             "flavors/kernel" "flavors/flavors" "flavors/vanilla"
+             "lets/package" "lets/utils" "lets/lets"))
+  (compile-and-load (runtime-file (concatenate 'string f ".lisp"))))
+
+(dolist (f '("packages" "zl-compat" "flavors-ext" "zl-conditions"
+             "zl-reader"))
+  (compile-and-load (runtime-file (concatenate 'string f ".lisp"))))
+
+;;; Export the Zetalisp vocabulary from ZL, so KBE (which uses only ZL)
+;;; sees it. Internal helpers are named %ZL-...
+(let ((zl (find-package "ZL")))
+  (do-symbols (s zl)
+    (unless (or (eql (search "%ZL-" (symbol-name s)) 0)
+                (eq (symbol-package s) (find-package "KEYWORD")))
+      (export (list s) zl))))
+
+(compile-and-load (runtime-file "lispm-stubs.lisp"))
+
+;;;; Loading Zetalisp source
+
+(defvar *kbe-load-errors* '()
+  "List of (file form-summary condition) for forms that failed to load.")
+
+(defvar *kbe-stop-on-error* nil
+  "If true, enter the debugger on a load error instead of recording it.")
+
+(defun form-summary (form)
+  (if (consp form)
+      (let ((*print-length* 3) (*print-level* 2))
+        (prin1-to-string (if (consp (cdr form))
+                             (list (car form) (cadr form))
+                             form)))
+      (prin1-to-string form)))
+
+(defvar *kbe-compiler-log* (make-string-output-stream)
+  "Compiler diagnostics from loading KBE source (see KBE-COMPILER-LOG).")
+
+(defun continue-past-package-errors (c)
+  ;; PP:FOO where FOO isn't external (or doesn't exist yet) in our stand-in
+  ;; packages: use the symbol anyway.
+  (let ((r (find-restart 'continue c)))
+    (when r (invoke-restart r))))
+
+(defun eval-kbe-form (form path n)
+  "Evaluates FORM. SBCL reports compile-time errors in a form as
+   diagnostics (and defers them to run time), so those are recorded as load
+   errors too."
+  (let* ((diagnostics (make-string-output-stream))
+         (*error-output* diagnostics))
+    (flet ((note-error (what)
+             (push (list path (form-summary form) what) *kbe-load-errors*)
+             (format t "~&;; ERROR in ~A, form ~D ~A:~%;;   ~A~%"
+                     (pathname-name path) n (form-summary form) what)))
+      (if *kbe-stop-on-error*
+          (handler-bind ((warning #'muffle-warning)) (eval form))
+          (handler-case
+              (handler-bind ((warning #'muffle-warning)) (eval form))
+            (error (c) (note-error c))))
+      (let ((text (get-output-stream-string diagnostics)))
+        (when (plusp (length text))
+          (format *kbe-compiler-log* "~&;;; ~A form ~D ~A~%~A"
+                  (pathname-name path) n (form-summary form) text)
+          (when (search "caught ERROR" text)
+            (note-error (string-trim '(#\Newline #\Space #\;)
+                                     (subseq text 0 (min 600 (length text)))))))))))
+
+(defun kbe-load (path)
+  "Loads a Zetalisp source file into the KBE package, form by form."
+  (let ((*package* (find-package "KBE"))
+        (*readtable* zl::*zl-readtable*)
+        (*read-base* 10)
+        (eof (list :eof))
+        (n 0))
+    (with-open-file (in path :external-format :utf-8)
+      (loop
+        (let ((form
+                (handler-case
+                    (handler-bind ((sb-int:simple-reader-package-error
+                                     #'continue-past-package-errors))
+                      (read in nil eof))
+                  (error (c)
+                    (push (list path (format nil "read after form ~D" n) c)
+                          *kbe-load-errors*)
+                    (format t "~&;; READ ERROR in ~A after form ~D:~%;;   ~A~%"
+                            (pathname-name path) n c)
+                    (return)))))
+          (when (eq form eof) (return))
+          (incf n)
+          (eval-kbe-form (zl::%zl-resolve-splices form) path n))))
+    n))
+
+(defun kbe-compiler-log ()
+  (get-output-stream-string *kbe-compiler-log*))
+
+;;;; The headless KBE core, in sysdef.lisp order
+
+(defparameter *kbe-core-files*
+  '(;; BASE
+    "volume_1/basic" "volume_1/noise" "volume_1/sets" "volume_1/conditions"
+    "volume_1/english" "volume_1/system-magic" "volume_1/flavor-magic"
+    "volume_1/macro" "volume_1/kvars" "volume_1/kmac"
+    "volume_1/interface-macros"
+    ;; MBOX, BEHAVE, KUTIL
+    "volume_1/mbox" "volume_1/post-office" "volume_1/behavior"
+    "volume_1/events" "volume_1/actor" "volume_1/complete"
+    ;; COMMNT RDMAC OUTIL DTRACE DUTIL DMAC DVARS DB GC DDEBUG
+    "volume_1/comment-macro" "volume_1/readmacro" "volume_1/outil"
+    "volume_1/dtrace" "volume_1/dutil" "volume_1/dmac" "volume_1/dvars"
+    "volume_1/db" "volume_1/gc" "volume_1/ddebug"
+    ;; SURFACE EXPAND PRIMOP DFLOW FNS
+    "volume_2/surface" "volume_2/expand" "volume_2/primop" "volume_2/dflow"
+    "volume_2/util" "volume_2/segtrn" "volume_2/analyze" "volume_2/coder"
+    ;; PSEUDO, BRIDGE (ED0 depends on it in sysdef.lisp), ED0 ED1 ED2 ED3
+    "volume_3/pseudo" "volume_4/bridge" "volume_3/dict" "volume_3/gram"
+    "volume_3/refer" "volume_3/verbs" "volume_3/implement"
+    ;; DEFLIB KBELIB DEMLIB
+    "volume_3/deflib" "volume_3/syslib" "volume_3/kbelib" "volume_3/demo-lib"
+    ;; EXPLAIN HANDLERS
+    "volume_4/explain" "volume_4/document" "volume_4/pbm-handlers"
+    ;; self-test
+    "volume_4/test"))
+
+(defun load-kbe (&optional (files *kbe-core-files*))
+  (setq *kbe-load-errors* '())
+  (dolist (f files)
+    (let ((path (merge-pathnames (concatenate 'string f ".lisp") *kbe-code-dir*)))
+      (format t "~&;; Loading ~A~%" f)
+      (kbe-load path)))
+  (format t "~&;; ~D load error~:P.~%" (length *kbe-load-errors*))
+  (length *kbe-load-errors*))
