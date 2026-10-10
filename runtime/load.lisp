@@ -135,10 +135,23 @@
          (eval-toplevel (macroexpand-1 form)))
         (t (eval form))))
 
+(defparameter *kbe-progress-log* (merge-pathnames "progress.log" *kbe-build-dir*)
+  "Each form loaded is noted here as it starts (flushed), so a long or
+   stuck run can be watched with tail -f.")
+
+(defun note-progress (path n form)
+  (with-open-file (log *kbe-progress-log* :direction :output
+                       :if-exists :append :if-does-not-exist :create)
+    (format log "~A ~A form ~D ~A~%"
+            (multiple-value-bind (s m h) (get-decoded-time) (format nil "~2,'0D:~2,'0D:~2,'0D" h m s))
+            (pathname-name path) n (form-summary form))
+    (finish-output log)))
+
 (defun eval-kbe-form (form path n)
   "Evaluates FORM. SBCL reports compile-time errors in a form as
    diagnostics (and defers them to run time), so those are recorded as load
    errors too."
+  (note-progress path n form)
   (let* ((diagnostics (make-string-output-stream))
          (*error-output* diagnostics))
     (flet ((note-error (what)
@@ -163,6 +176,11 @@
   (let ((*package* (find-package "KBE"))
         (*readtable* zl::*zl-readtable*)
         (*read-base* 10)
+        ;; DB facts contain circular context markers; printing one in an
+        ;; error message must not recurse forever.
+        (*print-circle* t)
+        (*print-length* 50)
+        (*print-level* 10)
         (eof (list :eof))
         (n 0))
     (with-open-file (in path :external-format :utf-8)
@@ -228,6 +246,9 @@
 
 (defun load-kbe (&optional (files *kbe-core-files*))
   (setq *kbe-load-errors* '())
+  (ensure-directories-exist *kbe-progress-log*)
+  (with-open-file (log *kbe-progress-log* :direction :output :if-exists :supersede)
+    (format log "load-kbe started~%"))
   (dolist (f files)
     (let ((path (merge-pathnames (concatenate 'string f ".lisp") *kbe-code-dir*)))
       (format t "~&;; Loading ~A~%" f)

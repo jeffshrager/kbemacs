@@ -265,3 +265,48 @@ kbelib.
 1. Debug the hang after the `&quote` change.
 2. Get the libraries loading with zero errors.
 3. Build the headless SQRT harness and run the first command.
+
+---
+
+## Fifth session (2026-10-10): the syslib clichés build plans
+
+### Fixes
+
+- **The hang was `boole`, not `&quote`.** Maclisp/Zetalisp `(boole k x y)`
+  takes a **PDP-10 Boolean-instruction code** (SETZ, AND, ANDCA, SETM,
+  ANDCM, ...): `(boole 4 x y)` is ANDCM, *x and not y*. That is set
+  difference in `dflow.lisp` `6set-` (and in `coder.lisp`). In CL, 4 is
+  `boole-c1` (*not x*), so the live-variable fixed point in `6trans-live`
+  never converged. ZL now shadows `BOOLE` with the PDP-10 table.
+- **The `&quote` / `fexpr` rewrite works:** `plan-def` gets its arguments
+  unevaluated, which fixed the `NON-NULL` errors.
+- **The loader prints with `*print-circle*`,** since DB facts contain
+  circular context markers. An error message printing one had overflowed
+  the stack.
+- **Transcription:** `analyze.lisp:1600` repeated the line above it;
+  per the scan (vol 2 p121) it is `(+& newbodycase segtype 'simple)`. The
+  duplicate had produced a duplicate SEGTYPE fact.
+- **Progress log (the user's idea):** `load-kbe` appends "time file form N"
+  to `runtime/build/progress.log` as each form starts, flushed. Use
+  `tail -f` on it to tell looping from working.
+
+### Status
+
+- All five `syslib` clichés (zeroary/unary/binary-function, simple-subseg,
+  MAP) now load: `define-cliche` builds their plans.
+- `kbelib` form 1 (USE) loads.
+- **`kbelib` form 2, SUCCESSIVE-APPROXIMATION (the SQRT cliché), runs
+  without finishing:** either another non-terminating loop or a very slow
+  one. That is next.
+- Note: `*debug*` is T during load, because the system initializations
+  (`initialize-system`) haven't run, so `cbarf` signals continuable
+  errors. The harness should call `(initialize-system)`.
+
+### Next
+
+1. Find why SUCCESSIVE-APPROXIMATION doesn't finish: use the interrupt
+   backtrace technique (timer plus `interrupt-thread`; see scratch
+   `dbg-hang.lisp` in the session, or rebuild it) and check for another
+   Zetalisp semantic mismatch or transcription error.
+2. Finish loading `kbelib` and `demo-lib`.
+3. Build the SQRT harness.

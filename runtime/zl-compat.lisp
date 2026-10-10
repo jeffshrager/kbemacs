@@ -808,6 +808,17 @@
                 (cl:let ((r (car args)))
                   (dolist (d (cdr args) r) (setq r (truncate r d))))))
         (t (apply #'cl:/ args))))
+;;; Maclisp/Zetalisp BOOLE takes a PDP-10 Boolean-instruction code, not
+;;; a CL BOOLE-... constant: (boole 4 x y) is ANDCM, x and (not y), which
+;;; dflow.lisp's 6SET- uses for set difference. (In CL, 4 is BOOLE-C1.)
+;;; More than two arguments combine left to right.
+(defparameter %zl-boole-ops
+  (vector boole-clr boole-and boole-andc1 boole-2 boole-andc2 boole-1
+          boole-xor boole-ior boole-nor boole-eqv boole-c1 boole-orc1
+          boole-c2 boole-orc2 boole-nand boole-set))
+(cl:defun boole (code x &rest more)
+  (cl:let ((op (svref %zl-boole-ops code)) (result x))
+    (dolist (y more result) (setq result (cl:boole op result y)))))
 (cl:defun \\ (a b) (cl:rem a b))
 (cl:defun remainder (a b) (cl:rem a b))
 (cl:defun quotient (&rest args) (apply #'/ args))

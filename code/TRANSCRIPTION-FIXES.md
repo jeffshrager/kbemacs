@@ -13,6 +13,7 @@ detected) when the form contains a comma.
 | `volume_2/surface.lisp` | 231 | `'',return-segcase` | `` `',return-segcase `` | vol 2 p7 |
 | `volume_2/analyze.lisp` | 224 | `(ssrs ... (Elist prs)))))))` (7 parens) | 6 parens | vol 2 p90 |
 | `volume_2/analyze.lisp` | 244 | `(t 'trn))))` (4 parens) | 5 parens | vol 2 p90; compensated the extra paren above, so the file still balanced |
+| `volume_2/analyze.lisp` | 1600 | `(+& newssrcase segtype 'simple)` (line above repeated) | `(+& newbodycase segtype 'simple)` | vol 2 p121; caused a duplicate SEGTYPE fact |
 | `volume_2/primop.lisp` | 535 | `-> sexpr.` | `-> sexpr` | vol 2 p40 shows a dot, judged a printout mark: with it the OVER variable would be `SEXPR.` and the body's `sexpr` unbound, but K*PROG runs for every program analyzed and SQRT passed in the 358 test the next day |
 | `volume_2/primop.lisp` | 187 | `'',form` | `` `',form `` | same pattern as surface |
 | `volume_3/pseudo.lisp` | 254 | `'',string` | `` `',string `` | same pattern as surface |

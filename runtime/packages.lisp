@@ -46,7 +46,7 @@
    "STRING-EQUAL" "CHARACTER"
    ;; arithmetic: (// 7 2) is 3 in Zetalisp; characters compare as
    ;; numbers (we read #/a as a CL character, Zetalisp as a fixnum)
-   "/" "=" "/=" "<" ">" "<=" ">=" "+" "-" "1+" "1-"
+   "/" "=" "/=" "<" ">" "<=" ">=" "+" "-" "1+" "1-" "BOOLE"
    ;; I/O
    "FORMAT" "READ"
    ;; conditions

@@ -1597,7 +1597,7 @@
                       (Rlist (cons seg nrec)))]))
     (+& (& tc) subseg newssrcase)
     (+& newssrcase segtype 'simple)
-    (+& newssrcase segtype 'simple)
+    (+& newbodycase segtype 'simple)
     (+& newssrcase plantype 'ssr)
     (+& newbodycase plantype 'ssr-body)
     (+& newssrcase subseg newbodycase)
