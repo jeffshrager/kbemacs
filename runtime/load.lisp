@@ -53,6 +53,7 @@
   (compile-and-load (runtime-file (concatenate 'string f ".lisp"))))
 
 (compile-and-load (runtime-file "lispm-stubs.lisp"))
+(compile-and-load (runtime-file "lispm-functions.lisp"))
 
 ;;; Export the Zetalisp vocabulary from ZL, so KBE (which uses only ZL)
 ;;; sees it. Internal helpers are named %ZL-...

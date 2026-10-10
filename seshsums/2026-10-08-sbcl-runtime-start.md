@@ -163,3 +163,44 @@ fails on two Lisp Machine introspection functions, `ZL:ARGLIST` (18) and
    analyzer uses them), then reload.
 2. Once the libraries load, build the SQRT test inputs from
    `358-test.lisp` and the headless driver.
+
+---
+
+## Third session (2026-10-10): ARGLIST and SI:DECLARED-DEFINITION
+
+New file `runtime/lispm-functions.lisp`:
+
+- **`arglist`** returns the lambda list of a lambda expression
+  (`lambda`, `named-lambda`, `subst`) or of a function.
+- **`si:declared-definition`** returns the function cell, which for a macro
+  is `(macro . expander)`. The analyzer (`expand.lisp`
+  `macroexpand-1-no-substs`) uses it to expand macros in the code it
+  analyzes.
+  - Fidelity point: `expand-special-forms` checks KBE's own `k*expander`s
+    first (`cond`, `and`, `let`, `do`, `setf`, `loop`, ...). But **`if`** has
+    none, and neither do `when`, `unless`, `push`, `pop`, `incf`, `decf`,
+    `dolist`, `dotimes`, `caseq` and `selectq`. On the Lisp Machine these
+    were macros expanding to `cond`/`setq`/`do`; SBCL's expansions use
+    internals KBE doesn't know.
+  - So `si:declared-definition` supplies **Lisp Machine–style expansions**
+    for them, e.g. `(if a b c)` becomes `(cond (a b) (t c))`.
+  - It warns once for any other CL macro that reaches it, so a gap can't
+    fail silently.
+- **`si:open-code-p`** returns NIL; there are no substs here.
+
+### Status
+
+Those 29 errors are gone. 30 load errors remain, all still in the cliché
+libraries, and now with a deeper cause:
+
+- **`DTP-LIST`, `%MAKE-POINTER-OFFSET`, `NCONS-IN-AREA`**: the DB's "hunk"
+  representation (`dmac.lisp` around line 400) indexes into a block of conses
+  by machine-pointer arithmetic, and allocates in storage areas. This needs a
+  faithful emulation of what a dbhunk is and how it's accessed.
+- One `compiler-let` form in `kbelib` (LINEAR-SEARCH), still to be
+  investigated.
+
+### Next
+
+Emulate dbhunks (read `make-dbhunk` and every access first), then retry
+the libraries.
