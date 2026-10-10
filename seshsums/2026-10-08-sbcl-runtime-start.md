@@ -204,3 +204,64 @@ libraries, and now with a deeper cause:
 
 Emulate dbhunks (read `make-dbhunk` and every access first), then retry
 the libraries.
+
+---
+
+## Fourth session (2026-10-10): toward a clean load of the libraries
+
+### Runtime changes
+
+- **DB hunks:** `(car (%make-pointer-offset dtp-list hunk (1+ n)))` reads
+  element n of a cdr-coded list, so `%make-pointer-offset` is `nthcdr`
+  (still SETF-able). Areas are integers (all area 0); `%area-number` is 0
+  for a cons and -1 otherwise; `ncons-in-area` and `xcons-in-area` added.
+- **SETF** consults the Lisp Machine `:setf` property, which KBE's
+  `define-setf-handler` (macro.lisp) uses for destructuring assignment,
+  e.g. `(setf [a b] x)`.
+- **Exports:** ZL now exports only CL and library externals, defined
+  symbols, the stream and printer aliases, and a list of shared data
+  symbols (`macro`, `fexpr`, `&quote`, ...). Exporting incidental symbols
+  such as the `loop` keyword `FROM` had made `factdef` create `ZL::~FROM`.
+- **Zetalisp `defstruct`:** the default `:conc-name` is empty (accessors
+  are `(end hunk)`).
+- **Added:** `desetq`.
+- **Loader:** reader warnings, such as "unmatched close parenthesis", are
+  now recorded as load errors.
+- **`&quote` arguments and `fexpr`s (written; NOT YET VERIFIED):**
+  `(defun plan-def (&quote &rest body) ...)` takes its arguments
+  unevaluated. The old `fexpr` translation was also wrong: it ran the body
+  at macroexpansion time. Both now compile to an ordinary function plus a
+  macro that quotes the `&quote` arguments.
+  - **The first load after this change spun at 100% CPU and was killed.**
+    The next step is to find out why: likely an expansion loop in the new
+    macro, or `plan-def`/`expand-facts` now actually running. Run it with a
+    timeout and check `load-raw.txt`-style output for the last file
+    loading.
+
+### Transcription fixes
+
+All checked against the scans:
+
+- `primop.lisp`: `-> sexpr.` should be `-> sexpr`. The scan shows a dot,
+  but it is the only trailing dot in the core, and it would break K*PROG,
+  which runs for every program; SQRT passed in 1984. The user agrees it is
+  spurious.
+- `analyze.lisp` `3fix-slot-assertions`: **two compensating paren
+  errors** (one extra `)` at `ssrs`, one missing after `(t 'trn)`). The
+  file still balanced, so only the scan showed them.
+  - Lesson: compensating paren errors are silent. A worthwhile audit would
+    re-indent each form by its structure and compare with the
+    transcription's indentation, which follows the scan.
+
+### Status before the `&quote` change
+
+19 load errors, all in the cliché libraries: `NON-NULL` unbound (10; the
+`&quote` problem above) and `K*INFINITE-LOOP-PSEUDO-EXIT` unbound (8;
+probably the same `plan-def` cause), plus one `compiler-let` form in
+kbelib.
+
+### Next
+
+1. Debug the hang after the `&quote` change.
+2. Get the libraries loading with zero errors.
+3. Build the headless SQRT harness and run the first command.

@@ -56,11 +56,33 @@
 (compile-and-load (runtime-file "lispm-functions.lisp"))
 
 ;;; Export the Zetalisp vocabulary from ZL, so KBE (which uses only ZL)
-;;; sees it. Internal helpers are named %ZL-...
-(let ((zl (find-package "ZL")))
+;;; sees it: Common Lisp, Flavors and LetS externals, plus every symbol ZL
+;;; defines. Other symbols that merely occur in the runtime's code (LOOP
+;;; keywords such as FROM) stay internal; KBE must get its own, since it
+;;; interns into their packages (FACTDEF: ~FROM in (SYMBOL-PACKAGE 'FROM)).
+;;; Internal helpers are named %ZL-... Also exported: the stream and
+;;; printer variable aliases (symbol macros, so not BOUNDP), and data
+;;; shared with the KBE code, which compares against it.
+(defparameter *zl-shared-data-symbols*
+  (append (mapcar #'car zl::%zl-variable-aliases)
+          '(zl::macro zl::fexpr zl::expr zl::lexpr zl::subst zl::named-subst
+            zl::named-lambda
+            ;; Zetalisp lambda-list keywords and declarations
+            zl::&special zl::&local zl::&quote zl::&eval zl::&functional
+            zl::&list-of zl::*expr zl::*fexpr zl::*lexpr)))
+
+(let ((zl (find-package "ZL"))
+      (externals (list (find-package "COMMON-LISP") (find-package "LETS")
+                       (find-package "SPICE-FLAVORS"))))
   (do-symbols (s zl)
-    (unless (or (eql (search "%ZL-" (symbol-name s)) 0)
-                (eq (symbol-package s) (find-package "KEYWORD")))
+    (when (and (not (eql (search "%ZL-" (symbol-name s)) 0))
+               (not (eq (symbol-package s) (find-package "KEYWORD")))
+               (or (member s *zl-shared-data-symbols*)
+                   (fboundp s) (boundp s) (macro-function s)
+                   (some (lambda (p)
+                           (eq (nth-value 1 (find-symbol (symbol-name s) p))
+                               :external))
+                         externals)))
       (export (list s) zl))))
 
 
@@ -148,7 +170,19 @@
         (let ((form
                 (handler-case
                     (handler-bind ((sb-int:simple-reader-package-error
-                                     #'continue-past-package-errors))
+                                     #'continue-past-package-errors)
+                                   ;; e.g. "Ignoring unmatched close
+                                   ;; parenthesis": usually a transcription
+                                   ;; error, so it is recorded.
+                                   (warning
+                                     (lambda (w)
+                                       (push (list path (format nil "read after form ~D" n) w)
+                                             *kbe-load-errors*)
+                                       (format t "~&;; READ WARNING in ~A after form ~D (line ~D):~%;;   ~A~%"
+                                               (pathname-name path) n
+                                               (ignore-errors (1+ (count #\Newline (with-open-file (s path) (let ((str (make-string (file-position in)))) (read-sequence str s) str)))))
+                                               w)
+                                       (muffle-warning w))))
                       (read in nil eof))
                   (error (c)
                     (push (list path (format nil "read after form ~D" n) c)

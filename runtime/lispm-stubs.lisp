@@ -44,11 +44,27 @@
              dbg::proceedable-ferror))
   (export (list s) (symbol-package s)))
 
-;;; Storage areas: one heap here.
-(defvar default-cons-area nil)
-(defvar working-storage-area nil)
-(defvar sys::property-list-area nil)
-(cl:defun make-area (&rest ignore) (declare (ignore ignore)) nil)
+;;; Storage areas. There is one heap here; every area is area 0.
+;;; %AREA-NUMBER is 0 for a cons and -1 for anything else, so that
+;;; DEF-DB-STRUCT's predicate (= (%AREA-NUMBER OBJ) *DB-AREA*) rejects
+;;; non-conses before it takes their CAR (dmac.lisp).
+(defvar default-cons-area 0)
+(defvar working-storage-area 0)
+(defvar sys::property-list-area 0)
+(cl:defun make-area (&rest ignore) (declare (ignore ignore)) 0)
+(cl:defun %area-number (object) (cl:if (consp object) 0 -1))
+(cl:defun ncons-in-area (x area) (declare (ignore area)) (list x))
+(cl:defun xcons-in-area (a b area) (declare (ignore area)) (cons b a))
+
+;;; Pointer arithmetic on lists. A DB "hunk" (dmac.lisp) is a cdr-coded
+;;; list read with (CAR (%MAKE-POINTER-OFFSET DTP-LIST HUNK (1+ N))): the
+;;; cell N+1 words past the start of a cdr-coded list is its (N+1)th
+;;; tail, so here that is NTHCDR (which also keeps the place SETF-able).
+(defconstant dtp-list 'dtp-list)
+(cl:defun %make-pointer-offset (data-type pointer offset)
+  (cl:if (eq data-type dtp-list)
+         (nthcdr offset pointer)
+         (ferror "%MAKE-POINTER-OFFSET: unsupported data type ~S" data-type)))
 
 ;;; COMPILER-LET (used by kbelib.lisp around cliche definitions)
 (cl:defmacro compiler-let (bindings &body body)

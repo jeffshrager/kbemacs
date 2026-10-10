@@ -19,13 +19,25 @@
                                 (cdr form))))
     (cl:if specs (cons 'declare specs) nil)))
 
-;;;; SETF also takes #'name as a place: (setf #'sc #'show-db-context)
+;;;; SETF
+;;;
+;;; Lisp Machine SETF consults a :SETF property on the place's operator,
+;;; a function of (place value) returning the expansion. KBE's
+;;; DEFINE-SETF-HANDLER (macro.lisp) uses it for destructuring assignment,
+;;; (SETF [A B] X) and (SETF (LIST A B) X). SETF also takes #'name as a
+;;; place: (setf #'sc #'show-db-context).
+
+(eval-when (:compile-toplevel :load-toplevel :execute)
+  (cl:defun %zl-setf-1 (place value)
+    (cond ((and (consp place) (eq (car place) 'function))
+           `(cl:setf (fdefinition ',(cadr place)) ,value))
+          ((and (consp place) (symbolp (car place)) (cl:get (car place) :setf))
+           (funcall (cl:get (car place) :setf) place value))
+          (t `(cl:setf ,place ,value)))))
 
 (cl:defmacro setf (&rest pairs)
   (cl:let ((forms (loop for (place value) on pairs by #'cddr
-                        collect (cl:if (and (consp place) (eq (car place) 'function))
-                                       `(cl:setf (fdefinition ',(cadr place)) ,value)
-                                       `(cl:setf ,place ,value)))))
+                        collect (%zl-setf-1 place value))))
     (cl:if (cdr forms) `(progn ,@forms) (car forms))))
 
 ;;;; Lambda lists and bodies
@@ -118,10 +130,17 @@
              `(cl:defmacro ,name (&whole ,form &rest ,(cl:gensym "IGNORE"))
                 ,@cbody))))
         ((eq kind 'fexpr)
-         ;; Arguments arrive unevaluated, as a list.
-         (cl:let ((arg (car ll)))
-           `(cl:defmacro ,name (&rest ,arg)
-              (list 'quote (progn ,@body)))))
+         ;; Arguments arrive unevaluated, as a list: the body becomes an
+         ;; ordinary function of that list, called by a macro.
+         (cl:let ((impl (%zl-quoted-impl-name name))
+                  (args (cl:gensym "ARGS")))
+           (multiple-value-bind (cll cbody) (%zl-lambda-parts ll body)
+             `(progn (cl:defun ,impl ,cll ,@cbody)
+                     (cl:defmacro ,name (&rest ,args)
+                       (list ',impl (list 'quote ,args)))
+                     ',name))))
+        ((and (null indicator) (consp ll) (memq '&quote ll))
+         (%zl-quote-arg-defun name ll body))
         (indicator
          (multiple-value-bind (cll cbody) (%zl-lambda-parts ll body)
            `(progn (setf (cl:get ',name ',indicator)
@@ -131,6 +150,40 @@
          (multiple-value-bind (cll cbody)
              (%zl-lambda-parts ll body :doc-allowed t)
            `(cl:defun ,name ,cll ,@cbody)))))))
+
+;;; &QUOTE in a lambda list: the arguments that follow arrive unevaluated
+;;; (until &EVAL). (defun plan-def (&quote &rest body) ...) in db.lisp.
+;;; The body becomes an ordinary function; NAME becomes a macro that
+;;; quotes the &QUOTE arguments and calls it.
+(eval-when (:compile-toplevel :load-toplevel :execute)
+  (cl:defun %zl-quoted-impl-name (name)
+    (cl:intern (concatenate 'string (symbol-name name) " (quoted args)")
+               (symbol-package name)))
+
+  (cl:defun %zl-quote-arg-defun (name ll body)
+    (cl:let ((modes '()) (rest-mode nil) (quote? nil) (in-rest nil) (clean '()))
+      (dolist (x ll)
+        (cond ((eq x '&quote) (setq quote? t))
+              ((eq x '&eval) (setq quote? nil))
+              ((cl:member x '(&rest &body)) (setq in-rest t) (push '&rest clean))
+              ((cl:member x lambda-list-keywords) (push x clean))
+              (t (cl:if in-rest (setq rest-mode quote?) (push quote? modes))
+                 (push x clean))))
+      (cl:let ((impl (%zl-quoted-impl-name name))
+               (modes (nreverse modes))
+               (args (cl:gensym "ARGS")))
+        `(progn
+           (defun ,impl ,(nreverse clean) ,@body)
+           (cl:defmacro ,name (&rest ,args)
+             (cons ',impl
+                   (loop for a in ,args
+                         for i from 0
+                         collect (cl:if (cl:if (cl:< i ,(length modes))
+                                               (nth i ',modes)
+                                               ,rest-mode)
+                                        (list 'quote a)
+                                        a))))
+           ',name)))))
 
 (cl:defmacro named-lambda (name ll &body body)
   (declare (ignore name))
@@ -294,6 +347,22 @@
               (mapcar (lambda (p) (eval (cadr p))) ,pairs)
          ,@body))))
 
+;;; (DESETQ pattern value ...): destructuring SETQ, with LET's pattern rules.
+(cl:defmacro desetq (&rest pairs)
+  (cl:let ((forms '()))
+    (loop for (pattern value) on pairs by #'cddr
+          do (cl:if (atom pattern)
+                    (push `(setq ,pattern ,value) forms)
+                    (cl:let ((g (cl:gensym "V")) (sets '()))
+                      (labels ((walk (pat place)
+                                 (cond ((null pat))
+                                       ((symbolp pat) (push `(setq ,pat ,place) sets))
+                                       (t (walk (car pat) `(car ,place))
+                                          (walk (cdr pat) `(cdr ,place))))))
+                        (walk pattern g))
+                      (push `(cl:let ((,g ,value)) ,@(nreverse sets) ,g) forms))))
+    `(progn ,@(nreverse forms))))
+
 ;;;; DO (old Maclisp form and new form), IF, RETURN
 
 (cl:defmacro do (&rest args)
@@ -398,7 +467,7 @@
 (cl:defun rest4 (l) (cddddr l))
 (cl:defun ncons (x) (list x))
 (cl:defun xcons (a b) (cons b a))
-(cl:defun copylist (list) (copy-list list))
+(cl:defun copylist (list &optional area) (declare (ignore area)) (copy-list list))
 (cl:defun copylist* (list) (copy-list list))
 (cl:defun copytree (tree) (copy-tree tree))
 (cl:defun copyalist (alist) (copy-alist alist))
@@ -586,6 +655,8 @@
 ;;;
 ;;; The constructor is a macro taking slot names and values:
 ;;;   (make-dflow-hunk start x end nil)
+;;; and, unless :CONC-NAME says otherwise, accessors are named by the slot
+;;; names alone: (end hunk), not (dflow-hunk-end hunk).
 ;;; Options :TYPE :NAMED-LIST, :LIST, :ARRAY, :NAMED-ARRAY are mapped to
 ;;; CL equivalents; other Lisp Machine options are ignored.
 
@@ -610,6 +681,8 @@
           (:constructor (cl:when arg (setq constructor arg)))
           ((:conc-name :include :copier :predicate) (push o cl-options))
           (t nil))))
+    (unless (cl:find :conc-name options :key (lambda (o) (cl:if (consp o) (car o) o)))
+      (push '(:conc-name nil) cl-options))
     (cl:let ((slot-names (mapcar (lambda (s) (cl:if (consp s) (car s) s)) slots)))
       `(progn
          (cl:defstruct (,name (:constructor ,internal (&key ,@slot-names))

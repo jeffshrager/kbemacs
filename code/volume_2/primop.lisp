@@ -536,7 +536,7 @@
           (+& joincase @seg 'join (cadr line) nil)
           (+& SUPERSEGCASE subseg joincase)
           (push [(cadr line) ! joincase] TAGS)))
-      (over b <- body -> sexpr.
+      (over b <- body -> sexpr
         (cond ((not (null (cdr b))) (let (RETVAR) (6eval sexpr)))
               ((cdr sexpr) (barf "Multiple returns not supported yet."))
               (sexpr (return (6eval (car sexpr)))) ;one return val

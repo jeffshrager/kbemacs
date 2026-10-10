@@ -221,7 +221,7 @@
                             name2
                             (~slottype slot-fact))))))
     (letS* (((name1 . prs) (Elist slot-groups))
-            (ssrs (letS* () (Reqset (3up-to-ssr (car (Elist prs)))))))
+            (ssrs (letS* () (Reqset (3up-to-ssr (car (Elist prs))))))
             (mainseg (car ssrs)))
       (when (cdr ssrs)
         (if (cdr (letS* () (Reqset (?supseg (Elist ssrs)))))
@@ -241,7 +241,7 @@
               (cond ((memq 'term rolenames) 'term)
                     ((memq 'acc rolenames) 'acc)
                     ((memq 'gen rolenames) 'gen)
-                    (t 'trn))))
+                    (t 'trn)))))
       (+& (& mainseg) cliche 'pseudo-subcliche)
       (+& (& supseg) slot (& mainseg) name1 'segment)
       (dolist (pr prs)
