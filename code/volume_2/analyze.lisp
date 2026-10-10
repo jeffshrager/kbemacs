@@ -1024,7 +1024,7 @@
                                                            seg path)))))
                                        (if role
                                            (assert-fact
-                                             (&~roleseg role (& newseg)))))))
+                                             (&~roleseg role (& newseg))))))))
                            (t ;(not nterm)
                             (cond ((memq ntype '(EXPR COMP AND))
                                    (move-seg-down nseg seg)
@@ -1042,7 +1042,7 @@
                                          role (& seg) 'init)))
                                   (t (barf "3DO-DFLOW-MOVE: Error 2.~
                                             ~% Seg: ~S~% Path: ~S"
-                                             seg path)))))))))
+                                             seg path))))))))
             (done))))
     (format-trace *ANALYZE-Debug* "~%"))
   nil)

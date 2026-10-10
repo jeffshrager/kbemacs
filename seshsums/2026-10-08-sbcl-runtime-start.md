@@ -310,3 +310,96 @@ kbelib.
    Zetalisp semantic mismatch or transcription error.
 2. Finish loading `kbelib` and `demo-lib`.
 3. Build the SQRT harness.
+
+---
+
+## Sixth session (2026-10-10): SUCCESSIVE-APPROXIMATION loads; 8 load errors left
+
+### What was wrong
+
+SUCCESSIVE-APPROXIMATION looped forever in `analyze.lisp`'s data-flow
+simplifier. `3dflow-simp1`/`3dflow-simp2` kept proposing the same move of
+INITIAL-APPROXIMATION into TC (an SSR), about 400,000 times in 5 seconds,
+and `3do-dflow-move` never performed it.
+
+Cause: **another compensating pair of paren errors** in `3do-dflow-move`
+(vol 2 p106):
+
+- `(& newseg)))))))` had 7 closing parens where the scan has 8;
+- `seg path)))))))))` had 9 where the scan has 8.
+
+The file still balanced, but the `(t ;(not nterm) ...)` clause had become
+part of the `nterm` branch. So moving a segment into a non-terminal (an SSR)
+silently did nothing. The scan settled it; it was also visible with a
+small Python paren-nesting check that lists the open parens enclosing a
+given line.
+
+(A detour: I first suspected LetS `generateS`, which really is unbounded.
+But the function ends its loop with LetS `(done)` in the last-step
+branch, exactly as LetS intends. No LetS problem.)
+
+### Status: `(load-kbe)` takes seconds and reports 8 load errors
+
+All of these are clichés SQRT does not use:
+
+- **"No facts found when 1 expected"** for pattern `(TCBODYn . ~*) DFLOW ~*
+  NIL`: TRAILING-POINTER-LIST-ENUMERATION,
+  TRAILING-POINTER-SUBLIST-ENUMERATION, ENUMERATION, LIST-ENUMERATION,
+  SUBLIST-ENUMERATION, VECTOR-ENUMERATION (kbelib) and SIMPLE-REPORT
+  (demo-lib). One shared cause is likely: a data-flow arc into a temporal
+  composition body. It could be another paren slip in analyze.lisp's TC
+  code, or a runtime semantic difference.
+- **LINEAR-SEARCH**, inside `(compiler-let ((*separate-gens-and-terms*
+  t)) ...)` in kbelib: compile error.
+
+The SQRT clichés SUCCESSIVE-APPROXIMATION, AVERAGE, SQUARE and
+EQUALITY-WITHIN-EPSILON load, as do USE and the syslib clichés.
+
+### Questions for a Zetalisp / KBEmacs expert
+
+These are the places where the runtime *assumes* a Lisp Machine behavior
+(Symbolics Release 4.5, KBE 358, December 1984). Each was inferred from
+how the KBE code uses it; confirmation or correction would be valuable.
+
+1. **`(listp nil)`.** We made Zetalisp `listp` mean `consp`, so
+   `(listp nil)` is NIL. `fix-up-semi-kbe-/#-comment-macros`
+   (comment-macro.lisp) recursed forever otherwise. Was `listp` really
+   `consp` in Release 4.5, or did the code rely on something else?
+2. **Characters.** We read `#/a` as a character object, and made `=`, `<`,
+   `+`, `-` and so on accept characters as their codes; `pseudo.lisp`'s
+   tokenizer does `(>= c #/a)` and gram uses `#.(1- #/a)`. In Release 4.5,
+   were characters fixnums? If so, is there any place where KBE would treat
+   a character and its code differently (e.g. `eq` against a number)?
+3. **`%pointer` and fset order.** `sets.lisp` keeps "fsets" sorted by
+   object address. We emulate addresses with creation-order serial numbers
+   (symbols numbered when created by `make-symbol`/`gensym`/`intern`).
+   Does the order of plan elements, and so of generated code, depend on
+   address order in a way this might not reproduce?
+4. **`boole`.** We use the Maclisp/PDP-10 instruction-code table
+   (`(boole 4 x y)` is ANDCM, x and not y). Right for the LispM?
+5. **`map`** applies the function to successive tails (like CL `mapl`).
+   Right?
+6. **Macros in analyzed code.** The analyzer expands macros it has no
+   `k*expander` for, via `si:declared-definition`. We supply Lisp Machine
+   expansions for `if`, `when`, `unless`, `push`, `pop`, `incf`, `decf`,
+   `dolist`, `dotimes`, `caseq` and `selectq` (e.g. `if` becomes `cond`).
+   Is that what Release 4.5 produced, especially for `if`, which the SQRT
+   clichés use?
+7. **The missing LMLIB libraries.** KBE's sysdef loads `LMLIB; LETS`,
+   `LMLIB; PP`, `LMLIB; GPRINT` and `LISPM2; LET`. We used the ITS LetS
+   (`lets.rcw1`, Waters) and stubbed PP and GPRINT. Do copies of the
+   1984 LMLIB LETS and PP survive anywhere?
+8. **`primop.lisp` `-> sexpr.`** The scan shows a dot after `sexpr` in
+   K*PROG's `over`; we treat it as a printout mark. (Agreed with the user;
+   just noting it.)
+
+### Next
+
+1. Optionally fix the 8 remaining load errors (they don't block SQRT).
+2. Build the SQRT harness:
+   - extract the commands and expected code from `358-test.lisp` into
+     `runtime/demo/`;
+   - call `(initialize-system)`;
+   - set up a headless `*delegate*`;
+   - drive `volume_4/test.lisp`'s `run-KBE-test`, logging progress to a
+     file.
