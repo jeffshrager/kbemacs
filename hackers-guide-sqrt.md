@@ -1,14 +1,25 @@
 # A Hacker's Guide to KBEmacs: A Day in the Life of SQRT
 
-*Following one program through the Knowledge-Based Editor, from typed English to
-generated Lisp, as it runs again under SBCL in 2026.*
+Copyright © 2026 Jeff Shrager (<jshrager@gmail.com>). All rights
+reserved. (See copyright details at the end of this document.)
+
+*Following one program through MIT's Knowledge-Based Editor, from typed English to generated Lisp, as it runs again under SBCL in 2026*
+
+---
+
+*Warning*: Large parts of this document were created using AI
+assistance. *Doveryai, No Proveryai!*
+
+---
+
+## Before You Arrive
 
 On 14 December 1984, KBE 358.0x tested itself on a Symbolics Lisp Machine. One of
 its test sequences, SQRT, asked the system to build a square-root routine out of
 algorithmic clichés. That run is recorded in
-[`code/volume_1/358-test.lisp`](../code/volume_1/358-test.lisp). The listings of
+[`code/volume_1/358-test.lisp`](code/volume_1/358-test.lisp). The listings of
 the system that ran it survive as scans; their transcriptions are in `code/`. With
-the runtime in [`runtime/`](../runtime/), the same fourteen commands can be
+the runtime in [`runtime/`](runtime/), the same fourteen commands can be
 replayed today and produce the same code, character for character.
 
 This guide follows that run command by command. At each step it shows what the
@@ -16,21 +27,19 @@ programmer typed, what KBE parsed, which code ran, and what KBE then knew about
 the program. Everything quoted below comes from tracing the real system, not
 from a reconstruction.
 
-For the architecture in general (plans, clichés, the analyzer and coder as Waters
-and Rich describe them), see the companion source tour in
-`../doc/hackers-guide.md`. This guide is the worked example.
+This is the long form of the **A Day in the Life** section of the companion source tour, [A Hacker's Guide to KBEmacs](hackers-guide.md). Read that one for the architecture: plans, clichés, the analyzer and the coder, as Waters and Rich describe them. This guide is the worked example.
 
 ---
 
-## Before dawn: running it yourself
+## Practical Notes: Running It Yourself
 
 ```sh
 sbcl --script runtime/run-test.lisp sqrt
 ```
 
 That loads the runtime and the KBE sources, replays
-[`runtime/demo/sqrt.kbe`](../runtime/demo/sqrt.kbe), and compares the result
-with [`runtime/demo/sqrt.lisp`](../runtime/demo/sqrt.lisp). The last lines
+[`runtime/demo/sqrt.kbe`](runtime/demo/sqrt.kbe), and compares the result
+with [`runtime/demo/sqrt.lisp`](runtime/demo/sqrt.lisp). The last lines
 should be:
 
 ```
@@ -69,7 +78,7 @@ like that machine to run the sources as transcribed:
 - `lispm-stubs.lisp`, `lispm-functions.lisp`: system facilities (areas,
   options, `arglist`, `si:declared-definition`).
 - `load.lisp`: reads each KBE file form by form, in
-  [`sysdef.lisp`](../code/volume_1/sysdef.lisp) order, and reports any form
+  [`sysdef.lisp`](code/volume_1/sysdef.lisp) order, and reports any form
   that fails.
 - `patches.lisp`: headless stand-ins for pieces that live in the editor
   layer: the delegate, `string-parser` for Lisp, `*input-language*`.
@@ -79,7 +88,7 @@ in `syslib`, `kbelib` and `demo-lib` have each been analyzed into plans.
 
 ---
 
-## The cast
+## The Map: The Cast and the Clichés
 
 The parts of KBE that SQRT exercises:
 
@@ -95,9 +104,9 @@ The parts of KBE that SQRT exercises:
 
 ---
 
-## The clichés SQRT will use
+### The clichés SQRT will use
 
-These are in [`kbelib.lisp`](../code/volume_3/kbelib.lisp), "coded in the exact
+These are in [`kbelib.lisp`](code/volume_3/kbelib.lisp), "coded in the exact
 style that the coder produces in order to facilitate comparison":
 
 ```lisp
@@ -127,16 +136,18 @@ role is a computation that receives APPROXIMATION; `{the input
 initial-approximation}` says the role is a value flowing in.
 
 Note that a cliché is not kept as text. When `kbelib.lisp` loads,
-`define-cliche` ([`deflib.lisp:41`](../code/volume_3/deflib.lisp)) calls
+`define-cliche` ([`deflib.lisp:41`](code/volume_3/deflib.lisp)) calls
 `expand-define-cliche` (`deflib.lisp:80`). That runs the code through the
 **analyzer** and stores the resulting *plan* on the cliché's `cliche-plan`
-property, as a `plan-def` form ([`db.lisp:1057`](../code/volume_1/db.lisp)) that
+property, as a `plan-def` form ([`db.lisp:1057`](code/volume_1/db.lisp)) that
 rebuilds the plan's facts when evaluated. The cliché library is a library of
 plans.
 
 ---
 
-## 8:00 "Reinitialize database."
+## A Day in the Life
+
+### 8:00 "Reinitialize database."
 
 ```
 >Reinitialize database.
@@ -146,17 +157,17 @@ RESULT: (:TEXT :TEXT "Database has been reinitialized.")
 
 The path every command takes:
 
-1. `parse-command` ([`pseudo.lisp:421`](../code/volume_3/pseudo.lisp)) opens the
+1. `parse-command` ([`pseudo.lisp:421`](code/volume_3/pseudo.lisp)) opens the
    string and calls `read-command`, which rebinds `standard-input` to it.
    `read-token-internal` peeks with `tyipeek`, scans words with
    `really-scan-word`, and returns `'REINITIALIZE DATABASE |.|`.
 2. `parse-sentence` (`pseudo.lisp:476`) finds the verb's parse function.
    `define-verb` (`pseudo.lisp:1039`) generated one per verb from its pattern,
    here `(reinitialize database)`, and it checks for the word *database*.
-3. `eval-command` ([`refer.lisp:156`](../code/volume_3/refer.lisp)) looks up the
+3. `eval-command` ([`refer.lisp:156`](code/volume_3/refer.lisp)) looks up the
    verb's `verb-action` property and applies it to the parsed arguments.
 4. The action calls `(send-delegate ':interpret 'reinitialize)`
-   ([`behavior.lisp:24`](../code/volume_1/behavior.lisp)). `*delegate*` is a
+   ([`behavior.lisp:24`](code/volume_1/behavior.lisp)). `*delegate*` is a
    flavor instance whose vocabulary uses the **`:case` method combination**:
    `:interpret` dispatches on its first argument to the method
    `(programmer-vocabulary :case :interpret reinitialize)`. That method was
@@ -170,7 +181,7 @@ the two vocabularies.
 
 ---
 
-## 8:05 "Define a program MYSQRT with a parameter NUM."
+### 8:05 "Define a program MYSQRT with a parameter NUM."
 
 ```
 PARSED: (DEFINE NIL
@@ -182,7 +193,7 @@ SEGS:   1
 
 The parse is three arguments: no cliché name, a program definition named
 MYSQRT, and one parameter. `make-definition-internal`
-([`verbs.lisp:607`](../code/volume_3/verbs.lisp)) checks the name and calls
+([`verbs.lisp:607`](code/volume_3/verbs.lisp)) checks the name and calls
 `make-program-definition` (`verbs.lisp:669`). That builds the plan for an empty
 `defun`, through `create-plan-for-code` (`verbs.lisp:53`), the single entry
 into the analyzer.
@@ -190,16 +201,16 @@ into the analyzer.
 The DB now holds one **segment**, `MYSQRT`: a box with an input port `NUM` and an
 output port `RET`, and an `@seg` fact recording that it is a `lambda-exp` named
 MYSQRT. Then `code-and-display-it` (`verbs.lisp:522`) runs the **coder**, and
-`code-for-defun` ([`db.lisp:1485`](../code/volume_1/db.lisp)) can now answer
+`code-for-defun` ([`db.lisp:1485`](code/volume_1/db.lisp)) can now answer
 `(DEFUN MYSQRT (NUM))`.
 
-Note the pattern: **every command ends by recoding**. KBE keeps program text
-and plan consistent after each edit, and the text is always the coder's
-rendering of the plan.
+> **★ DON'T MISS: every command ends by recoding.**
+>
+> KBE keeps program text and plan consistent after each edit, and the text is always the coder's rendering of the plan. Even `(DEFUN MYSQRT (NUM))` was *generated*.
 
 ---
 
-## 8:10 "Implement it as a successive-approximation."
+### 8:10 "Implement it as a successive-approximation."
 
 The big step.
 
@@ -217,7 +228,7 @@ CODE:   (DEFUN MYSQRT (NUM)
 forms. They're shown here in `{}` notation.)
 
 **"it"** refers to the focus, which the DEFINE command set to MYSQRT
-(`make-be-it`). `*implement` ([`implement.lisp:537`](../code/volume_3/implement.lisp))
+(`make-be-it`). `*implement` ([`implement.lisp:537`](code/volume_3/implement.lisp))
 evaluates both references:
 
 - `(IT)`: the MYSQRT segment.
@@ -232,7 +243,7 @@ MYSQRT's empty body with the instance. `2imp-top` (`:785`) splices the
 instance's ports onto MYSQRT's (`2replace-port`) and keeps MYSQRT's name and
 interface.
 
-### What KBE now knows
+#### What KBE now knows
 
 This is the plan, straight from the DB:
 
@@ -273,17 +284,21 @@ MYSQRT: slot CRITERION              type SEGMENT  -> CRITERION
 MYSQRT: slot IMPROVEMENT-STEP       type SEGMENT  -> IMPROVEMENT-STEP
 ```
 
+> **★ DON'T MISS: what isn't in the plan.**
+>
+> There's no `LOOP` and no variable called APPROXIMATION anywhere in the plan. Both are reinvented by the coder every time it writes the program.
+
 The things to notice:
 
 - **The `LOOP` isn't in the plan.** The analyzer recognized the loop as a
   *temporal composition* (TEMPCOMP) around a *basic SSR* (BSSR, "sequence of
   states"; see `3ssr-analyze` at
-  [`analyze.lisp:1181`](../code/volume_2/analyze.lisp)): an init, a body, a
+  [`analyze.lisp:1181`](code/volume_2/analyze.lisp)): an init, a body, a
   recursion point and a data-flow join. The coder will turn it back into
   `LET*`/`LOOP`/`SETQ`.
 - **The variable APPROXIMATION isn't in the plan either.** What's there is
   data flow between ports. The coder chooses variable names when it writes
-  code: `5annotate` ([`coder.lisp:819`](../code/volume_2/coder.lisp)) and its
+  code: `5annotate` ([`coder.lisp:819`](code/volume_2/coder.lisp)) and its
   "name classes" decide that every port in this region is called
   APPROXIMATION.
 - **Roles are segments.** `{the criterion}` is a real segment, an empty
@@ -292,7 +307,7 @@ The things to notice:
 
 ---
 
-## 8:15 "Implement the initial-approximation as [1.] ."
+### 8:15 "Implement the initial-approximation as [1.] ."
 
 ```
 PARSED: (IMPLEMENT (RELATIVE-REFERENCE NIL '((NAME ROLE INITIAL-APPROXIMATION)) NIL 'IN (TOP))
@@ -311,12 +326,13 @@ CODE:   ... (LET* ((APPROXIMATION 1)) ...
   with it, and the data flow that ran out of the placeholder now runs out of
   the constant.
 
-`1.` is decimal 1 in Zetalisp (the trailing dot), which is why the expected code
-has `1`, not `1.0`.
+> **★ DON'T MISS: `1.` is an integer.**
+>
+> In Zetalisp the trailing dot means *decimal*, not floating point, which is why the expected code has `1`, not `1.0`. The other number, `2.0` in AVERAGE, comes from the cliché.
 
 ---
 
-## 8:20 "Implement the improvement-step as an average of [APPROXIMATION] and [(// NUM APPROXIMATION)] ."
+### 8:20 "Implement the improvement-step as an average of [APPROXIMATION] and [(// NUM APPROXIMATION)] ."
 
 ```
 PARSED: (IMPLEMENT (RELATIVE-REFERENCE NIL '((NAME ROLE IMPROVEMENT-STEP)) NIL 'IN (TOP))
@@ -333,7 +349,7 @@ with AVERAGE's primary roles (FIRST-NUMBER, SECOND-NUMBER) and calls
 - **`APPROXIMATION` is a variable reference.** No segment computes it, so it
   becomes a *pending data flow*: "connect this input to wherever a value
   called APPROXIMATION comes from". `implement-dflow` and
-  `2find-var-source` ([`implement.lisp:1244`](../code/volume_3/implement.lisp),
+  `2find-var-source` ([`implement.lisp:1244`](code/volume_3/implement.lisp),
   `:1118`) search the surrounding plan, using `2brothers-before` to find
   segments that run earlier, and connect it to the loop's current value.
 - **`(// NUM APPROXIMATION)` is analyzed into a segment.** NUM resolves to
@@ -345,7 +361,7 @@ output takes over the placeholder's data flow into REC: round the loop.
 
 ---
 
-## 8:25 "Implement the criterion as an equality-within-epsilon of [(* APPROXIMATION APPROXIMATION)] and [NUM] ."
+### 8:25 "Implement the criterion as an equality-within-epsilon of [(* APPROXIMATION APPROXIMATION)] and [NUM] ."
 
 ```
 CODE: ... (IF (< (ABS (- (* APPROXIMATION APPROXIMATION) NUM)) {the epsilon})
@@ -358,10 +374,13 @@ The same move for the predicate. Two observations:
   instance's output goes to the PRED/NON-NULL split, so the coder writes it as
   the `IF` test.
 - EQUALITY-WITHIN-EPSILON has a third role, EPSILON, which wasn't a primary
-  role and got no filler. It shows up as a new hole, `{the epsilon}`. The
-  slots of the instance became slots of the program.
+  role and got no filler.
 
-## 8:30 "Implement the epsilon as [0.0001] ."
+> **★ DON'T MISS: filling a hole can make a new one.**
+>
+> The unfilled EPSILON shows up in the program as `{the epsilon}`. The slots of the instance became slots of the program, so the programmer is now asked about a role they never mentioned.
+
+### 8:30 "Implement the epsilon as [0.0001] ."
 
 ```
 CODE: (DEFUN MYSQRT (NUM)
@@ -376,7 +395,7 @@ No holes left. Seven commands; 32 segments of plan; one finished program.
 
 ---
 
-## Afternoon: MYOTHERSQRT, and a change of interface
+### Afternoon: MYOTHERSQRT, and a change of interface
 
 The next seven commands build the same program again as MYOTHERSQRT, with one
 difference:
@@ -398,7 +417,7 @@ reference resolved to that new parameter. The result:
       (SETQ APPROXIMATION (// (+ APPROXIMATION (// NUM APPROXIMATION)) 2.0)))))
 ```
 
-## Evening: the checkout
+### Evening: the checkout
 
 The self-test compares `(code-for-defun 'MYSQRT)` and `(code-for-defun
 'MYOTHERSQRT)` with `equal` against the code recorded in 1984. Both match.
@@ -408,12 +427,12 @@ and `(myothersqrt 2.0d0 1.0d-10)` gives `1.4142135623746899d0`.
 
 ---
 
-## Under the hood
+## Districts Along the Way
 
-### Facts
+### The plan database
 
 Everything in the plan is a fact in the DB. `factdef`
-([`dmac.lisp:188`](../code/volume_1/dmac.lisp)) declares each kind; the
+([`dmac.lisp:188`](code/volume_1/dmac.lisp)) declares each kind; the
 declarations are the schema:
 
 ```lisp
@@ -434,20 +453,20 @@ A fact is in or out *per context*: the circular `*CMARKER*` structures at the
 head of every fact record its membership in database layers. That's what makes
 undo possible. (It's also why printing a fact needs `*print-circle*`.)
 
-### The analyzer, briefly
+### The analyzer
 
 `create-plan-for-code` → `surface-analyze`
-([`surface.lisp:74`](../code/volume_2/surface.lisp)) → `6flow-analyze`:
+([`surface.lisp:74`](code/volume_2/surface.lisp)) → `6flow-analyze`:
 
-1. `expand-special-forms` ([`expand.lisp:110`](../code/volume_2/expand.lisp))
+1. `expand-special-forms` ([`expand.lisp:110`](code/volume_2/expand.lisp))
    rewrites code into a handful of primitive forms: `k*prog`, `k*psetq`,
    `k*if`, `k*go`, `k*tag`, `k*slot`, ... `{...}` holes become `k*slot`s. Macros
    it has no `k*expander` for are expanded through `si:declared-definition`.
    For Zetalisp macros such as `if` and `when`, the runtime supplies the Lisp
    Machine expansions (`if` → `cond`) in `runtime/lispm-functions.lisp`.
-2. `6eval` ([`primop.lisp:184`](../code/volume_2/primop.lisp)) "evaluates" the
+2. `6eval` ([`primop.lisp:184`](code/volume_2/primop.lisp)) "evaluates" the
    primitive forms abstractly, building segments, ports and control flow.
-3. `6data-flow` ([`dflow.lisp:44`](../code/volume_2/dflow.lisp)) computes data
+3. `6data-flow` ([`dflow.lisp:44`](code/volume_2/dflow.lisp)) computes data
    flow with live-variable analysis over bit sets. (Set difference is
    `(boole 4 x y)`, PDP-10 ANDCM.)
 4. `analyze` (`analyze.lisp:148`) groups (`3group-up`), simplifies data flow
@@ -455,9 +474,9 @@ undo possible. (It's also why printing a fact needs `*print-circle*`.)
    recognizes loops (`3ssr-analyze`), producing the TEMPCOMP/BSSR structure
    shown above.
 
-### The coder, briefly
+### The coder
 
-`code` ([`coder.lisp:186`](../code/volume_2/coder.lisp)) → `code1` →
+`code` ([`coder.lisp:186`](code/volume_2/coder.lisp)) → `code1` →
 `5codetop` (`:1739`):
 
 - builds a partial order of everything that must happen before what
@@ -470,11 +489,11 @@ undo possible. (It's also why printing a fact needs `*print-circle*`.)
 
 ---
 
-## What the transcription taught us
+## Provenance: What the Transcription Taught Us
 
 Getting SQRT through took 21 logged typo-level corrections to the transcribed
 listings (some covering several lines), each checked against the scans and logged in
-[`code/TRANSCRIPTION-FIXES.md`](../code/TRANSCRIPTION-FIXES.md). The patterns
+[`code/TRANSCRIPTION-FIXES.md`](code/TRANSCRIPTION-FIXES.md). The patterns
 worth knowing if you hack here:
 
 - **Paren errors that cancel out.** One missing `)` and one extra a few lines
@@ -497,6 +516,10 @@ And the Zetalisp semantics the code really depends on (all in the runtime):
 named; `&quote` arguments arrive unevaluated (`plan-def`); `get` on a list is
 lenient; and a lambda-list parameter named `standard-input` rebinds the stream.
 
+## What Makes SQRT Worth the Trip
+
+Seven sentences turn into a working program, and every intermediate state is a real program with named holes. The run shows the representation shift doing exactly what Waters said it would. Clichés combine because they're plans, not text: AVERAGE drops into the IMPROVEMENT-STEP role and its data flow simply connects. Variable names are an output of the coder, not an input. And forty years on, the same fourteen sentences yield the same code.
+
 ## Known gaps
 
 - KBE's explanation generator (`explanation`, document-fn) returns NIL here, so
@@ -508,3 +531,35 @@ lenient; and a lambda-list parameter named `standard-input` rebinds the stream.
 - The other five sequences of `358-test.lisp` haven't been run yet. The
   fidelity test there is that HASH and SUMLIST pass and BUCKET, DELETE and
   MEMQ fail *with the same wrong code as in 1984*.
+
+---
+
+## Sources
+
+- The run: `code/volume_1/358-test.lisp` (KBE 358.0x self-test, 14 December 1984), replayed by `runtime/run-test.lisp`. Every parsed form, code state, and plan fact quoted above was captured from that replay.
+- The source: the January 1985 four-volume KBE listing, transcribed in `code/`. Excerpts: Copyright © 1983/1984 Massachusetts Institute of Technology, as indicated by each source listing; copied by permission of MIT under the notice in those listings (quoted in full in [A Hacker's Guide to KBEmacs](hackers-guide.md)).
+- Background: Richard C. Waters, "KBEmacs: Where's the AI?", *AI Magazine* 7(1), 1986; Charles Rich and Richard C. Waters, *The Programmer's Apprentice Project: A Research Overview*, MIT AI Memo 1004, 1987.
+- The tour format: [Hacker's Guides](https://github.com/jeffshrager/HackersGuides).
+
+---
+
+# Copyright
+
+**Hacker's Guides** — guide texts, commentary, and supporting material.
+
+Copyright © 2026 Jeff Shrager (<jshrager@gmail.com>). All rights reserved.
+
+Permission requests, corrections, and questions: <jshrager@gmail.com>.
+
+## Scope
+
+This copyright covers the original text of the guides and the README — the prose, structure, commentary, and annotations written for this repository: https://github.com/jeffshrager/HackersGuides
+
+It does **not** cover:
+
+- **The historic source code being read.** Quoted program source (and any complete source files included in this repository) remains the property of its respective authors and rights holders, or is in the public domain, as the case may be. Excerpts appear here for purposes of commentary, criticism, and scholarship. Provenance for each program's source is stated in the corresponding guide.
+- **Quoted third-party material.** Brief quotations from cited historical accounts and documentation remain the property of their respective rights holders and are used for the same purposes.
+
+## Attribution
+
+If you quote or reference a guide, please credit "Hacker's Guides, Jeff Shrager" and link to this repository: https://github.com/jeffshrager/HackersGuides
