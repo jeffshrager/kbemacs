@@ -411,6 +411,17 @@
 (cl:defmacro return (&rest values)
   `(cl:return ,(cl:if (cdr values) `(values ,@values) (car values))))
 
+;;; (PROG name vars . body): Zetalisp allows a name, giving a block that
+;;; RETURN-FROM can exit (implement.lisp: (prog outer () ...)).
+(cl:defmacro prog (&rest args)
+  (cl:if (and (car args) (symbolp (car args)))
+         `(cl:block ,(car args) (cl:prog ,@(cdr args)))
+         `(cl:prog ,@args)))
+(cl:defmacro prog* (&rest args)
+  (cl:if (and (car args) (symbolp (car args)))
+         `(cl:block ,(car args) (cl:prog* ,@(cdr args)))
+         `(cl:prog* ,@args)))
+
 (cl:defmacro return-list (list) `(cl:return (values-list ,list)))
 
 (cl:defmacro caseq (key &body clauses) `(case ,key ,@clauses))
@@ -564,7 +575,11 @@
 
 (cl:defun get (object indicator &optional default)
   (cond ((symbolp object) (cl:get object indicator default))
-        (t (getf (%zl-plist-get object) indicator default))))
+        ;; Lisp Machine GET scans indicator/value pairs leniently: pseudo.lisp
+        ;; asks (GET '(CODE "1.") 'PRONOUN) of any token, expecting NIL.
+        (t (loop for l on (%zl-plist-get object) by #'cddr
+                 when (eq (car l) indicator) do (cl:return (cadr l))
+                 finally (cl:return default)))))
 
 (cl:defun (cl:setf get) (value object indicator &optional default)
   (declare (ignore default))
@@ -939,6 +954,20 @@
   (funcall arg stream))
 
 ;;;; Arrays
+
+;;; Maclisp (*ARRAY name type dims...): NAME NIL means an anonymous array.
+;;; Type T arrays start out NIL, numeric ones 0 (coder.lisp 5INIT-ORDER).
+;;; Arrays are adjustable, since ADJUST-ARRAY-SIZE grows an array in place
+;;; on the Lisp Machine and code holds on to it.
+(cl:defun *array (name type &rest dims)
+  (cl:let ((array (make-array dims :adjustable t
+                              :initial-element (cl:if (cl:member type '(fixnum flonum))
+                                                      0 nil))))
+    (when name (setf (symbol-function name) array))
+    array))
+
+(cl:defun adjust-array-size (array new-size)
+  (adjust-array array new-size :initial-element nil))
 
 (cl:defun aset (value array &rest subscripts)
   (setf (apply #'aref array subscripts) value))

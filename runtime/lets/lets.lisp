@@ -895,7 +895,10 @@
 
 (defmacro done (&rest return-values)
   "Used to exit from a loop"
-  (cond ((cdr return-values) `(return-from T .,(cdr return-values)))
+  ;; KBE: was (cdr return-values), carried over from the original, where
+  ;; the macro received the whole form (DONE x). With &REST that dropped
+  ;; the value, so (DONE x) just exited the loop.
+  (cond (return-values `(return-from T .,return-values))
         (T `(go ,S-END))))
 
 ;I would just use the ordinary desetq, but it isn't lispm standard.

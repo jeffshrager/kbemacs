@@ -284,3 +284,70 @@ loader's "caught ERROR" check. Grepping for odd symbols, or having the
 loader record SBCL compiler errors properly, would help.
 
 Next: define `*array`, then continue through the SQRT commands.
+
+---
+
+## Part 6: THE SQRT SEQUENCE PASSES
+
+`sbcl --script runtime/run-test.lisp sqrt` runs all 14 commands from the
+14 December 1984 self-test. The `MYSQRT` and `MYOTHERSQRT` that KBE
+generates are `equal` to the code in `358-test.lisp`:
+
+```lisp
+(DEFUN MYSQRT (NUM)
+  (LET* ((APPROXIMATION 1))
+    (LOOP DO
+      (IF (< (ABS (- (* APPROXIMATION APPROXIMATION) NUM)) 0.0001) (RETURN APPROXIMATION))
+      (SETQ APPROXIMATION (// (+ APPROXIMATION (// NUM APPROXIMATION)) 2.0)))))
+```
+
+The generated code also runs: `(mysqrt 2.0)` gives 1.4142157 and
+`(mysqrt 9)` gives 3.0. As a side effect, `(load-kbe)` now loads the whole
+core with **0 load errors**.
+
+### Fixes in this part
+
+**Runtime:**
+
+- `*array` and `adjust-array-size` (Maclisp arrays, adjustable in place).
+- `get` on a list scans pairs leniently, as on the Lisp Machine.
+- Named `prog`: `(prog outer () ...)`.
+- `string-parser` and `parse-error`: the Lisp path of volume_4/parse.lisp,
+  in patches.lisp. Per the user, only Lisp generation matters.
+- `*input-language*` (from parse.lisp).
+- `volume_4/focus.lisp` is loaded (code<->path functions).
+- KBE shadows `PARSE-ERROR`.
+- The driver binds the ZL readtable while commands run, so typed code like
+  `(// NUM APPROXIMATION)` reads `//` as the symbol `/`, as on the Lisp
+  Machine. That was the last mismatch.
+- The driver catches stack overflow. `KBE_TRACE=fn,...` traces functions;
+  `KBE_NO_RUN=1` loads without running.
+
+**LetS port bug** (vendored g000001/LetS): `(done x)` dropped its value; a
+`cdr` was carried over from the original. KBE's `6fast-proto-name` picks
+fresh argument names with `(done let)`, so plans had ports with **no
+name**, `kill-port` then recursed forever, and the 8 remaining cliché load
+errors came from the same cause.
+
+**Transcription** (in `TRANSCRIPTION-FIXES.md`):
+
+- **coder.lisp: two compensating pairs of paren errors.** Lines 543 and
+  786 were each one short; line 1213 had two extra. As a result, about 30
+  defuns, including `5annotate`, were nested inside earlier defuns and
+  never defined.
+  - A Python check now confirms every `(def` form in the core files is at
+    top level (`depth.py` in the session scratchpad; worth adding to the
+    repo as a tool).
+- `implement.lisp`: `&to` and `&from` should be `&~to` and `&~from`;
+  `(&  (&* seg) port)` should be `(&* (&* seg) port)`, a dropped `*`.
+- `coder.lisp`: `tnen` should be `then` (by symmetry; the scan is not yet
+  checked).
+
+### Still open
+
+- `implement.lisp:1366` has `(&  (car to-ancesters))`, another double
+  space where a `*` may have been dropped. It is not on the SQRT path;
+  check the scan.
+- Run the other five 358-test sequences (BUCKET, DELETE, HASH, MEMQ,
+  SUMLIST). Fidelity target: HASH and SUMLIST should pass, and BUCKET,
+  DELETE and MEMQ should fail *with the same wrong code as in 1984*.

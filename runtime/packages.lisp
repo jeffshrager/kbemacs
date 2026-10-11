@@ -36,7 +36,7 @@
    ;; definitions
    "DEFUN" "DEFMACRO" "DEFFLAVOR" "DEFMETHOD" "DEFWHOPPER" "DEFSTRUCT"
    ;; binding, control
-   "LET" "LET*" "DO" "DO*" "IF" "RETURN" "SETF"
+   "LET" "LET*" "DO" "DO*" "IF" "RETURN" "SETF" "PROG" "PROG*"
    ;; lists
    "MEMBER" "ASSOC" "RASSOC" "DELETE" "REMOVE" "REM" "SUBST" "EVERY" "SOME"
    "UNION" "INTERSECTION" "MAKE-LIST" "LISTP" "MAP"
@@ -64,4 +64,6 @@
   ;; KBE also defines these names, which are Common Lisp symbols:
   (:shadow "<-" "DEFINE-CONDITION" "FIND" "STRING-CAPITALIZE" "WARN"
            ;; KBE declares this one special (analyze.lisp):
-           "TYPE"))
+           "TYPE"
+           ;; and defines this one as a function (volume_4/parse.lisp):
+           "PARSE-ERROR"))

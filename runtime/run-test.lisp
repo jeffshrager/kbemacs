@@ -32,6 +32,7 @@
           unless (zerop (length (string-trim " " l))) collect l)))
 
 (require :sb-posix)
+(require :asdf)
 
 (defun eval-command-string (command)
   (eval (list (intern "WITH-INTERFACE-DISABLED" "KBE")
@@ -43,9 +44,18 @@
          (commands (read-lines (make-pathname :name name :type "kbe" :defaults demo)))
          (expected (read-zl-forms (make-pathname :name name :type "lisp" :defaults demo)))
          (*package* (find-package "KBE"))
+         ;; KBE reads code typed in commands, e.g. [(// NUM APPROXIMATION)],
+         ;; with whatever readtable is current; on the Lisp Machine that was
+         ;; always the Zetalisp one (where // reads as the symbol /).
+         (*readtable* zl::*zl-readtable*)
          (*print-circle* t) (*print-length* 50) (*print-level* 12)
          (fail nil) (n 0))
     (funcall (intern "INITIALIZE-SYSTEM" "KBE"))
+    ;; KBE_TRACE=fn1,fn2 traces those KBE functions (output can be large)
+    (let ((names (sb-posix:getenv "KBE_TRACE")))
+      (when names
+        (dolist (n (uiop:split-string names :separator ","))
+          (eval `(trace ,(intern (string-upcase n) "KBE"))))))
     (log-progress "== test ~A: ~D commands" name (length commands))
     (dolist (command commands)
       (incf n)
@@ -53,14 +63,14 @@
       (format t "~&;;; >~A~%" command)
       (handler-case
           (let ((result
-                  (handler-bind ((error (lambda (c)
+                  (handler-bind (((or error storage-condition) (lambda (c)
                                           ;; KBE_BACKTRACE=1 prints where errors happen
                                           (when (sb-posix:getenv "KBE_BACKTRACE")
                                             (format t "~&;;; ERROR ~A~%" c)
                                             (sb-debug:print-backtrace :count 25)))))
                     (eval-command-string command))))
             (format t ";;;   => ~S~%" result))
-        (error (c)
+        ((or error storage-condition) (c)
           (setq fail (format nil "Error during ~S: ~A" command c))
           (format t "~&;;; ERROR: ~A~%" c)
           (log-progress "  ERROR: ~A" c)
@@ -75,4 +85,7 @@
     (log-progress "== result: ~:[FAILED ~A~;OK~]" (not fail) fail)
     (not fail)))
 
-(run-kbe-test-headless (or (second sb-ext:*posix-argv*) "sqrt"))
+;;; KBE_NO_RUN=1: just load (for debugging scripts that then call
+;;; RUN-KBE-TEST-HEADLESS themselves).
+(unless (sb-posix:getenv "KBE_NO_RUN")
+  (run-kbe-test-headless (or (second sb-ext:*posix-argv*) "sqrt")))

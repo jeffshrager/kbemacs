@@ -1209,7 +1209,7 @@
         (repeat ((seg (car to-do)))
           (when (not
                  (over [!(~nset ~seg ~segcase ~from
-                           (??& (&* supseg) dflow * (&  (&* seg) port)))
+                           (??& (&* supseg) dflow * (&* (&* seg) port)))
                         !(~nset ~seg ~from
                            (??& (&* supseg) cflow * (&* seg)))]
                    (when (memq _ to-do) (setq seg _) (return T))))
@@ -1222,8 +1222,8 @@
 ;;; PDF page 112
 
 (defun 2replace-port (oldport newport)
-  (over (--& * dflow * oldport) (assert-fact (&to _ newport)))
-  (over (--& * dflow oldport) (assert-fact (&from _ newport)))
+  (over (--& * dflow * oldport) (assert-fact (&~to _ newport)))
+  (over (--& * dflow oldport) (assert-fact (&~from _ newport)))
   ;this still isn't right if lower-env not simple.
   (over [!(--& * tinput * * oldport) !(--& * toutput * * oldport)]
         (2replace-port _ (>& (~segcase _) (~keyword _) (~segcase newport)

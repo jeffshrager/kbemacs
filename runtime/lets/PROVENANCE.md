@@ -14,5 +14,11 @@ text, kept for reference. `lets.lisp`, `package.lisp`, and `utils.lisp` are
 what gets loaded. `tests.lisp` is the port's RT test suite: all 55 tests pass
 under SBCL 2.2.6.
 
+Local change (marked `KBE:` in `lets.lisp`): `(done x)` must exit the loop
+returning x, as in `lets.rcw1`. The port's `&rest` rewrite of `done` kept a
+`cdr` from the original, so the value was dropped; KBE's
+`6fast-proto-name` (primop.lisp) relies on `(done let)` to pick a fresh
+argument name, and without it plans got ports with no name.
+
 Caveat: `lets.rcw1` is the ITS libdoc version, which may predate the LispM
 copy used by KBE in 1984.

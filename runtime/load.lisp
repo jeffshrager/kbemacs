@@ -241,6 +241,10 @@
     "volume_3/deflib" "volume_3/syslib" "volume_3/kbelib" "volume_3/demo-lib"
     ;; EXPLAIN HANDLERS
     "volume_4/explain" "volume_4/document" "volume_4/pbm-handlers"
+    ;; From CMDS: FOCUS has the code<->path functions (CODE->PATH,
+    ;; PATH->CODE) that verbs.lisp uses, and FORMAT-EXPLANATION-FOR-COMMENT,
+    ;; which TEST uses; its editor-only functions are never called headless.
+    "volume_4/focus"
     ;; self-test
     "volume_4/test"))
 

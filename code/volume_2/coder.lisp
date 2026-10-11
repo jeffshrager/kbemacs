@@ -540,7 +540,7 @@
                         (+& (& bssr) role (& new-init) 'init)
                         (+& (& new-init) plantype 'and)
                         (+& (& new-init) role (& bssrinit) 'action)
-                        (+& (& new-init) role (& fraginit) 'action))))))))
+                        (+& (& new-init) role (& fraginit) 'action)))))))))
 
 ;move the inputs of the body/rec over and all dflow touching them.
 ;Also move over temporal ports (note tinput only to rec, toutput only from
@@ -783,7 +783,7 @@
                 (-& (&* bssrbody) segtype)
                 (>& (& bssrbody) segtype 'split)
                 (-& (&* bssrrec) segtype)
-                (>& (& bssrrec) segtype 'split))))))))))
+                (>& (& bssrrec) segtype 'split)))))))))))
 
 (declare (unspecial st-cf-order st-cf-order-body ioc))
 
@@ -1210,7 +1210,7 @@
                     (5constrain< other-ports these-ports '(expr and comp))
                     (5close)))
              (cond ((not (??& e-input @io 'free-var))
-                    (5add-name-class source-region prior-region 90)))))))
+                    (5add-name-class source-region prior-region 90)))))
           ((??& (&* (~seg~segcase source)) @seg 'funcall '5noop)
            (over (??& (&* (~seg~segcase source)) input) -> in
                  (dolist (region REGIONS)
@@ -2241,7 +2241,7 @@
                           (over (and (boundp 'join-info) join-info)
                                 fastand (not (equal then (cdr _))))))
            (emptyelse (or (null else) (and (null (cdr else)) (null (car else)))))
-           (emptythen (or (null then) (and (null (cdr then)) (null (car tnen))))))
+           (emptythen (or (null then) (and (null (cdr then)) (null (car then))))))
       (cond ((cond (condelse (and condthen negativethen))
                    (emptyelse (or condthen (and emptythen negativethen)))
                    (t (or condthen emptythen negativethen)))
