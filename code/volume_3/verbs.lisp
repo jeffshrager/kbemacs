@@ -632,7 +632,7 @@
 
       (complain "The ~A is already defined." (unparse-command name)))
   (let* ((segcase (& (genseg (name-symbol name)))))
-    (+& segcase seg1ype 'simple)
+    (+& segcase segtype 'simple)
     (+& segcase plantype 'expr)
     (+& segcase @seg 'opencode nil nil)
     (+& segcase cliche-def (name-symbol name) nil)
@@ -675,7 +675,7 @@
           (fboundp (name-symbol name) ))
       (grumble "Redefining the ~A" (unparse-command name)))
   (let* ((segcase (& (genseg (name-symbol name)))))
-    (+& segcase seg1ype 'simple)
+    (+& segcase segtype 'simple)
     (+& segcase plantype 'expr)
     (+& segcase @seg 'lambda-exp (name-symbol name) nil)
     (Rignore (add-parameter (name-symbol (Elist variables)) segcase))

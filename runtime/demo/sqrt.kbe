@@ -1,0 +1,14 @@
+Reinitialize database.
+Define a program MYSQRT with a parameter NUM.
+Implement it as a successive-approximation.
+Implement the initial-approximation as [1.] .
+Implement the improvement-step as an average of [APPROXIMATION] and [(// NUM APPROXIMATION)] .
+Implement the criterion as an equality-within-epsilon of [(* APPROXIMATION APPROXIMATION)] and [NUM] .
+Implement the epsilon as [0.0001] .
+Define a program MYOTHERSQRT with a parameter NUM.
+Implement it as a successive-approximation.
+Implement the initial-approximation as [1.] .
+Implement the improvement-step as an average of [APPROXIMATION] and [(// NUM APPROXIMATION)] .
+Implement the criterion as an equality-within-epsilon of [(* APPROXIMATION APPROXIMATION)] and [NUM] .
+Append a parameter CRITERION.
+Implement the epsilon as [CRITERION] .

@@ -87,16 +87,38 @@
               (t (push x forms)))))
     (values (nreverse decls) doc (nreverse forms))))
 
+(cl:defun %zl-alias-params (ll)
+  "Parameters named like a Zetalisp stream/printer variable, e.g.
+   (&optional (standard-input standard-input)) in pseudo.lisp's
+   READ-COMMAND: on the Lisp Machine that binds the special variable.
+   Returns (values new-ll ((cl-variable . temp) ...))."
+  (cl:let ((rebinds '()))
+    (values
+     (mapcar (lambda (x)
+               (cl:let* ((var (cl:if (consp x) (car x) x)))
+                 (cl:if (and (symbolp var)
+                             (cl:assoc var (symbol-value '%zl-variable-aliases)))
+                        (cl:let ((g (cl:gensym (symbol-name var))))
+                          (push (cons (%zl-alias var) g) rebinds)
+                          (cl:if (consp x) (cons g (cdr x)) g))
+                        x)))
+             ll)
+     (nreverse rebinds))))
+
 (cl:defun %zl-lambda-parts (ll body &key macro? doc-allowed)
   "Returns (values cl-lambda-list body-with-declarations)."
   (multiple-value-bind (ll ignorable specials) (%zl-fix-lambda-list ll macro?)
-    (multiple-value-bind (decls doc forms) (%zl-split-body body doc-allowed)
-      (values ll
-              `(,@(cl:if doc (list doc))
-                ,@(cl:if ignorable `((declare (ignorable ,@ignorable))))
-                ,@(cl:if specials `((declare (special ,@specials))))
-                ,@decls
-                ,@forms)))))
+    (multiple-value-bind (ll rebinds) (%zl-alias-params ll)
+      (multiple-value-bind (decls doc forms) (%zl-split-body body doc-allowed)
+        (values ll
+                `(,@(cl:if doc (list doc))
+                  ,@(cl:if ignorable `((declare (ignorable ,@ignorable))))
+                  ,@(cl:if specials `((declare (special ,@specials))))
+                  ,@decls
+                  ,@(cl:if rebinds
+                           `((cl:let ,(mapcar (lambda (r) (list (car r) (cdr r))) rebinds)
+                               ,@forms))
+                           forms)))))))
 
 ;;;; DEFUN
 
@@ -505,8 +527,11 @@
 (declaim (inline listp))
 (cl:defun listp (x) (consp x))
 (cl:defun neq (a b) (not (eq a b)))
-(cl:defun fixp (x) (integerp x))
-(cl:defun fixnump (x) (typep x 'fixnum))
+;;; Release 4.5 characters were fixnums, and KBE relies on it:
+;;; pseudo.lisp's IN-CHARS? recognizes a character with (FIXP thing). We
+;;; read characters as CL characters, so FIXP and FIXNUMP accept them.
+(cl:defun fixp (x) (or (integerp x) (characterp x)))
+(cl:defun fixnump (x) (or (typep x 'fixnum) (characterp x)))
 (cl:defun bigp (x) (and (integerp x) (not (typep x 'fixnum))))
 (cl:defun flonump (x) (floatp x))
 (cl:defun small-floatp (x) (floatp x))
@@ -786,6 +811,15 @@
   (def = cl:=) (def /= cl:/=) (def < cl:<) (def > cl:>)
   (def <= cl:<=) (def >= cl:>=))
 
+;;; Numeric predicates on characters. The tokenizer tests TYI's result
+;;; for end of file with (MINUSP c) (pseudo.lisp REALLY-SCAN-WORD), more
+;;; evidence that Release 4.5 characters were fixnums.
+(cl:defun minusp (x) (cl:minusp (%zl-num x)))
+(cl:defun plusp (x) (cl:plusp (%zl-num x)))
+(cl:defun zerop (x) (cl:zerop (%zl-num x)))
+(cl:defun max (x &rest more) (apply #'cl:max (%zl-num x) (mapcar #'%zl-num more)))
+(cl:defun min (x &rest more) (apply #'cl:min (%zl-num x) (mapcar #'%zl-num more)))
+
 ;;; Arithmetic on characters, as in #.(1- #/a), gives their codes.
 (cl:defun + (&rest args)
   (cl:if (and args (cdr args) (null (cddr args)) (numberp (car args)) (numberp (cadr args)))
@@ -856,9 +890,15 @@
           (t (cl:error 'end-of-file :stream stream)))))
 (cl:defun untyi (char &optional (stream *standard-input*))
   (unread-char char (cl:if (eq stream t) *standard-input* stream)))
-(cl:defun tyipeek (&optional peek-type (stream *standard-input*) eof)
-  (declare (ignore peek-type))
-  (peek-char nil (cl:if (eq stream t) *standard-input* stream) nil eof))
+;;; (TYIPEEK peek-type stream eof): peek-type NIL peeks at the next
+;;; character; T first skips whitespace; a character skips up to it.
+;;; At end of file it returns EOF, by default -1 as TYI does.
+(cl:defun tyipeek (&optional peek-type (stream *standard-input*) (eof -1))
+  (cl:let ((stream (cl:if (eq stream t) *standard-input* stream)))
+    (cl:or (cond ((null peek-type) (peek-char nil stream nil nil))
+                 ((eq peek-type t) (peek-char t stream nil nil))
+                 (t (peek-char (%zl-char peek-type) stream nil nil)))
+           eof)))
 (cl:defun readline (&optional (stream *standard-input*) (eof nil eof-p))
   (cl:let ((l (read-line (cl:if (eq stream t) *standard-input* stream) nil nil)))
     (cond (l l) (eof-p eof) (t (cl:error 'end-of-file :stream stream)))))
@@ -946,6 +986,14 @@
 (cl:defmacro with-lock ((lock &rest ignore) &body body)
   (declare (ignore lock ignore))
   `(progn ,@body))
-(cl:defun process-lock (&rest ignore) (declare (ignore ignore)) t)
-(cl:defun process-unlock (&rest ignore) (declare (ignore ignore)) t)
+;;; One process here. CURRENT-PROCESS stands for it; locks are cells
+;;; (locatives, from LOCF) holding the owning process or NIL, as in
+;;; dmac.lisp's WITH-DB-LOCKED.
+(defvar current-process '%zl-the-process)
+(cl:defun process-lock (locative &rest ignore)
+  (declare (ignore ignore))
+  (funcall (locative-setter locative) current-process))
+(cl:defun process-unlock (locative &rest ignore)
+  (declare (ignore ignore))
+  (funcall (locative-setter locative) nil))
 (cl:defun process-wait (&rest ignore) (declare (ignore ignore)) t)

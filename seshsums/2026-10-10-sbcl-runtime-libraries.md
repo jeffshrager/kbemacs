@@ -239,3 +239,48 @@ how the KBE code uses it; confirmation or correction would be valuable.
    - set up a headless `*delegate*`;
    - drive `volume_4/test.lisp`'s `run-KBE-test`, logging progress to a
      file.
+
+---
+
+## Part 5: the SQRT harness runs; command 1 passes, command 2 reaches the coder
+
+New files:
+
+- `runtime/run-test.lisp`: the headless driver. Run it with
+  `KBE_BACKTRACE=1 sbcl --script runtime/run-test.lisp sqrt`.
+- `runtime/demo/sqrt.kbe` and `sqrt.lisp`: the inputs and expected code,
+  from 358-test.
+- `runtime/patches.lisp`: a headless `*delegate*` flavor.
+
+Runtime fixes:
+
+- Parameters named `standard-input` (and the other aliases) now bind the
+  CL variable; `read-command` relies on this.
+- `minusp`, `plusp`, `zerop`, `max`, `min` and `fixp` accept characters.
+- `tyipeek` honors its peek-type and returns -1 at end of file.
+- `current-process`, `process-lock` and `process-unlock` work.
+
+**Evidence that characters were fixnums in Release 4.5** (expert question
+2): the tokenizer tests `(minusp (tyi s -1))`, and `in-chars?` recognizes
+characters with `fixp`.
+
+Transcription fixes (in `TRANSCRIPTION-FIXES.md`):
+
+- `pseudo.lisp` `'(,(car bvl))`: a quote misread as a backquote.
+- `pseudo.lisp` `define-verb-action`: the line had been copied from
+  `define-verb-unparse`, so every verb's arguments were shifted by one.
+- `verbs.lisp` `seg1ype` should be `segtype`.
+
+Status:
+
+- "Reinitialize database." **works**.
+- "Define a program MYSQRT with a parameter NUM." parses, dispatches, and
+  builds the program. It fails in the **coder** (`5init-order`) on the
+  undefined function `*ARRAY`, a Maclisp array constructor that needs a
+  runtime definition.
+
+Note: deferred compile errors (like `seg1ype`) are *not* caught by the
+loader's "caught ERROR" check. Grepping for odd symbols, or having the
+loader record SBCL compiler errors properly, would help.
+
+Next: define `*array`, then continue through the SQRT commands.

@@ -19,7 +19,10 @@ detected) when the form contains a comma.
 | `volume_2/primop.lisp` | 187 | `'',form` | `` `',form `` | same pattern as surface |
 | `volume_3/pseudo.lisp` | 254 | `'',string` | `` `',string `` | same pattern as surface |
 | `volume_3/pseudo.lisp` | 256 | `'',(let ...` | `` `',(let ... `` | same pattern as surface |
+| `volume_3/pseudo.lisp` | 925 | `` `(,(car bvl)) `` inside a backquote | `'(,(car bvl))` | vol 3 p25: same tick glyph as the outer backquote, but the inner one must be a quote (otherwise `(car bvl)` is evaluated at run time); the reverse of the usual misreading |
+| `volume_3/pseudo.lisp` | 983 | `` `(((nil ,@bvl) ,var)) `` in DEFINE-VERB-ACTION | `` `((,bvl ,var)) `` | vol 3 p26: copied from DEFINE-VERB-UNPARSE just above, which does skip the verb; the action's &rest args have no verb, so every verb's arguments were shifted by one |
 | `volume_3/refer.lisp` | 231 | `(program-definition   :` | `(program-definition` | vol 3 p55 |
 | `volume_3/refer.lisp` | 386 | `{(corr-code _) ! _]` | `[(corr-code _) ! _]` | vol 3 p58 |
 | `volume_3/refer.lisp` | 391 | `{(nreverse 2result) \|! ...` | `[(nreverse 2result) ! ...` | vol 3 p58 |
+| `volume_3/verbs.lisp` | 635, 678 | `seg1ype` | `segtype` | OCR (1 for T) |
 | `volume_3/verbs.lisp` | 619 | `*: ignore` | `':ignore` | vol 3 p77 |

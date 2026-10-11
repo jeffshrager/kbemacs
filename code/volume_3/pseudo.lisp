@@ -925,7 +925,7 @@
            (cond ((eq (car bvl) '...) form)
                  ((symbolp (car bvl))
                   `(progn (require-one-of
-                            `(,(car bvl))
+                            '(,(car bvl))
                             ,(format nil "in a usage of the verb /"~A/""
                                      (string-downcase name)))
                           ,form))
@@ -979,7 +979,7 @@
   (let ((var (gensym)))
     `(local-declare ()
        (defun (,name verb-action) (&rest ,(if bvl var 'ignore))
-         (let ,(if bvl `(((nil ,@bvl) ,var)) '())
+         (let ,(if bvl `((,bvl ,var)) '())
            ,@body))
        ',name)))
 
