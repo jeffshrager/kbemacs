@@ -6,4 +6,10 @@ MIT's KBEmacs (the Programmer's Apprentice's Knowledge-Based Editor), from the J
 - [A Day in the Life of SQRT](hackers-guide-sqrt.md): one 1984 self-test, traced end to end
 - Run it: `sbcl --script runtime/run-test.lisp sqrt`
 
+## Papers
+
+- Richard C. Waters, *KBEmacs: A Step Toward the Programmer's Apprentice*, MIT AI Lab Technical Report AI-TR-753, May 1985.
+- Kent Pitman, *Interfacing to the Programmer's Apprentice*, MIT AI Lab Working Paper 244, February 1983.
+- Richard C. Waters, "KBEmacs: Where's the AI?", *AI Magazine* 7(1):47–56, 1986.
+
 Guides are part of [Hacker's Guides](https://github.com/jeffshrager/HackersGuides).

@@ -34,10 +34,13 @@ and it writes, and keeps rewriting, the program:
       (SETQ APPROXIMATION (// (+ APPROXIMATION (// NUM APPROXIMATION)) 2.0)))))
 ```
 
-Two contemporary accounts give the vocabulary used here:
+The three papers closest to this code:
 
-- Richard C. Waters, "KBEmacs: Where's the AI?", *AI Magazine* 7(1), 1986. It explains the architecture and the AI ideas in it.
-- Charles Rich and Richard C. Waters, *The Programmer's Apprentice Project: A Research Overview*, MIT AI Memo 1004, 1987. It identifies KBEmacs as the completed prototype Implementation Apprentice and places it in the wider research program.
+- Richard C. Waters, *KBEmacs: A Step Toward the Programmer's Apprentice*, MIT AI Lab Technical Report AI-TR-753, May 1985. The full description of the system these listings implement.
+- Kent Pitman, *Interfacing to the Programmer's Apprentice*, MIT AI Lab Working Paper 244, February 1983. The editor and interface side: how KBE lives inside Zmacs.
+- Richard C. Waters, "KBEmacs: Where's the AI?", *AI Magazine* 7(1):47–56, 1986. The architecture and the AI ideas in it, and the source of most of the vocabulary used here.
+
+For the wider research program, see Charles Rich and Richard C. Waters, *The Programmer's Apprentice Project: A Research Overview*, MIT AI Memo 1004, 1987. It identifies KBEmacs as the completed prototype Implementation Apprentice.
 
 **The witness.** This tour reads a January 1985 printout: four bound volumes of Lisp listings from MIT. It covers the KBE system as of **KBE 358.0x** (December 1984), with each file carrying its own date and version. The scans have been transcribed into the 87 files under [`code/volume_1`](code/volume_1/) through [`code/volume_4`](code/volume_4/). The transcription was made with AI assistance and then *executed*: under the SBCL compatibility runtime in [`runtime/`](runtime/), the system loads and reproduces one of its own December 1984 self-tests exactly (see **A Day in the Life**). Getting there required a few dozen typo-level corrections, each checked against the scans and logged in [`code/TRANSCRIPTION-FIXES.md`](code/TRANSCRIPTION-FIXES.md). So read the excerpts as *transcriptions of the 1985 printout, partly verified by execution*.
 
@@ -406,6 +409,8 @@ Excerpts: Copyright © 1983/1984 Massachusetts Institute of Technology, as indic
 
 ### The principal papers
 
+- Richard C. Waters, *KBEmacs: A Step Toward the Programmer's Apprentice*, MIT AI-TR-753, May 1985.
+- Kent Pitman, *Interfacing to the Programmer's Apprentice*, MIT AI Working Paper 244, February 1983.
 - Richard C. Waters, "KBEmacs: Where's the AI?", *AI Magazine* 7(1):47–56, 1986.
   - pp. 47–49: the semiexpert assistant and the report demonstration.
   - pp. 50–52: the assistant approach; clichés, roles and the matrix; plans, segments and ports; locality, additivity, intermediate segmentation.
@@ -421,8 +426,6 @@ The papers supply the conceptual vocabulary and historical claims. The listings 
 
 ### Further reading
 
-- Richard C. Waters, *KBEmacs: A Step Toward the Programmer's Apprentice*, MIT AI-TR-753, 1985.
-- Kent M. Pitman, *Interfacing to the Programmer's Apprentice*, MIT AI WP-244, 1983.
 - Scott Cyphers, *Automated Program Description*, MIT AI WP-237, 1982.
 - Richard C. Waters, *LetS: An Expressional Loop Notation*, MIT AIM-680, 1982.
 - Charles Rich and Richard C. Waters, *Approaches to Automatic Programming*, MERL TR92-04, 1992 (§5.2 discusses KBEmacs).
