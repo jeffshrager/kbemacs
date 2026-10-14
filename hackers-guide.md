@@ -42,7 +42,7 @@ The three papers closest to this code:
 
 For the wider research program, see Charles Rich and Richard C. Waters, *The Programmer's Apprentice Project: A Research Overview*, MIT AI Memo 1004, 1987. It identifies KBEmacs as the completed prototype Implementation Apprentice.
 
-**The witness.** This tour reads a January 1985 printout: four bound volumes of Lisp listings from MIT. It covers the KBE system as of **KBE 358.0x** (December 1984), with each file carrying its own date and version. The scans have been transcribed into the 87 files under [`code/volume_1`](code/volume_1/) through [`code/volume_4`](code/volume_4/). The transcription was made with AI assistance and then *executed*: under the SBCL compatibility runtime in [`runtime/`](runtime/), the system loads and reproduces one of its own December 1984 self-tests exactly (see **A Day in the Life**). Getting there required a few dozen typo-level corrections, each checked against the scans and logged in [`code/TRANSCRIPTION-FIXES.md`](code/TRANSCRIPTION-FIXES.md). So read the excerpts as *transcriptions of the 1985 printout, partly verified by execution*.
+**The witness.** This tour reads a January 1985 printout: four bound volumes of Lisp listings from MIT. It covers the KBE system as of **KBE 358.0x** (December 1984), with each file carrying its own date and version. The scans ([netsettler/netsettlement: `kbe/`](https://github.com/netsettler/netsettlement/tree/main/kbe)) have been transcribed into the 87 files under [`code/volume_1`](code/volume_1/) through [`code/volume_4`](code/volume_4/). The transcription was made with AI assistance and then *executed*: under the SBCL compatibility runtime in [`runtime/`](runtime/), the system loads and reproduces one of its own December 1984 self-tests exactly (see **A Day in the Life**). Getting there required a few dozen typo-level corrections, each checked against the scans and logged in [`code/TRANSCRIPTION-FIXES.md`](code/TRANSCRIPTION-FIXES.md). So read the excerpts as *transcriptions of the 1985 printout, partly verified by execution*.
 
 KBEmacs was written in **Zetalisp** for the Symbolics 3600 Lisp Machine. It leans on Flavors, the ZWEI/Zmacs editor, Lisp Machine processes, and the OZ file host. None of that is assumed below; **Practical Notes** has a primer.
 
@@ -385,7 +385,7 @@ The 1986 paper reports serious limits in performance, robustness, language cover
 
 ### The source being toured
 
-The witness is a four-volume printout, *Knowledge-Based Editor* (January 1985), scanned to PDF. The scans aren't in this repository. The transcriptions are, each file noting its PDF pages:
+The witness is a four-volume printout, *Knowledge-Based Editor* (January 1985), scanned to PDF. The scans aren't in this repository; they are at [netsettler/netsettlement: `kbe/`](https://github.com/netsettler/netsettlement/tree/main/kbe). The transcriptions are, each file noting its PDF pages:
 
 | Volume | Contents | Listings |
 | --- | --- | --- |

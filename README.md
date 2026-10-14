@@ -4,6 +4,7 @@ MIT's KBEmacs (the Programmer's Apprentice's Knowledge-Based Editor), from the J
 
 - [A Hacker's Guide to KBEmacs](hackers-guide.md): a source tour
 - [A Day in the Life of SQRT](hackers-guide-sqrt.md): one 1984 self-test, traced end to end
+- Original scans of the listings: [netsettler/netsettlement: `kbe/`](https://github.com/netsettler/netsettlement/tree/main/kbe)
 - Run it: `sbcl --script runtime/run-test.lisp sqrt`
 
 ## Papers
