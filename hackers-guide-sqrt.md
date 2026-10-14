@@ -12,6 +12,10 @@ assistance. *Doveryai, No Proveryai!*
 
 ---
 
+*Source*: The KBE listings toured here, and the scans they were transcribed from, come from **Kent M. Pitman** (KMP, [netsettler](https://github.com/netsettler)), a member of the KBEmacs team. They are published in his [netsettlement repository](https://github.com/netsettler/netsettlement/tree/main/kbe). This work would not exist without them.
+
+---
+
 ## Before You Arrive
 
 On 14 December 1984, KBE 358.0x tested itself on a Symbolics Lisp Machine. One of
@@ -537,7 +541,7 @@ Seven sentences turn into a working program, and every intermediate state is a r
 ## Sources
 
 - The run: `code/volume_1/358-test.lisp` (KBE 358.0x self-test, 14 December 1984), replayed by `runtime/run-test.lisp`. Every parsed form, code state, and plan fact quoted above was captured from that replay.
-- The source: the January 1985 four-volume KBE listing, transcribed in `code/`. Excerpts: Copyright © 1983/1984 Massachusetts Institute of Technology, as indicated by each source listing; copied by permission of MIT under the notice in those listings (quoted in full in [A Hacker's Guide to KBEmacs](hackers-guide.md)).
+- The source: the January 1985 four-volume KBE listing, from Kent M. Pitman (KMP, netsettler), scanned in [netsettler/netsettlement: `kbe/`](https://github.com/netsettler/netsettlement/tree/main/kbe) and transcribed in `code/`. Excerpts: Copyright © 1983/1984 Massachusetts Institute of Technology, as indicated by each source listing; copied by permission of MIT under the notice in those listings (quoted in full in [A Hacker's Guide to KBEmacs](hackers-guide.md)).
 - Background: Richard C. Waters, "KBEmacs: Where's the AI?", *AI Magazine* 7(1), 1986; Charles Rich and Richard C. Waters, *The Programmer's Apprentice Project: A Research Overview*, MIT AI Memo 1004, 1987.
 - The tour format: [Hacker's Guides](https://github.com/jeffshrager/HackersGuides).
 

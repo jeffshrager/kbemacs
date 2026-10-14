@@ -12,6 +12,10 @@ assistance. *Doveryai, No Proveryai!*
 
 ---
 
+*Source*: The KBE listings toured here, and the scans they were transcribed from, come from **Kent M. Pitman** (KMP, [netsettler](https://github.com/netsettler)), a member of the KBEmacs team. They are published in his [netsettlement repository](https://github.com/netsettler/netsettlement/tree/main/kbe). This work would not exist without them.
+
+---
+
 ## Before You Arrive: What Is KBEmacs?
 
 KBEmacs, the **Knowledge-Based Editor in Emacs**, is the *Implementation Apprentice* of MIT's Programmer's Apprentice project. It was built by Richard C. Waters, with Kent Pitman, Charles Rich and others, at the MIT AI Lab in the early 1980s. It helps an expert programmer with **program construction**: the programmer chooses which standard algorithms to combine, and the apprentice takes care of many of the details of turning that choice into code.
@@ -385,7 +389,7 @@ The 1986 paper reports serious limits in performance, robustness, language cover
 
 ### The source being toured
 
-The witness is a four-volume printout, *Knowledge-Based Editor* (January 1985), scanned to PDF. The scans aren't in this repository; they are at [netsettler/netsettlement: `kbe/`](https://github.com/netsettler/netsettlement/tree/main/kbe). The transcriptions are, each file noting its PDF pages:
+The witness is a four-volume printout, *Knowledge-Based Editor* (January 1985), scanned to PDF. The printout and scans come from Kent M. Pitman (KMP, GitHub: netsettler), who worked on KBE (the source headers record his hand, e.g. the KMP merge noted in `explain.lisp`) and whose WP-244 describes its interface. The scans aren't in this repository; they are at [netsettler/netsettlement: `kbe/`](https://github.com/netsettler/netsettlement/tree/main/kbe). The transcriptions are, each file noting its PDF pages:
 
 | Volume | Contents | Listings |
 | --- | --- | --- |

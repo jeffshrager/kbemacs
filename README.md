@@ -1,10 +1,10 @@
 # kbemacs
 
-MIT's KBEmacs (the Programmer's Apprentice's Knowledge-Based Editor), from the January 1985 listings, transcribed in `code/` and running again under SBCL via `runtime/`.
+MIT's KBEmacs (the Programmer's Apprentice's Knowledge-Based Editor), from the January 1985 listings, transcribed in `code/` and running again under SBCL via `runtime/`. The listings come from Kent M. Pitman ([netsettler](https://github.com/netsettler)); everything here rests on his preservation of them.
 
 - [A Hacker's Guide to KBEmacs](hackers-guide.md): a source tour
 - [A Day in the Life of SQRT](hackers-guide-sqrt.md): one 1984 self-test, traced end to end
-- Original scans of the listings: [netsettler/netsettlement: `kbe/`](https://github.com/netsettler/netsettlement/tree/main/kbe)
+- Original scans of the listings, courtesy of Kent M. Pitman (KMP, netsettler), from the KBEmacs team: [netsettler/netsettlement: `kbe/`](https://github.com/netsettler/netsettlement/tree/main/kbe)
 - Run it: `sbcl --script runtime/run-test.lisp sqrt`
 
 ## Papers
