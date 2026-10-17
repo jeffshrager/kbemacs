@@ -42,6 +42,7 @@
 
 \usepackage{url}
 \usepackage{booktabs}
+\usepackage{float}
 \usepackage{listings}
 \lstset{basicstyle=\footnotesize\ttfamily,columns=fullflexible,keepspaces=true}
 
@@ -90,8 +91,8 @@ Anthropic's Claude, this paper's first author. Claude had an enormous head start
 existing IPL-V interpreter, written by Shrager, that already ran the
 Logic Theorist. On KBEmacs it had a similar head start: an existing
 Common Lisp port of Spice Lisp Flavors, the object system on which
-KBEmacs is built. Otherwise the human authors did as little as they
-decently could.
+KBEmacs is built. The human authors chose the targets, supplied the
+sources, and steered.
 \end{abstract}
 
 \noindent\textbf{Keywords:} artificial intelligence history, automatic programming, AI-assisted programming, digital preservation, Heuristic Compiler, IPL-V (Information Processing Language V), KBEmacs, Lisp Machine, Programmer's Apprentice, H.~A.~Simon, software archaeology, R.~C.~Waters
@@ -168,8 +169,8 @@ interpreter (which it did not have to write: Shrager's interpreter,
 which already ran the Logic Theorist, gave it an enormous head start,
 as did an existing Common Lisp port of Spice Lisp Flavors for KBEmacs),
 debugged both programs until they reproduced their historical output,
-and drafted much of this paper. The human role was mostly to say
-``continue.'' This paper is therefore, among other things, a report of
+and drafted much of this paper. The human authors chose the targets,
+found the sources, and made the judgment calls. This paper is therefore, among other things, a report of
 one AI coder exhuming two of its ancestors, and its first author is
 that AI coder.
 
@@ -283,8 +284,9 @@ out. The project continued
 with work on the Plan Calculus, on automated reasoning, and on
 requirements and design apprentices, culminating in Rich and Waters's
 1990 book~\cite{richwaters1990book}.
+Table~\ref{tab:systems} summarizes the two systems.
 
-\begin{table*}[t]
+\begin{table}[H]
 \centering
 \caption{The two reanimated systems.}
 \label{tab:systems}
@@ -302,7 +304,7 @@ Central method & means-end analysis (GPS) & instantiating and combining clich\'e
 Reanimated on & Shrager's existing Common Lisp IPL-V interpreter (built for the Logic Theorist), extended & Zetalisp compatibility layer for SBCL \\
 Benchmark reproduced & code printed in Simon (1963) & self-test of December 14, 1984 \\ \bottomrule
 \end{tabular}
-\end{table*}
+\end{table}
 
 \section{Reanimating the Heuristic Compiler}
 \label{sec:hc}
@@ -403,7 +405,20 @@ Appendix~A~\cite{simonRM3588}, and affects only printing. With that and
 a start card for the demonstration routine T1 (the 1963 listing ends
 with exactly such a card), the program runs Simon's published examples.
 
-\begin{figure*}
+\textbf{Compiling from a functional description.} Given the functional
+description of INSERT AT END OF VALUE LIST, the program produces
+\texttt{J13 J52 11W2 11W0 J10 11W1 J65 J32 0}, character for character
+the code in the 1963 paper~\cite[pp.~499--500]{simon1963jacm}
+(Figure~\ref{fig:insert}). A print left in routine U113 shows the code
+growing one argument at a time, which happens to reproduce the sequence
+of stages through which the paper walks its readers. We note one
+qualification. In Simon's runs, as in ours, the functional description
+is supplied as a hand-coded list structure, not as typed English; the
+phrase is printed from it, but the compiler matches processes by symbol
+identity. The English front end in the deck has not yet been run (see
+``Next Steps'').
+
+\begin{figure}[H]
 \begin{lstlisting}
  FIND THE VALUE-OF THE ATTRIBUTE (0) OF (1)              <- an already-compiled routine
 
@@ -438,20 +453,7 @@ appears to be a debugging aid left in the deck). The final code is
 character for character the code printed in Simon's 1963 paper.
 Annotations after \texttt{<-} are ours.}
 \label{fig:insert}
-\end{figure*}
-
-\textbf{Compiling from a functional description.} Given the functional
-description of INSERT AT END OF VALUE LIST, the program produces
-\texttt{J13 J52 11W2 11W0 J10 11W1 J65 J32 0}, character for character
-the code in the 1963 paper~\cite[pp.~499--500]{simon1963jacm}
-(Figure~\ref{fig:insert}). A print left in routine U113 shows the code
-growing one argument at a time, which happens to reproduce the sequence
-of stages through which the paper walks its readers. We note one
-qualification. In Simon's runs, as in ours, the functional description
-is supplied as a hand-coded list structure, not as typed English; the
-phrase is printed from it, but the compiler matches processes by symbol
-identity. The English front end in the deck has not yet been run (see
-``Next Steps'').
+\end{figure}
 
 \textbf{Compiling from a state description.} Simon's running example of
 the state description compiler is J3, SET SIGNAL MINUS: a routine that
@@ -527,7 +529,7 @@ terms of clich\'es and their roles. The clich\'e library is written as
 code with holes, as in the definition of successive approximation
 in Figure~\ref{fig:cliche}.
 
-\begin{figure*}
+\begin{figure}[H]
 \begin{lstlisting}
 (DEFINE-CLICHE SUCCESSIVE-APPROXIMATION
    (PRIMARY-ROLES (INITIAL-APPROXIMATION)
@@ -543,7 +545,7 @@ in Figure~\ref{fig:cliche}.
 The braces are KBEmacs read syntax marking \emph{roles}, the parts that
 vary from use to use; the surrounding code is fixed.}
 \label{fig:cliche}
-\end{figure*}
+\end{figure}
 
 But clich\'es are not stored as text. When the library loads, each
 definition is run through KBEmacs's \emph{analyzer}, which turns code
@@ -620,7 +622,7 @@ open as holes; each further command fills a role with code or with
 another clich\'e, whose own unfilled roles appear as new holes. After
 seven commands the plan has 32 segments and the program is complete.
 
-\begin{figure*}
+\begin{figure}[H]
 \begin{lstlisting}
 >Reinitialize database.
 >Define a program MYSQRT with a parameter NUM.
@@ -649,7 +651,7 @@ division operator.) The final lines are KBEmacs's own description of
 the program, generated from its plan, as recorded in the 1984
 self-test (abridged).}
 \label{fig:sqrt}
-\end{figure*}
+\end{figure}
 
 All fourteen commands run, and both generated programs are
 \texttt{equal} to the code recorded in 1984. The generated code also
@@ -670,7 +672,7 @@ programming today.
 Table~\ref{tab:compare} summarizes the comparison; we discuss five
 themes.
 
-\begin{table*}[t]
+\begin{table}[H]
 \centering
 \caption{Three approaches to machine participation in programming.}
 \label{tab:compare}
@@ -687,7 +689,7 @@ Division of labor & autonomous & programmer decides, apprentice implements & ran
 Checking & progress test on kind of definition & self-test; consistency of text and plan & executing tests, human review \\
 Explanation & (printed descriptions) & generated from plan & generated from text \\ \bottomrule
 \end{tabular}
-\end{table*}
+\end{table}
 
 \textbf{How is a programming task specified?} Simon's two compilers
 differ precisely in how the task is described. A state description
@@ -835,7 +837,7 @@ construction of Shrager's IPL-V interpreter for the Logic Theorist
 earlier Claude model), or ChatGPT's transcription of the KBEmacs
 listings, which left no logs available to us.
 
-\begin{table}[t]
+\begin{table}[H]
 \centering
 \caption{Claude's effort, from the Claude Code session logs. Excludes ChatGPT's transcription of the KBEmacs listings.}
 \label{tab:effort}
@@ -868,9 +870,8 @@ mostly Claude reminding itself what it had been doing. What Claude
 actually wrote---code, patches, commands, commit messages, and prose
 ---comes to about 1.3 million tokens across both projects, a
 few times the size of the KBEmacs listings themselves. Second, the
-human side of the ledger is small and, as the coda confesses, largely
-repetitive: some 230 prompts, a large fraction of which amount to
-``continue'' or ``push.'' Third, the comparison with the originals is
+human side of the ledger is small: some 230 prompts in all, against
+about 1,500 calls to the model. Third, the comparison with the originals is
 not flattering to them, and not entirely fair either. KBEmacs embodied
 years of work by a research group, and the Heuristic Compiler a
 substantial programming effort at RAND; the reanimations had the
@@ -952,11 +953,9 @@ by running the code and checking the scans, and also wrote the Zetalisp
 compatibility layer, extended my IPL-V interpreter, chased down the
 PDP-10 meaning of \texttt{boole}, and wrote the session summaries from
 which much of this paper was drafted, also by Claude. My contribution
-consisted largely of typing things like ``take whatever is the next
-sensible large step (but don't try to go to the end yet),'' ``commit
-and push,'' and, at one point, ``don't waste time with details! Just do
-what I asked you to do!'' I tried to do as little as possible, and let
-Claude run amok. I should add that Claude did not start from nothing on
+was mostly direction: choosing what to resurrect, pointing Claude at
+the scans, deciding which results counted, and deciding when to stop.
+Otherwise I tried to stay out of the way and let Claude run amok. I should add that Claude did not start from nothing on
 the IPL-V side. My IPL-V interpreter, written to run the Logic Theorist,
 gave it an enormous leg up; without it, the Heuristic Compiler would
 have meant first building an IPL-V, a much larger job than the one
