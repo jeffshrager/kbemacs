@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.4.3)  16 OCT 2026 11:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.4.3)  16 OCT 2026 18:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -631,14 +631,14 @@ LaTeX Info: Redefining \nameref on input line 55.
 
 \c@lstlisting=\count304
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 87.
-LaTeX Font Info:    Trying to load font information for TS1+phv on input line 8
-7.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 105.
+LaTeX Font Info:    Trying to load font information for TS1+phv on input line 1
+05.
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/psnfss/ts1phv.fd
 File: ts1phv.fd 2020/03/25 scalable font definitions for TS1/phv.
 )
-Underfull \vbox (badness 1259) has occurred while \output is active []
+Underfull \vbox (badness 3168) has occurred while \output is active []
 
 
 Overfull \hbox (396.295pt too wide) has occurred while \output is active
@@ -646,7 +646,7 @@ Overfull \hbox (396.295pt too wide) has occurred while \output is active
  []
 
 
-Overfull \vbox (143.79944pt too high) has occurred while \output is active []
+Overfull \vbox (194.86873pt too high) has occurred while \output is active []
 
 
 Overfull \hbox (138.5pt too wide) has occurred while \output is active
@@ -670,7 +670,7 @@ Overfull \hbox (18.0pt too wide) has occurred while \output is active
 
 
 ]
-Underfull \hbox (badness 1371) in paragraph at lines 147--155
+Underfull \hbox (badness 1371) in paragraph at lines 165--173
 []\T1/phv/m/n/9.03374 The two sys-tems are sep-a-rated by a quar-ter
  []
 
@@ -685,17 +685,14 @@ Overfull \vbox (1.37195pt too high) has occurred while \output is active []
 Non-PDF special ignored!
 <special> color pop
 ]
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 25
-7.
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 28
+5.
  (/usr/local/texlive/2021/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
-Underfull \hbox (badness 10000) in paragraph at lines 294--294
+Underfull \hbox (badness 10000) in paragraph at lines 324--324
 []|\T1/phv/m/n/8 Benchmark
  []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Overfull \vbox (12.0pt too high) has occurred while \output is active []
@@ -709,7 +706,10 @@ Overfull \hbox (18.0pt too wide) has occurred while \output is active
  []
 
 [3]
-Overfull \hbox (6.8003pt too wide) in paragraph at lines 396--398
+LaTeX Font Info:    Calculating math sizes for size <9.03374> on input line 415
+.
+
+Overfull \hbox (6.8003pt too wide) in paragraph at lines 429--431
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
@@ -722,10 +722,10 @@ Overfull \vbox (1.37195pt too high) has occurred while \output is active []
 
 
 [4]
-Underfull \hbox (badness 2065) in paragraph at lines 476--482
-[]\T1/phv/b/n/9.03374 The in-for-ma-tion an-nexer. \T1/phv/m/n/9.03374 RM-3588-
-PR's Ap-
- []
+Underfull \vbox (badness 6428) has occurred while \output is active []
+
+
+Underfull \vbox (badness 7540) has occurred while \output is active []
 
 
 Overfull \vbox (12.0pt too high) has occurred while \output is active []
@@ -739,6 +739,53 @@ Overfull \hbox (18.0pt too wide) has occurred while \output is active
  []
 
 [5]
+Underfull \hbox (badness 2065) in paragraph at lines 509--515
+[]\T1/phv/b/n/9.03374 The in-for-ma-tion an-nexer. \T1/phv/m/n/9.03374 RM-3588-
+PR's Ap-
+ []
+
+
+Underfull \hbox (badness 8038) in paragraph at lines 594--599
+[]\T1/phv/b/n/9.03374 Flavors: \T1/phv/m/n/9.03374 a Com-mon Lisp port of Spice
+
+ []
+
+
+Underfull \hbox (badness 7030) in paragraph at lines 594--599
+\T1/phv/m/n/9.03374 Lisp Fla-vors [[]], ex-tended with the Lisp
+ []
+
+
+Underfull \hbox (badness 2158) in paragraph at lines 594--599
+\T1/phv/m/n/9.03374 Ma-chine's \T1/pcr/m/n/9.03374 :case \T1/phv/m/n/9.03374 me
+thod com-bi-na-tion (with
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 604--613
+\T1/phv/m/n/9.03374 de-struc-tur-ing \T1/pcr/m/n/9.03374 let\T1/phv/m/n/9.03374
+ , old-style \T1/pcr/m/n/9.03374 do\T1/phv/m/n/9.03374 , named
+ []
+
+
+Underfull \hbox (badness 2103) in paragraph at lines 604--613
+\T1/pcr/m/n/9.03374 prog\T1/phv/m/n/9.03374 , multiple-value \T1/pcr/m/n/9.0337
+4 return\T1/phv/m/n/9.03374 , Lisp Ma-chine
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 604--613
+\T1/pcr/m/n/9.03374 defstruct\T1/phv/m/n/9.03374 , \T1/pcr/m/n/9.03374 (defun (
+sym prop) ...)\T1/phv/m/n/9.03374 ,
+ []
+
+
+Underfull \hbox (badness 1527) in paragraph at lines 604--613
+\T1/pcr/m/n/9.03374 nil) \T1/phv/m/n/9.03374 false, \T1/pcr/m/n/9.03374 map \T1
+/phv/m/n/9.03374 over suc-ces-sive tails, and
+ []
+
+
 Overfull \vbox (12.0pt too high) has occurred while \output is active []
 
 
@@ -746,32 +793,32 @@ Overfull \vbox (1.37195pt too high) has occurred while \output is active []
 
 
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 669--669
+Underfull \hbox (badness 10000) in paragraph at lines 693--693
 []|\T1/phv/m/n/8 English com-mands nam-ing
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 670--670
+Underfull \hbox (badness 10000) in paragraph at lines 694--694
 []|\T1/phv/m/n/8 Source of
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 670--670
+Underfull \hbox (badness 10000) in paragraph at lines 694--694
 []|\T1/phv/m/n/8 hand-built cliché li-brary
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 672--673
+Underfull \hbox (badness 10000) in paragraph at lines 696--697
 []|\T1/phv/m/n/8 learned gen-er-a-tion; agen-tic
  []
 
 
-Underfull \hbox (badness 2762) in paragraph at lines 674--674
+Underfull \hbox (badness 2762) in paragraph at lines 698--698
 []|\T1/phv/m/n/8 programmer de-cides, ap-pren-
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 5802) has occurred while \output is active []
 
 
 Overfull \vbox (12.0pt too high) has occurred while \output is active []
@@ -785,12 +832,12 @@ Overfull \hbox (18.0pt too wide) has occurred while \output is active
  []
 
 [7]
-Underfull \hbox (badness 1609) in paragraph at lines 725--738
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 1609) in paragraph at lines 752--768
 []\T1/phv/b/n/9.03374 How does the sys-tem know it is mak-ing
  []
-
-
-Underfull \vbox (badness 3354) has occurred while \output is active []
 
 
 Overfull \vbox (12.0pt too high) has occurred while \output is active []
@@ -800,12 +847,6 @@ Overfull \vbox (1.37195pt too high) has occurred while \output is active []
 
 
 [8]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Underfull \vbox (badness 4441) has occurred while \output is active []
-
-
 Overfull \vbox (12.0pt too high) has occurred while \output is active []
 
 
@@ -817,30 +858,23 @@ Overfull \hbox (18.0pt too wide) has occurred while \output is active
  []
 
 [9]
-Underfull \hbox (badness 1852) in paragraph at lines 896--899
-\T1/phv/m/n/9.03374 Richard Wa-ters, Charles Rich, Kent Pit-man, and
+Underfull \hbox (badness 10000) in paragraph at lines 886--888
+[]\T1/phv/m/n/9.03374 The tran-scrip-tions, in-ter-preters, com-pat-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 918--923
-[]\T1/phv/m/n/8 g000001, ``spice-flavors'' and ``LetS,'' GitHub.
+Underfull \hbox (badness 10000) in paragraph at lines 886--888
+\T1/phv/m/n/9.03374 i-bil-ity layer, and Hacker's Guides to both
  []
 
 
-Underfull \hbox (badness 6510) in paragraph at lines 918--923
-\T1/phv/m/n/8 Ac-cessed: Oct. 10, 2026. [On-line]. Avail-able:
+Underfull \hbox (badness 10000) in paragraph at lines 886--888
+\T1/phv/m/n/9.03374 pro-grams are open source, at [][]$https : / / github .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 918--923
-[][]$\T1/phv/m/n/8 https : / / github . com / g000001 / spice -[] ^^]avors$[][]
-,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 967--971
-[][]$\T1/phv/m/n/8 https : / / github . com / netsettler / netsettlement / tree
- /
+Underfull \hbox (badness 10000) in paragraph at lines 886--888
+\T1/phv/m/n/9.03374 com / je^^[shrager / ExecutableArchaeology$[][] and
  []
 
 
@@ -851,34 +885,73 @@ Overfull \vbox (1.37195pt too high) has occurred while \output is active []
 
 
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 990--994
+Underfull \hbox (badness 10000) in paragraph at lines 984--989
+[]\T1/phv/m/n/8 g000001, ``spice-flavors'' and ``LetS,'' GitHub.
+ []
+
+
+Underfull \hbox (badness 6510) in paragraph at lines 984--989
+\T1/phv/m/n/8 Ac-cessed: Oct. 10, 2026. [On-line]. Avail-able:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 984--989
+[][]$\T1/phv/m/n/8 https : / / github . com / g000001 / spice -[] ^^]avors$[][]
+,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1033--1037
+[][]$\T1/phv/m/n/8 https : / / github . com / netsettler / netsettlement / tree
+ /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1056--1060
 []\T1/phv/m/n/8 J. Shrager, ``Ex-e-cutable Ar-chae-ol-ogy,'' GitHub
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 990--994
+Underfull \hbox (badness 10000) in paragraph at lines 1056--1060
 \T1/phv/m/n/8 (Heuris-tic-Coder, IPL-V, and Log-ic-The-o-rist
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 990--994
+Underfull \hbox (badness 10000) in paragraph at lines 1056--1060
 \T1/phv/m/n/8 di-rec-to-ries). Ac-cessed: Oct. 16, 2026.
  []
 
 
-Underfull \hbox (badness 7851) in paragraph at lines 990--994
+Underfull \hbox (badness 7851) in paragraph at lines 1056--1060
 \T1/phv/m/n/8 [On-line]. Avail-able: [][]$https : / / github . com / je^^[shrag
 er /
  []
 
 
-Underfull \hbox (badness 3635) in paragraph at lines 1005--1009
+Underfull \hbox (badness 3635) in paragraph at lines 1072--1076
 []\T1/phv/m/n/8 J. Shrager. ``An IPL-V in-ter-preter in Com-mon
  []
 
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 1043.
+Underfull \hbox (badness 3919) in paragraph at lines 1088--1093
+[]\T1/phv/m/n/8 H. A. Si-mon, ``The heuris-tic com-piler,'' RAND
+ []
+
+
+Underfull \hbox (badness 3039) in paragraph at lines 1088--1093
+\T1/phv/m/n/8 Corp., Santa Mon-ica, CA, USA, Mem-o-ran-dum
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1088--1093
+\T1/phv/m/n/8 RM-3588-PR, May 1963. [On-line]. Avail-able:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1088--1093
+[][]$\T1/phv/m/n/8 http : / / bitsavers . org / pdf / rand / ipl / RM -[] 3588 
+-[] PR _ The _
+ []
 
 
 Overfull \vbox (12.0pt too high) has occurred while \output is active []
@@ -891,28 +964,55 @@ Overfull \hbox (18.0pt too wide) has occurred while \output is active
 | [] 
  []
 
-[11] (./coderpaper.aux)
+[11]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 1113.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 1116.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 1120.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 1123.
+
+
+Overfull \vbox (12.0pt too high) has occurred while \output is active []
+
+
+Overfull \vbox (1.37195pt too high) has occurred while \output is active []
+
+
+[12
+
+] (./coderpaper.aux)
 Package rerunfilecheck Info: File `coderpaper.out' has not changed.
-(rerunfilecheck)             Checksum: 924BD1598AB283F645A923DAC2D015C0;3471.
+(rerunfilecheck)             Checksum: 8BF835D66C842EB3DCD74810406AC84D;3964.
  ) 
 Here is how much of TeX's memory you used:
- 11611 strings out of 478994
- 168509 string characters out of 5858185
- 526292 words of memory out of 5000000
- 28814 multiletter control sequences out of 15000+600000
- 532466 words of font info for 149 fonts, out of 8000000 for 9000
+ 11653 strings out of 478994
+ 169102 string characters out of 5858185
+ 526800 words of memory out of 5000000
+ 28846 multiletter control sequences out of 15000+600000
+ 536614 words of font info for 159 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  83i,10n,88p,526b,1123s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
-exlive/2021/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2
-021/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/tex
-mf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/local/texlive/2021/texmf-dis
-t/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts
-/type1/urw/helvetic/uhvro8a.pfb>
-Output written on coderpaper.pdf (11 pages, 116125 bytes).
+exlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/tex
+live/2021/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/202
+1/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf
+-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/local/texlive/2021/texmf-dist/
+fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/t
+ype1/urw/helvetic/uhvro8a.pfb>
+Output written on coderpaper.pdf (12 pages, 129843 bytes).
 PDF statistics:
- 373 PDF objects out of 1000 (max. 8388607)
- 351 compressed objects within 4 object streams
- 124 named destinations out of 1000 (max. 500000)
- 177 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 422 PDF objects out of 1000 (max. 8388607)
+ 398 compressed objects within 4 object streams
+ 130 named destinations out of 1000 (max. 500000)
+ 201 words of extra memory for PDF output out of 10000 (max. 10000000)
 
