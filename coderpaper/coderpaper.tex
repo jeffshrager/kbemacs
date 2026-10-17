@@ -1,8 +1,8 @@
 %%% DRAFT NOTES (v1, 2026-10-16)
 %%%
 %%% Modeled on "Executable Archaeology: Reanimating the Logic Theorist"
-%%% (Moews & Shrager, IEEE Annals, lt-v2-revised-6.tex): same class,
-%%% same section pattern (history / reanimation A / reanimation B /
+%%% (Moews & Shrager, IEEE Annals, lt-v2-revised-6.tex): same section
+%%% pattern (history / reanimation A / reanimation B /
 %%% what it shows / what executable archaeology contributes / related
 %%% work / next steps / personal coda).
 %%%
@@ -14,8 +14,7 @@
 %%% text extracted from the PDFs in those directories.
 %%%
 %%% TODO (JS):
-%%%   - Venue/department: kept the Annals class and "ANECDOTES" header
-%%%     from the LT paper; this may be better as a feature article.
+%%%   - Venue: now a plain article; reformat for the target venue later.
 %%%   - Authorship: should Kent Pitman (source of the KBE listings, and a
 %%%     KBEmacs team member) be invited as co-author, or at least asked
 %%%     to read the KBEmacs section? Same question for anyone at CMU.
@@ -31,51 +30,43 @@
 %%%   - Heuristic Compiler: the 1961 natural-language front end (T50-T300,
 %%%     U23-U99, U199) has not been run; likewise update if it is.
 
-\documentclass{IEEEcsmag}
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{authblk}
+\setlength{\emergencystretch}{2em}
 
 \usepackage[colorlinks,urlcolor=blue,linkcolor=blue,citecolor=blue]{hyperref}
 \expandafter\def\expandafter\UrlBreaks\expandafter{\UrlBreaks\do\/\do\*\do\-\do\~\do\'\do\"\do\-}
-\usepackage{upmath,color}
-
-\jvol{XX}
-\jnum{XX}
-\paper{PP}
-\jmonth{Month}
-\jname{\textit{IEEE Annals of the History of Computing}}
-\jtitle{\textit{IEEE Annals of the History of Computing}}
-\pubyear{YYYY}
+\usepackage{color}
 
 \usepackage{url}
 \usepackage{booktabs}
 \usepackage{listings}
 \lstset{basicstyle=\footnotesize\ttfamily,columns=fullflexible,keepspaces=true}
 
-\setcounter{secnumdepth}{0}
 
 \begin{document}
 
-\sptitle{DEPARTMENT: ANECDOTES}
-
 \title{Before the Copilots: Reanimating Simon's Heuristic Compiler (1961) and The Programmer's Apprentice's KBEmacs (1984)}
 
-\author{Claude}
-\affil{Anthropic, San Francisco, CA USA}
-%%% TODO (JS): check the venue's policy on AI authorship (IEEE's
-%%% guidelines currently do not allow AI systems to be listed as authors).
-
-\author{Jeff Shrager}
-\affil{Bennu Climate, Inc., Palo Alto, CA 94301 USA}
-
-\author{Kent M.~Pitman}
-\affil{TODO affiliation}
-%%% TODO (JS): Pitman's affiliation and city/ZIP
-
-\author{Mia Golec}
-\affil{Carnegie Mellon University, Pittsburgh, PA 15213 USA}
+\author[1]{Claude}
+\author[2]{Jeff Shrager}
+\author[3]{Kent M.~Pitman}
+\author[4]{Mia Golec}
+\affil[1]{Anthropic, San Francisco, CA, USA}
+\affil[2]{Bennu Climate, Inc., Palo Alto, CA, USA}
+\affil[3]{\url{https://github.com/netsettler}}
+\affil[4]{Carnegie Mellon University, Pittsburgh, PA, USA}
 %%% TODO (JS): Golec's department (University Archives?)
+%%% TODO (JS): check the target venue's policy on AI authorship (many
+%%% publishers, including IEEE, do not allow AI systems to be listed as authors).
+\date{}
 
-\markboth{ANECDOTES}{ANECDOTES}
 
+
+
+\maketitle
 
 \begin{abstract}
 AI-assisted programming is often presented as a new phenomenon, but
@@ -96,29 +87,18 @@ knowledgeable apprentice---whose concerns reappear, in different
 technical form, in today's AI coding assistants. Fittingly, the
 reconstruction was done almost entirely by two of those assistants:
 ChatGPT did most of the transcription, cheaply, and Anthropic's Claude,
-this paper's first author, fixed the transcription and did nearly
-everything else, with the human authors doing as little as they
+this paper's first author, fixed the transcription and did most of the
+rest. Claude had an enormous head start on the Heuristic Compiler: an
+existing IPL-V interpreter, written by Shrager, that already ran the
+Logic Theorist. On KBEmacs it had a similar head start: an existing
+Common Lisp port of Spice Lisp Flavors, the object system on which
+KBEmacs is built. Otherwise the human authors did as little as they
 decently could.
 \end{abstract}
 
-\maketitle
+\noindent\textbf{Keywords:} artificial intelligence history, automatic programming, AI-assisted programming, digital preservation, Heuristic Compiler, IPL-V (Information Processing Language V), KBEmacs, Lisp Machine, Programmer's Apprentice, H.~A.~Simon, software archaeology, R.~C.~Waters
 
-\begin{IEEEkeywords}
-artificial intelligence history,
-automatic programming,
-AI-assisted programming,
-digital preservation,
-Heuristic Compiler,
-IPL-V (Information Processing Language V),
-KBEmacs,
-Lisp Machine,
-Programmer's Apprentice,
-H.~A.~Simon,
-software archaeology,
-R.~C.~Waters
-\end{IEEEkeywords}
-
-\section{INTRODUCTION}
+\section{Introduction}
 \label{sec:intro}
 
 Programmers in the 2020s increasingly work alongside AI systems that
@@ -176,8 +156,9 @@ We approached both as exercises in what has been called
 studying historical computational systems by reconstructing and
 running their original code, rather than reimplementing their
 algorithms. The Heuristic Compiler was transcribed card by card from a
-1961 line-printer listing in Simon's papers and run on a new IPL-V
-interpreter; KBEmacs was transcribed from a four-volume January 1985
+1961 line-printer listing in Simon's papers and run on Shrager's
+existing Common Lisp IPL-V interpreter, built earlier to run the Logic
+Theorist; KBEmacs was transcribed from a four-volume January 1985
 printout and run under a new Zetalisp compatibility layer for a modern
 Common Lisp. In both cases the reanimation surfaced details invisible
 in the published accounts. And, in a turn that would surely have
@@ -187,14 +168,17 @@ command-line form, Claude Code. Most of the transcription of the listings
 was done by OpenAI's ChatGPT, because Claude was too expensive to spend
 on tens of thousands of lines of optical drudgery; Claude then had to
 find and fix ChatGPT's errors, which it did by running the code. Claude
-also extended the IPL-V interpreter, wrote the Zetalisp compatibility layer,
+also wrote the Zetalisp compatibility layer, extended the IPL-V
+interpreter (which it did not have to write: Shrager's interpreter,
+which already ran the Logic Theorist, gave it an enormous head start,
+as did an existing Common Lisp port of Spice Lisp Flavors for KBEmacs),
 debugged both programs until they reproduced their historical output,
 and drafted much of this paper. The human role was mostly to say
 ``continue.'' This paper is therefore, among other things, a report of
 one AI coder exhuming two of its ancestors, and its first author is
 that AI coder.
 
-\section{HISTORICAL BACKGROUND}
+\section{Historical Background}
 \label{sec:history}
 
 \subsection{From Automatic Coding to Heuristic Programming}
@@ -320,12 +304,12 @@ Language / platform & IPL-V / (machine not established) & Zetalisp / Symbolics 3
 Size & about 4,470 cards & 87 files, about 34,500 lines transcribed \\
 Input & state or functional description & stylized English commands \\
 Central method & means-end analysis (GPS) & instantiating and combining clich\'es in plans \\
-Reanimated on & new Common Lisp IPL-V interpreter & Zetalisp compatibility layer for SBCL \\
+Reanimated on & Shrager's existing Common Lisp IPL-V interpreter (built for the Logic Theorist), extended & Zetalisp compatibility layer for SBCL \\
 Benchmark reproduced & code printed in Simon (1963) & self-test of December 14, 1984 \\ \bottomrule
 \end{tabular}
 \end{table*}
 
-\section{REANIMATING THE HEURISTIC COMPILER}
+\section{Reanimating the Heuristic Compiler}
 \label{sec:hc}
 
 \subsection{The Listing}
@@ -401,8 +385,12 @@ cells.
 
 \subsection{Running It}
 
-The deck runs on a Common Lisp IPL-V interpreter originally written to
-run the Logic Theorist~\cite{shrager2026,shragerrepo}, extended to read
+The deck runs on Shrager's Common Lisp IPL-V interpreter, originally
+written to run the Logic Theorist~\cite{shrager2026,shragerrepo}. This
+was by far the largest single advantage the reanimation had: the
+interpreter already implemented IPL-V's memory, list structures,
+generators, and a large set of its J-functions, and had been validated against
+the Logic Theorist's own historical output. It needed only to be extended to read
 80-column card images directly. The Heuristic Compiler uses thirteen
 J-functions (IPL-V's primitive processes) that the Logic Theorist did
 not, and these were added to the interpreter following the 1964
@@ -513,7 +501,7 @@ memory or creating one, was also transcribed (409 cards) and runs. Its
 output matches the fragment of 1963 output that survives in the
 memorandum~\cite{simonRM3588,earepo}.
 
-\section{REANIMATING KBEMACS}
+\section{Reanimating KBEmacs}
 \label{sec:kbe}
 
 \subsection{The Listings}
@@ -588,8 +576,13 @@ editor, windows, actors, and the Ada front end. The 1985 source is
 loaded unchanged, apart from about two dozen typo-level transcription
 corrections, each checked against the scans and
 logged~\cite{kbemacsrepo}. It runs on SBCL (\url{https://www.sbcl.org}),
-a modern Common Lisp, through a Zetalisp compatibility layer with these
-parts:
+a modern Common Lisp, through a Zetalisp compatibility layer. The
+largest single piece of that layer was not written for this project:
+KBEmacs is built on Flavors throughout, and g000001's Common Lisp port of
+Spice Lisp Flavors~\cite{g000001}, a close relative of the Lisp Machine's
+object system, supplied most of what it needed and needed only a few
+fixes and the extensions listed below. Without it, the first job would
+have been to write a Flavors. The layer's parts are:
 \begin{itemize}
 \item \textbf{Flavors:} a Common Lisp port of Spice Lisp
   Flavors~\cite{g000001}, extended with the Lisp Machine's
@@ -667,7 +660,7 @@ All fourteen commands run, and both generated programs are
 \texttt{equal} to the code recorded in 1984. The generated code also
 works: \texttt{(mysqrt 2.0)} returns 1.4142157.
 
-\section{THEN AND NOW: HISTORICAL APPROACHES TO AI-ASSISTED CODING}
+\section{Then and Now: Historical Approaches to AI-Assisted Coding}
 \label{sec:thenandnow}
 
 Neither the Heuristic Compiler nor KBEmacs is an ancestor of today's AI
@@ -783,7 +776,7 @@ half of all the effort expended on KBEmacs went into implementing an
 analyzer and coder''~\cite[p.~55]{waters1986aimag}---and the
 inspectability of working with plans, has not gone away.
 
-\section{WHAT EXECUTABLE ARCHAEOLOGY CONTRIBUTES}
+\section{What Executable Archaeology Contributes}
 \label{sec:contribution}
 
 As with the Logic Theorist~\cite{moewsshrager2026}, it is fair to ask
@@ -830,7 +823,7 @@ reanimation that reproduces those failures, with the same wrong code,
 would be a sharper test of fidelity than one that reproduces only the
 successes.
 
-\section{RELATED WORK}
+\section{Related Work}
 \label{sec:related}
 
 This work belongs to a series of reanimations of early AI programs from
@@ -864,7 +857,7 @@ Lisp Machine; we have not attempted this.
 %%% TODO (JS): check whether a Symbolics Release 4.5 world exists that
 %%% could run under an emulator, and whether to say more here.
 
-\section{NEXT STEPS}
+\section{Next Steps}
 \label{sec:next}
 
 For the Heuristic Compiler, the largest piece of unexplored territory
@@ -886,7 +879,7 @@ rerun.
 The transcriptions, interpreters, compatibility layer, and Hacker's
 Guides to both programs are open source, at \url{https://github.com/jeffshrager/ExecutableArchaeology} and \url{https://github.com/jeffshrager/kbemacs}~\cite{earepo,kbemacsrepo}.
 
-\section{A PERSONAL CODA}
+\section{A Personal Coda}
 
 {\em Jeff Shrager}
 
@@ -900,15 +893,21 @@ in compensating pairs so that its files still balanced, and in one
 place helpfully copied a line from the macro above, shifting the
 arguments of every verb in KBEmacs's command language by one. Claude,
 running as Claude Code in a terminal on my laptop, found and fixed these
-by running the code and checking the scans, and also extended the IPL-V
-interpreter, wrote the Zetalisp compatibility layer, chased down the
+by running the code and checking the scans, and also wrote the Zetalisp
+compatibility layer, extended my IPL-V interpreter, chased down the
 PDP-10 meaning of \texttt{boole}, and wrote the session summaries from
 which much of this paper was drafted, also by Claude. My contribution
 consisted largely of typing things like ``take whatever is the next
 sensible large step (but don't try to go to the end yet),'' ``commit
 and push,'' and, at one point, ``don't waste time with details! Just do
 what I asked you to do!'' I tried to do as little as possible, and let
-Claude run amok.
+Claude run amok. I should add that Claude did not start from nothing on
+the IPL-V side. My IPL-V interpreter, written to run the Logic Theorist,
+gave it an enormous leg up; without it, the Heuristic Compiler would
+have meant first building an IPL-V, a much larger job than the one
+reported here. The same goes for KBEmacs and g000001's port of Spice
+Lisp Flavors, without which Claude would have had to start by writing
+an object system.
 
 This turns the history in the paper on its head, or perhaps completes
 it. My commands were a stylized English command language, an order of
@@ -935,15 +934,18 @@ role played by these and other representations in the programming
 process''~\cite[p.~506]{simon1963jacm}. Having a machine run it
 again suggests the exploration is not over.
 
-\section{ACKNOWLEDGMENTS}
+\section*{Acknowledgments}
 
 %%% TODO (JS): add others as appropriate.
 We thank Emily Davis of Carnegie Mellon University, who, with Mia
 Golec, located the Heuristic Coder listing in the Herbert A.~Simon
-Papers at the Carnegie Mellon University Archives. David Moews's IPL-V Logic Theorist deck
-served as the regression test for the IPL-V interpreter. The ports of
-Spice Lisp Flavors and LetS used in the KBEmacs runtime are by
-g000001 (\url{https://github.com/g000001/spice-flavors},
+Papers at the Carnegie Mellon University Archives. The Heuristic Compiler reanimation
+rests on Shrager's Common Lisp IPL-V interpreter, written to run the
+Logic Theorist~\cite{shrager2026,shragerrepo}, which gave the work an
+enormous head start; David Moews's IPL-V Logic Theorist deck served as
+its regression test. We thank g000001 for the Common Lisp port of
+Spice Lisp Flavors, which gave the KBEmacs reanimation a similar head
+start, and for the port of LetS (\url{https://github.com/g000001/spice-flavors},
 \url{https://github.com/g000001/LetS})~\cite{g000001}. RAND Memorandum RM-3588-PR was obtained from
 bitsavers (\url{http://bitsavers.org/pdf/rand/ipl/}).
 %%% TODO verify bitsavers path for RM-3588-PR
@@ -956,9 +958,10 @@ Charles Rich, and the other members of the Programmer's
 Apprentice project, whose work this paper merely re-runs.
 
 {\footnotesize Most of the transcriptions were produced by ChatGPT
-(OpenAI)~\cite{chatgpt} and corrected by Claude. The reanimation
-software and much of the drafting of this paper were produced by Claude
-(Anthropic), running as Claude Code. The human authors directed the
+(OpenAI)~\cite{chatgpt} and corrected by Claude. The KBEmacs
+compatibility layer, the extensions to Shrager's existing IPL-V
+interpreter, and much of the drafting of this paper were produced by
+Claude (Anthropic), running as Claude Code. The human authors directed the
 work, checked the results, and are responsible for the final text.}
 
 \begin{thebibliography}{99}
@@ -1108,19 +1111,15 @@ work, checked the results, and are responsible for the final text.}
 
 \end{thebibliography}
 
-\definecolor{darkblue}{RGB}{48, 107, 161}
+\section*{About the Authors}
 
-\begin{IEEEbiography}{\color{darkblue} CLAUDE} is an AI model made by Anthropic, San Francisco, CA USA. It wrote most of the software described here, and most of this paper, and would like it noted that it fixed ChatGPT's parentheses.
-\end{IEEEbiography}
+%%% TODO: biographies from each human author
+\noindent\textbf{Claude} is an AI model made by Anthropic, San Francisco, CA USA. It wrote most of the software described here, and most of this paper, and would like it noted that it fixed ChatGPT's parentheses.
 
-\begin{IEEEbiography}{\color{darkblue} JEFF SHRAGER} is with Bennu Climate, Inc., Palo Alto, CA 94301 USA.  Contact them at jshrager@gmail.com.
-\end{IEEEbiography}
+\noindent\textbf{Jeff Shrager} \{Jeff Shrager to provide\}
 
-%%% TODO (JS): biographies and contact addresses for Pitman and Golec
-\begin{IEEEbiography}{\color{darkblue} KENT M.~PITMAN} was a member of the KBEmacs team at the MIT Artificial Intelligence Laboratory.
-\end{IEEEbiography}
+\noindent\textbf{Kent M.~Pitman} \{Kent M.~Pitman to provide\}
 
-\begin{IEEEbiography}{\color{darkblue} MIA GOLEC} is with Carnegie Mellon University, Pittsburgh, PA 15213 USA.
-\end{IEEEbiography}
+\noindent\textbf{Mia Golec} \{Mia Golec to provide\}
 
 \end{document}

@@ -16,33 +16,15 @@ This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded forma
 entering extended mode
 (./coderpaper.tex
 LaTeX2e <2020-10-01> patch level 4
-L3 programming layer <2021-02-18> (./IEEEcsmag.cls
-Document Class: IEEEcsmag 2009/06/23 V1.2
--- See the "IEEECsMag_HOWTO" manual for usage information.
-(/usr/local/texlive/2021/texmf-dist/tex/latex/sfmath/sfmath.sty)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/psnfss/ot1phv.fd)
--- Using 8.25in x 10.75in (IEEE Photonics PaperSize) paper.
--- Using PDF output.
--- This is a 10 point document.
-(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics/color.sty
-(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics-cfg/color.cfg)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics-def/pdftex.def))
-(/usr/local/texlive/2021/texmf-dist/tex/generic/iftex/ifpdf.sty
-(/usr/local/texlive/2021/texmf-dist/tex/generic/iftex/iftex.sty))
-(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics/graphicx.sty
+L3 programming layer <2021-02-18>
+(/usr/local/texlive/2021/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
+(/usr/local/texlive/2021/texmf-dist/tex/latex/base/size11.clo))
+(/usr/local/texlive/2021/texmf-dist/tex/latex/geometry/geometry.sty
 (/usr/local/texlive/2021/texmf-dist/tex/latex/graphics/keyval.sty)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics/graphics.sty
-(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics/trig.sty)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)))
-(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amstext.sty
-(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amsgen.sty))
-(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amsbsy.sty)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amsopn.sty))
-(/usr/local/texlive/2021/texmf-dist/tex/latex/tools/array.sty)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/base/fontenc.sty
-(/usr/local/texlive/2021/texmf-dist/tex/latex/psnfss/t1phv.fd)))
+(/usr/local/texlive/2021/texmf-dist/tex/generic/iftex/ifvtex.sty
+(/usr/local/texlive/2021/texmf-dist/tex/generic/iftex/iftex.sty)))
+(/usr/local/texlive/2021/texmf-dist/tex/latex/preprint/authblk.sty)
 (/usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/hyperref.sty
 (/usr/local/texlive/2021/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
 (/usr/local/texlive/2021/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
@@ -68,519 +50,96 @@ For additional information on amsmath, use the `?' option.
 (/usr/local/texlive/2021/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 
 (/usr/local/texlive/2021/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
-))) (./upmath.sty)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/booktabs/booktabs.sty)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/listings/listings.sty
-(/usr/local/texlive/2021/texmf-dist/tex/latex/listings/lstmisc.sty)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/listings/listings.cfg))
-(/usr/local/texlive/2021/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)
-(./coderpaper.aux)
-(/usr/local/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-) (/usr/local/texlive/2021/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
-(/usr/local/texlive/2021/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
-(/usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
-(/usr/local/texlive/2021/texmf-dist/tex/latex/refcount/refcount.sty)
-(/usr/local/texlive/2021/texmf-dist/tex/generic/gettitlestring/gettitlestring.s
-ty)) (./coderpaper.out) (./coderpaper.out)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/psnfss/ts1phv.fd)
-Underfull \vbox (badness 3168) has occurred while \output is active
-Overfull \hbox (396.295pt too wide) has occurred while \output is active
-[]| 
-
-Overfull \vbox (194.79944pt too high) has occurred while \output is active
-Overfull \hbox (138.5pt too wide) has occurred while \output is active
-| [][]
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-[]
-
-Overfull \vbox (1.37195pt too high) has occurred while \output is active
-Overfull \hbox (18.0pt too wide) has occurred while \output is active
-| [] 
-[1{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 1371) in paragraph at lines 165--173
-[]\T1/phv/m/n/9.03374 The two sys-tems are sep-a-rated by a quar-ter
-
-Overfull \vbox (12.0pt too high) has occurred while \output is active
-Overfull \vbox (1.37195pt too high) has occurred while \output is active
-[2
-Non-PDF special ignored!
-<special> color pop
-] (/usr/local/texlive/2021/texmf-dist/tex/latex/psnfss/t1pcr.fd)
-Underfull \hbox (badness 10000) in paragraph at lines 324--324
-[]|\T1/phv/m/n/8 Benchmark
-
-Overfull \vbox (12.0pt too high) has occurred while \output is active
-Overfull \vbox (1.37195pt too high) has occurred while \output is active
-Overfull \hbox (18.0pt too wide) has occurred while \output is active
-| [] 
-[3]
-Overfull \hbox (6.8003pt too wide) in paragraph at lines 429--431
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
-
-Overfull \vbox (12.0pt too high) has occurred while \output is active
-Overfull \vbox (1.37195pt too high) has occurred while \output is active
-[4]
-Underfull \vbox (badness 6428) has occurred while \output is active
-Underfull \vbox (badness 7540) has occurred while \output is active
-Overfull \vbox (12.0pt too high) has occurred while \output is active
-Overfull \vbox (1.37195pt too high) has occurred while \output is active
-Overfull \hbox (18.0pt too wide) has occurred while \output is active
-| [] 
-[5]
-Underfull \hbox (badness 2065) in paragraph at lines 509--515
-[]\T1/phv/b/n/9.03374 The in-for-ma-tion an-nexer. \T1/phv/m/n/9.03374 RM-3588-
-PR's Ap-
-
-Underfull \hbox (badness 8038) in paragraph at lines 594--599
-[]\T1/phv/b/n/9.03374 Flavors: \T1/phv/m/n/9.03374 a Com-mon Lisp port of Spice
-
-
-Underfull \hbox (badness 7030) in paragraph at lines 594--599
-\T1/phv/m/n/9.03374 Lisp Fla-vors [[]], ex-tended with the Lisp
-
-Underfull \hbox (badness 2158) in paragraph at lines 594--599
-\T1/phv/m/n/9.03374 Ma-chine's \T1/pcr/m/n/9.03374 :case \T1/phv/m/n/9.03374 me
-thod com-bi-na-tion (with
-
-Underfull \hbox (badness 10000) in paragraph at lines 604--613
-\T1/phv/m/n/9.03374 de-struc-tur-ing \T1/pcr/m/n/9.03374 let\T1/phv/m/n/9.03374
- , old-style \T1/pcr/m/n/9.03374 do\T1/phv/m/n/9.03374 , named
-
-Underfull \hbox (badness 2103) in paragraph at lines 604--613
-\T1/pcr/m/n/9.03374 prog\T1/phv/m/n/9.03374 , multiple-value \T1/pcr/m/n/9.0337
-4 return\T1/phv/m/n/9.03374 , Lisp Ma-chine
-
-Underfull \hbox (badness 10000) in paragraph at lines 604--613
-\T1/pcr/m/n/9.03374 defstruct\T1/phv/m/n/9.03374 , \T1/pcr/m/n/9.03374 (defun (
-sym prop) ...)\T1/phv/m/n/9.03374 ,
-
-Underfull \hbox (badness 1527) in paragraph at lines 604--613
-\T1/pcr/m/n/9.03374 nil) \T1/phv/m/n/9.03374 false, \T1/pcr/m/n/9.03374 map \T1
-/phv/m/n/9.03374 over suc-ces-sive tails, and
-
-Overfull \vbox (12.0pt too high) has occurred while \output is active
-Overfull \vbox (1.37195pt too high) has occurred while \output is active
-[6]
-Underfull \hbox (badness 10000) in paragraph at lines 693--693
-[]|\T1/phv/m/n/8 English com-mands nam-ing
-
-Underfull \hbox (badness 10000) in paragraph at lines 694--694
-[]|\T1/phv/m/n/8 Source of
-
-Underfull \hbox (badness 10000) in paragraph at lines 694--694
-[]|\T1/phv/m/n/8 hand-built cliché li-brary
-
-Underfull \hbox (badness 10000) in paragraph at lines 696--697
-[]|\T1/phv/m/n/8 learned gen-er-a-tion; agen-tic
-
-Underfull \hbox (badness 2762) in paragraph at lines 698--698
-[]|\T1/phv/m/n/8 programmer de-cides, ap-pren-
-
-Underfull \vbox (badness 5802) has occurred while \output is active
-Overfull \vbox (12.0pt too high) has occurred while \output is active
-Overfull \vbox (1.37195pt too high) has occurred while \output is active
-Overfull \hbox (18.0pt too wide) has occurred while \output is active
-| [] 
-[7]
-Underfull \vbox (badness 10000) has occurred while \output is active
-Underfull \hbox (badness 1609) in paragraph at lines 752--768
-[]\T1/phv/b/n/9.03374 How does the sys-tem know it is mak-ing
-
-Overfull \vbox (12.0pt too high) has occurred while \output is active
-Overfull \vbox (1.37195pt too high) has occurred while \output is active
-[8]
-Overfull \vbox (12.0pt too high) has occurred while \output is active
-Overfull \vbox (1.37195pt too high) has occurred while \output is active
-Overfull \hbox (18.0pt too wide) has occurred while \output is active
-| [] 
-[9]
-Underfull \hbox (badness 10000) in paragraph at lines 886--888
-[]\T1/phv/m/n/9.03374 The tran-scrip-tions, in-ter-preters, com-pat-
-
-Underfull \hbox (badness 10000) in paragraph at lines 886--888
-\T1/phv/m/n/9.03374 i-bil-ity layer, and Hacker's Guides to both
-
-Underfull \hbox (badness 10000) in paragraph at lines 886--888
-\T1/phv/m/n/9.03374 pro-grams are open source, at [][]$https : / / github .
-
-Underfull \hbox (badness 10000) in paragraph at lines 886--888
-\T1/phv/m/n/9.03374 com / je^^[shrager / ExecutableArchaeology$[][] and
-
-Overfull \vbox (12.0pt too high) has occurred while \output is active
-Overfull \vbox (1.37195pt too high) has occurred while \output is active
-[10]
-Underfull \hbox (badness 10000) in paragraph at lines 984--989
-[]\T1/phv/m/n/8 g000001, ``spice-flavors'' and ``LetS,'' GitHub.
-
-Underfull \hbox (badness 6510) in paragraph at lines 984--989
-\T1/phv/m/n/8 Ac-cessed: Oct. 10, 2026. [On-line]. Avail-able:
-
-Underfull \hbox (badness 10000) in paragraph at lines 984--989
-[][]$\T1/phv/m/n/8 https : / / github . com / g000001 / spice -[] ^^]avors$[][]
-,
-
-Underfull \hbox (badness 10000) in paragraph at lines 1033--1037
-[][]$\T1/phv/m/n/8 https : / / github . com / netsettler / netsettlement / tree
- /
-
-Underfull \hbox (badness 10000) in paragraph at lines 1056--1060
-[]\T1/phv/m/n/8 J. Shrager, ``Ex-e-cutable Ar-chae-ol-ogy,'' GitHub
-
-Underfull \hbox (badness 10000) in paragraph at lines 1056--1060
-\T1/phv/m/n/8 (Heuris-tic-Coder, IPL-V, and Log-ic-The-o-rist
-
-Underfull \hbox (badness 10000) in paragraph at lines 1056--1060
-\T1/phv/m/n/8 di-rec-to-ries). Ac-cessed: Oct. 16, 2026.
-
-Underfull \hbox (badness 7851) in paragraph at lines 1056--1060
-\T1/phv/m/n/8 [On-line]. Avail-able: [][]$https : / / github . com / je^^[shrag
-er /
-
-Underfull \hbox (badness 3635) in paragraph at lines 1072--1076
-[]\T1/phv/m/n/8 J. Shrager. ``An IPL-V in-ter-preter in Com-mon
-
-Underfull \hbox (badness 3919) in paragraph at lines 1088--1093
-[]\T1/phv/m/n/8 H. A. Si-mon, ``The heuris-tic com-piler,'' RAND
-
-Underfull \hbox (badness 3039) in paragraph at lines 1088--1093
-\T1/phv/m/n/8 Corp., Santa Mon-ica, CA, USA, Mem-o-ran-dum
-
-Underfull \hbox (badness 10000) in paragraph at lines 1088--1093
-\T1/phv/m/n/8 RM-3588-PR, May 1963. [On-line]. Avail-able:
-
-Underfull \hbox (badness 10000) in paragraph at lines 1088--1093
-[][]$\T1/phv/m/n/8 http : / / bitsavers . org / pdf / rand / ipl / RM -[] 3588 
--[] PR _ The _
-
-Overfull \vbox (12.0pt too high) has occurred while \output is active
-Overfull \vbox (1.37195pt too high) has occurred while \output is active
-Overfull \hbox (18.0pt too wide) has occurred while \output is active
-| [] 
-[11]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 1113.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 1116.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 1120.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 1123.
-
-
-Overfull \vbox (12.0pt too high) has occurred while \output is active
-Overfull \vbox (1.37195pt too high) has occurred while \output is active
-[12] (./coderpaper.aux) )
-(see the transcript file for additional information){/usr/local/texlive/2021/te
-xmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2021/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2021/texmf-dist/fonts/ty
-pe1/urw/courier/ucrr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/
-helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/helveti
-c/uhvbo8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/helvetic/uhvr
-8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb
->
-Output written on coderpaper.pdf (12 pages, 129843 bytes).
-Transcript written on coderpaper.log.
-Latexmk: Log file says output to 'coderpaper.pdf'
-Rule 'pdflatex': File changes, etc:
-   Changed files, or newly in use since previous run(s):
-      'coderpaper.aux'
-------------
-Run number 2 of rule 'pdflatex'
-------------
-------------
-Running 'pdflatex  -interaction=nonstopmode -recorder  "coderpaper.tex"'
-------------
-Latexmk: Examining 'coderpaper.log'
-=== TeX engine is 'pdfTeX'
-Latexmk: applying rule 'pdflatex'...
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex)
- restricted \write18 enabled.
-entering extended mode
-(./coderpaper.tex
-LaTeX2e <2020-10-01> patch level 4
-L3 programming layer <2021-02-18> (./IEEEcsmag.cls
-Document Class: IEEEcsmag 2009/06/23 V1.2
--- See the "IEEECsMag_HOWTO" manual for usage information.
-(/usr/local/texlive/2021/texmf-dist/tex/latex/sfmath/sfmath.sty)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/psnfss/ot1phv.fd)
--- Using 8.25in x 10.75in (IEEE Photonics PaperSize) paper.
--- Using PDF output.
--- This is a 10 point document.
-(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics/color.sty
+))) (/usr/local/texlive/2021/texmf-dist/tex/latex/graphics/color.sty
 (/usr/local/texlive/2021/texmf-dist/tex/latex/graphics-cfg/color.cfg)
 (/usr/local/texlive/2021/texmf-dist/tex/latex/graphics-def/pdftex.def))
-(/usr/local/texlive/2021/texmf-dist/tex/generic/iftex/ifpdf.sty
-(/usr/local/texlive/2021/texmf-dist/tex/generic/iftex/iftex.sty))
-(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics/graphicx.sty
-(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics/keyval.sty)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics/graphics.sty
-(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics/trig.sty)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)))
-(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amstext.sty
-(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amsgen.sty))
-(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amsbsy.sty)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amsopn.sty))
-(/usr/local/texlive/2021/texmf-dist/tex/latex/tools/array.sty)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/base/fontenc.sty
-(/usr/local/texlive/2021/texmf-dist/tex/latex/psnfss/t1phv.fd)))
-(/usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/hyperref.sty
-(/usr/local/texlive/2021/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
-(/usr/local/texlive/2021/texmf-dist/tex/generic/infwarerr/infwarerr.sty))
-(/usr/local/texlive/2021/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)
-(/usr/local/texlive/2021/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
-(/usr/local/texlive/2021/texmf-dist/tex/generic/pdfescape/pdfescape.sty)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/hycolor/hycolor.sty)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/auxhook/auxhook.sty)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/kvoptions/kvoptions.sty)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/pd1enc.def)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/hyperref-langpatches.def
-) (/usr/local/texlive/2021/texmf-dist/tex/generic/intcalc/intcalc.sty)
-(/usr/local/texlive/2021/texmf-dist/tex/generic/etexcmds/etexcmds.sty)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/puenc.def)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/url/url.sty)
-(/usr/local/texlive/2021/texmf-dist/tex/generic/bitset/bitset.sty
-(/usr/local/texlive/2021/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))
-(/usr/local/texlive/2021/texmf-dist/tex/latex/base/atbegshi-ltx.sty))
-(/usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/hpdftex.def
-(/usr/local/texlive/2021/texmf-dist/tex/latex/base/atveryend-ltx.sty)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
-
-(/usr/local/texlive/2021/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
-))) (./upmath.sty)
 (/usr/local/texlive/2021/texmf-dist/tex/latex/booktabs/booktabs.sty)
 (/usr/local/texlive/2021/texmf-dist/tex/latex/listings/listings.sty
 (/usr/local/texlive/2021/texmf-dist/tex/latex/listings/lstmisc.sty)
 (/usr/local/texlive/2021/texmf-dist/tex/latex/listings/listings.cfg))
 (/usr/local/texlive/2021/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)
 (./coderpaper.aux)
-(/usr/local/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-) (/usr/local/texlive/2021/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
-(/usr/local/texlive/2021/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
 (/usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
 (/usr/local/texlive/2021/texmf-dist/tex/latex/refcount/refcount.sty)
 (/usr/local/texlive/2021/texmf-dist/tex/generic/gettitlestring/gettitlestring.s
 ty)) (./coderpaper.out) (./coderpaper.out)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/psnfss/ts1phv.fd)
-Underfull \vbox (badness 3168) has occurred while \output is active
-Overfull \hbox (396.295pt too wide) has occurred while \output is active
-[]| 
+(/usr/local/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) [1{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+[2] [3]
+Underfull \hbox (badness 1117) in paragraph at lines 302--303
+[]\OT1/cmr/m/n/9 Four-volume print-out, Jan-uary 1985 (KBE
 
-Overfull \vbox (194.86873pt too high) has occurred while \output is active
-Overfull \hbox (138.5pt too wide) has occurred while \output is active
-| [][]
+Underfull \hbox (badness 10000) in paragraph at lines 308--308
+[]\OT1/cmr/m/n/9 Benchmark re-pro-
+[4] [5] [6] [7]
 
-Underfull \hbox (badness 10000) has occurred while \output is active
-[]
+LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
+(Font)              using `OMS/cmsy/m/n' instead
+(Font)              for symbol `textbraceleft' on input line 595.
 
-Overfull \vbox (1.37195pt too high) has occurred while \output is active
-Overfull \hbox (18.0pt too wide) has occurred while \output is active
-| [] 
-[1{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 1371) in paragraph at lines 165--173
-[]\T1/phv/m/n/9.03374 The two sys-tems are sep-a-rated by a quar-ter
-
-Overfull \vbox (12.0pt too high) has occurred while \output is active
-Overfull \vbox (1.37195pt too high) has occurred while \output is active
-[2
-Non-PDF special ignored!
-<special> color pop
-] (/usr/local/texlive/2021/texmf-dist/tex/latex/psnfss/t1pcr.fd)
-Underfull \hbox (badness 10000) in paragraph at lines 324--324
-[]|\T1/phv/m/n/8 Benchmark
-
-Overfull \vbox (12.0pt too high) has occurred while \output is active
-Overfull \vbox (1.37195pt too high) has occurred while \output is active
-Overfull \hbox (18.0pt too wide) has occurred while \output is active
-| [] 
-[3]
-Overfull \hbox (6.8003pt too wide) in paragraph at lines 429--431
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
-
-Overfull \vbox (12.0pt too high) has occurred while \output is active
-Overfull \vbox (1.37195pt too high) has occurred while \output is active
-[4]
-Underfull \vbox (badness 6428) has occurred while \output is active
-Underfull \vbox (badness 7540) has occurred while \output is active
-Overfull \vbox (12.0pt too high) has occurred while \output is active
-Overfull \vbox (1.37195pt too high) has occurred while \output is active
-Overfull \hbox (18.0pt too wide) has occurred while \output is active
-| [] 
-[5]
-Underfull \hbox (badness 2065) in paragraph at lines 509--515
-[]\T1/phv/b/n/9.03374 The in-for-ma-tion an-nexer. \T1/phv/m/n/9.03374 RM-3588-
-PR's Ap-
-
-Underfull \hbox (badness 8038) in paragraph at lines 594--599
-[]\T1/phv/b/n/9.03374 Flavors: \T1/phv/m/n/9.03374 a Com-mon Lisp port of Spice
-
-
-Underfull \hbox (badness 7030) in paragraph at lines 594--599
-\T1/phv/m/n/9.03374 Lisp Fla-vors [[]], ex-tended with the Lisp
-
-Underfull \hbox (badness 2158) in paragraph at lines 594--599
-\T1/phv/m/n/9.03374 Ma-chine's \T1/pcr/m/n/9.03374 :case \T1/phv/m/n/9.03374 me
-thod com-bi-na-tion (with
-
-Underfull \hbox (badness 10000) in paragraph at lines 604--613
-\T1/phv/m/n/9.03374 de-struc-tur-ing \T1/pcr/m/n/9.03374 let\T1/phv/m/n/9.03374
- , old-style \T1/pcr/m/n/9.03374 do\T1/phv/m/n/9.03374 , named
-
-Underfull \hbox (badness 2103) in paragraph at lines 604--613
-\T1/pcr/m/n/9.03374 prog\T1/phv/m/n/9.03374 , multiple-value \T1/pcr/m/n/9.0337
-4 return\T1/phv/m/n/9.03374 , Lisp Ma-chine
-
-Underfull \hbox (badness 10000) in paragraph at lines 604--613
-\T1/pcr/m/n/9.03374 defstruct\T1/phv/m/n/9.03374 , \T1/pcr/m/n/9.03374 (defun (
-sym prop) ...)\T1/phv/m/n/9.03374 ,
-
-Underfull \hbox (badness 1527) in paragraph at lines 604--613
-\T1/pcr/m/n/9.03374 nil) \T1/phv/m/n/9.03374 false, \T1/pcr/m/n/9.03374 map \T1
-/phv/m/n/9.03374 over suc-ces-sive tails, and
-
-Overfull \vbox (12.0pt too high) has occurred while \output is active
-Overfull \vbox (1.37195pt too high) has occurred while \output is active
-[6]
-Underfull \hbox (badness 10000) in paragraph at lines 693--693
-[]|\T1/phv/m/n/8 English com-mands nam-ing
-
-Underfull \hbox (badness 10000) in paragraph at lines 694--694
-[]|\T1/phv/m/n/8 Source of
-
-Underfull \hbox (badness 10000) in paragraph at lines 694--694
-[]|\T1/phv/m/n/8 hand-built cliché li-brary
-
-Underfull \hbox (badness 10000) in paragraph at lines 696--697
-[]|\T1/phv/m/n/8 learned gen-er-a-tion; agen-tic
-
-Underfull \hbox (badness 2762) in paragraph at lines 698--698
-[]|\T1/phv/m/n/8 programmer de-cides, ap-pren-
-
-Underfull \vbox (badness 5802) has occurred while \output is active
-Overfull \vbox (12.0pt too high) has occurred while \output is active
-Overfull \vbox (1.37195pt too high) has occurred while \output is active
-Overfull \hbox (18.0pt too wide) has occurred while \output is active
-| [] 
-[7]
-Underfull \vbox (badness 10000) has occurred while \output is active
-Underfull \hbox (badness 1609) in paragraph at lines 752--768
-[]\T1/phv/b/n/9.03374 How does the sys-tem know it is mak-ing
-
-Overfull \vbox (12.0pt too high) has occurred while \output is active
-Overfull \vbox (1.37195pt too high) has occurred while \output is active
 [8]
-Overfull \vbox (12.0pt too high) has occurred while \output is active
-Overfull \vbox (1.37195pt too high) has occurred while \output is active
-Overfull \hbox (18.0pt too wide) has occurred while \output is active
-| [] 
-[9]
-Underfull \hbox (badness 10000) in paragraph at lines 886--888
-[]\T1/phv/m/n/9.03374 The tran-scrip-tions, in-ter-preters, com-pat-
+Underfull \hbox (badness 10000) in paragraph at lines 685--685
+[]\OT1/cmr/bx/n/9 Heuristic Com-piler
 
-Underfull \hbox (badness 10000) in paragraph at lines 886--888
-\T1/phv/m/n/9.03374 i-bil-ity layer, and Hacker's Guides to both
+Underfull \hbox (badness 10000) in paragraph at lines 685--685
+[]\OT1/cmr/bx/n/9 LLM-based as-sis-tants
 
-Underfull \hbox (badness 10000) in paragraph at lines 886--888
-\T1/phv/m/n/9.03374 pro-grams are open source, at [][]$https : / / github .
+Underfull \hbox (badness 2302) in paragraph at lines 686--686
+[]\OT1/cmr/m/n/9 English com-mands nam-ing
 
-Underfull \hbox (badness 10000) in paragraph at lines 886--888
-\T1/phv/m/n/9.03374 com / je^^[shrager / ExecutableArchaeology$[][] and
+Underfull \hbox (badness 1789) in paragraph at lines 687--687
+[]\OT1/cmr/m/n/9 Source of knowl-
 
-Overfull \vbox (12.0pt too high) has occurred while \output is active
-Overfull \vbox (1.37195pt too high) has occurred while \output is active
-[10]
-Underfull \hbox (badness 10000) in paragraph at lines 984--989
-[]\T1/phv/m/n/8 g000001, ``spice-flavors'' and ``LetS,'' GitHub.
+Underfull \hbox (badness 5878) in paragraph at lines 687--687
+[]\OT1/cmr/m/n/9 hand-coded op-er-a-tors and
 
-Underfull \hbox (badness 6510) in paragraph at lines 984--989
-\T1/phv/m/n/8 Ac-cessed: Oct. 10, 2026. [On-line]. Avail-able:
+Underfull \hbox (badness 10000) in paragraph at lines 687--687
+[]\OT1/cmr/m/n/9 hand-built clich^^Se li-brary
 
-Underfull \hbox (badness 10000) in paragraph at lines 984--989
-[][]$\T1/phv/m/n/8 https : / / github . com / g000001 / spice -[] ^^]avors$[][]
-,
+Underfull \hbox (badness 1275) in paragraph at lines 688--688
+[]\OT1/cmr/m/n/9 Internal rep-re-sen-
 
-Underfull \hbox (badness 10000) in paragraph at lines 1033--1037
-[][]$\T1/phv/m/n/8 https : / / github . com / netsettler / netsettlement / tree
- /
+Underfull \hbox (badness 10000) in paragraph at lines 689--689
+[]\OT1/cmr/m/n/9 clich^^Se in-stan-ti-a-tion, con-
 
-Underfull \hbox (badness 10000) in paragraph at lines 1056--1060
-[]\T1/phv/m/n/8 J. Shrager, ``Ex-e-cutable Ar-chae-ol-ogy,'' GitHub
+Underfull \hbox (badness 1142) in paragraph at lines 689--690
+[]\OT1/cmr/m/n/9 learned gen-er-a-tion; agen-tic
 
-Underfull \hbox (badness 10000) in paragraph at lines 1056--1060
-\T1/phv/m/n/8 (Heuris-tic-Coder, IPL-V, and Log-ic-The-o-rist
+Underfull \hbox (badness 3872) in paragraph at lines 690--690
+[]\OT1/cmr/m/n/9 adapt a com-piled rou-tine
 
-Underfull \hbox (badness 10000) in paragraph at lines 1056--1060
-\T1/phv/m/n/8 di-rec-to-ries). Ac-cessed: Oct. 16, 2026.
+Underfull \hbox (badness 1424) in paragraph at lines 691--692
+[]\OT1/cmr/m/n/9 ranges from com-ple-tion to
+[9] [10] [11] [12] [13]
+Underfull \hbox (badness 2626) in paragraph at lines 977--980
+[]\OT1/cmr/m/n/10.95 M. Chen et al., ``Eval-u-at-ing large lan-guage mod-els tr
+ained on code,'' Jul. 2021,
+[14] [15] (/usr/local/texlive/2021/texmf-dist/tex/latex/base/omscmr.fd)
+[16] (./coderpaper.aux)
 
-Underfull \hbox (badness 7851) in paragraph at lines 1056--1060
-\T1/phv/m/n/8 [On-line]. Avail-able: [][]$https : / / github . com / je^^[shrag
-er /
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Underfull \hbox (badness 3635) in paragraph at lines 1072--1076
-[]\T1/phv/m/n/8 J. Shrager. ``An IPL-V in-ter-preter in Com-mon
-
-Underfull \hbox (badness 3919) in paragraph at lines 1088--1093
-[]\T1/phv/m/n/8 H. A. Si-mon, ``The heuris-tic com-piler,'' RAND
-
-Underfull \hbox (badness 3039) in paragraph at lines 1088--1093
-\T1/phv/m/n/8 Corp., Santa Mon-ica, CA, USA, Mem-o-ran-dum
-
-Underfull \hbox (badness 10000) in paragraph at lines 1088--1093
-\T1/phv/m/n/8 RM-3588-PR, May 1963. [On-line]. Avail-able:
-
-Underfull \hbox (badness 10000) in paragraph at lines 1088--1093
-[][]$\T1/phv/m/n/8 http : / / bitsavers . org / pdf / rand / ipl / RM -[] 3588 
--[] PR _ The _
-
-Overfull \vbox (12.0pt too high) has occurred while \output is active
-Overfull \vbox (1.37195pt too high) has occurred while \output is active
-Overfull \hbox (18.0pt too wide) has occurred while \output is active
-| [] 
-[11]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 1113.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 1116.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 1120.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 1123.
-
-
-Overfull \vbox (12.0pt too high) has occurred while \output is active
-Overfull \vbox (1.37195pt too high) has occurred while \output is active
-[12] (./coderpaper.aux) )
+ )
 (see the transcript file for additional information){/usr/local/texlive/2021/te
-xmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2021/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2021/texmf-dist/fonts/ty
-pe1/urw/courier/ucrr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/
-helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/helveti
-c/uhvbo8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/helvetic/uhvr
-8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb
->
-Output written on coderpaper.pdf (12 pages, 129843 bytes).
+xmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/local/texlive/2021/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2021/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2021/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2021/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2021/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2021/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2021/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2021/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2021/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/pu
+blic/cm-super/sfrm1095.pfb>
+Output written on coderpaper.pdf (16 pages, 269738 bytes).
 Transcript written on coderpaper.log.
 Latexmk: Log file says output to 'coderpaper.pdf'
 Latexmk: Examining 'coderpaper.log'

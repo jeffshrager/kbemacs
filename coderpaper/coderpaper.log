@@ -1,338 +1,62 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.4.3)  16 OCT 2026 18:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.4.3)  16 OCT 2026 18:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **coderpaper.tex
 (./coderpaper.tex
 LaTeX2e <2020-10-01> patch level 4
-L3 programming layer <2021-02-18> (./IEEEcsmag.cls
-Document Class: IEEEcsmag 2009/06/23 V1.2
--- See the "IEEECsMag_HOWTO" manual for usage information.
-\@IEEEtrantmpdimenA=\dimen138
-\@IEEEtrantmpdimenB=\dimen139
-\@IEEEtrantmpcountA=\count179
-\@IEEEtrantmpcountB=\count180
-\@IEEEtrantmptoksA=\toks15
-(/usr/local/texlive/2021/texmf-dist/tex/latex/sfmath/sfmath.sty
-Package: sfmath 2007/08/27 v0.8 sans serif maths
-LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/phv/m/n on input line 329.
-LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/phv/bx/n on input line 330.
-\symSFMath=\mathgroup4
-LaTeX Font Info:    Overwriting symbol font `SFMath' in version `normal'
-(Font)                  OT1/phv/m/sl --> OT1/phv/m/sl on input line 343.
-LaTeX Font Info:    Overwriting symbol font `SFMath' in version `bold'
-(Font)                  OT1/phv/m/sl --> OT1/phv/bx/sl on input line 344.
-LaTeX Font Info:    Redeclaring math symbol \imath on input line 398.
-LaTeX Font Info:    Redeclaring math symbol \jmath on input line 399.
-\symSFMathUp=\mathgroup5
-LaTeX Font Info:    Overwriting symbol font `SFMathUp' in version `normal'
-(Font)                  OT1/phv/m/n --> OT1/phv/m/n on input line 406.
-LaTeX Font Info:    Overwriting symbol font `SFMathUp' in version `bold'
-(Font)                  OT1/phv/m/n --> OT1/phv/bx/n on input line 407.
-LaTeX Font Info:    Redeclaring math symbol \ldotp on input line 410.
-\symSFMathGreek=\mathgroup6
-LaTeX Font Info:    Overwriting symbol font `SFMathGreek' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 419.
-LaTeX Font Info:    Overwriting symbol font `SFMathGreek' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/bx/n on input line 420.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 422.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 423.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 424.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 425.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 426.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 427.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 428.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 429.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 430.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 431.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 432.
-\symSFMathUpGreek=\mathgroup7
-LaTeX Font Info:    Overwriting symbol font `SFMathUpGreek' in version `normal'
-
-(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 436.
-LaTeX Font Info:    Overwriting symbol font `SFMathUpGreek' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/bx/n on input line 437.
-LaTeX Font Info:    Overwriting math alphabet `\mathnormal' in version `normal'
-
-(Font)                  OML/cmm/m/it --> OT1/phv/m/sl on input line 446.
-LaTeX Font Info:    Overwriting math alphabet `\mathnormal' in version `bold'
-(Font)                  OML/cmm/b/it --> OT1/phv/bx/sl on input line 447.
-LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/phv/m/n --> OT1/phv/m/n on input line 449.
-LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/phv/bx/n --> OT1/phv/bx/n on input line 450.
-LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> OT1/phv/bx/n on input line 452.
-LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/phv/bx/n on input line 453.
-LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> OT1/phv/m/sl on input line 455.
-LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> OT1/phv/bx/sl on input line 456.
-LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/phv/m/n on input line 458.
-LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/phv/bx/n on input line 459.
-LaTeX Font Info:    Overwriting math alphabet `\mathsl' in version `bold'
-(Font)                  OT1/phv/m/sl --> OT1/phv/bx/sl on input line 466.
+L3 programming layer <2021-02-18>
+(/usr/local/texlive/2021/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
+(/usr/local/texlive/2021/texmf-dist/tex/latex/base/size11.clo
+File: size11.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
 )
-LaTeX Font Info:    Trying to load font information for OT1+phv on input line 3
-94.
-
-(/usr/local/texlive/2021/texmf-dist/tex/latex/psnfss/ot1phv.fd
-File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
+\c@part=\count179
+\c@section=\count180
+\c@subsection=\count181
+\c@subsubsection=\count182
+\c@paragraph=\count183
+\c@subparagraph=\count184
+\c@figure=\count185
+\c@table=\count186
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen138
 )
--- Using 8.25in x 10.75in (IEEE Photonics PaperSize) paper.
--- Using PDF output.
-\@IEEEnormalsizeunitybaselineskip=\dimen140
--- This is a 10 point document.
-\CLASSINFOnormalsizebaselineskip=\dimen141
-\CLASSINFOnormalsizeunitybaselineskip=\dimen142
-\IEEEnormaljot=\dimen143
-LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <5> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 752.
-LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <5> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 752.
-LaTeX Font Info:    Font shape `OT1/phv/bx/it' in size <5> not available
-(Font)              Font shape `OT1/phv/b/it' tried instead on input line 752.
-LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <5> not available
-(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 752.
-LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <7> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 752.
-LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <7> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 752.
-LaTeX Font Info:    Font shape `OT1/phv/bx/it' in size <7> not available
-(Font)              Font shape `OT1/phv/b/it' tried instead on input line 752.
-LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <7> not available
-(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 752.
-LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <8> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 752.
-LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <8> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 752.
-LaTeX Font Info:    Font shape `OT1/phv/bx/it' in size <8> not available
-(Font)              Font shape `OT1/phv/b/it' tried instead on input line 752.
-LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <8> not available
-(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 752.
-LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <8.5> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 752.
-LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <8.5> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 752.
-LaTeX Font Info:    Font shape `OT1/phv/bx/it' in size <8.5> not available
-(Font)              Font shape `OT1/phv/b/it' tried instead on input line 752.
-LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <8.5> not available
-(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 752.
-LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <9.03374> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 752.
-LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <9.03374> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 752.
-LaTeX Font Info:    Font shape `OT1/phv/bx/it' in size <9.03374> not available
-(Font)              Font shape `OT1/phv/b/it' tried instead on input line 752.
-LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <9.03374> not available
-(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 752.
-LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <10> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 752.
-LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 752.
-LaTeX Font Info:    Font shape `OT1/phv/bx/it' in size <10> not available
-(Font)              Font shape `OT1/phv/b/it' tried instead on input line 752.
-LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <10> not available
-(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 752.
-LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <12> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 752.
-LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <12> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 752.
-LaTeX Font Info:    Font shape `OT1/phv/bx/it' in size <12> not available
-(Font)              Font shape `OT1/phv/b/it' tried instead on input line 752.
-LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <12> not available
-(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 752.
-LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <17> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 752.
-LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <17> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 752.
-LaTeX Font Info:    Font shape `OT1/phv/bx/it' in size <17> not available
-(Font)              Font shape `OT1/phv/b/it' tried instead on input line 752.
-LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <17> not available
-(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 752.
-LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <20> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 752.
-LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <20> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 752.
-LaTeX Font Info:    Font shape `OT1/phv/bx/it' in size <20> not available
-(Font)              Font shape `OT1/phv/b/it' tried instead on input line 752.
-LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <20> not available
-(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 752.
-LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <18> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 752.
-LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <18> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 752.
-LaTeX Font Info:    Font shape `OT1/phv/bx/it' in size <18> not available
-(Font)              Font shape `OT1/phv/b/it' tried instead on input line 752.
-LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <18> not available
-(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 752.
-\IEEEilabelindentA=\dimen144
-\IEEEilabelindentB=\dimen145
-\IEEEilabelindent=\dimen146
-\IEEEelabelindent=\dimen147
-\IEEEdlabelindent=\dimen148
-\IEEElabelindent=\dimen149
-\IEEEiednormlabelsep=\dimen150
-\IEEEiedmathlabelsep=\dimen151
-\IEEEiedtopsep=\skip47
-\c@section=\count181
-\c@subsection=\count182
-\c@subsubsection=\count183
-\c@paragraph=\count184
-\c@IEEEsubequation=\count185
-\abovecaptionskip=\skip48
-\belowcaptionskip=\skip49
-\c@figure=\count186
-\marginfigbox=\box47
-\c@table=\count187
-\margintabbox=\box48
-\@IEEEeqnnumcols=\count188
-\@IEEEeqncolcnt=\count189
-\mkthtt=\skip50
-(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics/color.sty
-Package: color 2020/02/24 v1.2b Standard LaTeX Color (DPC)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
 
-(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics-cfg/color.cfg
-File: color.cfg 2016/01/02 v1.6 sample color configuration
+(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks15
 )
-Package color Info: Driver file: pdftex.def on input line 147.
-
-(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
-))
-(/usr/local/texlive/2021/texmf-dist/tex/generic/iftex/ifpdf.sty
-Package: ifpdf 2019/10/25 v3.4 ifpdf legacy package. Use iftex instead.
+(/usr/local/texlive/2021/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 
 (/usr/local/texlive/2021/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2020/03/06 v1.0d TeX engine tests
 ))
-Package color Info: Redefining color white on input line 3368.
-LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <9> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 3432.
-
-\tempbox=\box49
-\abstractbox=\box50
-\@IEEEtmpitemindent=\dimen152
-\c@IEEEbiography=\count190
-\@IEEEtranrubishbin=\box51
-\footheight=\dimen153
-
-(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2020/09/09 v1.2b Enhanced LaTeX Graphics (DPC,SPQR)
-
-(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks16
+\Gm@cnth=\count187
+\Gm@cntv=\count188
+\c@Gm@tempcnt=\count189
+\Gm@bindingoffset=\dimen139
+\Gm@wd@mp=\dimen140
+\Gm@odd@mp=\dimen141
+\Gm@even@mp=\dimen142
+\Gm@layoutwidth=\dimen143
+\Gm@layoutheight=\dimen144
+\Gm@layouthoffset=\dimen145
+\Gm@layoutvoffset=\dimen146
+\Gm@dimlist=\toks16
 )
-(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2020/08/30 v1.4c Standard LaTeX Graphics (DPC,SPQR)
-
-(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics/trig.sty
-Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/preprint/authblk.sty
+Package: authblk 2001/02/27 1.3 (PWD)
+\affilsep=\skip49
+\@affilsep=\skip50
+\c@Maxaffil=\count190
+\c@authors=\count191
+\c@affil=\count192
 )
-(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
-File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
-)
-Package graphics Info: Driver file: pdftex.def on input line 105.
-)
-\Gin@req@height=\dimen154
-\Gin@req@width=\dimen155
-)
-\typeheight=\dimen156
-\typewidth=\dimen157
-\extramargin=\skip51
-
-(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2020/09/23 v2.17i AMS math features
-\@mathmargin=\skip52
-
-For additional information on amsmath, use the `?' option.
-(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amstext.sty
-Package: amstext 2000/06/29 v2.01 AMS text
-
-(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amsgen.sty
-File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks17
-\ex@=\dimen158
-))
-(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amsbsy.sty
-Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen159
-)
-(/usr/local/texlive/2021/texmf-dist/tex/latex/amsmath/amsopn.sty
-Package: amsopn 2016/03/08 v2.02 operator names
-)
-\inf@bad=\count191
-LaTeX Info: Redefining \frac on input line 234.
-\uproot@=\count192
-\leftroot@=\count193
-LaTeX Info: Redefining \overline on input line 399.
-\classnum@=\count194
-\DOTSCASE@=\count195
-LaTeX Info: Redefining \ldots on input line 496.
-LaTeX Info: Redefining \dots on input line 499.
-LaTeX Info: Redefining \cdots on input line 620.
-\Mathstrutbox@=\box52
-\strutbox@=\box53
-\big@size=\dimen160
-LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
-\macc@depth=\count196
-\c@MaxMatrixCols=\count197
-\dotsspace@=\muskip16
-\c@parentequation=\count198
-\dspbrk@lvl=\count199
-\tag@help=\toks18
-\row@=\count266
-\column@=\count267
-\maxfields@=\count268
-\andhelp@=\toks19
-\eqnshift@=\dimen161
-\alignsep@=\dimen162
-\tagshift@=\dimen163
-\tagwidth@=\dimen164
-\totwidth@=\dimen165
-\lineht@=\dimen166
-\@envbody=\toks20
-\multlinegap=\skip53
-\multlinetaggap=\skip54
-\mathdisplay@stack=\toks21
-LaTeX Info: Redefining \[ on input line 2923.
-LaTeX Info: Redefining \] on input line 2924.
-)
-\authorcount=\count269
-\tempcount=\count270
-\NTempbox=\box54
-\NTempdimen=\dimen167
-
-(/usr/local/texlive/2021/texmf-dist/tex/latex/tools/array.sty
-Package: array 2020/10/01 v2.5c Tabular extension package (FMi)
-\col@sep=\dimen168
-\ar@mcellbox=\box55
-\extrarowheight=\dimen169
-\NC@list=\toks22
-\extratabsurround=\skip55
-\backup@length=\skip56
-\ar@cellbox=\box56
-)
-\quotebox=\box57
-\quoteskp=\skip57
-\sdquoteskp=\skip58
-\quotecnt=\count271
-
-(/usr/local/texlive/2021/texmf-dist/tex/latex/base/fontenc.sty
-Package: fontenc 2020/08/10 v2.0s Standard LaTeX package
-LaTeX Font Info:    Trying to load font information for T1+phv on input line 11
-2.
-
-(/usr/local/texlive/2021/texmf-dist/tex/latex/psnfss/t1phv.fd
-File: t1phv.fd 2020/03/25 scalable font definitions for T1/phv.
-)))
 (/usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2021-02-27 v7.00k Hypertext links for LaTeX
 
@@ -371,9 +95,9 @@ Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
 (/usr/local/texlive/2021/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
 )
-\@linkdim=\dimen170
-\Hy@linkcounter=\count272
-\Hy@pagecounter=\count273
+\@linkdim=\dimen147
+\Hy@linkcounter=\count193
+\Hy@pagecounter=\count194
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2021-02-27 v7.00k Hyperref: PDFDocEncoding definition (HO)
@@ -389,7 +113,7 @@ Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 (/usr/local/texlive/2021/texmf-dist/tex/generic/etexcmds/etexcmds.sty
 Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )
-\Hy@SavedSpaceFactor=\count274
+\Hy@SavedSpaceFactor=\count195
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2021-02-27 v7.00k Hyperref: PDF Unicode definition (HO)
@@ -404,14 +128,14 @@ Package hyperref Info: Plain pages OFF on input line 4207.
 Package hyperref Info: Backreferencing OFF on input line 4212.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4445.
-\c@Hy@tempcnt=\count275
+\c@Hy@tempcnt=\count196
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/url/url.sty
-\Urlmuskip=\muskip17
+\Urlmuskip=\muskip16
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4804.
-\XeTeXLinkMargin=\dimen171
+\XeTeXLinkMargin=\dimen148
 
 (/usr/local/texlive/2021/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
@@ -420,9 +144,9 @@ Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count276
-\Field@Width=\dimen172
-\Fld@charsize=\dimen173
+\Fld@menulength=\count197
+\Field@Width=\dimen149
+\Fld@charsize=\dimen150
 Package hyperref Info: Hyper figures OFF on input line 6075.
 Package hyperref Info: Link nesting OFF on input line 6080.
 Package hyperref Info: Hyper index ON on input line 6083.
@@ -438,9 +162,9 @@ Package: atbegshi-ltx 2020/08/17 v1.0a Emulation of the original atbegshi packa
 ge
 with kernel methods
 )
-\Hy@abspage=\count277
-\c@Item=\count278
-\c@Hfootnote=\count279
+\Hy@abspage=\count198
+\c@Item=\count199
+\c@Hfootnote=\count266
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 
@@ -452,8 +176,8 @@ Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atvery packag
 e
 with kernel methods
 )
-\Fld@listcount=\count280
-\c@bookmark@seq@number=\count281
+\Fld@listcount=\count267
+\c@bookmark@seq@number=\count268
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
@@ -464,55 +188,57 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 86.
 )
-\Hy@SectionHShift=\skip59
-) (./upmath.sty
-Package: upmath 2010/10/20 v1.1 CUP LaTeX2e package
-\c@mv@upright=\count282
-\c@mv@boldupright=\count283
-LaTeX Font Info:    Overwriting symbol font `letters' in version `upright'
-(Font)                  OML/cmm/m/it --> OML/eur/m/n on input line 82.
-LaTeX Font Info:    Overwriting symbol font `letters' in version `boldupright'
-(Font)                  OML/cmm/m/it --> OML/eur/b/n on input line 83.
+\Hy@SectionHShift=\skip51
+) (/usr/local/texlive/2021/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2020/02/24 v1.2b Standard LaTeX Color (DPC)
+
+(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
+Package color Info: Driver file: pdftex.def on input line 147.
+
+(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
+))
 (/usr/local/texlive/2021/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
-\heavyrulewidth=\dimen174
-\lightrulewidth=\dimen175
-\cmidrulewidth=\dimen176
-\belowrulesep=\dimen177
-\belowbottomsep=\dimen178
-\aboverulesep=\dimen179
-\abovetopsep=\dimen180
-\cmidrulesep=\dimen181
-\cmidrulekern=\dimen182
-\defaultaddspace=\dimen183
-\@cmidla=\count284
-\@cmidlb=\count285
-\@aboverulesep=\dimen184
-\@belowrulesep=\dimen185
-\@thisruleclass=\count286
-\@lastruleclass=\count287
-\@thisrulewidth=\dimen186
+\heavyrulewidth=\dimen151
+\lightrulewidth=\dimen152
+\cmidrulewidth=\dimen153
+\belowrulesep=\dimen154
+\belowbottomsep=\dimen155
+\aboverulesep=\dimen156
+\abovetopsep=\dimen157
+\cmidrulesep=\dimen158
+\cmidrulekern=\dimen159
+\defaultaddspace=\dimen160
+\@cmidla=\count269
+\@cmidlb=\count270
+\@aboverulesep=\dimen161
+\@belowrulesep=\dimen162
+\@thisruleclass=\count271
+\@lastruleclass=\count272
+\@thisrulewidth=\dimen163
 )
 (/usr/local/texlive/2021/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count288
-\lst@gtempboxa=\box58
-\lst@token=\toks23
-\lst@length=\count289
-\lst@currlwidth=\dimen187
-\lst@column=\count290
-\lst@pos=\count291
-\lst@lostspace=\dimen188
-\lst@width=\dimen189
-\lst@newlines=\count292
-\lst@lineno=\count293
-\lst@maxwidth=\dimen190
+\lst@mode=\count273
+\lst@gtempboxa=\box47
+\lst@token=\toks17
+\lst@length=\count274
+\lst@currlwidth=\dimen164
+\lst@column=\count275
+\lst@pos=\count276
+\lst@lostspace=\dimen165
+\lst@width=\dimen166
+\lst@newlines=\count277
+\lst@lineno=\count278
+\lst@maxwidth=\dimen167
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
-\c@lstnumber=\count294
-\lst@skipnumbers=\count295
-\lst@framebox=\box59
+\c@lstnumber=\count279
+\lst@skipnumbers=\count280
+\lst@framebox=\box48
 )
 (/usr/local/texlive/2021/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2020/03/24 1.8d listings configuration
@@ -521,95 +247,66 @@ Package: listings 2020/03/24 1.8d (Carsten Heinz)
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2021-03-18 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count296
-\l__pdf_internal_box=\box60
+\l__color_backend_stack_int=\count281
+\l__pdf_internal_box=\box49
 )
 (./coderpaper.aux)
 \openout1 = `coderpaper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <5> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 55.
-LaTeX Font Info:    Font shape `T1/phv/b/it' in size <5> not available
-(Font)              Font shape `T1/phv/b/sl' tried instead on input line 55.
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <7> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 55.
-LaTeX Font Info:    Font shape `T1/phv/b/it' in size <7> not available
-(Font)              Font shape `T1/phv/b/sl' tried instead on input line 55.
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <8> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 55.
-LaTeX Font Info:    Font shape `T1/phv/b/it' in size <8> not available
-(Font)              Font shape `T1/phv/b/sl' tried instead on input line 55.
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <8.5> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 55.
-LaTeX Font Info:    Font shape `T1/phv/b/it' in size <8.5> not available
-(Font)              Font shape `T1/phv/b/sl' tried instead on input line 55.
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9.03374> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 55.
-LaTeX Font Info:    Font shape `T1/phv/b/it' in size <9.03374> not available
-(Font)              Font shape `T1/phv/b/sl' tried instead on input line 55.
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 55.
-LaTeX Font Info:    Font shape `T1/phv/b/it' in size <10> not available
-(Font)              Font shape `T1/phv/b/sl' tried instead on input line 55.
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <12> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 55.
-LaTeX Font Info:    Font shape `T1/phv/b/it' in size <12> not available
-(Font)              Font shape `T1/phv/b/sl' tried instead on input line 55.
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <17> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 55.
-LaTeX Font Info:    Font shape `T1/phv/b/it' in size <17> not available
-(Font)              Font shape `T1/phv/b/sl' tried instead on input line 55.
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <20> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 55.
-LaTeX Font Info:    Font shape `T1/phv/b/it' in size <20> not available
-(Font)              Font shape `T1/phv/b/sl' tried instead on input line 55.
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <18> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 55.
-LaTeX Font Info:    Font shape `T1/phv/b/it' in size <18> not available
-(Font)              Font shape `T1/phv/b/sl' tried instead on input line 55.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
 
-(/usr/local/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count297
-\scratchdimen=\dimen191
-\scratchbox=\box61
-\nofMPsegments=\count298
-\nofMParguments=\count299
-\everyMPshowfont=\toks24
-\MPscratchCnt=\count300
-\MPscratchDim=\dimen192
-\MPnumerator=\count301
-\makeMPintoPDFobject=\count302
-\everyMPtoPDFconversion=\toks25
-) (/usr/local/texlive/2021/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
-Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-85.
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(72.26999pt, 469.75502pt, 72.26999pt)
+* v-part:(T,H,B)=(72.26999pt, 650.43001pt, 72.26999pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=469.75502pt
+* \textheight=650.43001pt
+* \oddsidemargin=0.0pt
+* \evensidemargin=0.0pt
+* \topmargin=-37.0pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=11.0pt
+* \footskip=30.0pt
+* \marginparwidth=59.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-(/usr/local/texlive/2021/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
-e
-))
-Package hyperref Info: Link coloring ON on input line 55.
-
+Package hyperref Info: Link coloring ON on input line 49.
 (/usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
 
@@ -620,399 +317,173 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count303
+\c@section@level=\count282
 )
-LaTeX Info: Redefining \ref on input line 55.
-LaTeX Info: Redefining \pageref on input line 55.
-LaTeX Info: Redefining \nameref on input line 55.
+LaTeX Info: Redefining \ref on input line 49.
+LaTeX Info: Redefining \pageref on input line 49.
+LaTeX Info: Redefining \nameref on input line 49.
  (./coderpaper.out) (./coderpaper.out)
 \@outlinefile=\write3
 \openout3 = `coderpaper.out'.
 
-\c@lstlisting=\count304
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 105.
-LaTeX Font Info:    Trying to load font information for TS1+phv on input line 1
-05.
 
-(/usr/local/texlive/2021/texmf-dist/tex/latex/psnfss/ts1phv.fd
-File: ts1phv.fd 2020/03/25 scalable font definitions for TS1/phv.
+(/usr/local/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count283
+\scratchdimen=\dimen168
+\scratchbox=\box50
+\nofMPsegments=\count284
+\nofMParguments=\count285
+\everyMPshowfont=\toks18
+\MPscratchCnt=\count286
+\MPscratchDim=\dimen169
+\MPnumerator=\count287
+\makeMPintoPDFobject=\count288
+\everyMPtoPDFconversion=\toks19
 )
-Underfull \vbox (badness 3168) has occurred while \output is active []
+\c@lstlisting=\count289
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 70.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 70.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 70.
+ [1
 
+{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+[2] [3]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 297.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 297.
 
-Overfull \hbox (396.295pt too wide) has occurred while \output is active
-[]| 
+Underfull \hbox (badness 1117) in paragraph at lines 302--303
+[]\OT1/cmr/m/n/9 Four-volume print-out, Jan-uary 1985 (KBE
  []
 
 
-Overfull \vbox (194.86873pt too high) has occurred while \output is active []
-
-
-Overfull \hbox (138.5pt too wide) has occurred while \output is active
-| [][]
+Underfull \hbox (badness 10000) in paragraph at lines 308--308
+[]\OT1/cmr/m/n/9 Benchmark re-pro-
  []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
-[]
- []
-
-
-Overfull \vbox (1.37195pt too high) has occurred while \output is active []
-
-
-Overfull \hbox (18.0pt too wide) has occurred while \output is active
-| [] 
- []
-
-[1{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
-
-
-]
-Underfull \hbox (badness 1371) in paragraph at lines 165--173
-[]\T1/phv/m/n/9.03374 The two sys-tems are sep-a-rated by a quar-ter
- []
-
-
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (1.37195pt too high) has occurred while \output is active []
-
-
-[2
-Non-PDF special ignored!
-<special> color pop
-]
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 28
-5.
- (/usr/local/texlive/2021/texmf-dist/tex/latex/psnfss/t1pcr.fd
-File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-)
-Underfull \hbox (badness 10000) in paragraph at lines 324--324
-[]|\T1/phv/m/n/8 Benchmark
- []
-
-
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (1.37195pt too high) has occurred while \output is active []
-
-
-Overfull \hbox (18.0pt too wide) has occurred while \output is active
-| [] 
- []
-
-[3]
-LaTeX Font Info:    Calculating math sizes for size <9.03374> on input line 415
-.
-
-Overfull \hbox (6.8003pt too wide) in paragraph at lines 429--431
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (1.37195pt too high) has occurred while \output is active []
-
 
 [4]
-Underfull \vbox (badness 6428) has occurred while \output is active []
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <10.95> on input line 403.
+ [5] [6] [7]
+LaTeX Font Info:    Trying to load font information for OMS+cmtt on input line 
+595.
+LaTeX Font Info:    No file OMScmtt.fd. on input line 595.
 
 
-Underfull \vbox (badness 7540) has occurred while \output is active []
-
-
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (1.37195pt too high) has occurred while \output is active []
-
-
-Overfull \hbox (18.0pt too wide) has occurred while \output is active
-| [] 
- []
-
-[5]
-Underfull \hbox (badness 2065) in paragraph at lines 509--515
-[]\T1/phv/b/n/9.03374 The in-for-ma-tion an-nexer. \T1/phv/m/n/9.03374 RM-3588-
-PR's Ap-
- []
-
-
-Underfull \hbox (badness 8038) in paragraph at lines 594--599
-[]\T1/phv/b/n/9.03374 Flavors: \T1/phv/m/n/9.03374 a Com-mon Lisp port of Spice
-
- []
-
-
-Underfull \hbox (badness 7030) in paragraph at lines 594--599
-\T1/phv/m/n/9.03374 Lisp Fla-vors [[]], ex-tended with the Lisp
- []
-
-
-Underfull \hbox (badness 2158) in paragraph at lines 594--599
-\T1/phv/m/n/9.03374 Ma-chine's \T1/pcr/m/n/9.03374 :case \T1/phv/m/n/9.03374 me
-thod com-bi-na-tion (with
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 604--613
-\T1/phv/m/n/9.03374 de-struc-tur-ing \T1/pcr/m/n/9.03374 let\T1/phv/m/n/9.03374
- , old-style \T1/pcr/m/n/9.03374 do\T1/phv/m/n/9.03374 , named
- []
-
-
-Underfull \hbox (badness 2103) in paragraph at lines 604--613
-\T1/pcr/m/n/9.03374 prog\T1/phv/m/n/9.03374 , multiple-value \T1/pcr/m/n/9.0337
-4 return\T1/phv/m/n/9.03374 , Lisp Ma-chine
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 604--613
-\T1/pcr/m/n/9.03374 defstruct\T1/phv/m/n/9.03374 , \T1/pcr/m/n/9.03374 (defun (
-sym prop) ...)\T1/phv/m/n/9.03374 ,
- []
-
-
-Underfull \hbox (badness 1527) in paragraph at lines 604--613
-\T1/pcr/m/n/9.03374 nil) \T1/phv/m/n/9.03374 false, \T1/pcr/m/n/9.03374 map \T1
-/phv/m/n/9.03374 over suc-ces-sive tails, and
- []
-
-
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (1.37195pt too high) has occurred while \output is active []
-
-
-[6]
-Underfull \hbox (badness 10000) in paragraph at lines 693--693
-[]|\T1/phv/m/n/8 English com-mands nam-ing
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 694--694
-[]|\T1/phv/m/n/8 Source of
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 694--694
-[]|\T1/phv/m/n/8 hand-built cliché li-brary
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 696--697
-[]|\T1/phv/m/n/8 learned gen-er-a-tion; agen-tic
- []
-
-
-Underfull \hbox (badness 2762) in paragraph at lines 698--698
-[]|\T1/phv/m/n/8 programmer de-cides, ap-pren-
- []
-
-
-Underfull \vbox (badness 5802) has occurred while \output is active []
-
-
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (1.37195pt too high) has occurred while \output is active []
-
-
-Overfull \hbox (18.0pt too wide) has occurred while \output is active
-| [] 
- []
-
-[7]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Underfull \hbox (badness 1609) in paragraph at lines 752--768
-[]\T1/phv/b/n/9.03374 How does the sys-tem know it is mak-ing
- []
-
-
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (1.37195pt too high) has occurred while \output is active []
-
+LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
+(Font)              using `OMS/cmsy/m/n' instead
+(Font)              for symbol `textbraceleft' on input line 595.
 
 [8]
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (1.37195pt too high) has occurred while \output is active []
-
-
-Overfull \hbox (18.0pt too wide) has occurred while \output is active
-| [] 
- []
-
-[9]
-Underfull \hbox (badness 10000) in paragraph at lines 886--888
-[]\T1/phv/m/n/9.03374 The tran-scrip-tions, in-ter-preters, com-pat-
+Underfull \hbox (badness 10000) in paragraph at lines 685--685
+[]\OT1/cmr/bx/n/9 Heuristic Com-piler
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 886--888
-\T1/phv/m/n/9.03374 i-bil-ity layer, and Hacker's Guides to both
+Underfull \hbox (badness 10000) in paragraph at lines 685--685
+[]\OT1/cmr/bx/n/9 LLM-based as-sis-tants
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 886--888
-\T1/phv/m/n/9.03374 pro-grams are open source, at [][]$https : / / github .
+Underfull \hbox (badness 2302) in paragraph at lines 686--686
+[]\OT1/cmr/m/n/9 English com-mands nam-ing
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 886--888
-\T1/phv/m/n/9.03374 com / je^^[shrager / ExecutableArchaeology$[][] and
+Underfull \hbox (badness 1789) in paragraph at lines 687--687
+[]\OT1/cmr/m/n/9 Source of knowl-
  []
 
 
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (1.37195pt too high) has occurred while \output is active []
-
-
-[10]
-Underfull \hbox (badness 10000) in paragraph at lines 984--989
-[]\T1/phv/m/n/8 g000001, ``spice-flavors'' and ``LetS,'' GitHub.
+Underfull \hbox (badness 5878) in paragraph at lines 687--687
+[]\OT1/cmr/m/n/9 hand-coded op-er-a-tors and
  []
 
 
-Underfull \hbox (badness 6510) in paragraph at lines 984--989
-\T1/phv/m/n/8 Ac-cessed: Oct. 10, 2026. [On-line]. Avail-able:
+Underfull \hbox (badness 10000) in paragraph at lines 687--687
+[]\OT1/cmr/m/n/9 hand-built clich^^Se li-brary
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 984--989
-[][]$\T1/phv/m/n/8 https : / / github . com / g000001 / spice -[] ^^]avors$[][]
-,
+Underfull \hbox (badness 1275) in paragraph at lines 688--688
+[]\OT1/cmr/m/n/9 Internal rep-re-sen-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1033--1037
-[][]$\T1/phv/m/n/8 https : / / github . com / netsettler / netsettlement / tree
- /
+Underfull \hbox (badness 10000) in paragraph at lines 689--689
+[]\OT1/cmr/m/n/9 clich^^Se in-stan-ti-a-tion, con-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1056--1060
-[]\T1/phv/m/n/8 J. Shrager, ``Ex-e-cutable Ar-chae-ol-ogy,'' GitHub
+Underfull \hbox (badness 1142) in paragraph at lines 689--690
+[]\OT1/cmr/m/n/9 learned gen-er-a-tion; agen-tic
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1056--1060
-\T1/phv/m/n/8 (Heuris-tic-Coder, IPL-V, and Log-ic-The-o-rist
+Underfull \hbox (badness 3872) in paragraph at lines 690--690
+[]\OT1/cmr/m/n/9 adapt a com-piled rou-tine
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1056--1060
-\T1/phv/m/n/8 di-rec-to-ries). Ac-cessed: Oct. 16, 2026.
+Underfull \hbox (badness 1424) in paragraph at lines 691--692
+[]\OT1/cmr/m/n/9 ranges from com-ple-tion to
  []
 
-
-Underfull \hbox (badness 7851) in paragraph at lines 1056--1060
-\T1/phv/m/n/8 [On-line]. Avail-able: [][]$https : / / github . com / je^^[shrag
-er /
+[9] [10] [11] [12] [13]
+Underfull \hbox (badness 2626) in paragraph at lines 977--980
+[]\OT1/cmr/m/n/10.95 M. Chen et al., ``Eval-u-at-ing large lan-guage mod-els tr
+ained on code,'' Jul. 2021,
  []
 
-
-Underfull \hbox (badness 3635) in paragraph at lines 1072--1076
-[]\T1/phv/m/n/8 J. Shrager. ``An IPL-V in-ter-preter in Com-mon
- []
-
-
-Underfull \hbox (badness 3919) in paragraph at lines 1088--1093
-[]\T1/phv/m/n/8 H. A. Si-mon, ``The heuris-tic com-piler,'' RAND
- []
-
-
-Underfull \hbox (badness 3039) in paragraph at lines 1088--1093
-\T1/phv/m/n/8 Corp., Santa Mon-ica, CA, USA, Mem-o-ran-dum
- []
+[14] [15]
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 1
+119.
+ (/usr/local/texlive/2021/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1119.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1088--1093
-\T1/phv/m/n/8 RM-3588-PR, May 1963. [On-line]. Avail-able:
- []
+[16] (./coderpaper.aux)
 
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1088--1093
-[][]$\T1/phv/m/n/8 http : / / bitsavers . org / pdf / rand / ipl / RM -[] 3588 
--[] PR _ The _
- []
-
-
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (1.37195pt too high) has occurred while \output is active []
-
-
-Overfull \hbox (18.0pt too wide) has occurred while \output is active
-| [] 
- []
-
-[11]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 1113.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 1116.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 1120.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 1123.
-
-
-Overfull \vbox (12.0pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (1.37195pt too high) has occurred while \output is active []
-
-
-[12
-
-] (./coderpaper.aux)
 Package rerunfilecheck Info: File `coderpaper.out' has not changed.
-(rerunfilecheck)             Checksum: 8BF835D66C842EB3DCD74810406AC84D;3964.
+(rerunfilecheck)             Checksum: 7550E82D94374CF67F6B329B62044DAB;2864.
  ) 
 Here is how much of TeX's memory you used:
- 11653 strings out of 478994
- 169102 string characters out of 5858185
- 526800 words of memory out of 5000000
- 28846 multiletter control sequences out of 15000+600000
- 536614 words of font info for 159 fonts, out of 8000000 for 9000
+ 9923 strings out of 478994
+ 144275 string characters out of 5858185
+ 499470 words of memory out of 5000000
+ 27181 multiletter control sequences out of 15000+600000
+ 411320 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 83i,10n,88p,526b,1123s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
-exlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/tex
-live/2021/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/202
-1/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2021/texmf
--dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/local/texlive/2021/texmf-dist/
-fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/t
-ype1/urw/helvetic/uhvro8a.pfb>
-Output written on coderpaper.pdf (12 pages, 129843 bytes).
+ 71i,11n,74p,526b,1129s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
+}</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
+</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><
+/usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></u
+sr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr
+/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/l
+ocal/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/loc
+al/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/
+texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/tex
+live/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
+ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texli
+ve/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texliv
+e/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive
+/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2
+021/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
+Output written on coderpaper.pdf (16 pages, 269738 bytes).
 PDF statistics:
- 422 PDF objects out of 1000 (max. 8388607)
- 398 compressed objects within 4 object streams
+ 446 PDF objects out of 1000 (max. 8388607)
+ 409 compressed objects within 5 object streams
  130 named destinations out of 1000 (max. 500000)
- 201 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 137 words of extra memory for PDF output out of 10000 (max. 10000000)
 
