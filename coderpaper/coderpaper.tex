@@ -85,10 +85,8 @@ of its own December 1984 self-tests exactly. Together they illustrate
 two historical approaches---autonomous problem solving and the
 knowledgeable apprentice---whose concerns reappear, in different
 technical form, in today's AI coding assistants. Fittingly, the
-reconstruction was done almost entirely by two of those assistants:
-ChatGPT did most of the transcription, cheaply, and Anthropic's Claude,
-this paper's first author, fixed the transcription and did most of the
-rest. Claude had an enormous head start on the Heuristic Compiler: an
+reconstruction was done almost entirely by one of those assistants,
+Anthropic's Claude, this paper's first author. Claude had an enormous head start on the Heuristic Compiler: an
 existing IPL-V interpreter, written by Shrager, that already ran the
 Logic Theorist. On KBEmacs it had a similar head start: an existing
 Common Lisp port of Spice Lisp Flavors, the object system on which
@@ -164,11 +162,8 @@ Common Lisp. In both cases the reanimation surfaced details invisible
 in the published accounts. And, in a turn that would surely have
 amused both Simon and Waters, both reanimations were themselves carried
 out by an AI coder: Anthropic's Claude~\cite{claude}, working in its
-command-line form, Claude Code. Most of the transcription of the listings
-was done by OpenAI's ChatGPT, because Claude was too expensive to spend
-on tens of thousands of lines of optical drudgery; Claude then had to
-find and fix ChatGPT's errors, which it did by running the code. Claude
-also wrote the Zetalisp compatibility layer, extended the IPL-V
+command-line form, Claude Code. Claude corrected the transcriptions of
+the listings by running the code, wrote the Zetalisp compatibility layer, extended the IPL-V
 interpreter (which it did not have to write: Shrager's interpreter,
 which already ran the Logic Theorist, gave it an enormous head start,
 as did an existing Common Lisp port of Spice Lisp Flavors for KBEmacs),

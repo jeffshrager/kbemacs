@@ -69,52 +69,52 @@ ty)) (./coderpaper.out) (./coderpaper.out)
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) [1{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 [2] [3]
-Underfull \hbox (badness 1117) in paragraph at lines 302--303
+Underfull \hbox (badness 1117) in paragraph at lines 297--298
 []\OT1/cmr/m/n/9 Four-volume print-out, Jan-uary 1985 (KBE
 
-Underfull \hbox (badness 10000) in paragraph at lines 308--308
+Underfull \hbox (badness 10000) in paragraph at lines 303--303
 []\OT1/cmr/m/n/9 Benchmark re-pro-
 [4] [5] [6] [7]
 
 LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbraceleft' on input line 595.
+(Font)              for symbol `textbraceleft' on input line 590.
 
 [8]
-Underfull \hbox (badness 10000) in paragraph at lines 685--685
+Underfull \hbox (badness 10000) in paragraph at lines 680--680
 []\OT1/cmr/bx/n/9 Heuristic Com-piler
 
-Underfull \hbox (badness 10000) in paragraph at lines 685--685
+Underfull \hbox (badness 10000) in paragraph at lines 680--680
 []\OT1/cmr/bx/n/9 LLM-based as-sis-tants
 
-Underfull \hbox (badness 2302) in paragraph at lines 686--686
+Underfull \hbox (badness 2302) in paragraph at lines 681--681
 []\OT1/cmr/m/n/9 English com-mands nam-ing
 
-Underfull \hbox (badness 1789) in paragraph at lines 687--687
+Underfull \hbox (badness 1789) in paragraph at lines 682--682
 []\OT1/cmr/m/n/9 Source of knowl-
 
-Underfull \hbox (badness 5878) in paragraph at lines 687--687
+Underfull \hbox (badness 5878) in paragraph at lines 682--682
 []\OT1/cmr/m/n/9 hand-coded op-er-a-tors and
 
-Underfull \hbox (badness 10000) in paragraph at lines 687--687
+Underfull \hbox (badness 10000) in paragraph at lines 682--682
 []\OT1/cmr/m/n/9 hand-built clich^^Se li-brary
 
-Underfull \hbox (badness 1275) in paragraph at lines 688--688
+Underfull \hbox (badness 1275) in paragraph at lines 683--683
 []\OT1/cmr/m/n/9 Internal rep-re-sen-
 
-Underfull \hbox (badness 10000) in paragraph at lines 689--689
+Underfull \hbox (badness 10000) in paragraph at lines 684--684
 []\OT1/cmr/m/n/9 clich^^Se in-stan-ti-a-tion, con-
 
-Underfull \hbox (badness 1142) in paragraph at lines 689--690
+Underfull \hbox (badness 1142) in paragraph at lines 684--685
 []\OT1/cmr/m/n/9 learned gen-er-a-tion; agen-tic
 
-Underfull \hbox (badness 3872) in paragraph at lines 690--690
+Underfull \hbox (badness 3872) in paragraph at lines 685--685
 []\OT1/cmr/m/n/9 adapt a com-piled rou-tine
 
-Underfull \hbox (badness 1424) in paragraph at lines 691--692
+Underfull \hbox (badness 1424) in paragraph at lines 686--687
 []\OT1/cmr/m/n/9 ranges from com-ple-tion to
 [9] [10] [11] [12] [13]
-Underfull \hbox (badness 2626) in paragraph at lines 977--980
+Underfull \hbox (badness 2626) in paragraph at lines 972--975
 []\OT1/cmr/m/n/10.95 M. Chen et al., ``Eval-u-at-ing large lan-guage mod-els tr
 ained on code,'' Jul. 2021,
 [14] [15] (/usr/local/texlive/2021/texmf-dist/tex/latex/base/omscmr.fd)
@@ -139,7 +139,150 @@ e1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type
 /public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/
 public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/pu
 blic/cm-super/sfrm1095.pfb>
-Output written on coderpaper.pdf (16 pages, 270382 bytes).
+Output written on coderpaper.pdf (16 pages, 270074 bytes).
+Transcript written on coderpaper.log.
+Latexmk: Log file says output to 'coderpaper.pdf'
+Rule 'pdflatex': File changes, etc:
+   Changed files, or newly in use since previous run(s):
+      'coderpaper.aux'
+------------
+Run number 2 of rule 'pdflatex'
+------------
+------------
+Running 'pdflatex  -interaction=nonstopmode -recorder  "coderpaper.tex"'
+------------
+Latexmk: Examining 'coderpaper.log'
+=== TeX engine is 'pdfTeX'
+Latexmk: applying rule 'pdflatex'...
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./coderpaper.tex
+LaTeX2e <2020-10-01> patch level 4
+L3 programming layer <2021-02-18>
+(/usr/local/texlive/2021/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
+(/usr/local/texlive/2021/texmf-dist/tex/latex/base/size11.clo))
+(/usr/local/texlive/2021/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/iftex/ifvtex.sty
+(/usr/local/texlive/2021/texmf-dist/tex/generic/iftex/iftex.sty)))
+(/usr/local/texlive/2021/texmf-dist/tex/latex/preprint/authblk.sty)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2021/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/usr/local/texlive/2021/texmf-dist/tex/generic/infwarerr/infwarerr.sty))
+(/usr/local/texlive/2021/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/pdfescape/pdfescape.sty)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/auxhook/auxhook.sty)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/kvoptions/kvoptions.sty)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/hyperref-langpatches.def
+) (/usr/local/texlive/2021/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/etexcmds/etexcmds.sty)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/bitset/bitset.sty
+(/usr/local/texlive/2021/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))
+(/usr/local/texlive/2021/texmf-dist/tex/latex/base/atbegshi-ltx.sty))
+(/usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2021/texmf-dist/tex/latex/base/atveryend-ltx.sty)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+
+(/usr/local/texlive/2021/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+))) (/usr/local/texlive/2021/texmf-dist/tex/latex/graphics/color.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/graphics-def/pdftex.def))
+(/usr/local/texlive/2021/texmf-dist/tex/latex/booktabs/booktabs.sty)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/listings/listings.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/listings/lstmisc.sty)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/listings/listings.cfg))
+(/usr/local/texlive/2021/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)
+(./coderpaper.aux)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(/usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2021/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/local/texlive/2021/texmf-dist/tex/generic/gettitlestring/gettitlestring.s
+ty)) (./coderpaper.out) (./coderpaper.out)
+(/usr/local/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) [1{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+[2] [3]
+Underfull \hbox (badness 1117) in paragraph at lines 297--298
+[]\OT1/cmr/m/n/9 Four-volume print-out, Jan-uary 1985 (KBE
+
+Underfull \hbox (badness 10000) in paragraph at lines 303--303
+[]\OT1/cmr/m/n/9 Benchmark re-pro-
+[4] [5] [6] [7]
+
+LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
+(Font)              using `OMS/cmsy/m/n' instead
+(Font)              for symbol `textbraceleft' on input line 590.
+
+[8]
+Underfull \hbox (badness 10000) in paragraph at lines 680--680
+[]\OT1/cmr/bx/n/9 Heuristic Com-piler
+
+Underfull \hbox (badness 10000) in paragraph at lines 680--680
+[]\OT1/cmr/bx/n/9 LLM-based as-sis-tants
+
+Underfull \hbox (badness 2302) in paragraph at lines 681--681
+[]\OT1/cmr/m/n/9 English com-mands nam-ing
+
+Underfull \hbox (badness 1789) in paragraph at lines 682--682
+[]\OT1/cmr/m/n/9 Source of knowl-
+
+Underfull \hbox (badness 5878) in paragraph at lines 682--682
+[]\OT1/cmr/m/n/9 hand-coded op-er-a-tors and
+
+Underfull \hbox (badness 10000) in paragraph at lines 682--682
+[]\OT1/cmr/m/n/9 hand-built clich^^Se li-brary
+
+Underfull \hbox (badness 1275) in paragraph at lines 683--683
+[]\OT1/cmr/m/n/9 Internal rep-re-sen-
+
+Underfull \hbox (badness 10000) in paragraph at lines 684--684
+[]\OT1/cmr/m/n/9 clich^^Se in-stan-ti-a-tion, con-
+
+Underfull \hbox (badness 1142) in paragraph at lines 684--685
+[]\OT1/cmr/m/n/9 learned gen-er-a-tion; agen-tic
+
+Underfull \hbox (badness 3872) in paragraph at lines 685--685
+[]\OT1/cmr/m/n/9 adapt a com-piled rou-tine
+
+Underfull \hbox (badness 1424) in paragraph at lines 686--687
+[]\OT1/cmr/m/n/9 ranges from com-ple-tion to
+[9] [10] [11] [12] [13]
+Underfull \hbox (badness 2626) in paragraph at lines 972--975
+[]\OT1/cmr/m/n/10.95 M. Chen et al., ``Eval-u-at-ing large lan-guage mod-els tr
+ained on code,'' Jul. 2021,
+[14] [15] (/usr/local/texlive/2021/texmf-dist/tex/latex/base/omscmr.fd)
+[16] (./coderpaper.aux)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+ )
+(see the transcript file for additional information){/usr/local/texlive/2021/te
+xmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/local/texlive/2021/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2021/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2021/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2021/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2021/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2021/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2021/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2021/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2021/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/pu
+blic/cm-super/sfrm1095.pfb>
+Output written on coderpaper.pdf (16 pages, 270074 bytes).
 Transcript written on coderpaper.log.
 Latexmk: Log file says output to 'coderpaper.pdf'
 Latexmk: Examining 'coderpaper.log'

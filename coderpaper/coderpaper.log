@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.4.3)  17 OCT 2026 09:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.4.3)  17 OCT 2026 09:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -353,101 +353,101 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 {/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 [2] [3]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 297.
+(Font)              <9> on input line 292.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 297.
+(Font)              <5> on input line 292.
 
-Underfull \hbox (badness 1117) in paragraph at lines 302--303
+Underfull \hbox (badness 1117) in paragraph at lines 297--298
 []\OT1/cmr/m/n/9 Four-volume print-out, Jan-uary 1985 (KBE
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 308--308
+Underfull \hbox (badness 10000) in paragraph at lines 303--303
 []\OT1/cmr/m/n/9 Benchmark re-pro-
  []
 
 [4]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 403.
+(Font)              <10.95> on input line 398.
  [5] [6] [7]
 LaTeX Font Info:    Trying to load font information for OMS+cmtt on input line 
-595.
-LaTeX Font Info:    No file OMScmtt.fd. on input line 595.
+590.
+LaTeX Font Info:    No file OMScmtt.fd. on input line 590.
 
 
 LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbraceleft' on input line 595.
+(Font)              for symbol `textbraceleft' on input line 590.
 
 [8]
-Underfull \hbox (badness 10000) in paragraph at lines 685--685
+Underfull \hbox (badness 10000) in paragraph at lines 680--680
 []\OT1/cmr/bx/n/9 Heuristic Com-piler
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 685--685
+Underfull \hbox (badness 10000) in paragraph at lines 680--680
 []\OT1/cmr/bx/n/9 LLM-based as-sis-tants
  []
 
 
-Underfull \hbox (badness 2302) in paragraph at lines 686--686
+Underfull \hbox (badness 2302) in paragraph at lines 681--681
 []\OT1/cmr/m/n/9 English com-mands nam-ing
  []
 
 
-Underfull \hbox (badness 1789) in paragraph at lines 687--687
+Underfull \hbox (badness 1789) in paragraph at lines 682--682
 []\OT1/cmr/m/n/9 Source of knowl-
  []
 
 
-Underfull \hbox (badness 5878) in paragraph at lines 687--687
+Underfull \hbox (badness 5878) in paragraph at lines 682--682
 []\OT1/cmr/m/n/9 hand-coded op-er-a-tors and
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 687--687
+Underfull \hbox (badness 10000) in paragraph at lines 682--682
 []\OT1/cmr/m/n/9 hand-built clich^^Se li-brary
  []
 
 
-Underfull \hbox (badness 1275) in paragraph at lines 688--688
+Underfull \hbox (badness 1275) in paragraph at lines 683--683
 []\OT1/cmr/m/n/9 Internal rep-re-sen-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 689--689
+Underfull \hbox (badness 10000) in paragraph at lines 684--684
 []\OT1/cmr/m/n/9 clich^^Se in-stan-ti-a-tion, con-
  []
 
 
-Underfull \hbox (badness 1142) in paragraph at lines 689--690
+Underfull \hbox (badness 1142) in paragraph at lines 684--685
 []\OT1/cmr/m/n/9 learned gen-er-a-tion; agen-tic
  []
 
 
-Underfull \hbox (badness 3872) in paragraph at lines 690--690
+Underfull \hbox (badness 3872) in paragraph at lines 685--685
 []\OT1/cmr/m/n/9 adapt a com-piled rou-tine
  []
 
 
-Underfull \hbox (badness 1424) in paragraph at lines 691--692
+Underfull \hbox (badness 1424) in paragraph at lines 686--687
 []\OT1/cmr/m/n/9 ranges from com-ple-tion to
  []
 
 [9] [10] [11] [12] [13]
-Underfull \hbox (badness 2626) in paragraph at lines 977--980
+Underfull \hbox (badness 2626) in paragraph at lines 972--975
 []\OT1/cmr/m/n/10.95 M. Chen et al., ``Eval-u-at-ing large lan-guage mod-els tr
 ained on code,'' Jul. 2021,
  []
 
 [14] [15]
 LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 1
-121.
+116.
  (/usr/local/texlive/2021/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1121.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1116.
 
 
 [16] (./coderpaper.aux)
@@ -460,7 +460,7 @@ Package rerunfilecheck Info: File `coderpaper.out' has not changed.
 Here is how much of TeX's memory you used:
  9923 strings out of 478994
  144275 string characters out of 5858185
- 500470 words of memory out of 5000000
+ 499470 words of memory out of 5000000
  27181 multiletter control sequences out of 15000+600000
  411320 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -480,7 +480,7 @@ ve/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texliv
 e/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive
 /2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2
 021/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on coderpaper.pdf (16 pages, 270382 bytes).
+Output written on coderpaper.pdf (16 pages, 270074 bytes).
 PDF statistics:
  446 PDF objects out of 1000 (max. 8388607)
  409 compressed objects within 5 object streams
