@@ -818,6 +818,66 @@ reanimation that reproduces those failures, with the same wrong code,
 would be a sharper test of fidelity than one that reproduces only the
 successes.
 
+\section{What It Took}
+\label{sec:effort}
+
+Claude Code logs every session, including the token counts of each
+call to the model, so the effort behind the two reanimations can be
+measured rather than remembered. Table~\ref{tab:effort} totals those
+logs. All of the work was done by Claude Opus~5.5. ``Active time''
+counts only stretches in which successive log entries were less than
+ten minutes apart, so it leaves out long test runs and human absences
+and is a lower bound. The KBEmacs column includes the writing of this
+paper and of the accompanying hacker's guides, which were done in the
+same sessions. Neither column includes the head start: the original
+construction of Shrager's IPL-V interpreter for the Logic Theorist
+(roughly 1,350 further model calls and 11 active hours, mostly by an
+earlier Claude model), or ChatGPT's transcription of the KBEmacs
+listings, which left no logs available to us.
+
+\begin{table}[t]
+\centering
+\caption{Claude's effort, from the Claude Code session logs. Excludes ChatGPT's transcription of the KBEmacs listings.}
+\label{tab:effort}
+\footnotesize
+\begin{tabular}{@{}lrr@{}}
+\toprule
+ & \textbf{Heuristic Compiler} & \textbf{KBEmacs} \\ \midrule
+Calendar dates (2026) & Oct.\ 2--3 & Oct.\ 5--17 \\
+Sessions & 1 & 3, plus 28 subagent runs \\
+Model calls & $\sim$485 & $\sim$1,080 \\
+Tool calls (shell, edits, reads) & $\sim$590 & $\sim$1,000 \\
+Human prompts & $\sim$70 & $\sim$160 \\
+Tokens generated & 0.42\,M & 0.91\,M \\
+Tokens newly read & 3.5\,M & 10\,M \\
+Tokens re-read from cache & 154\,M & 261\,M \\
+Active time & $\sim$2.7\,h & $\sim$3.3\,h \\ \bottomrule
+\end{tabular}
+\end{table}
+
+Taken together, the two reanimations cost about 1,500 calls to the
+model, 1,600 tool invocations, and six hours of active machine time,
+spread over two weeks of calendar time, not counting ChatGPT's
+extraction of the KBEmacs listings from the scans. Most of that calendar time was
+spent waiting for the human authors.
+
+Three features of these numbers are worth remarking on. First, almost
+all of the tokens are context rather than work: on each call the model
+re-reads the conversation so far, so the 415 million cached tokens are
+mostly Claude reminding itself what it had been doing. What Claude
+actually wrote---code, patches, commands, commit messages, and prose
+---comes to about 1.3 million tokens across both projects, a
+few times the size of the KBEmacs listings themselves. Second, the
+human side of the ledger is small and, as the coda confesses, largely
+repetitive: some 230 prompts, a large fraction of which amount to
+``continue'' or ``push.'' Third, the comparison with the originals is
+not flattering to them, and not entirely fair either. KBEmacs embodied
+years of work by a research group, and the Heuristic Compiler a
+substantial programming effort at RAND; the reanimations had the
+designs, the code, and the published outputs already in hand, and
+needed only to make them run again. Reading an ancestor's code is much
+cheaper than writing it, though it is apparently still not free.
+
 \section{Related Work}
 \label{sec:related}
 
