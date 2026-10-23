@@ -701,7 +701,16 @@ difference between what happened and what was wanted, and try again.
 The difference detector is now an executed test suite rather than a
 hand-coded comparison of states, and the operator is a learned model
 rather than a table of connections, but the architecture of
-means-end iteration is recognizable. KBEmacs, for its part, came with a
+means-end iteration is recognizable. The resemblance goes beyond the
+loop. A coding agent of this kind is not a purely neural system: the
+language model chooses what to do next and interprets the results, but
+the exact computation---compiling, executing, comparing outputs,
+tracking changes---is done by conventional symbolic programs. In the
+work reported here these were a Common Lisp compiler, an IPL-V
+interpreter, and the 1984 self-test's own comparison of generated with
+expected code. The heuristics have moved from a hand-written table of
+connections into a learned model; the operators and the difference
+tests are still ordinary programs. KBEmacs, for its part, came with a
 self-test in which the expected output was code, which is exactly what
 made it possible to check the reanimation in 2026. Claude
 spent much of that reanimation in a loop of just this kind, with the
