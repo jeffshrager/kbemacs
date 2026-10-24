@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.4.3)  17 OCT 2026 09:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.4.3)  23 OCT 2026 20:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -220,25 +220,33 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@lastruleclass=\count272
 \@thisrulewidth=\dimen163
 )
+(/usr/local/texlive/2021/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count273
+\float@exts=\toks17
+\float@box=\box47
+\@float@everytoks=\toks18
+\@floatcapt=\box48
+)
 (/usr/local/texlive/2021/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count273
-\lst@gtempboxa=\box47
-\lst@token=\toks17
-\lst@length=\count274
+\lst@mode=\count274
+\lst@gtempboxa=\box49
+\lst@token=\toks19
+\lst@length=\count275
 \lst@currlwidth=\dimen164
-\lst@column=\count275
-\lst@pos=\count276
+\lst@column=\count276
+\lst@pos=\count277
 \lst@lostspace=\dimen165
 \lst@width=\dimen166
-\lst@newlines=\count277
-\lst@lineno=\count278
+\lst@newlines=\count278
+\lst@lineno=\count279
 \lst@maxwidth=\dimen167
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
-\c@lstnumber=\count279
-\lst@skipnumbers=\count280
-\lst@framebox=\box48
+\c@lstnumber=\count280
+\lst@skipnumbers=\count281
+\lst@framebox=\box50
 )
 (/usr/local/texlive/2021/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2020/03/24 1.8d listings configuration
@@ -247,30 +255,30 @@ Package: listings 2020/03/24 1.8d (Carsten Heinz)
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2021-03-18 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count281
-\l__pdf_internal_box=\box49
+\l__color_backend_stack_int=\count282
+\l__pdf_internal_box=\box51
 )
 (./coderpaper.aux)
 \openout1 = `coderpaper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -306,7 +314,7 @@ LaTeX Font Info:    ... okay on input line 49.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring ON on input line 49.
+Package hyperref Info: Link coloring ON on input line 53.
 (/usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
 
@@ -317,11 +325,11 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count282
+\c@section@level=\count283
 )
-LaTeX Info: Redefining \ref on input line 49.
-LaTeX Info: Redefining \pageref on input line 49.
-LaTeX Info: Redefining \nameref on input line 49.
+LaTeX Info: Redefining \ref on input line 53.
+LaTeX Info: Redefining \pageref on input line 53.
+LaTeX Info: Redefining \nameref on input line 53.
  (./coderpaper.out) (./coderpaper.out)
 \@outlinefile=\write3
 \openout3 = `coderpaper.out'.
@@ -329,19 +337,19 @@ LaTeX Info: Redefining \nameref on input line 49.
 
 (/usr/local/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count283
+\scratchcounter=\count284
 \scratchdimen=\dimen168
-\scratchbox=\box50
-\nofMPsegments=\count284
-\nofMParguments=\count285
-\everyMPshowfont=\toks18
-\MPscratchCnt=\count286
+\scratchbox=\box52
+\nofMPsegments=\count285
+\nofMParguments=\count286
+\everyMPshowfont=\toks20
+\MPscratchCnt=\count287
 \MPscratchDim=\dimen169
-\MPnumerator=\count287
-\makeMPintoPDFobject=\count288
-\everyMPtoPDFconversion=\toks19
+\MPnumerator=\count288
+\makeMPintoPDFobject=\count289
+\everyMPtoPDFconversion=\toks21
 )
-\c@lstlisting=\count289
+\c@lstlisting=\count290
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <12> on input line 70.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -353,115 +361,146 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 {/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 [2] [3]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 292.
+(Font)              <9> on input line 299.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 292.
+(Font)              <5> on input line 299.
 
-Underfull \hbox (badness 1117) in paragraph at lines 297--298
+Underfull \hbox (badness 1117) in paragraph at lines 304--305
 []\OT1/cmr/m/n/9 Four-volume print-out, Jan-uary 1985 (KBE
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 303--303
+Underfull \hbox (badness 10000) in paragraph at lines 310--310
 []\OT1/cmr/m/n/9 Benchmark re-pro-
  []
 
-[4]
+[4pdfTeX warning (ext4): destination with the same identifier (name{table.1}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.337 \subsection
+                 {Everything Is a Description List}] [5] [6pdfTeX warning (ext4
+): destination with the same identifier (name{figure.1}) has been already used,
+ duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.474 
+      ]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 398.
- [5] [6] [7]
-LaTeX Font Info:    Trying to load font information for OMS+cmtt on input line 
-590.
-LaTeX Font Info:    No file OMScmtt.fd. on input line 590.
-
-
-LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
-(Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbraceleft' on input line 590.
-
-[8]
-Underfull \hbox (badness 10000) in paragraph at lines 680--680
+(Font)              <10.95> on input line 495.
+ [7pdfTeX warning (ext4): destination with the same identifier (name{figure.2})
+ has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.551 
+      ] [8]
+Underfull \hbox (badness 10000) in paragraph at lines 638--638
 []\OT1/cmr/bx/n/9 Heuristic Com-piler
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 680--680
+Underfull \hbox (badness 10000) in paragraph at lines 638--638
 []\OT1/cmr/bx/n/9 LLM-based as-sis-tants
  []
 
 
-Underfull \hbox (badness 2302) in paragraph at lines 681--681
+Underfull \hbox (badness 2302) in paragraph at lines 639--639
 []\OT1/cmr/m/n/9 English com-mands nam-ing
  []
 
 
-Underfull \hbox (badness 1789) in paragraph at lines 682--682
+Underfull \hbox (badness 1789) in paragraph at lines 640--640
 []\OT1/cmr/m/n/9 Source of knowl-
  []
 
 
-Underfull \hbox (badness 5878) in paragraph at lines 682--682
+Underfull \hbox (badness 5878) in paragraph at lines 640--640
 []\OT1/cmr/m/n/9 hand-coded op-er-a-tors and
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 682--682
+Underfull \hbox (badness 10000) in paragraph at lines 640--640
 []\OT1/cmr/m/n/9 hand-built clich^^Se li-brary
  []
 
 
-Underfull \hbox (badness 1275) in paragraph at lines 683--683
+Underfull \hbox (badness 1275) in paragraph at lines 641--641
 []\OT1/cmr/m/n/9 Internal rep-re-sen-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 684--684
+Underfull \hbox (badness 10000) in paragraph at lines 642--642
 []\OT1/cmr/m/n/9 clich^^Se in-stan-ti-a-tion, con-
  []
 
 
-Underfull \hbox (badness 1142) in paragraph at lines 684--685
+Underfull \hbox (badness 1142) in paragraph at lines 642--643
 []\OT1/cmr/m/n/9 learned gen-er-a-tion; agen-tic
  []
 
 
-Underfull \hbox (badness 3872) in paragraph at lines 685--685
+Underfull \hbox (badness 3872) in paragraph at lines 643--643
 []\OT1/cmr/m/n/9 adapt a com-piled rou-tine
  []
 
 
-Underfull \hbox (badness 1424) in paragraph at lines 686--687
+Underfull \hbox (badness 1424) in paragraph at lines 644--645
 []\OT1/cmr/m/n/9 ranges from com-ple-tion to
  []
 
-[9] [10] [11] [12] [13]
-Underfull \hbox (badness 2626) in paragraph at lines 972--975
+[9pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) 
+has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.649 
+      ] [10pdfTeX warning (ext4): destination with the same identifier (name{ta
+ble.2}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.697 ...s the system know it is making progress?}
+                                                   The Heuristic] [11] [12]
+[13]
+Underfull \hbox (badness 2626) in paragraph at lines 948--951
 []\OT1/cmr/m/n/10.95 M. Chen et al., ``Eval-u-at-ing large lan-guage mod-els tr
 ained on code,'' Jul. 2021,
  []
 
-[14] [15]
+[14] [15] [16]
+LaTeX Font Info:    Trying to load font information for OMS+cmtt on input line 
+1141.
+LaTeX Font Info:    No file OMScmtt.fd. on input line 1141.
+
+
+LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
+(Font)              using `OMS/cmsy/m/n' instead
+(Font)              for symbol `textbraceleft' on input line 1141.
+
+[17]
 LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 1
-116.
+235.
  (/usr/local/texlive/2021/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1116.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1235.
 
-
-[16] (./coderpaper.aux)
+ [18pdfTeX warning (ext4): destination with the same identifier (name{table.3})
+ has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.1239 \end{document}
+                     ] (./coderpaper.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `coderpaper.out' has not changed.
-(rerunfilecheck)             Checksum: 7550E82D94374CF67F6B329B62044DAB;2864.
+(rerunfilecheck)             Checksum: 9218992EAD1E54AEE4394F866FE2D5DD;3320.
  ) 
 Here is how much of TeX's memory you used:
- 9923 strings out of 478994
- 144275 string characters out of 5858185
- 499470 words of memory out of 5000000
- 27181 multiletter control sequences out of 15000+600000
+ 9999 strings out of 478994
+ 145267 string characters out of 5858185
+ 500162 words of memory out of 5000000
+ 27244 multiletter control sequences out of 15000+600000
  411320 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  71i,11n,74p,526b,1129s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -472,18 +511,20 @@ Here is how much of TeX's memory you used:
 sr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr
 /local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/l
 ocal/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/loc
-al/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/
-texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/tex
-live/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
-ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texli
-ve/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texliv
-e/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive
-/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2
-021/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on coderpaper.pdf (16 pages, 270074 bytes).
+al/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/
+texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/tex
+live/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texliv
+e/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
+/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2
+021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/20
+21/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/202
+1/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2021
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2021/t
+exmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
+Output written on coderpaper.pdf (18 pages, 291261 bytes).
 PDF statistics:
- 446 PDF objects out of 1000 (max. 8388607)
- 409 compressed objects within 5 object streams
- 130 named destinations out of 1000 (max. 500000)
- 137 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 495 PDF objects out of 1000 (max. 8388607)
+ 454 compressed objects within 5 object streams
+ 139 named destinations out of 1000 (max. 500000)
+ 169 words of extra memory for PDF output out of 10000 (max. 10000000)
 
