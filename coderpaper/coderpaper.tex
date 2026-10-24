@@ -221,17 +221,18 @@ requirements and design apprentices, culminating in Rich and Waters's
 The source used here for the Heuristic Compiler is a line-printer
 listing headed \texttt{HEURISTIC CODER 7/16/61}, discovered in the
 Herbert A.~Simon Papers at the Carnegie Mellon University
-Archives~\cite{simonlisting1961}. This listing is dated shortly
-after RAND report P-2349, and is very nearly the program described in
-that report. The listing is 94 line-printer pages, and about 4,470
-lines of code (cards). We call this ``the deck''. The listing also
-carries various hand markings indicating a handful of proposed
+Archives~\cite{simonlisting1961}. This listing is dated shortly after
+RAND report P-2349, and is very nearly the program described in that
+report. The listing is 94 line-printer pages, and about 4,470 lines of
+code (cards). We call this ``the deck''. The listing also carries
+various hand markings indicating a handful of proposed
 corrections. The deck contains an executive and two compilers; a
 natural-language front end (a character scanner, dictionary, and
 parser) intended to let the compiler accept English definitions; and a
 small knowledge base about IPL-V, encoded as data, which the compilers
 use to reason. The listing ends with the data and has no start card
-(IPL-V type 5 card).
+(IPL-V type 5 card).\footnote{We borrow the start card from
+\cite{simonRM3588}.}
 
 \subsection{Everything Is a Description List}
 
@@ -264,16 +265,18 @@ looks up the relevant compiler in a table of connections, applies it,
 and tests whether the routine has improved. If the routine has not
 improved, the executive gives up.
 
-The \emph{state description compiler} is the most GPS-like part of
-the Heuristic Compiler. It compares the input and output states of
-each affected cell, classifies the largest difference (addition,
-deletion, replacement, or copying), looks up an operator relevant to
-it, binds the operator's variables to the actual cells, and then
-recursively compiles two subproblems: getting from the original input
-state to the required state, and getting from the operator's output
-state to the desired output. Its knowledge of IPL-V consists of
-exactly two operators, LOAD and REPLACE, each itself a tiny routine
-with its own state description.
+The \emph{state description compiler} is the most GPS-like part of the
+Heuristic Compiler. It compares the input and output states of each
+affected cell, classifies the largest difference (addition, deletion,
+replacement, or copying), looks up an operator relevant to it, binds
+the operator's variables to the actual cells, and then recursively
+compiles two subproblems: getting from the original input state to the
+required state, and getting from the operator's output state to the
+desired output. Its knowledge of IPL-V consists of exactly two
+operators, LOAD and REPLACE, each itself a tiny routine with its own
+state description.\footnote{The state description compiler in
+\cite{simonRM3588} differs from the one we reanimated in representing
+states by bare symbols, whereas ours uses described states.}
 
 The \emph{functional description compiler} works by analogy. Given a
 routine described as, say, ``INSERT (1) AT END OF THE VALUE OF THE
@@ -355,22 +358,20 @@ communication cell,'' an addition, for which LOAD is relevant, giving
 \texttt{10J3}; finds no suffix subproblem; and assembles \texttt{10J3
   20H5 0}, the code in the paper~\cite[p.~498]{simon1963jacm}.
 
-There is a catch, and it is the kind of thing only running the program
-reveals. \emph{As listed, the deck does not compile J3.} The listing's
+Surprusingly, as listed, the deck does not compile J3. The listing's
 J3 has both a functional and a state description, and the executive
-always prefers the functional description, on the stated assumption
-that ``it is easier to compile from a functional description than from
-a state description''~\cite[p.~502]{simon1963jacm}. No
-already-compiled routine shares J3's process, the functional
-description compiler fails, the executive sees no progress, and it
-gives up without ever trying the state description. The paper's J3
-result is obtained only when J3's functional description is removed
-before the run, after which the state description compiler produces
-exactly the published code. The 1963 listing in RM-3588-PR suggests
-what happened: its executive is card for card the same, but the cards
-that give J3 a functional description are numbered as later
-insertions. Most likely the paper's J3 came from a version in which J3
-had only a state description.
+always prefers the functional description, on the assumption that ``it
+is easier to compile from a functional description than from a state
+description''~\cite[p.~502]{simon1963jacm}. As no already-compiled
+routine shares J3's process, the functional description compiler
+fails, the executive sees no progress, and it gives up without ever
+trying the state description. The paper's J3 result is obtained only
+when J3's functional description is removed before the run, after
+which the state description compiler produces exactly the published
+code. In the 1963 listing (in RM-3588-PR) its executive identical, but
+the cards that give J3 a functional description are numbered as later
+insertions, suggesting that the paper's J3 came from a version in
+which J3 had only a state description.
 
 \textbf{Flow diagrams.} The paper's last section handles routines with
 branches and loops by decomposing them into \emph{segments} joined by a
@@ -384,17 +385,6 @@ X105'' into description lists, either identifying an object already in
 memory or creating one, was also transcribed and runs. Its
 output matches the fragment of 1963 output that survives in the
 memorandum~\cite{simonRM3588,earepo}.
-
-\subsection{Implementation Notes}
-
-One print routine, U126, is called but absent from the 1961 listing;
-it was supplied from the 1963 listing in RM-3588-PR,
-Appendix~A~\cite{simonRM3588}, and affects only printing. A start card
-for the demonstration routine T1 was added (the 1963 listing ends with
-exactly such a card). The 1963 state description compiler differs from
-the 1961 one in representing states by bare symbols where the 1961
-version holds described ones. The information annexer of RM-3588-PR,
-Appendix~B, is 409 cards.
 
 \section{Reanimating KBEmacs}
 \label{sec:kbe}
@@ -479,18 +469,16 @@ editor, windows, actors, and the Ada front end~\cite{kbemacsrepo}.
 The 1985 source, with correction of minor typos and transcription
 errors, is loaded into SBCL (\url{https://www.sbcl.org}), a modern
 Common Lisp, through a Zetalisp compatibility layer that Claude
-assembled and debugged. The largest
-single piece of that layer is g000001's Common Lisp port of Spice Lisp
-Flavors, CMU's reimplementation of the Lisp Machine's Flavors
-object-oriented programming system~\cite{g000001}.\footnote{Coincidentally, Spice Lisp (which
-was built at CMU, where Simon and Newell taught) became CMUCL, and
-SBCL is a fork of CMUCL.}
+assembled and debugged. The largest single piece of that layer is
+g000001's Common Lisp port of Spice Lisp
+Flavors~\cite{g000001}.\footnote{Coincidentally, Spice Lisp (which was
+built at CMU, where Simon and Newell taught) became CMUCL, and SBCL is
+a fork of CMUCL.}
 
 The rest of the layer supplies the parts of Zetalisp and the Lisp
-Machine that Common Lisp lacks or does differently. A small driver was
-also added to replay a self-test sequence from the 1984 record and
-compare the generated code with the expected code, as did the original
-test harness.
+Machine that Common Lisp lacks or does differently. A small test
+harness was also added to replay the self-test sequence from the 1984
+code and compare the generated code with the expected code.
 
 The SQRT sequence (Figure~\ref{fig:sqrt}) builds a square-root routine
 from three clich\'es in seven commands, and then builds a variant with
@@ -522,31 +510,17 @@ seven commands the plan has 32 segments and the program is complete.
 The program MYSQRT is a successive-approximation. The initial-approximation is 1.
 The criterion is an equality-within-epsilon ...
 \end{lstlisting}
-\caption{KBEmacs, running in 2026, replaying the first half of the SQRT
-sequence from its December 14, 1984 self-test. The generated code is
-\texttt{equal} to the code recorded in 1984. (\texttt{//} is Zetalisp's
-division operator.) The final lines are KBEmacs's own description of
-the program, generated from its plan, as recorded in the 1984
-self-test (abridged).}
+\caption{KBEmacs, running in 2026, replaying the first half of the
+  SQRT sequence from its December 14, 1984 self-test. The generated
+  code is \texttt{equal} to the code recorded in 1984.  The final
+  lines are KBEmacs's own description of the program, generated from
+  its plan, as recorded in the 1984 self-test (abridged).}
 \label{fig:sqrt}
 \end{figure}
 
 All fourteen commands run, and both generated programs are
-\texttt{equal} to the code recorded in 1984. The generated code also
-works: \texttt{(mysqrt 2.0)} returns 1.4142157.
-
-\subsection{Implementation Notes}
-
-The reanimation loads the \emph{headless} core of KBEmacs (database,
-analyzer, clich\'e library, command language, knowledge-based editor,
-and coder) in the order given by its own system definition, under SBCL.
-The Zetalisp compatibility layer consists of g000001's Common Lisp
-port of Spice Lisp Flavors~\cite{g000001}, with a few bug fixes,
-extended with the Lisp Machine's \texttt{:case} method combination
-(with \texttt{:otherwise}), \texttt{send} to functions and streams, and
-flavor-aware \texttt{typep}; g000001's port of Waters's LetS series
-notation~\cite{g000001}; and definitions of the Zetalisp special forms
-and functions that differ from Common Lisp.
+\texttt{equal} (in the lisp sense) to the 1984 generated code. The
+generated code also works: \texttt{(mysqrt 2.0)} returns 1.4142157.
 
 \section{Then and Now: Historical Approaches to AI-Assisted Coding}
 \label{sec:thenandnow}
@@ -697,15 +671,14 @@ the listings from the page images was done by ChatGPT
 (OpenAI)~\cite{chatgpt}. Claude (Anthropic), running as Claude
 Code~\cite{claude} with the Claude Opus~5.5 model, corrected the
 transcriptions by running the code and checking the scans; adapted and
-extended Shrager's existing IPL-V interpreter for the Heuristic
-Compiler; adapted g000001's existing Common Lisp ports of Spice Lisp
-Flavors and LetS~\cite{g000001}, developed the Zetalisp compatibility
-layer for KBEmacs, and ran and debugged both programs until they
-reproduced their historical output. Claude also drafted this
-paper. The draft was then carefully checked by ChatGPT and by the
-authors, who verified its claims against the listings, the program
-runs, and the historical sources, and who take full responsibility for
-the final text. 
+extended Shrager's IPL-V interpreter; adapted g000001's 
+Common Lisp ports of Spice Lisp Flavors and LetS~\cite{g000001},
+developed the Zetalisp compatibility layer for KBEmacs, and ran and
+debugged both programs until they reproduced their historical
+output. Claude also drafted this paper. The draft was then carefully
+checked by ChatGPT and by the authors, who verified its claims against
+the listings, the program runs, and the historical sources, and who
+take full responsibility for the final text.
 
 These two reanimations required about 1,500 calls to the Claude Opus
 5.5 model, about 1,600 tool invocations, and about six hours of active
@@ -714,20 +687,18 @@ listings from the scans).
 
 \section*{Acknowledgments}
 
-We thank Emily Davis of Carnegie Mellon University, who, with Mia
-Golec, located the Heuristic Coder listing in the Herbert A.~Simon
-Papers at the Carnegie Mellon University Archives. The Heuristic
-Compiler reanimation rests on Shrager's Common Lisp IPL-V interpreter,
-which uses David Moews's IPL-V Logic Theorist deck as its regression
-test. We thank g000001 for the Common Lisp port of Spice Lisp Flavors
-and LetS (\url{https://github.com/g000001/spice-flavors},
+We thank Emily Davis of Carnegie Mellon University, who supported Mia
+Golec's search of the Herbert A.~Simon Papers in Carnegie Mellon
+University's Archives, resulting in locating the Heuristic Coder
+listing. We thank g000001 for the Common Lisp port of Spice Lisp
+Flavors and LetS (\url{https://github.com/g000001/spice-flavors},
 \url{https://github.com/g000001/LetS})~\cite{g000001}. RAND Memorandum
-RM-3588-PR was obtained from bitsavers
-(\url{http://bitsavers.org/pdf/rand/ipl/}). Listing excerpts from
-KBEmacs are copyright 1983/1984 Massachusetts Institute of Technology
-and are reproduced by permission under the notice in those listings.
+RM-3588-PR (\cite{simonRM3588}) was obtained from bitsavers
+(\url{http://bitsavers.org/pdf/rand/ipl/}). The Heuristic Coder
+listing is copyright CMU archives, and KBEmacs is copyright MIT. These
+are reproduced under the notice in those listings.
 
-Finally, we acknowledge Herbert Simon, H.~S.~Kelly, Richard Waters,
+Finally, we acknowledge Herb Simon, H.~S.~Kelly, Richard Waters,
 Charles Rich, and the other members of the Programmer's Apprentice
 project, on whose work this paper rests.
 
