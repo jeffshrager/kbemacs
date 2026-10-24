@@ -34,7 +34,7 @@
 Executable Archaeology is the practice of studying historical
 computational systems by running their original code, a processed
 %%% SUGGESTION: typos in abstract: 'a processed called' -> 'a process called'; missing period after
-%%%   'two historical AI programming assistants' (l.39); 'demonstation'; 'exaclty'; 'In the interest
+%%%   'two historical AI programming assistants'; 'demonstation'; 'exaclty'; 'In the interest
 %%%   [of] emphasizing'; 'detaild'; 'signifiant'.
 called ``reanimation''. Although AI-assisted programming is usually
 considered a new invention, the idea of a program that helps write
@@ -118,7 +118,7 @@ the details and wrote the code.
 
 These two systems are separated by a quarter of a century, by
 %%% SUGGESTION: 'MIT Lisp Machines': the 1984 self-test ran on a Symbolics 3600 (Release 4.5). Suggest 'Symbolics
-%%%   Lisp Machines' or 'Lisp Machines (Symbolics descendants of the MIT design)'. Same at l.205.
+%%%   Lisp Machines' or 'Lisp Machines (Symbolics descendants of the MIT design)'. Same in 'The Programmer's Apprentice' (KBEmacs ran on ...).
 programming language (IPL-V on 1960s mainframes versus Zetalisp on MIT
 Lisp Machines), and by research tradition, yet they stake out most of
 the conceptual territory that today's AI coding tools occupy: How a
@@ -228,7 +228,7 @@ Waters's dissertation developed the analysis of programs into
 plans~\cite{waters1978}.
 
 KBEmacs was the realization of these ideas in a working editor. It ran
-%%% SUGGESTION: see l.105: 'MIT Lisp Machines' vs Symbolics.
+%%% SUGGESTION: see the 'MIT Lisp Machines' comment in the Introduction (Symbolics).
 on MIT Lisp Machines inside the Zmacs editor, and handled both Lisp
 and Ada. Its best-known demonstration builds an Ada report generator,
 \texttt{UNIT-REPAIR-REPORT}, from five commands such as ``Define a
@@ -268,6 +268,13 @@ IPL-V, encoded as data, which the compilers use to reason. The listing
 ends with the data and has no start card (IPL-V type 5 card).
 
 \subsection{Everything Is a Description List}
+%%% SUGGESTION: TERMINOLOGY. Somewhere early in this section (or at the first mention of the HC's
+%%%   internals), add one sentence on Simon's three senses of 'compile', e.g.: "Simon uses
+%%%   `compiler' loosely: the Heuristic Compiler as a whole is a compiler; within it, two
+%%%   `compilers' (for state and for functional descriptions) serve as operators; and the code they
+%%%   build as list structures is finally rendered as IPL-V text, a step closer to reverse
+%%%   compilation." Then keep the three terms distinct (see the comment on 'Eithin' below).
+%%%   (We are, of course, then going to compile this paper with LaTeX.)
 
 The central representational idea of the Heuristic Compiler is that a
 \emph{routine} is an object with attributes stored as an IPL-V
@@ -276,10 +283,13 @@ is one possible definition of the routine: its IPL name, its
 \emph{functional description} (i.e., a process name plus arguments,
 such as ``INSERT ( ) AT END OF ( )''), its \emph{state description}
 (i.e., which cells it affects, and what each holds before and after),
-%%% SUGGESTION: typo: 'Eithin' -> 'Within'. ACCURACY (l.254-256): the code is built as description-list structures
-%%%   by the compilers, and only *printed* as text at the end; calling the printer a 'compiler' confuses
-%%%   it with the HC's compilers. Suggest 'it builds code as these structures and prints it as text only
-%%%   at the end.'
+%%% SUGGESTION: typo: 'Eithin' -> 'Within'. TERMINOLOGY (end of this paragraph): Simon uses 'compiler'
+%%%   at three levels -- the Heuristic Compiler as a whole; the state- and functional-description
+%%%   compilers it applies as operators; and the final rendering of the code structures as IPL text
+%%%   (closer to a reverse compilation). A reader meets all three within a page. Consider saying so
+%%%   once, explicitly, and then using distinct words: e.g., 'the Heuristic Compiler' for the whole,
+%%%   'compilers' only for the two description compilers, and 'renders'/'prints' for the last step
+%%%   (here, 'via a "compiler" that processes these structures' -> 'by rendering these structures').
 its flow diagram, and its IPL-V code. Eithin the IPL code rendered in
 this representation, IPL-V instructions are themselves description
 lists with attributes for each field. And a symbol such as \texttt{J3}
@@ -425,7 +435,7 @@ output matches the fragment of 1963 output that survives in the
 memorandum~\cite{simonRM3588,earepo}.
 
 %%% SUGGESTION: Implementation Notes: the J-function lists (13 added, 9 corrected) were dropped; a reader wanting
-%%%   to reproduce this may want them here. 'A start card ... was added' duplicates l.294.
+%%%   to reproduce this may want them here. 'A start card ... was added' duplicates 'Running The Heuristic Compiler'.
 \subsection{Implementation Notes}
 
 One print routine, U126, is called but absent from the 1961 listing;
@@ -506,7 +516,7 @@ and plan consistent in both directions.
 \subsection{Running KBEmacs (headless)}
 
 KBEmacs depends heavily on the MIT Lisp Machine environment, which no
-%%% SUGGESTION: typos: 'exits' -> 'exists'; 'inclucing' -> 'including'; l.470 'the same a' -> 'the same as'.
+%%% SUGGESTION: typos: 'exits' -> 'exists'; 'inclucing' -> 'including'; and below, 'the same a' -> 'the same as'.
 longer exits in a running form, inclucing Flavors (the Lisp Machine's
 object system), the Zmacs editor, Lisp Machine processes, Waters's own
 LetS loop notation, and Zetalisp itself which is similar to, but not
@@ -702,7 +712,7 @@ successive-approximation \ldots''). Today's assistants operate on text
 and also explain code fluently, but their explanations are generated
 from text, not read off an explicit representation of the design. The
 trade-off between the robustness of working with text, which KBEmacs
-%%% SUGGESTION: '--' should be '---' (em dash) here and at l.648.
+%%% SUGGESTION: '--' should be '---' (em dash) in both places in this sentence.
 found painfully expensive to analyze -- Waters reports that ``well
 over half of all the effort expended on KBEmacs went into implementing
 an analyzer and coder''~\cite[p.~55]{waters1986aimag} -- and the
