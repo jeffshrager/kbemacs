@@ -1,4 +1,5 @@
-%%% DRAFT NOTES (v1, 2026-10-16)
+%%% DRAFT NOTES (v1, 2026-10-16; humour removed 2026-10-23, except one
+%%% footnote in Appendix A.2 -- the earlier version is in git history)
 %%%
 %%% Modeled on "Executable Archaeology: Reanimating the Logic Theorist"
 %%% (Moews & Shrager, IEEE Annals, lt-v2-revised-6.tex): same section
@@ -83,7 +84,7 @@ compiled code printed in Simon's 1963 paper, and KBEmacs reproduces one
 of its own December 1984 self-tests exactly. Together they illustrate
 two historical approaches---autonomous problem solving and the
 knowledgeable apprentice---whose concerns reappear, in different
-technical form, in today's AI coding assistants. Fittingly, most of
+technical form, in today's AI coding assistants. Most of
 the reconstruction was carried out by one of those assistants,
 Anthropic's Claude. It did not start from scratch: for the Heuristic
 Compiler it adapted and extended an existing IPL-V interpreter, written
@@ -158,9 +159,8 @@ existing Common Lisp IPL-V interpreter, built earlier to run the Logic
 Theorist; KBEmacs was transcribed from a four-volume January 1985
 printout and run under a new Zetalisp compatibility layer for a modern
 Common Lisp. In both cases the reanimation surfaced details invisible
-in the published accounts. And, in a turn that would surely have
-amused both Simon and Waters, both reanimations were themselves carried
-out by an AI coder: Anthropic's Claude~\cite{claude}, working in its
+in the published accounts. Both reanimations were themselves carried
+out largely by an AI coding assistant: Anthropic's Claude~\cite{claude}, working in its
 command-line form, Claude Code. Claude corrected the transcriptions of
 the listings by running the code, assembled the Zetalisp compatibility
 layer, extended the IPL-V interpreter (which it did not have to write:
@@ -169,8 +169,15 @@ enormous head start, as did an existing Common Lisp port of Spice Lisp
 Flavors for KBEmacs), debugged both programs until they reproduced
 their historical output, and drafted this paper. The authors chose the
 targets, found the sources, made the judgment calls, and checked the
-results. This paper is therefore, among other things, a report of one
-AI coder exhuming two of its ancestors. The division of labor is
+results. That the reconstruction was done this way is not incidental to
+the history. The Heuristic Compiler and KBEmacs were early attempts to
+build exactly the kind of system that carried out their recovery: a
+machine that takes part in the work of programming. A present-day AI
+coding assistant reconstructing its historical predecessors from their
+original source makes the line of descent concrete, and it puts the
+old and new approaches side by side on the same tasks: the reading of
+old programs, the diagnosis of their failures, and the generation of
+code to a specification. The division of labor is
 described in ``Author Contributions and Use of AI''; technical details
 of both reanimations are in the Appendix.
 
@@ -278,9 +285,7 @@ minutes,'' that the system handled ``only about 50\% of Ada'' and 90\%
 of Lisp, that it knew ``only a few dozen clich\'es'' where a practical
 tool ``would need to know many hundreds,'' and that, its ideas having
 been used ``for essentially all [they are] worth,'' KBEmacs ``has been
-mothballed''~\cite[pp.~54--55]{waters1986aimag}. It stayed in mothballs
-for forty years, until an assistant of a rather different kind took it
-out. The project continued
+mothballed''~\cite[pp.~54--55]{waters1986aimag}. The project continued
 with work on the Plan Calculus, on automated reasoning, and on
 requirements and design apprentices, culminating in Rich and Waters's
 1990 book~\cite{richwaters1990book}.
@@ -617,8 +622,7 @@ Neither the Heuristic Compiler nor KBEmacs is an ancestor of today's AI
 coding assistants in any direct technical sense. Large language models
 are trained, not programmed with explicit operators or clich\'es, and
 they operate on program text rather than on description lists or plans.
-Claude, being one of those assistants, inherited nothing from either
-of them except, as of this writing, their source code. Nonetheless the questions these two systems were built to
+Nonetheless the questions these two systems were built to
 explore are recognizably the questions that shape AI-assisted
 programming today.
 Table~\ref{tab:compare} summarizes the comparison; we discuss five
@@ -674,8 +678,7 @@ built from standard pieces. What neither could solve was acquiring that
 knowledge at scale. Large language models can be seen as one answer to
 precisely this bottleneck: an implicit clich\'e library absorbed from
 an enormous body of code, at the price of having no explicit, inspectable
-representation of what a clich\'e is or what its roles are. Claude,
-consulted on the point, concurs.
+representation of what a clich\'e is or what its roles are.
 
 \textbf{Who does what?} The Heuristic Compiler was meant to be
 autonomous; KBEmacs was deliberately an apprentice, leaving design
@@ -712,10 +715,9 @@ expected code. The heuristics have moved from a hand-written table of
 connections into a learned model; the operators and the difference
 tests are still ordinary programs. KBEmacs, for its part, came with a
 self-test in which the expected output was code, which is exactly what
-made it possible to check the reanimation in 2026. Claude
-spent much of that reanimation in a loop of just this kind, with the
-1984 self-test as its difference detector: a means-end analyzer whose
-desired object was the output of an apprentice.
+made it possible to check the reanimation in 2026: the KBEmacs
+reanimation was carried out in a loop of just this kind, with the 1984
+self-test as its difference detector.
 
 \textbf{Representation and explanation.} The two historical systems
 never treated code merely as text. The Heuristic Compiler builds IPL
@@ -727,8 +729,7 @@ describe a program in terms of its design (``The program MYSQRT is a
 successive-approximation \ldots''). Today's assistants operate on text
 and also explain code fluently, but their explanations are generated
 from text, not read off an explicit representation of the design.
-This paper is an example. The
-trade-off between the robustness of working with text, which KBEmacs
+The trade-off between the robustness of working with text, which KBEmacs
 found painfully expensive to analyze---Waters reports that ``well over
 half of all the effort expended on KBEmacs went into implementing an
 analyzer and coder''~\cite[p.~55]{waters1986aimag}---and the
@@ -770,8 +771,8 @@ published code character for character, or KBEmacs's 1984 output
 \texttt{equal} for \texttt{equal}, is strong evidence that the
 transcription and the interpreter are right along those paths, since
 errors would almost certainly have produced different code. Execution
-also gives one language model a way to audit another's transcription
-without either having to take the other's word for anything.
+also provides an independent check on a transcription made by a
+language model.
 
 \textbf{It makes historical claims checkable.} Simon's 1963 claims
 about what the Heuristic Compiler did, and the 1984 self-test's claims
@@ -828,8 +829,7 @@ corrections in the listing also remain to be evaluated.
 
 For KBEmacs, the next step is to run the other five sequences of the
 1984 self-test, aiming to reproduce both the three successes and the
-three failures, an unusual brief for an AI coder, which is more often
-asked to produce fewer bugs than the right ones; then the Ada front end, which would allow the
+three failures; then the Ada front end, which would allow the
 \texttt{UNIT-REPAIR-REPORT} demonstration of Waters's papers to be
 rerun.
 
@@ -842,31 +842,22 @@ Guides to both programs are open source, at \url{https://github.com/jeffshrager/
 
 %%% TODO (JS): revise to taste; facts are from the seshsums and the
 %%% KBEmacs session transcript.
-I should confess how little I did. Both reanimations were carried out
-by AIs. Most of the transcription from the page images was done by
-ChatGPT, because it was cheaper than Claude. It was cheaper for a
-reason. ChatGPT read quote as backquote, dropped and added parentheses
-in compensating pairs so that its files still balanced, and in one
-place helpfully copied a line from the macro above, shifting the
-arguments of every verb in KBEmacs's command language by one. Claude,
-running as Claude Code in a terminal on my laptop, found and fixed these
-by running the code and checking the scans, and also assembled the Zetalisp
-compatibility layer, extended my IPL-V interpreter, chased down the
-PDP-10 meaning of \texttt{boole}, and wrote the session summaries from
-which much of this paper was drafted, also by Claude. My contribution
-was mostly direction: choosing what to resurrect, pointing Claude at
-the scans, deciding which results counted, and deciding when to stop.
-Otherwise I tried to stay out of the way and let Claude carry out its
-own means-ends analysis. I should add that Claude did not start from nothing on
-the IPL-V side. My IPL-V interpreter, written to run the Logic Theorist,
+Most of the hands-on work in both reanimations was done by AI systems.
+Most of the transcription from the page images was done by ChatGPT.
+Claude, running as Claude Code, corrected the transcriptions by running
+the code and checking the scans, assembled the Zetalisp compatibility
+layer, extended my IPL-V interpreter, and wrote the session summaries
+from which this paper was drafted. My contribution was direction:
+choosing what to resurrect, pointing Claude at the sources, deciding
+which results counted, and deciding when to stop. Claude did not start
+from nothing on the IPL-V side. My IPL-V interpreter, written to run the Logic Theorist,
 gave it an enormous leg up; without it, the Heuristic Compiler would
 have meant first building an IPL-V, a much larger job than the one
 reported here. The same goes for KBEmacs and g000001's port of Spice
 Lisp Flavors, without which Claude would have had to start by writing
 an object system.
 
-This turns the history in the paper on its head, or perhaps completes
-it. My commands were a stylized English command language, an order of
+The arrangement bears on the history in the paper. My commands were a stylized English command language, an order of
 magnitude shorter than the programs they produced, which is just what
 Waters measured KBEmacs by. But the division of labor was not the one
 Waters proposed. In KBEmacs the programmer makes the design decisions
@@ -877,14 +868,16 @@ was closer to Simon's vision of a program that treats programming as a
 problem to be solved, except that the problem was to bring Simon's own
 program back to life. Claude also made mistakes, some of which took a
 while to find; that is why nothing here was accepted until each program
-had reproduced its own historical output, a test that neither of us
-could talk our way around.
+had reproduced its own historical output.
 
-There is a pleasing circularity in this. Simon wondered whether
-programming could be treated as problem solving; Waters wondered
-whether a programmer could be given an apprentice that shared knowledge
-of standard algorithms. Forty and sixty-five years later, an AI coder of a
-kind neither of them imagined brought their AI coders back to life. Simon closed his paper by saying that the Heuristic Compiler was
+Simon asked whether programming could be treated as problem solving;
+Waters asked whether a programmer could be given an apprentice that
+shared knowledge of standard algorithms. Their questions now have a
+further answer, from a system that descends from theirs not in its
+technology but in its aims, and that answer was used to bring their
+systems back to running condition. Both can now be run and studied
+again, and compared directly with the kind of system that recovered
+them. Simon closed his paper by saying that the Heuristic Compiler was
 ``an exploratory tool that is beginning to reveal to us something of the
 role played by these and other representations in the programming
 process''~\cite[p.~506]{simon1963jacm}. Having a machine run it
@@ -940,7 +933,7 @@ under the notice in those listings.
 
 Finally, we acknowledge Herbert Simon, H.~S.~Kelly, Richard Waters,
 Charles Rich, and the other members of the Programmer's
-Apprentice project, whose work this paper merely re-runs.
+Apprentice project, on whose work this paper rests.
 
 \begin{thebibliography}{99}
 
@@ -1166,8 +1159,13 @@ The Zetalisp compatibility layer has the following parts.
   \texttt{TV}, \texttt{ZWEI}, and others) and the editor-level
   facilities the core needs, including a headless command delegate.
 \end{itemize}
-The transcription corrections are logged, with the page of the scan
-that confirms each, in \texttt{code/TRANSCRIPTION-FIXES.md} in the
+The transcription corrections\footnote{Most were ChatGPT's. It read
+quote as backquote, dropped and added parentheses in compensating pairs
+so that its files still balanced, and in one place helpfully copied a
+line from the macro above, shifting the arguments of every verb in the
+command language by one. It was chosen for the transcription because
+it was cheaper than Claude. It was cheaper for a reason.} are logged,
+with the page of the scan that confirms each, in \texttt{code/TRANSCRIPTION-FIXES.md} in the
 KBEmacs repository~\cite{kbemacsrepo}.
 
 \subsection{AI Effort}
@@ -1215,19 +1213,18 @@ extraction of the KBEmacs listings from the scans.
 Three features of these numbers are worth remarking on. First, almost
 all of the tokens are context rather than work: on each call the model
 re-reads the conversation so far, so the 415 million cached tokens are
-mostly Claude reminding itself what it had been doing. What Claude
+mostly repeated context. What Claude
 actually wrote---code, patches, commands, commit messages, and prose
 ---comes to about 1.3 million tokens across both projects, a
 few times the size of the KBEmacs listings themselves. Second, the
 human side of the ledger, some 230 prompts, is small in count but not
 in consequence: those prompts chose the targets and decided which
-results counted. Third, the comparison with the originals is
-not flattering to them, and not entirely fair either. KBEmacs embodied
+results counted. Third, these figures are not comparable with the
+effort of the original projects. KBEmacs embodied
 years of work by a research group, and the Heuristic Compiler a
 substantial programming effort at RAND; the reanimations had the
 designs, the code, and the published outputs already in hand, and
-needed only to make them run again. Reading an ancestor's code is much
-cheaper than writing it, though it is apparently still not free.
+needed only to make them run again.
 
 
 \section*{About the Authors}
