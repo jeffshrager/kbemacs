@@ -36,28 +36,32 @@ computational systems by running their original code in a process
 called ``reanimation''. Although AI-assisted programming is usually
 considered a new invention, the idea of a program that helps write
 programs is nearly as old as artificial intelligence itself. Here we
-report on the reanimation of two historical AI programming assistants.
-The first, Herbert Simon's Heuristic Compiler (1961), is an IPL-V
-program that treats programming as a sort of problem-solving, 
-applying means-end analysis to it. The second, KBEmacs (1984), was
-the primary demonstration of MIT's Programmer's Apprentice project. It let
-a programmer build up programs by combining standard ``clich\'es''
-through a stylized English command language. Our reanimation of the
-Heuristic Compiler reproduces the compiled code printed in Simon's
-1963 paper, and our reanimation of KBEmacs exactly reproduces its December
-1984 SQRT self-tests, although several remain to be completed. In the interest of emphasizing the obvious reflexivity,
-we allowed most of the detailed reanimation reported here to be
-carried out by a modern AI-assisted programming tool, Anthropic's
-Claude Code, although it started from a significant base of existing
-software, including a modern IPL-V interpreter, modern Common Lisp,
-and an existing Common Lisp port of Spice Lisp Flavors, a reimplementation
-of the Lisp Machine's object system.
+report on the reanimation of two early AI systems concerned with
+programming, but developed for quite different purposes. The first,
+Herbert Simon's Heuristic Compiler (1961), was an experimental model
+of programming as problem-solving, applying the means–ends analysis
+methods of the General Problem Solver to investigate the nature of the
+programming task. The second, KBEmacs (1984), was a working prototype
+of an intelligent programming assistant developed by MIT's
+Programmer's Apprentice project.  It let a programmer build up
+programs by combining standard ``clich\'es'' through a stylized
+English command language. Our reanimation of the Heuristic Compiler
+reproduces the compiled code printed in Simon's 1963 paper, and our
+reanimation of KBEmacs exactly reproduces its December 1984 SQRT
+self-tests, although several remain to be completed. In the interest
+of emphasizing the obvious reflexivity, we allowed most of the
+detailed reanimation reported here to be carried out by a modern
+AI-assisted programming tool, Anthropic's Claude Code, although it
+started from a significant base of existing software, including a
+modern IPL-V interpreter, modern Common Lisp, and an existing Common
+Lisp port of Spice Lisp Flavors, a reimplementation of the Lisp
+Machine's object system.
 
 \end{abstract}
 
 \noindent\textbf{Keywords:} Executable Archaeology, History of AI,
 Automatic Programming, Heuristic Compiler, KBEmacs, Programmer's
-Apprentice).
+Apprentice
 
 \section{Introduction}
 \label{sec:intro}
@@ -73,21 +77,19 @@ founding of artificial intelligence, researchers were asking whether
 the methods of AI could be turned on the task of programming
 itself~\cite{balzer1985,richwaters1988myths}.
 
-This paper describes the ``reanimation'' of two historical systems
-that represent two quite different approaches to AI-assisted
-programming.\footnote{``Reanimation'' is the process of running
-historical programs on emulation stacks, from code that is as close as
-possible to the original~\cite{lane2025eliza}.} The first is Herbert
-A.~Simon's \emph{Heuristic Compiler}, written in IPL-V in 1961 and
-described in a RAND report that year~\cite{simonP2349} and in the
-\textit{Journal of the ACM} in 1963~\cite{simon1963jacm}.  Simon asked
-``whether the task of writing a computer program can be regarded as a
-`problem' in the sense in which that term is used in GPS,'' the
-General Problem Solver of Newell, Shaw, and
-Simon~\cite{newell1959gps}. Given a description of what a routine
-should do, Simon's tool searches for differences between where the
-routine is and where the user wants it to be, and applies operators to
-reduce this difference.
+This paper describes the reanimation of two historical systems
+representing different ways in which artificial intelligence was
+applied to programming: one as an object of scientific investigation,
+the other as a task to be assisted.  The first is Herbert A.~Simon's
+\emph{Heuristic Compiler}, written in IPL-V in 1961 and described in a
+RAND report that year~\cite{simonP2349} and in the \textit{Journal of
+  the ACM} in 1963~\cite{simon1963jacm}.  Simon asked ``whether the
+task of writing a computer program can be regarded as a `problem' in
+the sense in which that term is used in GPS,'' the General Problem
+Solver of Newell, Shaw, and Simon~\cite{newell1959gps}. Given a
+description of what a routine should do, Simon's tool searches for
+differences between where the routine is and where the user wants it
+to be, and applies operators to reduce this difference.
 
 The second AI-assisted programming tool is \emph{KBEmacs}, the
 Knowledge-Based Editor (in Emacs), built at MIT's Artificial
@@ -106,18 +108,20 @@ tools occupy: How a programming task is specified, where the knowledge
 needed to carry it out comes from, how work is divided between human
 and machine, and how the system checks and explains what it has done.
 
-We approached both as exercises in what has been called
-\emph{executable archaeology}~\cite{shrager2026,moewsshrager2026}:
-studying historical computational systems by reconstructing and
-running their original code. The Heuristic Compiler was transcribed
-from a 1961 line-printer listing in Simon's papers and run on the
-Common Lisp IPL-V interpreter built earlier to run the Logic
-Theorist. KBEmacs was transcribed from a four-volume January 1985
-printout and run under a new Zetalisp compatibility layer for SBCL, a
-modern Common Lisp. Both reanimations were themselves carried out
-largely by an AI coding assistant: Anthropic's Claude~\cite{claude},
-working in its command-line form, Claude Code. The division of labor
-is described in ``Author Contributions and Use of AI''.
+We approached both as exercises in ``reanimation'', the primary
+methodology underlying \emph{Executable Archaeology}: studying
+historical computational systems by running them on emulation stacks,
+from code that is as close as possible to the
+original~\cite{lane2025eliza,shrager2026,moewsshrager2026}.  The
+Heuristic Compiler was transcribed from a 1961 line-printer listing in
+Simon's papers and run on the Common Lisp IPL-V interpreter built
+earlier to run the Logic Theorist. KBEmacs was transcribed from a
+four-volume January 1985 printout and run under a new Zetalisp
+compatibility layer for SBCL, a modern Common Lisp. Both reanimations
+were themselves carried out largely by an AI coding assistant:
+Anthropic's Claude~\cite{claude}, working in its command-line form,
+Claude Code. The division of labor is described in ``Author
+Contributions and Use of AI''.
 
 \section{Historical Background}
 \label{sec:history}
@@ -358,7 +362,7 @@ communication cell,'' an addition, for which LOAD is relevant, giving
 \texttt{10J3}; finds no suffix subproblem; and assembles \texttt{10J3
   20H5 0}, the code in the paper~\cite[p.~498]{simon1963jacm}.
 
-Surprusingly, as listed, the deck does not compile J3. The listing's
+Surprisingly, as listed, the deck does not compile J3. The listing's
 J3 has both a functional and a state description, and the executive
 always prefers the functional description, on the assumption that ``it
 is easier to compile from a functional description than from a state
@@ -368,7 +372,7 @@ fails, the executive sees no progress, and it gives up without ever
 trying the state description. The paper's J3 result is obtained only
 when J3's functional description is removed before the run, after
 which the state description compiler produces exactly the published
-code. In the 1963 listing (in RM-3588-PR) its executive identical, but
+code. In the 1963 listing (in RM-3588-PR) its executive is identical, but
 the cards that give J3 a functional description are numbered as later
 insertions, suggesting that the paper's J3 came from a version in
 which J3 had only a state description.
@@ -569,14 +573,16 @@ code. This is a metaphor, not a claim about what such models actually
 represent, and it comes at the price of having no explicit, inspectable
 representation of what a clich\'e is or what its roles are. 
 
-\textbf{Who does what?} The Heuristic Compiler was meant to be
-autonomous; KBEmacs was deliberately an apprentice, leaving design
-decisions to the programmer and taking over ``the details.'' Waters's
-argument for the apprentice was practical: full automation was not
-near, and a semiexpert assistant could be useful at once. Modern tools
-have traversed the same axis in a few years, from completing a line,
-to writing a function on request, to agents that plan, edit, and test
-across a code base with varying degrees of
+\textbf{Who does what?} Simon's Heuristic Compiler was not designed as
+a practical programming assistant. It was a computational experiment
+intended to illuminate the processes involved in programming. KBEmacs,
+by contrast, was deliberately conceived as an assistant, leaving
+design decisions to the programmer while taking over routine details.
+Waters's argument for the apprentice was practical: full automation
+was not near, and a semiexpert assistant could be useful at
+once. Modern tools have traversed the same axis in a few years, from
+completing a line, to writing a function on request, to agents that
+plan, edit, and test across a code base with varying degrees of
 supervision~\cite{yang2024sweagent,jimenez2024swebench}. The question
 of where the programmer's decisions end and the machine's begin,
 central to the Programmer's Apprentice, is again a live design
@@ -641,6 +647,26 @@ three successes and the three failures, and to build a new KBEmacs
 program that is not among the self-tests. After that comes the Ada
 front end, which would allow Waters's
 \texttt{UNIT-REPAIR-REPORT} demonstration to be reproduced.
+
+
+\section{Conclusion}
+\label{sec:conc}
+
+These two reanimations illuminate a history of AI and programming that
+is not simply a progression from primitive to increasingly
+sophisticated coding assistants. Simon’s Heuristic Compiler
+investigated programming as a form of human problem-solving. KBEmacs
+applied AI to assist human programmers by combining explicitly
+represented programming knowledge. And today’s AI coding agents
+increasingly undertake the work of programming themselves. These
+systems are not stages in a single technical lineage. Instead they
+illustrate a broader historical trajectory, from inventing what will
+eventually become AI methods to understand human programming, through
+using AI to assist human programming, to using AI to increasingly
+perform programming entirely autonomously. By recovering and executing
+the original systems, executable archaeology allows us to examine this
+trajectory through the detailed study of the computational mechanisms
+themselves.
 
 \section{Code Availability}
 \label{sec:code}
