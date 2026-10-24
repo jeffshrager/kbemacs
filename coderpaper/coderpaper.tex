@@ -236,13 +236,12 @@ use to reason. The listing ends with the data and has no start card
 \subsection{Everything Is a Description List}
 
 The central representational idea of the Heuristic
-Compiler\footnote{Simon uses ``compiler'' at three levels, and a reader
-meets all three within a page. The Heuristic Compiler as a whole is a
-compiler; within it, two ``compilers,'' one for state descriptions and
-one for functional descriptions, serve as the operators of its
-means-end loop; and the code they build as list structures is finally
-rendered as IPL-V text, a step closer to reverse compilation than to
-compilation in the modern sense.} is that a
+Compiler\footnote{Simon uses ``compiler'' at two levels. The Heuristic
+Compiler as a whole is a compiler; within it, two ``compilers,'' one
+for state descriptions and one for functional descriptions, serve as
+the operators of its means-end loop. The final step, in which the code
+they build as list structures is printed as IPL-V text, is done by
+ordinary print routines, what we would now call a renderer.} is that a
 \emph{routine} is an object with attributes stored as an IPL-V
 description list (approximately a lisp property list). Each attribute
 is one possible definition of the routine: its IPL name, its
@@ -253,9 +252,9 @@ its flow diagram, and its IPL-V code. Within the IPL code rendered in
 this representation, IPL-V instructions are themselves description
 lists with attributes for each field. And a symbol such as \texttt{J3}
 is a description list with a region (the letter J) and a location (the
-integer 3). The program never handles IPL code as text; it builds the
-textual form of the generated code via a ``compiler'' that processes
-these structures, only printing out the textual form at the end.
+integer 3). The program never handles IPL code as text. Its compilers
+build and transform these structures, and separate print routines
+render them as IPL-V text only at the end.
 
 The Heuristic Compiler's executive implements a means-end
 problem-solving loop whose \emph{differences} are kinds of definitions
