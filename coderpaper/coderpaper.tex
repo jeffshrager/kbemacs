@@ -39,7 +39,7 @@ programs is nearly as old as artificial intelligence itself. Here we
 report on the reanimation of two early AI systems concerned with
 programming, but developed for quite different purposes. The first,
 Herbert Simon's Heuristic Compiler (1961), was an experimental model
-of programming as problem-solving, applying the means–ends analysis
+of programming as problem-solving, applying the means-end analysis
 methods of the General Problem Solver to investigate the nature of the
 programming task. The second, KBEmacs (1984), was a working prototype
 of an intelligent programming assistant developed by MIT's
@@ -47,12 +47,11 @@ Programmer's Apprentice project.  It let a programmer build up
 programs by combining standard ``clich\'es'' through a stylized
 English command language. Our reanimation of the Heuristic Compiler
 reproduces the compiled code printed in Simon's 1963 paper, and our
-reanimation of KBEmacs exactly reproduces its December 1984 SQRT
-self-tests, although several remain to be completed. In the interest
-of emphasizing the obvious reflexivity, we allowed most of the
-detailed reanimation reported here to be carried out by a modern
-AI-assisted programming tool, Anthropic's Claude Code, although it
-started from a significant base of existing software, including a
+reanimation of KBEmacs exactly reproduces the SQRT sequence of its
+December 1984 self-test; the other five sequences remain to be run.
+Reflexively, most of the detailed reanimation reported here was
+carried out by a modern AI-assisted programming tool, Anthropic's
+Claude Code, although it started from a significant base of existing software, including a
 modern IPL-V interpreter, modern Common Lisp, and an existing Common
 Lisp port of Spice Lisp Flavors, a reimplementation of the Lisp
 Machine's object system.
@@ -87,11 +86,11 @@ RAND report that year~\cite{simonP2349} and in the \textit{Journal of
 task of writing a computer program can be regarded as a `problem' in
 the sense in which that term is used in GPS,'' the General Problem
 Solver of Newell, Shaw, and Simon~\cite{newell1959gps}. Given a
-description of what a routine should do, Simon's tool searches for
-differences between where the routine is and where the user wants it
-to be, and applies operators to reduce this difference.
+description of what a routine should do, Simon's program searches for
+differences between the routine as it stands and the desired routine,
+and applies operators to reduce those differences.
 
-The second AI-assisted programming tool is \emph{KBEmacs}, the
+The second system is \emph{KBEmacs}, the
 Knowledge-Based Editor (in Emacs), built at MIT's Artificial
 Intelligence Laboratory as the culminating demonstration of the
 Programmer's Apprentice
@@ -138,7 +137,7 @@ Carnegie Tech in the 1950s took a different view of what computers
 could do. Their Logic Theorist (1956) searched for proofs of theorems
 in \textit{Principia Mathematica}~\cite{LT1957,moewsshrager2026}, and
 their General Problem Solver (1959) generalized these
-methods into means-ends-analysis~\cite{newell1959gps}. Simon's 1963 summary of the method is
+methods into means-end analysis~\cite{newell1959gps}. Simon's 1963 summary of the method is
 worth quoting in full, because the Heuristic Compiler implements it
 almost literally:
 
@@ -526,7 +525,7 @@ All fourteen commands run, and both generated programs are
 \texttt{equal} (in the lisp sense) to the 1984 generated code. The
 generated code also works: \texttt{(mysqrt 2.0)} returns 1.4142157.
 
-\section{Then and Now: Historical Approaches to AI-Assisted Coding}
+\section{Then and Now: Two Historical Systems and Today's AI Coding Assistants}
 \label{sec:thenandnow}
 
 Neither the Heuristic Compiler nor KBEmacs is an ancestor of today's AI
@@ -654,19 +653,20 @@ front end, which would allow Waters's
 
 These two reanimations illuminate a history of AI and programming that
 is not simply a progression from primitive to increasingly
-sophisticated coding assistants. Simon’s Heuristic Compiler
-investigated programming as a form of human problem-solving. KBEmacs
+sophisticated coding assistants. Simon's Heuristic Compiler
+investigated the nature of programming as problem solving. KBEmacs
 applied AI to assist human programmers by combining explicitly
-represented programming knowledge. And today’s AI coding agents
-increasingly undertake the work of programming themselves. These
-systems are not stages in a single technical lineage. Instead they
-illustrate a broader historical trajectory, from inventing what will
-eventually become AI methods to understand human programming, through
-using AI to assist human programming, to using AI to increasingly
-perform programming entirely autonomously. By recovering and executing
-the original systems, executable archaeology allows us to examine this
-trajectory through the detailed study of the computational mechanisms
-themselves.
+represented programming knowledge. And today's AI coding agents take
+on more and more of the work of programming themselves. These systems
+are not stages in a single technical lineage. Rather, they mark three
+different relationships between machines and programming: using
+methods now central to AI\footnote{Newell and Simon themselves long
+preferred the term ``complex information processing'' to ``artificial
+intelligence.''} to understand programming, using AI to assist human
+programmers, and using AI to do more and more of the programming
+itself. By recovering and executing the original systems, executable
+archaeology allows us to examine these relationships through the
+detailed study of the computational mechanisms themselves.
 
 \section{Code Availability}
 \label{sec:code}
