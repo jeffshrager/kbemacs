@@ -541,18 +541,13 @@ works: \texttt{(mysqrt 2.0)} returns 1.4142157.
 The reanimation loads the \emph{headless} core of KBEmacs (database,
 analyzer, clich\'e library, command language, knowledge-based editor,
 and coder) in the order given by its own system definition, under SBCL.
-The Zetalisp compatibility layer has the following parts:
-\begin{itemize}
-\item \textbf{Flavors:} g000001's Common Lisp port of Spice Lisp
-  Flavors~\cite{g000001}, with a few bug fixes, extended with the Lisp
-  Machine's \texttt{:case} method combination (with
-  \texttt{:otherwise}), \texttt{send} to functions and streams, and
-  flavor-aware \texttt{typep}.
-\item \textbf{LetS:} g000001's port of Waters's LetS series
-  notation~\cite{g000001}.
-\item \textbf{Language:} Zetalisp has various special forms and functions that
-  differ from Common Lisp.
-\end{itemize}
+The Zetalisp compatibility layer consists of g000001's Common Lisp
+port of Spice Lisp Flavors~\cite{g000001}, with a few bug fixes,
+extended with the Lisp Machine's \texttt{:case} method combination
+(with \texttt{:otherwise}), \texttt{send} to functions and streams, and
+flavor-aware \texttt{typep}; g000001's port of Waters's LetS series
+notation~\cite{g000001}; and definitions of the Zetalisp special forms
+and functions that differ from Common Lisp.
 
 \section{Then and Now: Historical Approaches to AI-Assisted Coding}
 \label{sec:thenandnow}
