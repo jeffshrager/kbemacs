@@ -122,8 +122,7 @@ used to bring up Simon's code is also written in Common Lisp}. Both
 reanimations were themselves carried out largely by an AI coding
 assistant: Anthropic's Claude~\cite{claude}, working in its
 command-line form, Claude Code. The division of labor is described in
-``Author Contributions and Use of AI''. Technical details of the
-reanimations are in the Appendix.
+``Author Contributions and Use of AI''. 
 
 \section{Historical Background}
 \label{sec:history}
@@ -388,6 +387,17 @@ memory or creating one, was also transcribed and runs. Its
 output matches the fragment of 1963 output that survives in the
 memorandum~\cite{simonRM3588,earepo}.
 
+\subsection{Implementation Notes}
+
+One print routine, U126, is called but absent from the 1961 listing;
+it was supplied from the 1963 listing in RM-3588-PR,
+Appendix~A~\cite{simonRM3588}, and affects only printing. A start card
+for the demonstration routine T1 was added (the 1963 listing ends with
+exactly such a card). The 1963 state description compiler differs from
+the 1961 one in representing states by bare symbols where the 1961
+version holds described ones. The information annexer of RM-3588-PR,
+Appendix~B, is 409 cards.
+
 \section{Reanimating KBEmacs}
 \label{sec:kbe}
 
@@ -474,10 +484,10 @@ was built at CMU, where Simon and Newell taught!) became CMUCL, and
 SBCL is a fork of CMUCL!}
 
 The rest of the layer supplies the parts of Zetalisp and the Lisp
-Machine that Common Lisp lacks or does differently
-(Appendix~\ref{app:kbe}). A small driver was also added to replay a
-self-test sequence from the 1984 record and compare the generated code
-with the expected code, as did the original test harness.
+Machine that Common Lisp lacks or does differently. A small driver was
+also added to replay a self-test sequence from the 1984 record and
+compare the generated code with the expected code, as did the original
+test harness.
 
 The SQRT sequence (Figure~\ref{fig:sqrt}) builds a square-root routine
 from three clich\'es in seven commands, and then builds a variant with
@@ -521,7 +531,29 @@ self-test (abridged).}
 All fourteen commands run, and both generated programs are
 \texttt{equal} to the code recorded in 1984. The generated code also
 works: \texttt{(mysqrt 2.0)} returns 1.4142157.
-**********************************************
+
+\subsection{Implementation Notes}
+
+The reanimation loads the \emph{headless} core of KBEmacs (database,
+analyzer, clich\'e library, command language, knowledge-based editor,
+and coder) in the order given by its own system definition, under SBCL.
+The Zetalisp compatibility layer has the following parts:
+\begin{itemize}
+\item \textbf{Flavors:} g000001's Common Lisp port of Spice Lisp
+  Flavors~\cite{g000001}, with a few bug fixes, extended with the Lisp
+  Machine's \texttt{:case} method combination (with
+  \texttt{:otherwise}), \texttt{send} to functions and streams, and
+  flavor-aware \texttt{typep}.
+\item \textbf{LetS:} g000001's port of Waters's LetS series
+  notation~\cite{g000001}.
+\item \textbf{Reader:} a Zetalisp readtable (\texttt{/} as the escape
+  character, \texttt{\#/c} characters, KBEmacs's \texttt{\{\ldots\}}
+  and \texttt{[\ldots]} syntax, and the \texttt{...} symbol).
+\item \textbf{Language:} Zetalisp has various special forms and functions that
+  differ from Common Lisp.
+\end{itemize}
+repository~\cite{kbemacsrepo}.
+
 \section{Then and Now: Historical Approaches to AI-Assisted Coding}
 \label{sec:thenandnow}
 
@@ -537,7 +569,7 @@ programming today.
 differ precisely in how the task is described. A state description
 says what the machine looks like before and after, which is close to
 what we would now call a specification by examples or by
-pre- and postconditions, and close to the role unit tests play in
+pre- and post-conditions, and close to the role unit tests play in
 directing a modern assistant. A functional description is an imperative
 phrase, which is close to a natural-language prompt. Simon drew a
 conclusion that remains apt: programmers use both, but ``at the higher
@@ -556,70 +588,69 @@ state description compiler knows exactly two operators; its functional
 description compiler can compile a routine only if a routine with the
 same process has already been compiled. KBEmacs knew ``a few dozen''
 clich\'es; Waters estimated that a practical tool would need ``many
-hundreds''~\cite[p.~55]{waters1986aimag}. Both systems identified reuse
-of known solutions as the heart of the matter: Simon's functional
-compiler works by finding an analogous routine and adapting it, and the
-whole Programmer's Apprentice rests on the claim that most programs are
-built from standard pieces. What neither could solve was acquiring that
-knowledge at scale. Large language models can be seen as one answer to
-precisely this bottleneck: an implicit clich\'e library absorbed from
-an enormous body of code, at the price of having no explicit, inspectable
-representation of what a clich\'e is or what its roles are.
+hundreds''~\cite[p.~55]{waters1986aimag}. Both systems identified
+reuse of known solutions as the heart of the matter: Simon's
+functional compiler works by finding an analogous routine and adapting
+it, and the whole Programmer's Apprentice rests on the claim that
+programs are built from background knowledge. What neither could solve
+was acquiring that knowledge at scale. Large language models can be
+seen as one answer to precisely this bottleneck: an implicit clich\'e
+library absorbed from an enormous body of code, at the price of having
+no explicit, inspectable representation of what a clich\'e is or what
+its roles are. 
 
 \textbf{Who does what?} The Heuristic Compiler was meant to be
 autonomous; KBEmacs was deliberately an apprentice, leaving design
 decisions to the programmer and taking over ``the details.'' Waters's
 argument for the apprentice was practical: full automation was not
 near, and a semiexpert assistant could be useful at once. Modern tools
-have traversed the same axis in a few years, from completing a line, to
-writing a function on request, to agents that plan, edit, and test
-across a code base with varying degrees of
-supervision~\cite{jimenez2024swebench}. The question of where the
-programmer's decisions end and the machine's begin, central to the
-Programmer's Apprentice, is again a live design question. In the work
-reported here it was settled in a direction Waters did not anticipate
-(see ``A Personal Coda'').
+have traversed the same axis in a few years, from completing a line,
+to writing a function on request, to agents that plan, edit, and test
+across a code base with varying degrees of supervision. The question
+of where the programmer's decisions end and the machine's begin,
+central to the Programmer's Apprentice, is again a live design
+question.
 
 \textbf{How does the system know it is making progress?} The Heuristic
 Compiler's executive is a loop: apply a compiler, test whether the
 routine has moved to a better kind of definition, and stop if it has
-not. Its state description compiler is difference reduction in the
-strict GPS sense. Modern coding agents commonly run a loop of a similar
-shape: make a change, run the tests or the compiler, examine the
-difference between what happened and what was wanted, and try again.
-The difference detector is now an executed test suite rather than a
-hand-coded comparison of states, and the operator is a learned model
-rather than a table of connections, but the architecture of
+not. Its state description compiler implements difference reduction in
+the strict GPS sense. Modern coding agents commonly run a loop of a
+similar shape: make a change, run the tests or the compiler, examine
+the difference between what happened and what was wanted, and try
+again. The difference detector is now an executed test suite rather
+than a hand-coded comparison of states, and the operator is a learned
+model rather than a table of connections, but the architecture of
 means-end iteration is recognizable. The resemblance goes beyond the
 loop. A coding agent of this kind is not a purely neural system: the
 language model chooses what to do next and interprets the results, but
-the exact computation---compiling, executing, comparing outputs,
-tracking changes---is done by conventional symbolic programs. In the
+the processes of compiling, executing, comparing outputs, tracking
+changes, and so on, is done by conventional symbolic programs. In the
 work reported here these were a Common Lisp compiler, an IPL-V
 interpreter, and the 1984 self-test's own comparison of generated with
-expected code. The heuristics have moved from a hand-written table of
-connections into a learned model; the operators and the difference
-tests are still ordinary programs. KBEmacs, for its part, came with a
-self-test in which the expected output was code, which is exactly what
-made it possible to check the reanimation in 2026: the KBEmacs
-reanimation was carried out in a loop of just this kind, with the 1984
-self-test as its difference detector.
+expected code. Although the heuristics have moved from a hand-written
+table of connections into a learned model, the operators and the
+difference tests are still ordinary programs. KBEmacs, for its part,
+came with a self-test in which the expected output was code, which is
+exactly what made it possible to check its reanimation.
 
 \textbf{Representation and explanation.} The two historical systems
 never treated code merely as text. The Heuristic Compiler builds IPL
 instructions out of description lists and prints them only at the end;
-KBEmacs reasons about plans and regenerates text after every command,
-taking pains to keep text and plan consistent when the user edits the
-text directly. That explicit representation is what allowed KBEmacs to
+KBEmacs reasons about plans and regenerates code after every command,
+taking pains to keep code and plan consistent when the user edits the
+code directly. That explicit representation is what allowed KBEmacs to
 describe a program in terms of its design (``The program MYSQRT is a
 successive-approximation \ldots''). Today's assistants operate on text
 and also explain code fluently, but their explanations are generated
-from text, not read off an explicit representation of the design.
-The trade-off between the robustness of working with text, which KBEmacs
-found painfully expensive to analyze---Waters reports that ``well over
-half of all the effort expended on KBEmacs went into implementing an
-analyzer and coder''~\cite[p.~55]{waters1986aimag}---and the
+from text, not read off an explicit representation of the design. The
+trade-off between the robustness of working with text, which KBEmacs
+found painfully expensive to analyze -- Waters reports that ``well
+over half of all the effort expended on KBEmacs went into implementing
+an analyzer and coder''~\cite[p.~55]{waters1986aimag} -- and the
 inspectability of working with plans, has not gone away.
+
+====================================================================
 
 \section{What Executable Archaeology Contributes}
 \label{sec:contribution}
@@ -707,11 +738,11 @@ Lisp Machine; we have not attempted this.
 
 For the Heuristic Compiler, the largest piece of unexplored territory
 is the English front end: the scanner, dictionary, and parser, and the
-routine that converts a parse into a functional description. Simon credited H.~S.~Kelly with
-``linguistic components for the compiler which are omitted from this
-report''~\cite[p.~506]{simon1963jacm}; these routines may be them. Running
-them requires input sentences, which are not in the listing. The pencil
-corrections in the listing also remain to be evaluated.
+routine that converts a parse into a functional description. Simon
+credited H.~S.~Kelly with ``linguistic components for the compiler
+which are omitted from this report''~\cite[p.~506]{simon1963jacm};
+these routines may be them. Running them requires input sentences,
+which are not in the listing. 
 
 For KBEmacs, the next step is to run the other five sequences of the
 1984 self-test, aiming to reproduce both the three successes and the
@@ -720,106 +751,63 @@ three failures; then the Ada front end, which would allow the
 rerun.
 
 The transcriptions, interpreters, compatibility layer, and Hacker's
-Guides to both programs are open source, at \url{https://github.com/jeffshrager/ExecutableArchaeology} and \url{https://github.com/jeffshrager/kbemacs}~\cite{earepo,kbemacsrepo}.
-
-\section{A Personal Coda}
-
-{\em Jeff Shrager}
-
-%%% TODO (JS): revise to taste; facts are from the seshsums and the
-%%% KBEmacs session transcript.
-Most of the hands-on work in both reanimations was done by AI systems.
-Most of the transcription from the page images was done by ChatGPT.
-Claude, running as Claude Code, corrected the transcriptions by running
-the code and checking the scans, assembled the Zetalisp compatibility
-layer, extended my IPL-V interpreter, and wrote the session summaries
-from which this paper was drafted. My contribution was direction:
-choosing what to resurrect, pointing Claude at the sources, deciding
-which results counted, and deciding when to stop. Claude did not start
-from nothing on the IPL-V side. My IPL-V interpreter, written to run the Logic Theorist,
-gave it an enormous leg up; without it, the Heuristic Compiler would
-have meant first building an IPL-V, a much larger job than the one
-reported here. The same goes for KBEmacs and g000001's port of Spice
-Lisp Flavors, without which Claude would have had to start by writing
-an object system.
-
-The arrangement bears on the history in the paper. My commands were a stylized English command language, an order of
-magnitude shorter than the programs they produced, which is just what
-Waters measured KBEmacs by. But the division of labor was not the one
-Waters proposed. In KBEmacs the programmer makes the design decisions
-and the apprentice fills in the clich\'es. Here the apprentice made most
-of the design decisions too, including, when asked ``what do you
-recommend working on next?'', the decision about what to do next. It
-was closer to Simon's vision of a program that treats programming as a
-problem to be solved, except that the problem was to bring Simon's own
-program back to life. Claude also made mistakes, some of which took a
-while to find; that is why nothing here was accepted until each program
-had reproduced its own historical output.
-
-Simon asked whether programming could be treated as problem solving;
-Waters asked whether a programmer could be given an apprentice that
-shared knowledge of standard algorithms. Their questions now have a
-further answer, from a system that descends from theirs not in its
-technology but in its aims, and that answer was used to bring their
-systems back to running condition. Both can now be run and studied
-again, and compared directly with the kind of system that recovered
-them. Simon closed his paper by saying that the Heuristic Compiler was
-``an exploratory tool that is beginning to reveal to us something of the
-role played by these and other representations in the programming
-process''~\cite[p.~506]{simon1963jacm}. Having a machine run it
-again suggests the exploration is not over.
+Guides to both programs are open source, at
+\url{https://github.com/jeffshrager/ExecutableArchaeology} and
+\url{https://github.com/jeffshrager/kbemacs}~\cite{earepo,kbemacsrepo}.
 
 \section*{Author Contributions and Use of AI}
 
 J.~Shrager conceived and directed the project, searched the Simon and
-Newell papers in the Carnegie Mellon University Archives with M.~Golec,
-wrote the IPL-V interpreter on which the Heuristic Compiler runs,
-checked the results against the historical record, and edited the
-paper. K.~M.~Pitman, a member of the original KBEmacs team, provided
-the scans of the January 1985 KBEmacs listings and guidance on the
-Zetalisp compatibility layer. M.~Golec worked with Shrager over an
-extended period in the Simon and Newell archives, and selected and
-scanned the Heuristic Compiler listing.
+Newell papers in the Carnegie Mellon University Archives with
+M.~Golec, wrote the IPL-V interpreter on which the Heuristic Compiler
+runs, checked the results against the historical record, and edited
+the paper. K.~M.~Pitman, a member of the original KBEmacs team,
+provided the scans of the January 1985 KBEmacs listings and guidance
+on the Zetalisp compatibility layer required to run it. M.~Golec
+worked with Shrager over an extended period in the Simon and Newell
+archives, and selected and scanned the Heuristic Compiler listing. All
+human authors read the paper and provided edits.
 
-Most of the work described here was carried out by AI systems, under
-the authors' direction. Most of the transcription of the listings from
-the page images was done by ChatGPT (OpenAI)~\cite{chatgpt}. Claude
-(Anthropic), running as Claude Code~\cite{claude} with the Claude
-Opus~5.5 model, corrected the transcriptions by running the code and
-checking the scans; adapted and extended Shrager's existing IPL-V
-interpreter for the Heuristic Compiler; adapted g000001's existing
-Common Lisp ports of Spice Lisp Flavors and LetS~\cite{g000001}, and
-assembled and debugged around them the Zetalisp compatibility layer
-for KBEmacs; ran and debugged both programs until they reproduced
-their historical output; and drafted this paper. The draft was then
-carefully checked by ChatGPT and by the authors, who verified its
-claims against the listings, the program runs, and the historical
-sources, and who take full responsibility for the final text. An
-accounting of the AI effort involved, from the Claude Code session
-logs, is given in Appendix~\ref{app:effort}.
+Most of the programming work described here was carried out by AI
+systems, under the authors' direction. Most of the transcription of
+the listings from the page images was done by ChatGPT
+(OpenAI)~\cite{chatgpt}. Claude (Anthropic), running as Claude
+Code~\cite{claude} with the Claude Opus~5.5 model, corrected the
+transcriptions by running the code and checking the scans; adapted and
+extended Shrager's existing IPL-V interpreter for the Heuristic
+Compiler; adapted g000001's existing Common Lisp ports of Spice Lisp
+Flavors and LetS~\cite{g000001}, developed the Zetalisp compatibility
+layer for KBEmacs, and ran and debugged both programs until they
+reproduced their historical output. Claude also drafted this
+paper. The draft was then carefully checked by ChatGPT and by the
+authors, who verified its claims against the listings, the program
+runs, and the historical sources, and who take full responsibility for
+the final text. 
+
+Taken together (and excluding ChatGPT's transcription of the KBEmacs
+listings) the two reanimations cost about 1,500 calls to the Claude
+Opus 5.5 model, 1,600 tool invocations, and six hours of active
+machine time, spread over two weeks of calendar time, not counting
+ChatGPT's extraction of the KBEmacs listings from the scans.
 
 \section*{Acknowledgments}
 
-%%% TODO (JS): add others as appropriate.
 We thank Emily Davis of Carnegie Mellon University, who, with Mia
 Golec, located the Heuristic Coder listing in the Herbert A.~Simon
-Papers at the Carnegie Mellon University Archives. The Heuristic Compiler reanimation
-rests on Shrager's Common Lisp IPL-V interpreter, written to run the
-Logic Theorist~\cite{shrager2026,shragerrepo}, which gave the work an
-enormous head start; David Moews's IPL-V Logic Theorist deck served as
-its regression test. We thank g000001 for the Common Lisp port of
-Spice Lisp Flavors, which gave the KBEmacs reanimation a similar head
-start, and for the port of LetS (\url{https://github.com/g000001/spice-flavors},
-\url{https://github.com/g000001/LetS})~\cite{g000001}. RAND Memorandum RM-3588-PR was obtained from
-bitsavers (\url{http://bitsavers.org/pdf/rand/ipl/}).
-%%% TODO verify bitsavers path for RM-3588-PR
-Listing excerpts from KBEmacs are copyright 1983/1984
-Massachusetts Institute of Technology and are reproduced by permission
-under the notice in those listings.
+Papers at the Carnegie Mellon University Archives. The Heuristic
+Compiler reanimation rests on Shrager's Common Lisp IPL-V interpreter,
+which uses David Moews's IPL-V Logic Theorist deck as its regression
+test. We thank g000001 for the Common Lisp port of Spice Lisp Flavors
+and LetS (\url{https://github.com/g000001/spice-flavors},
+\url{https://github.com/g000001/LetS})~\cite{g000001}. RAND Memorandum
+RM-3588-PR was obtained from bitsavers
+(\url{http://bitsavers.org/pdf/rand/ipl/}). Listing excerpts from
+KBEmacs are copyright 1983/1984 Massachusetts Institute of Technology
+and are reproduced by permission under the notice in those listings.
 
 Finally, we acknowledge Herbert Simon, H.~S.~Kelly, Richard Waters,
-Charles Rich, and the other members of the Programmer's
-Apprentice project, on whose work this paper rests.
+Charles Rich, and the other members of the Programmer's Apprentice
+project, on whose work this paper rests.
 
 \begin{thebibliography}{99}
 
@@ -851,11 +839,6 @@ Apprentice project, on whose work this paper rests.
   problem solving,'' in \textit{Proc. 1st Int. Joint Conf. Artif.
   Intell.}, 1969, pp. 219--239.
   %%% TODO verify pages
-
-\bibitem{jimenez2024swebench} C. E. Jimenez, J. Yang, A. Wettig,
-  S. Yao, K. Pei, O. Press, and K. Narasimhan, ``SWE-bench: Can
-  language models resolve real-world GitHub issues?'' in
-  \textit{Proc. Int. Conf. Learn. Represent. (ICLR)}, 2024.
 
 \bibitem{lane2025eliza} R. Lane, A. Hay, A. Schwarz, D. M. Berry, and
   J. Shrager, ``ELIZA reanimated: Restoring the mother of all chatbots
@@ -968,155 +951,16 @@ Apprentice project, on whose work this paper rests.
 
 \end{thebibliography}
 
-\appendix
-\section{Methods}
-\label{app:methods}
-
-This appendix records the technical details of the two reanimations
-for readers who want to reproduce or extend them. The code, the
-transcriptions, the session summaries, and Hacker's Guides to both
-programs are at \url{https://github.com/jeffshrager/ExecutableArchaeology}
-and \url{https://github.com/jeffshrager/kbemacs}~\cite{earepo,kbemacsrepo}.
-
-\subsection{The Heuristic Compiler}
-\label{app:hc}
-
-The listing's 95 scanned pages include one page scanned twice; the
-remaining 94 hold 4,473 cards, close to the pencilled total of ``4464''
-on the first page. The executive is routines U135--U138; the state
-description compiler is U140--U169 and X5--X7; the functional
-description compiler is U134, U130, and helpers; the English front end
-is T50--T300, U23--U99, and U199.
-
-Shrager's interpreter was extended to read 80-column card images
-directly. The Heuristic Compiler uses thirteen J-functions (IPL-V's
-primitive processes) that the Logic Theorist did not, and these were
-added following the 1964 manual~\cite{newell1964ipl}: J12, J13, J61,
-J69, J70, J77, J83, J101, J118, J131, J149, J150, and J165. Nine
-existing J-functions (J60, J62, J68, J114, J155, J156, J180, J181, and
-J183) were corrected against the manual where the Heuristic Compiler
-exercised behavior the Logic Theorist had not. The interpreter still
-reproduces Stefferud's 1963 Logic Theorist output for all 24 of its
-theorems~\cite{earepo}.
-
-One print routine, U126, is called but absent from the 1961 listing; it
-was supplied from the 1963 listing in RM-3588-PR,
-Appendix~A~\cite{simonRM3588}, and affects only printing. A start card
-for the demonstration routine T1 was added (the 1963 listing ends with
-exactly such a card). The 1963 state description compiler differs from
-the 1961 one in representing states by bare symbols where the 1961
-version holds described ones. The information annexer of RM-3588-PR,
-Appendix~B, is 409 cards.
-
-\subsection{KBEmacs}
-\label{app:kbe}
-
-The reanimation loads the \emph{headless} core of KBEmacs (database,
-analyzer, clich\'e library, command language, knowledge-based editor,
-and coder) in the order given by its own system definition, under SBCL.
-The Zetalisp compatibility layer has the following parts.
-\begin{itemize}
-\item \textbf{Flavors:} g000001's Common Lisp port of Spice Lisp
-  Flavors~\cite{g000001}, with a few bug fixes, extended with the Lisp
-  Machine's \texttt{:case} method combination (with
-  \texttt{:otherwise}), \texttt{send} to functions and streams, and
-  flavor-aware \texttt{typep}.
-\item \textbf{LetS:} g000001's port of Waters's LetS series
-  notation~\cite{g000001}.
-\item \textbf{Reader:} a Zetalisp readtable (\texttt{/} as the escape
-  character, \texttt{\#/c} characters, KBEmacs's \texttt{\{\ldots\}}
-  and \texttt{[\ldots]} syntax, and the \texttt{...} symbol).
-\item \textbf{Language:} Zetalisp special forms and functions that
-  differ from Common Lisp, among them destructuring \texttt{let},
-  old-style \texttt{do}, named \texttt{prog}, multiple-value
-  \texttt{return}, Lisp Machine \texttt{defstruct}, \texttt{(defun (sym
-  prop) \ldots)}, \texttt{fexpr} and \texttt{macro} definitions,
-  \texttt{setf} through the \texttt{:setf} property, locatives,
-  truncating integer \texttt{//}, numeric operations on characters,
-  \texttt{(listp nil)} false, \texttt{map} over successive tails, and
-  \texttt{boole} with PDP-10 instruction codes.
-\item \textbf{Conditions:} Lisp Machine flavor-based conditions
-  (\texttt{signal}, \texttt{ferror}, \texttt{condition-bind},
-  \texttt{condition-case}).
-\item \textbf{Machine emulation:} \texttt{\%pointer}, emulated by
-  creation order (KBEmacs keeps its sets sorted by machine address),
-  areas, processes and locks, and the Lisp Machine's stream variables.
-\item \textbf{Stand-ins:} stub packages (\texttt{SYS}, \texttt{SI},
-  \texttt{TV}, \texttt{ZWEI}, and others) and the editor-level
-  facilities the core needs, including a headless command delegate.
-\end{itemize}
-The transcription corrections\footnote{Most were ChatGPT's. It read
-quote as backquote, dropped and added parentheses in compensating pairs
-so that its files still balanced, and in one place helpfully copied a
-line from the macro above, shifting the arguments of every verb in the
-command language by one. It was chosen for the transcription because
-it was cheaper than Claude. It was cheaper for a reason.} are logged,
-with the page of the scan that confirms each, in \texttt{code/TRANSCRIPTION-FIXES.md} in the
-KBEmacs repository~\cite{kbemacsrepo}.
-
-\subsection{AI Effort}
-\label{app:effort}
-
-Claude Code logs every session, including the token counts of each
-call to the model, so the effort behind the two reanimations can be
-measured rather than remembered. Table~\ref{tab:effort} totals those
-logs. All of the work was done by Claude Opus~5.5. ``Active time''
-counts only stretches in which successive log entries were less than
-ten minutes apart, so it leaves out long test runs and human absences
-and is a lower bound. The KBEmacs column includes the drafting of this
-paper and of the accompanying hacker's guides, which were done in the
-same sessions. Neither column includes the head start: the original
-construction of Shrager's IPL-V interpreter for the Logic Theorist
-(roughly 1,350 further model calls and 11 active hours, mostly by an
-earlier Claude model), or ChatGPT's transcription of the KBEmacs
-listings, which left no logs available to us.
-
-\begin{table}[H]
-\centering
-\caption{Claude's effort, from the Claude Code session logs. Excludes ChatGPT's transcription of the KBEmacs listings.}
-\label{tab:effort}
-\footnotesize
-\begin{tabular}{@{}lrr@{}}
-\toprule
- & \textbf{Heuristic Compiler} & \textbf{KBEmacs} \\ \midrule
-Calendar dates (2026) & Oct.\ 2--3 & Oct.\ 5--17 \\
-Sessions & 1 & 3, plus 28 subagent runs \\
-Model calls & $\sim$485 & $\sim$1,080 \\
-Tool calls (shell, edits, reads) & $\sim$590 & $\sim$1,000 \\
-Human prompts & $\sim$70 & $\sim$160 \\
-Tokens generated & 0.42\,M & 0.91\,M \\
-Tokens newly read & 3.5\,M & 10\,M \\
-Tokens re-read from cache & 154\,M & 261\,M \\
-Active time & $\sim$2.7\,h & $\sim$3.3\,h \\ \bottomrule
-\end{tabular}
-\end{table}
-
-Taken together, the two reanimations cost about 1,500 calls to the
-model, 1,600 tool invocations, and six hours of active machine time,
-spread over two weeks of calendar time, not counting ChatGPT's
-extraction of the KBEmacs listings from the scans.
-
-Three features of these numbers are worth remarking on. First, almost
-all of the tokens are context rather than work: on each call the model
-re-reads the conversation so far, so the 415 million cached tokens are
-mostly repeated context. What Claude
-actually wrote---code, patches, commands, commit messages, and prose
----comes to about 1.3 million tokens across both projects, a
-few times the size of the KBEmacs listings themselves. Second, the
-human side of the ledger, some 230 prompts, is small in count but not
-in consequence: those prompts chose the targets and decided which
-results counted. Third, these figures are not comparable with the
-effort of the original projects. KBEmacs embodied
-years of work by a research group, and the Heuristic Compiler a
-substantial programming effort at RAND; the reanimations had the
-designs, the code, and the published outputs already in hand, and
-needed only to make them run again.
-
-
 \section*{About the Authors}
 
-%%% TODO: biographies from each human author
-\noindent\textbf{Jeff Shrager} is a cognitive scientist and long-time Lisp hacker. He worked with Simon and Newell at CMU in the 1980s, and taught (as an adjunct) in the SymSys program at Stanford for almost 25 years. These days he archive dives to find early AIs, and works with new AIs to reanimate them.
+\noindent\textbf{Jeff Shrager} is a cognitive scientist and computer
+scientist who is currently Chief Scientist of Bennu Climate, Inc., a
+methane removal company. Jeff was a student of Herb Simon's at CMU in
+the 1980s, and taught in the SymSys program at Stanford for almost 25
+years (as an adjunct). His primary intellectual project is CogLean, a
+Lean-based library of formal components that can be used to prove
+claims about cognitive models. In his spare time Jeff archive dives to
+find early AIs, and then works with modern AIs to reanimate them.
 
 \noindent\textbf{Kent M.~Pitman} \{Kent M.~Pitman to provide\}
 
