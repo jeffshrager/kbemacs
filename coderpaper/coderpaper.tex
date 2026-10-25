@@ -708,9 +708,18 @@ theory of problem solving, an implicit library of programming
 clich\'es, and an implicit skill in combining them, all distributed
 across the billions of weights that make up the LLM. That this
 knowledge is not stated in a form that can be examined is probably
-core to what makes these tools so flexible, but it also means that
-their behavior can be checked only after the fact, never guaranteed in
-advance.
+core to what makes these tools so flexible, but it also means that it
+cannot be reasoned about. An explicit theory can be. The Logic
+Theorist proved theorems by manipulating explicit logical expressions;
+the Heuristic Compiler carried the same kind of reasoning over to
+explicit descriptions of programs; and KBEmacs's Plan Calculus gave
+its clich\'es a formal semantics~\cite{rich1981}. In each case the
+theory of programming was available both to the program, which
+reasoned with it, and to its builders, who could analyze it, test it,
+and in principle prove things about it. A theory distributed across
+the weights of an LLM can only be probed from the outside, by
+observing what the model does. One cannot prove anything about what
+one cannot represent.
 
 \section{Code Availability}
 \label{sec:code}
