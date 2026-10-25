@@ -70,7 +70,7 @@ Models of Programming, Claude Code
 
 Modern programmers increasingly work alongside AI-based tools built on
 large language models (LLMs) and trained on enormous corpora of source
-code and other progamming-related materials. Although the scale and
+code and other programming-related materials. Although the scale and
 fluency of the modern tools is truly novel, the aspiration of a
 program that takes part in the work of programming is nearly as old as
 programming itself. In the 1950s what we now call ``compilation'' was
@@ -155,7 +155,7 @@ programs -- what we (and many others) call ``computational models of
 cognition'', or merely ``models''. Their first model, in 1955/6, was
 called the ``Logic Theorist'' (LT). LT searched for proofs of theorems
 in \textit{Principia
-  Mathematica}~\cite{LT1957,moewsshrager2026}. Later, they creathe
+  Mathematica}~\cite{LT1957,moewsshrager2026}. Later, they created the
 ``General Problem Solver'' (1959) which generalized the method applied
 in LT into a theory of ``means-ends analysis'', theorizing that this
 is a core cognitive skill~\cite{newell1959gps}. Simon's 1963 summary
@@ -182,7 +182,8 @@ processes \ldots\ to generate a
 program''~\cite[p.~495]{simon1963jacm}. The same observation, in a
 deductive rather than heuristic setting, later became the foundation
 of program synthesis from theorem
-proving~\cite{green1969,mannawaldinger1971}, and of program checking by proof ****ADD A CITATION TO MOORE HERE (and in the ref)***
+proving~\cite{green1969,mannawaldinger1971}, and of program verification by
+theorem proving~\cite{boyermoore1979}.
 
 Simon's goal was \emph{not} to build an automatic programming tool:
 ``no claims will be made for the heuristic programming procedures
@@ -258,7 +259,7 @@ Heuristic Compiler as a whole is a compiler; within it, two
 descriptions, serve as the operators of its means-ends loop.}; a
 natural-language front end (a character scanner, dictionary, and
 parser) intended to let the compiler accept English definitions; an
-IPL-V knowledge base; and a rendered that take the final step, in
+IPL-V knowledge base; and a renderer that takes the final step, in
 which the program's internal representation is printed as IPL-V text.
 
 \subsection{Everything Is a Description List}
@@ -273,10 +274,10 @@ such as ``INSERT ( ) AT END OF ( )''), its \emph{state description}
 its flow diagram, and its IPL-V code. Within the IPL code rendered in
 this representation, IPL-V instructions are themselves description
 lists with attributes for each field. For example, a symbol, such as
-\texttt{J3}, is a stored as a description list with a region (the
+\texttt{J3}, is stored as a description list with a region (the
 letter ``J'') and a location (the integer 3). The program never handles
 IPL code as text. Its compilers build and transform these structures,
-and the render prints them out as IPL-V text only at the end.
+and the renderer prints them out as IPL-V text only at the end.
 
 The Heuristic Compiler's executive implements a means-ends
 problem-solving loop whose \emph{differences} are kinds of definitions
@@ -383,7 +384,7 @@ communication cell,'' an addition, for which LOAD is relevant, giving
   20H5 0}, the code in the paper~\cite[p.~498]{simon1963jacm}.
 
 We noted one exception in the reproduced results: Our recovered deck
-did not initially compile J3. The reason, we dicovered, is that our
+did not initially compile J3. The reason, we discovered, is that our
 listing's J3 had both a functional and a state description, but the
 executive always prefers the functional description on the assumption
 that ``it is easier to compile from a functional description than from
@@ -392,7 +393,7 @@ already-compiled routine shares J3's process, the functional
 description compiler fails, the executive sees no progress and gives
 up without trying the state description. The published paper's J3
 result is only produced by our reanimation when the deck is repaired
-by \em{removing} J3's functional description, after which the state
+by \emph{removing} J3's functional description, after which the state
 description compiler produces exactly the published code. In the 1963
 listing (in \cite{simonRM3588}) the executive is identical, but the
 cards that give J3 a functional description are numbered as though
@@ -420,7 +421,7 @@ at
 cover the system as of KBE version 358.0x (December 1984), although
 individual files carry their own dates and versions. Volume~1 opens
 with the output of an extremely useful automatic self-test, run in
-december of 1984 on an MIT Lisp Machine. The self-test exercises six
+December 1984 on an MIT Lisp Machine. The self-test exercises six
 command sequences and compares the generated code with the expected
 code.  This specific run reports that three sequences (HASH, SQRT, and
 SUMLIST) succeeded, but that three (BUCKET, DELETE, and MEMQ) failed.
@@ -453,7 +454,7 @@ The braces are KBEmacs read syntax marking \emph{roles}, the parts that
 vary from use to use; the surrounding code is fixed.}
 \label{fig:cliche}
 \end{figure}
-Similar to the way in which the Hueristic Compiler worked with
+Similar to the way in which the Heuristic Compiler worked with
 internal representation of IPL-V code, KBEmacs's cliches are not
 stored as text. When the library loads, each definition is run through
 KBEmacs's \emph{analyzer}, which turns the cliche code into a plan: a
@@ -551,13 +552,13 @@ AI coding assistants in any direct technical sense. The historical
 programs are loaded with proto-programs or cliches, whereas LLMs are
 trained on huge volumes of example code, as well as
 programming-related content, such as advice garnered from online
-forums, such as Stack Overflow.\footenote{One could argue that
+forums, such as Stack Overflow.\footnote{One could argue that
   ``training'' and ``loading'' are not very different in concept as
   they both build up a knowledge base of one sort or another. However
   the loading of cliches and the training of a neural net are, of
   course, completely different forms of building up a knowledge base.}
-Also, the Heuristic Compiler and KBEmacs operateon an explicit
-internal representations of the code, whereas LLMs operate the program
+Also, the Heuristic Compiler and KBEmacs operate on explicit
+internal representations of the code, whereas LLMs operate on the program
 text and contextual materials such as the programmer's guidance
 prompts.\footnote{Certainly an LLM harbours a tacit internal
 representation relevant to the structure of the code it is working on,
@@ -583,7 +584,7 @@ descriptions''~\cite[p.~506]{simon1963jacm}. KBEmacs chose the
 functional side and gave it a vocabulary of named algorithms --
 cliches. Today's assistants accept both kinds of description, and much
 of the craft of using them lies in combining functional prompts with
-tests that the AI can use to check it's work and self-correct.
+tests that the AI can use to check its work and self-correct.
 
 \textbf{Where does the knowledge come from?} Both historical systems
 are knowledge-starved by modern standards. The Heuristic Compiler's
@@ -640,8 +641,7 @@ heuristics have moved from a hand-written table of connections or
 cliche library, to a neural net, the operators and the difference
 tests are still ordinary programs.
 
-\textbf{Representation and explanation.} As we have said many time,
-the two historical systems never treated code merely as text. The
+\textbf{Representation and explanation.} As we have said, the two historical systems never treated code merely as text. The
 Heuristic Compiler builds IPL instructions out of description lists
 and prints them only at the end; KBEmacs reasons about cliches and
 plans and regenerates code after every command, taking pains to keep
@@ -652,7 +652,7 @@ successive-approximation \ldots''). Waters reports that ``well over
 half of all the effort expended on KBEmacs went into implementing an
 analyzer and coder''~\cite[p.~55]{waters1986aimag}. Today's assistants
 also only operate on text at the edges of the network, but their core
-technology is incsruitable.
+technology is inscrutable.
 
 \section{Technical Next Steps}
 \label{sec:next}
@@ -672,14 +672,14 @@ self-test. After that one could work on the Ada front end, which could
 allow Waters's main \texttt{UNIT-REPAIR-REPORT} demonstration to be
 reproduced. Another possibility would be to hook KBEmacs in an Emacs!
 Reproducing Zmacs would be difficult and useless, but it would be
-pleasing and amuzing to be able to enter Control-Meta-Cokebottle into
+pleasing and amusing to be able to enter Control-Meta-Cokebottle into
 a modern unix-based Emacs and have it bring up KBEmacs!
 
 \section{Conclusion}
 \label{sec:conc}
 
 Our reanimation of Simon's Heuristic Compiler and MIT's KBEmacs
-illuminate a history of AI and programming that is not simply a
+illuminates a history of AI and programming that is not simply a
 progression from primitive to increasingly sophisticated coding
 assistants. Simon's Heuristic Compiler investigated the nature of
 programming as problem solving. KBEmacs applied AI to assist human
@@ -703,8 +703,8 @@ program. Newell and Simon themselves long preferred the term ``complex
 information processing'' to ``artificial intelligence.'' Simon's
 Heuristic Compiler treated programming as means-ends problem
 solving. The Programmer's Apprentice understood programming as
-combining together familiar cliches. And note that the Heuristic
-Compiler also depended upon having a knowledge based of what amount to
+combining familiar cliches. And note that the Heuristic
+Compiler also depended upon having a knowledge base of what amount to
 cliches. More importantly to the present effort, each was a theory of
 programming that could be run and tested, and we now can do so again.
 
@@ -805,6 +805,9 @@ project, on whose work this paper rests.
 \bibitem{balzer1973} R. M. Balzer, ``A global view of automatic
   programming,'' in \textit{Proc. 3rd Int. Joint Conf. Artif. Intell.
   (IJCAI)}, Stanford, CA, Aug. 1973, pp. 494--499.
+
+\bibitem{boyermoore1979} R. S. Boyer and J S. Moore, \textit{A
+  Computational Logic}. New York: Academic Press, 1979.
 
 \bibitem{chatgpt} OpenAI, ``ChatGPT,'' 2026. [Online]. Available:
   \url{https://chatgpt.com}
