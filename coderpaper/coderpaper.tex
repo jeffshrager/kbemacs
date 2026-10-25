@@ -693,10 +693,10 @@ a modern unix-based Emacs and have it bring up KBEmacs!
 Our reanimations of Simon's Heuristic Compiler and MIT's KBEmacs
 illuminate a history of AI and programming that is not simply a
 progression from primitive to increasingly sophisticated coding
-assistants. Like most early AI,\footnote{Newell and Simon themselves
+assistants. Like most early AI, both systems were, at least in part,
+theories of how people program.\footnote{Newell and Simon themselves
   long preferred the term ``complex information processing'' to
-  ``artificial intelligence.''} both systems were, at least in part,
-theories of how people program. Simon's Heuristic Compiler treated
+  ``artificial intelligence.''} Simon's Heuristic Compiler treated
 programming as means-ends problem solving: finding differences between
 the routine one has and the routine one wants, and applying operators
 that reduce them. The Programmer's Apprentice treated programming as
@@ -707,8 +707,8 @@ an already-compiled routine with the same process and adapting it, in
 effect drawing on a small library of cliches. Both systems, in other
 words, saw programming as the skilled use of explicitly represented
 knowledge. Where they differed most was in the place they gave the
-human: Simon's program was an experiment on programming, KBEmacs was
-an assistant to programmers, and today's agents increasingly do the
+human: Simon's program was an experiment in programming, KBEmacs was
+an assistant to programmers. Today's agents increasingly do the
 programming themselves. Each of the historical theories could be run
 and tested, and by recovering and executing the original systems,
 Executable Archaeology lets us run and test them again.
@@ -716,27 +716,38 @@ Executable Archaeology lets us run and test them again.
 Today's AI coding assistants program far better than either the
 Heuristic Compiler or KBEmacs, yet the LLMs at their core embody no
 comparable explicit theory of cliches or of the problem solving
-involved in programming. As we noted in
-Section~\ref{sec:thenandnow}, something of Simon's theory survives,
-as engineering, in the means-ends loop of the harnesses that drive
-these tools. What
-the harness leaves to the model, we venture, includes an implicit
-theory of problem solving, an implicit library of programming
-cliches, and an implicit skill in combining them, all distributed
-across the billions of weights that make up the LLM. That this
-knowledge is not stated in a form that can be examined is probably
-core to what makes these tools so flexible, but it also means that it
-cannot be reasoned about. An explicit theory can be. The Logic
-Theorist proved theorems by manipulating explicit logical expressions;
-the Heuristic Compiler carried the same kind of reasoning over to
-explicit descriptions of programs; and KBEmacs's Plan Calculus gave
-its cliches a formal semantics~\cite{rich1981}. In each case the
+involved in programming. As we noted in Section~\ref{sec:thenandnow},
+something of Simon's theory survives, as engineering, in the
+means-ends loop of the harnesses that drive these tools. What the
+harness leaves to the model, we venture, includes an implicit theory
+of problem solving, an implicit library of programming cliches, and an
+implicit skill in combining them, all distributed across the billions
+of weights that make up the LLM. That this knowledge is not stated in
+a form that can be examined is probably core to what makes these tools
+so flexible, but it also means that it cannot be reasoned about, as an
+explicit theory can.
+
+The Logic Theorist proved theorems by manipulating explicit logical
+expressions; the Heuristic Compiler carried the same kind of reasoning
+over to explicit descriptions of programs; and KBEmacs's Plan Calculus
+gave its cliches a formal semantics~\cite{rich1981}. In each case the
 theory of programming was available both to the program, which
 reasoned with it, and to its builders, who could analyze it, test it,
-and in principle prove things about it. A theory distributed across
-the weights of an LLM can only be probed from the outside, by
-observing what the model does. One cannot prove anything about what
-one cannot represent.
+and in principle prove things about it. A theory distributed across billions of weights cannot be analyzed
+in the same way. We can observe what a model does, and researchers are
+working to interpret what its weights represent~\cite{templeton2024},
+but this is turning out to be extremely difficult. There may be a
+tradeoff between flexibility and interpretability, and one cannot
+prove anything about what one cannot represent. For building software,
+this may not matter: we need not derive programs from an interpretable
+substrate like a cliche library, nor by a proof-like process, so long
+as the code itself can be verified, and in most everyday cases it is
+enough that it passes the tests. But for understanding programming,
+which was Simon's purpose, it is not enough. A system that programs
+well but cannot be inspected tells us little about how programming is
+done. The early systems made their theories of programming explicit,
+and Executable Archaeology lets us run them, test them, and reason
+about them again.
 
 \section{Code Availability}
 \label{sec:code}
@@ -952,6 +963,12 @@ project, on whose work this paper rests.
   K. Narasimhan, and Y. Cao, ``ReAct: Synergizing reasoning and acting
   in language models,'' in \textit{Proc. Int. Conf. Learn. Represent.
   (ICLR)}, 2023.
+
+\bibitem{templeton2024} A. Templeton, T. Conerly, et al., ``Scaling
+  monosemanticity: Extracting interpretable features from Claude 3
+  Sonnet,'' \textit{Transformer Circuits Thread}, Anthropic, May 2024.
+  [Online]. Available:
+  \url{https://transformer-circuits.pub/2024/scaling-monosemanticity/}
 
 \bibitem{waters1978} R. C. Waters, ``Automatic analysis of the logical
   structure of programs,'' Ph.D. dissertation, MIT, Cambridge, MA, USA,
