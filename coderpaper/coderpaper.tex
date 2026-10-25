@@ -42,8 +42,8 @@ General Problem Solver to investigate the nature of the programming
 task. The second, KBEmacs (1984), was a working prototype of an
 intelligent programming assistant developed by MIT's Programmer's
 Apprentice project, built on the view that expert programmers
-recognize and combine familiar patterns, or ``clich\'es.''  It let a
-programmer build up programs by combining clich\'es through a stylized
+recognize and combine familiar patterns, or ``cliches.''  It let a
+programmer build up programs by combining cliches through a stylized
 English command language. We approach both through Executable
 Archaeology, the study of historical computational systems by running
 their original code, a process we call ``reanimation.'' Our reanimation of the Heuristic Compiler
@@ -71,59 +71,61 @@ Models of Programming
 
 Modern programmers increasingly work alongside AI-based tools built on
 large language models and trained on enormous corpora of source
-code. Although the scale and fluency of the modern tools are truly novel,
-the aspiration of a program that takes part in the work of programming is
-nearly as old as programming itself. In the 1950s what we now call
-compilation was referred to as ``automatic
-programming''~\cite{backus1957fortran}. And within a few years of the
-founding of artificial intelligence, researchers were asking whether
-the methods of AI could be turned on the task of programming
-itself~\cite{balzer1985,richwaters1988myths}.
+code. Although the scale and fluency of the modern tools are truly
+novel, the aspiration of a program that takes part in the work of
+programming is nearly as old as programming itself. In the 1950s what
+we now call compilation was referred to as ``automatic
+programming''~\cite{backus1957fortran,richwaters1988myths}. And within
+a few years of the founding of artificial intelligence, researchers
+were asking whether the methods of AI could be turned on the task of
+programming itself~\cite{balzer1973}.
 
 Programming has also long been studied as a human activity. Weinberg's
 \textit{The Psychology of Computer Programming}~\cite{weinberg1971}
 treated it as behavior to be observed, and by the early 1980s Soloway
 and his colleagues at Yale demonstrated that expert programmers work
 from stereotyped ``programming plans'' -- reusable code schemas --
-rather than from first principles~\cite{soloway1984}. Early AI stood
-close to this tradition. Many of its programs were intended either as
-theories of how people do complex things~\cite{newell1972hps}, or
-depended on intuitive theories of this. And a program that programs
-is, in that sense, a theory of programming, but one that can be run
-and tested, and could even perhaps be helpful to a human programmer.
+rather than from first principles~\cite{soloway1984}. Most early AI
+was intended either as theories of how people do complex things
+(e.g.,~\cite{newelletat1958, newell1972hps}), or depended on intuitive
+theories of this. And in that framing, a program that writes programs,
+or helps a programmer do so, is at least an intuitive theory of
+programming, but one that could be helpful to a human programmer.
 
 This paper describes the reanimation of two historical systems that
-offer two such theories, though they were built for different ends:
-one treated programming as an object of scientific investigation, the
-other as a task to be assisted. The first is Herbert A.~Simon's
-\emph{Heuristic Compiler}, written in IPL-V in 1961 and described in a
-RAND report that year~\cite{simonP2349} and in the \textit{Journal of
-  the ACM} in 1963~\cite{simon1963jacm}. Simon treated programming as a
-`problem' in the sense in which that term was used in GPS,'' the
-General Problem Solver of Newell, Shaw, and
-Simon~\cite{newell1959gps}: Given a description of what a routine
-should do, Simon's program searched for differences between the
-routine as it stands and the desired routine, and applied operators to
-reduce those differences.
+offer two such theories, though they were built for different ends.
+The first is Herbert A.~Simon's \emph{Heuristic Compiler}, written in
+IPL-V in 1961 and described in a RAND report that
+year~\cite{simonP2349} and in the \textit{Journal of the ACM} in
+1963~\cite{simon1963jacm}. Simon treated programming as a `problem' in
+the sense in which that term was used in GPS,'' the General Problem
+Solver of Newell, Shaw, and Simon~\cite{newell1959gps}: Given a
+description of what a routine should do, Simon's program searched for
+differences between the routine as it stands and the desired routine,
+and applied operators to reduce those differences.
 
 The second system is \emph{KBEmacs}, the Knowledge-Based Editor (in
-Emacs), built at MIT's Artificial Intelligence Laboratory as the
-culminating demonstration of the Programmer's Apprentice
+Emacs). Built at MIT's Artificial Intelligence Laboratory, KBEmacs was
+the culminating demonstration of the Programmer's Apprentice
 project~\cite{waters1985tr,waters1986aimag,richwaters1987overview}.
 The user of KBEmacs guided the computer by indicating standard
-``clich\'es'' to combine in stylized English. KBEmacs supplied the
-details and wrote the code. This process was implicitly a claim that
+``cliches'' to combine in stylized English. KBEmacs supplied the
+details and wrote the code by combining together the indicated
+cliches. This process was in close accorded with the psychologists
+studying programming (e.g.,~\cite{soloway1984}), who proposed that
 much of what a skilled programmer knows consists of such familiar
-patterns, each with roles to be filled, and the skill required to
-combine them into a correct program.
+patterns (``programming plans''), each with roles to be filled, and
+the skill required to combine them into a correct program.
 
 Although these two systems were separated by a quarter of a century,
-by programming language and platform, and by research tradition, they
-stake out most of the conceptual territory that today's AI coding
-tools occupy: How a programming task is specified, where the knowledge
-and skill needed to carry it out comes from, how work is divided
-between human and machine, and how the system checks and explains what
-it has done.
+by programming language (IPL-V v. ZetaLisp) and platform (large
+multi-user computers v. personal Lisp machines), and by research
+tradition (the study of human cognition v. applied AI), they stake out
+a great deal of the conceptual territory that today's AI coding tools
+occupy: How a programming task is specified, where the knowledge and
+skill needed to carry it out comes from and where it resides, how work
+is divided between human and machine, and how the system checks and
+explains what it has done.
 
 We approach the study of these artifacts as exercises in
 \emph{Executable Archaeology} employing the core methodology of
@@ -200,7 +202,7 @@ will help a programmer in various phases of the programming
 task''~\cite[p.~47]{waters1986aimag}.
 
 Over the following decade the project developed three central ideas:
-\emph{Clich\'es} are standard computational methods, such as a linear
+\emph{Cliches} are standard computational methods, such as a linear
 search, a report generator, or successive approximation, each with
 \emph{roles} that vary from use to use and a fixed surrounding
 structure. \emph{Plans} are a language-independent representation of
@@ -223,7 +225,7 @@ such as ``Define a simple-report procedure UNIT-REPAIR-REPORT'' and
 REPAIRS''~\cite[p.~48]{waters1986aimag},\cite{waters1985tse}.
 
 KBEmacs was admittedly a research prototype. Waters wrote that it knew
-``only a few dozen clich\'es'' where a practical tool ``would need to
+``only a few dozen cliches'' where a practical tool ``would need to
 know many hundreds,'' and that, its ideas having been used ``for
 essentially all [they are] worth,'' KBEmacs ``has been
 mothballed''~\cite[pp.~54--55]{waters1986aimag}. The project continued
@@ -424,7 +426,7 @@ about 34,500 lines of source, available at
 \subsection{Text and Plans}
 
 A KBEmacs user works in a stylized English command language phrased in
-terms of clich\'es and their roles. The clich\'e library is written as
+terms of cliches and their roles. The cliche library is written as
 code with holes, as in the definition of successive approximation
 in Figure~\ref{fig:cliche}.
 
@@ -440,12 +442,12 @@ in Figure~\ref{fig:cliche}.
       (IF ({the criterion} APPROXIMATION) (RETURN APPROXIMATION) )
       (SETQ APPROXIMATION ({the improvement-step} APPROXIMATION) ))))
 \end{lstlisting}
-\caption{A clich\'e from KBEmacs's library (\texttt{kbelib.lisp}, 1984).
+\caption{A cliche from KBEmacs's library (\texttt{kbelib.lisp}, 1984).
 The braces are KBEmacs read syntax marking \emph{roles}, the parts that
 vary from use to use; the surrounding code is fixed.}
 \label{fig:cliche}
 \end{figure}
-Clich\'es are not stored as text. When the library loads, each
+Cliches are not stored as text. When the library loads, each
 definition is run through KBEmacs's \emph{analyzer}, which turns code
 into a plan: a set of facts in a small database describing segments,
 ports, data flow, control flow, and roles. In a plan, a \texttt{LOOP}
@@ -472,7 +474,7 @@ KBEmacs release (Symbolics Release 4.5) was available to us. Both
 include Flavors, but Open Genera, the closer of the two, is not freely
 available, and it corresponds to a Genera release about a decade later
 than the one KBEmacs ran on. The reanimation targeted the
-\emph{headless} core (the database, analyzer, clich\'e library,
+\emph{headless} core (the database, analyzer, cliche library,
 command language, knowledge-based editor, and coder), leaving out the
 editor, windows, actors, and the Ada front end~\cite{kbemacsrepo}.
 
@@ -490,11 +492,11 @@ self-test sequences from the 1984 code and compare the results with
 what was expected.
 
 The SQRT sequence (Figure~\ref{fig:sqrt}) builds a square-root routine
-from three clich\'es in seven commands, and then builds a variant with
+from three cliches in seven commands, and then builds a variant with
 an extra parameter in seven more. After the first command that names a
-clich\'e, KBEmacs holds the clich\'e's structure with its roles still
+cliche, KBEmacs holds the cliche's structure with its roles still
 open as holes. Each further command fills a role with code or with
-another clich\'e, whose own unfilled roles appear as new holes. After
+another cliche, whose own unfilled roles appear as new holes. After
 seven commands the plan has 32 segments and the program is complete.
 
 \begin{figure}[H]
@@ -572,7 +574,7 @@ are knowledge-starved by modern standards. The Heuristic Compiler's
 state description compiler knows exactly two operators; its functional
 description compiler can compile a routine only if a routine with the
 same process has already been compiled. KBEmacs knew ``a few dozen''
-clich\'es; Waters estimated that a practical tool would need ``many
+cliches; Waters estimated that a practical tool would need ``many
 hundreds''~\cite[p.~55]{waters1986aimag}. Both systems identified
 reuse of known solutions as the heart of the matter: Simon's
 functional compiler works by finding an analogous routine and adapting
@@ -580,10 +582,10 @@ it, and the whole Programmer's Apprentice rests on the claim that
 programs are built from background knowledge. What neither could solve
 was acquiring that knowledge at scale. Large language models can be
 loosely described as one answer to precisely this bottleneck: in
-effect, an implicit clich\'e library absorbed from an enormous body of
+effect, an implicit cliche library absorbed from an enormous body of
 code. This is a metaphor, not a claim about what such models actually
 represent, and it comes at the price of having no explicit, inspectable
-representation of what a clich\'e is or what its roles are. 
+representation of what a cliche is or what its roles are. 
 
 \textbf{Who does what?} Simon's Heuristic Compiler was not designed as
 a practical programming assistant. It was a computational experiment
@@ -683,23 +685,32 @@ systems, the methodology of Executable Archaeology allows us to
 examine these relationships through the detailed study of the
 computational mechanisms themselves.
 
-Like most early AI, both of the historical systems we have studied
-were, in part, attempts to understand how people do complex things --
-in this case, programming. Simon's Heuristic Compiler treated
-programming as means-ends problem solving: finding differences between
-what one has and what one wants, and applying operators that reduce
-them. The Programmer's Apprentice offered a complementary account
-wherein expert programmers combine familiar clich\'es, an account that
-is close to the ``programming plans'' that Soloway and Ehrlich
-observed, at about the same time, in their empirical studies of
-programmers~\cite{soloway1984}. Each was a theory of programming that
-could be run and tested, and now can be run and tested again. Today's
-AI coding assistants program far better than either system, but they
-embody no comparable theory of how programming is done; whatever they
-know about clich\'es or differences is implicit in their weights, not
-stated where it can be examined. Executable Archaeology recovers not
-only old programs, but the theories of programming that they made
-explicit.
+Like most early AI, both of the historical systems we have reanimated
+were, at least in part, attempts to understand how people
+program. Simon's Heuristic Compiler treated programming as means-ends
+problem solving. The Programmer's Apprentice understood programming as
+combining together familiar cliches. And note that Simon's Heuristic
+Compiler also depended upon having a knowledge based of what amount to
+cliches. More importantly to the present effort, each was a theory of
+programming that could be run and tested, and now can again.
+
+Today's AI coding assistants program far better than either the
+Heuristic Compiler or KBEmacs, yet the LLMs at their core embody no
+comparable explicit theory of clich\'es or of the problem solving
+involved in programming. To some extent, an explicit theory of
+programming has reappeared in the harnesses that make these tools work
+so well. Their cycle of reasoning, acting on the code, running tests,
+and repairing what fails~\cite{yao2023react,yang2024sweagent} is a
+form of means-end analysis, with the test suite detecting the
+differences between what the program does and what it should do. What
+the harness leaves to the model, we venture, includes an implicit
+theory of problem solving, an implicit library of programming
+clich\'es, and an implicit skill in combining them, all distributed
+across the billions of weights that make up the LLM. That this
+knowledge is not stated in a form that can be examined is probably
+core to what makes these tools so flexible, but it also means that
+their behavior can be checked only after the fact, never guaranteed in
+advance.
 
 \section{Code Availability}
 \label{sec:code}
@@ -767,9 +778,9 @@ project, on whose work this paper rests.
   automatic coding system,'' in \textit{Proc. Western Joint
   Comput. Conf.}, 1957, pp. 188--198.
 
-\bibitem{balzer1985} R. Balzer, ``A 15 year perspective on automatic
-  programming,'' \textit{IEEE Trans. Softw. Eng.}, vol. SE-11, no. 11,
-  pp. 1257--1268, Nov. 1985.
+\bibitem{balzer1973} R. M. Balzer, ``A global view of automatic
+  programming,'' in \textit{Proc. 3rd Int. Joint Conf. Artif. Intell.
+  (IJCAI)}, Stanford, CA, Aug. 1973, pp. 494--499.
 
 \bibitem{chatgpt} OpenAI, ``ChatGPT,'' 2026. [Online]. Available:
   \url{https://chatgpt.com}
@@ -813,6 +824,10 @@ project, on whose work this paper rests.
 
 \bibitem{newell1972hps} A. Newell and H. A. Simon, \textit{Human
   Problem Solving}. Englewood Cliffs, NJ: Prentice-Hall, 1972.
+
+\bibitem{newelletat1958} A. Newell, J. C. Shaw, and H. A. Simon,
+  ``Elements of a theory of human problem solving,''
+  \textit{Psychol. Rev.}, vol. 65, no. 3, pp. 151--166, 1958.
 
 \bibitem{LT1957} A. Newell, J. C. Shaw, and H. A. Simon, ``Empirical
   explorations of the logic theory machine: A case study in
@@ -881,8 +896,7 @@ project, on whose work this paper rests.
 \bibitem{simonRM3588} H. A. Simon, ``The heuristic compiler,'' RAND
   Corp., Santa Monica, CA, USA, Memorandum RM-3588-PR, May 1963.
   [Online]. Available:
-  \url{http://bitsavers.org/pdf/rand/ipl/RM-3588-PR_The_Heuristic_Compiler_May63.pdf}
-  %%% TODO verify URL
+  \url{https://bitsavers.trailing-edge.com/pdf/rand/ipl/RM-3588-PR_The_Heuristic_Compiler_May63.pdf}
 
 \bibitem{soloway1984} E. Soloway and K. Ehrlich, ``Empirical studies of
   programming knowledge,'' \textit{IEEE Trans. Softw. Eng.}, vol. SE-10,
@@ -896,6 +910,11 @@ project, on whose work this paper rests.
 
 \bibitem{weinberg1971} G. M. Weinberg, \textit{The Psychology of
   Computer Programming}. New York, NY, USA: Van Nostrand Reinhold, 1971.
+
+\bibitem{yao2023react} S. Yao, J. Zhao, D. Yu, N. Du, I. Shafran,
+  K. Narasimhan, and Y. Cao, ``ReAct: Synergizing reasoning and acting
+  in language models,'' in \textit{Proc. Int. Conf. Learn. Represent.
+  (ICLR)}, 2023.
 
 \bibitem{waters1978} R. C. Waters, ``Automatic analysis of the logical
   structure of programs,'' Ph.D. dissertation, MIT, Cambridge, MA, USA,
@@ -916,14 +935,11 @@ project, on whose work this paper rests.
 
 \section*{About the Authors}
 
-\noindent\textbf{Jeff Shrager} is a cognitive scientist and computer
-scientist who is currently Chief Scientist of Bennu Climate, Inc., a
-methane removal company. Jeff was a student of Herb Simon's at CMU in
-the 1980s, and taught in the SymSys program at Stanford for almost 25
-years (as an adjunct). His primary intellectual project is CogLean, a
-Lean-based library of formal components that can be used to prove
-claims about cognitive models. In his spare time Jeff archive dives to
-find early AIs, and then works with modern AIs to reanimate them.
+\noindent\textbf{Jeff Shrager} is a cognitive scientist, computer
+scientist, and molecular biologist. In addition to his work on
+Executable Archaeology, he is developing CogLean, a Lean-based library
+of formal components that can be used to prove claims about cognitive
+models. He is currently Chief Scientist of Bennu Climate, Inc.
 
 \noindent\textbf{Kent M.~Pitman} \{Kent M.~Pitman to provide\}
 
