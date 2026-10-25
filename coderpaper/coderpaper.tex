@@ -84,9 +84,9 @@ Programming has also long been studied as a human activity. Weinberg's
 \textit{The Psychology of Computer Programming}~\cite{weinberg1971}
 treated it as behavior to be observed, and by the early 1980s Soloway
 and his colleagues at Yale demonstrated that expert programmers work
-from stereotyped ``programming plans'' -- reuable code schemas --
+from stereotyped ``programming plans'' -- reusable code schemas --
 rather than from first principles~\cite{soloway1984}. Early AI stood
-close to this tradition. Many of its programs were intened either as
+close to this tradition. Many of its programs were intended either as
 theories of how people do complex things~\cite{newell1972hps}, or
 depended on intuitive theories of this. And a program that programs
 is, in that sense, a theory of programming, but one that can be run
@@ -98,7 +98,7 @@ one treated programming as an object of scientific investigation, the
 other as a task to be assisted. The first is Herbert A.~Simon's
 \emph{Heuristic Compiler}, written in IPL-V in 1961 and described in a
 RAND report that year~\cite{simonP2349} and in the \textit{Journal of
-  the ACM} in 1963~\cite{simon1963jacm}. Simon treated rogramming as a
+  the ACM} in 1963~\cite{simon1963jacm}. Simon treated programming as a
 `problem' in the sense in which that term was used in GPS,'' the
 General Problem Solver of Newell, Shaw, and
 Simon~\cite{newell1959gps}: Given a description of what a routine
@@ -112,10 +112,10 @@ culminating demonstration of the Programmer's Apprentice
 project~\cite{waters1985tr,waters1986aimag,richwaters1987overview}.
 The user of KBEmacs guided the computer by indicating standard
 ``clich\'es'' to combine in stylized English. KBEmacs supplied the
-details and wrote the code. This process was implictly a claim that
+details and wrote the code. This process was implicitly a claim that
 much of what a skilled programmer knows consists of such familiar
 patterns, each with roles to be filled, and the skill required to
-combined them into a correct program.
+combine them into a correct program.
 
 Although these two systems were separated by a quarter of a century,
 by programming language and platform, and by research tradition, they
@@ -146,8 +146,8 @@ command-line form, Claude Code. The division of labor is described in
 \subsection{The Heuristic Compiler}
 
 The goal of Newell, Shaw, and Simon's work at RAND and Carnegie Tech
-in the 1950s was instantiate theories of human thought in computer
-program. They began with formal logic, and their Logic Theorist (1956)
+in the 1950s was to instantiate theories of human thought as computer
+programs. They began with formal logic, and their Logic Theorist (1956)
 searched for proofs of theorems in \textit{Principia
   Mathematica}~\cite{LT1957,moewsshrager2026}. Their General Problem
 Solver (1959) generalized these methods into a theory of means-ends
@@ -211,7 +211,7 @@ Calculus~\cite{rich1981,richwaters1987overview}. And the
 programmer makes design decisions and the apprentice handles the
 routine details.  Waters's dissertation developed the analysis of
 programs into plans~\cite{waters1978}. Note how these ideas align with
-those of the psychologist of programming at that same time, for
+those of the psychology of programming at that same time, for
 example Soloway's programming plans~\cite{soloway1984}.
 
 KBEmacs was the realization of these ideas in a working editor. It ran
@@ -487,7 +487,7 @@ a fork of CMUCL.}  The rest of the layer supplies the parts of
 Zetalisp and the Lisp Machine that Common Lisp lacks or does
 differently. A small test harness was also created to replay the
 self-test sequences from the 1984 code and compare the results with
-that was expected.
+what was expected.
 
 The SQRT sequence (Figure~\ref{fig:sqrt}) builds a square-root routine
 from three clich\'es in seven commands, and then builds a variant with
@@ -527,8 +527,8 @@ The criterion is an equality-within-epsilon ...
 \label{fig:sqrt}
 \end{figure}
 
-All fourteen commands are parsed correctly and generate programs are
-\texttt{equal} (in the lisp sense) to the 1984 generated code. These
+All fourteen commands are parsed correctly and the generated programs are
+\texttt{equal} (in the Lisp sense) to the 1984 generated code. These
 programs also work: \texttt{(mysqrt 2.0)} returns 1.4142157.
 
 \section{Then and Now: Two Historical Systems and Today's AI Coding Assistants}
@@ -536,15 +536,15 @@ programs also work: \texttt{(mysqrt 2.0)} returns 1.4142157.
 
 Neither the Heuristic Compiler nor KBEmacs is an ancestor of today's
 AI coding assistants in any direct technical sense. These are loaded
-with proto-programs or cliches, whereas Large language Models (LLMs)
+with proto-programs or cliches, whereas large language models (LLMs)
 are trained on huge volumes of example code, as well as advice
 garnered from online forums, such as Stack Overflow. Also, the
 Heuristic Compiler and KBEmacs operate on explicit internal
 representations of code, whereas LLMs operate on program text rather
 than on description lists or plans.\footnote{Certainly an LLM harbours
-  a tacit internal represenation relevant to the structure of the code
+  a tacit internal representation relevant to the structure of the code
   it is working on, but these are, as far as anyone can tell, unlike
-  the explicit representations pinvolved in the reasoning carried out
+  the explicit representations involved in the reasoning carried out
   by the historical programs studied here.}  Nonetheless the questions
 these two systems were built to explore are recognizably the questions
 that shape AI-assisted programming today. The comparisons that follow
@@ -684,7 +684,7 @@ examine these relationships through the detailed study of the
 computational mechanisms themselves.
 
 Like most early AI, both of the historical systems we have studied
-were, in part attempts, to understand how people do complex things --
+were, in part, attempts to understand how people do complex things --
 in this case, programming. Simon's Heuristic Compiler treated
 programming as means-ends problem solving: finding differences between
 what one has and what one wants, and applying operators that reduce
@@ -707,9 +707,9 @@ explicit.
 The transcriptions, interpreters, compatibility layer, and Hacker's
 Guides to both programs are open source, at
 \url{https://github.com/jeffshrager/ExecutableArchaeology} and
-\url{https://github.com/jeffshrager/kbemacs}~\cite{earepo,kbemacsrepo}. Either
-the original source scans are located there as well, or links are
-provided to these scans.
+\url{https://github.com/jeffshrager/kbemacs}~\cite{earepo,kbemacsrepo}. The
+repositories contain the original source scans or provide links to
+them.
 
 \section*{Author Contributions and Use of AI}
 
