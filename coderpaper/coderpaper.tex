@@ -453,49 +453,52 @@ The braces are KBEmacs read syntax marking \emph{roles}, the parts that
 vary from use to use; the surrounding code is fixed.}
 \label{fig:cliche}
 \end{figure}
-Cliches are not stored as text. When the library loads, each
-definition is run through KBEmacs's \emph{analyzer}, which turns code
-into a plan: a set of facts in a small database describing segments,
-ports, data flow, control flow, and roles. In a plan, a \texttt{LOOP}
-with a \texttt{SETQ} disappears; what remains is a temporal
-composition of a sequence of states. The knowledge-based editor
-operates on plans, and after every command the \emph{coder} turns the
-plan back into program text, deciding where to nest expressions and
-where to introduce variables, and preferring names the programmer has
-already used. Waters called this two-way translation the
-\emph{representation shift}, and argued that it gave plans locality,
-additivity, and modularity that text lacks~\cite{waters1986aimag}.
-Because the user may also simply edit the text, KBEmacs must keep text
-and plan consistent in both directions.
+Similar to the way in which the Hueristic Compiler worked with
+internal representation of IPL-V code, KBEmacs's cliches are not
+stored as text. When the library loads, each definition is run through
+KBEmacs's \emph{analyzer}, which turns the cliche code into a plan: a
+set of representations describing segments, ports, data flow, control
+flow, and roles. In a plan, a \texttt{LOOP} with a \texttt{SETQ}
+disappears; what remains is a temporal composition of a sequence of
+states. The knowledge-based editor operates on plans, and after every
+command the \emph{coder} turns the plan back into program text,
+deciding where to nest expressions and where to introduce variables,
+preferring names the programmer has already used. Waters called this
+two-way translation the \emph{representation shift}, and argued that
+it gave plans locality, additivity, and modularity that text
+lacks~\cite{waters1986aimag}. Because the user may also simply edit
+the text, KBEmacs must keep text and plan consistent in both
+directions.
 
 \subsection{Running KBEmacs (headless)}
 
 KBEmacs depends heavily on the Lisp Machine environment of its time,
-including Flavors (the Lisp Machine's object system), the Zmacs editor,
-Lisp Machine processes, Waters's own LetS loop notation, and Zetalisp
-itself, which is similar to, but not exactly the same as, modern Common
-Lisp. Emulators survive for the MIT CADR Lisp Machine (usim) and for
-Symbolics Open Genera, but no usable environment compatible with this
-KBEmacs release (Symbolics Release 4.5) was available to us. Both
-include Flavors, but Open Genera, the closer of the two, is not freely
-available, and it corresponds to a Genera release about a decade later
-than the one KBEmacs ran on. The reanimation targeted the
-\emph{headless} core (the database, analyzer, cliche library,
-command language, knowledge-based editor, and coder), leaving out the
-editor, windows, actors, and the Ada front end~\cite{kbemacsrepo}.
+including Flavors (the Lisp Machine's object system), the Zmacs
+editor, Lisp Machine processes, a special LetS loop notation, and
+Zetalisp itself, which is similar to, but not exactly the same as,
+modern Common Lisp. Emulators survive for the MIT CADR Lisp Machine
+(usim) and for Symbolics Open Genera, but no usable environment
+compatible with this KBEmacs release (Symbolics Release 4.5) was
+available to us. Both include Flavors, but Open Genera, the closer of
+the two, is not freely available, and it corresponds to a Genera
+release about a decade later than the one KBEmacs ran on.
+
+The reanimation targeted the \emph{headless} core: the database,
+analyzer, cliche library, command language, knowledge-based editor,
+and coder, leaving out the editor, windows, actors, and the Ada front
+end~\cite{kbemacsrepo}.
 
 The 1985 source, with correction of minor typos and transcription
 errors, is loaded into SBCL (\url{https://www.sbcl.org}), a modern
-Common Lisp, through a Zetalisp compatibility layer that Claude
-assembled and debugged. The largest single piece of that layer is
-g000001's Common Lisp port of Spice Lisp
-Flavors~\cite{g000001}.\footnote{Coincidentally, Spice Lisp, which was
-built at CMU, where Simon and Newell taught, begat CMUCL, and SBCL is
-a fork of CMUCL.}  The rest of the layer supplies the parts of
-Zetalisp and the Lisp Machine that Common Lisp lacks or does
-differently. A small test harness was also created to replay the
-self-test sequences from the 1984 code and compare the results with
-what was expected.
+Common Lisp\footnote{Coincidentally, Spice Lisp, which was built at
+CMU, where Simon and Newell taught, begat CMUCL, and SBCL is a fork of
+CMUCL.}, on top of a Zetalisp compatibility layer that Claude
+assembled and debugged. The bulk of that layer derives from g000001's
+Common Lisp port of Spice Lisp Flavors~\cite{g000001}. The rest of the
+layer supplies the parts of Zetalisp and the Lisp Machine that Common
+Lisp lacks or does differently. A small test harness was also created
+to replay the self-test sequences from the 1984 code and compare the
+results with what was expected.
 
 The SQRT sequence (Figure~\ref{fig:sqrt}) builds a square-root routine
 from three cliches in seven commands, and then builds a variant with
@@ -535,45 +538,52 @@ The criterion is an equality-within-epsilon ...
 \label{fig:sqrt}
 \end{figure}
 
-All fourteen commands are parsed correctly and the generated programs are
-\texttt{equal} (in the Lisp sense) to the 1984 generated code. These
-programs also work: \texttt{(mysqrt 2.0)} returns 1.4142157.
+All fourteen commands are parsed correctly and the generated programs
+are \texttt{equal} (in the Lisp sense) to the 1984 generated
+code. These programs also actually work: \texttt{(mysqrt 2.0)} returns
+1.4142157.
 
 \section{Then and Now: Two Historical Systems and Today's AI Coding Assistants}
 \label{sec:thenandnow}
 
 Neither the Heuristic Compiler nor KBEmacs is an ancestor of today's
-AI coding assistants in any direct technical sense. These are loaded
-with proto-programs or cliches, whereas large language models (LLMs)
-are trained on huge volumes of example code, as well as advice
-garnered from online forums, such as Stack Overflow. Also, the
-Heuristic Compiler and KBEmacs operate on explicit internal
-representations of code, whereas LLMs operate on program text rather
-than on description lists or plans.\footnote{Certainly an LLM harbours
-  a tacit internal representation relevant to the structure of the code
-  it is working on, but these are, as far as anyone can tell, unlike
-  the explicit representations involved in the reasoning carried out
-  by the historical programs studied here.}  Nonetheless the questions
-these two systems were built to explore are recognizably the questions
-that shape AI-assisted programming today. The comparisons that follow
+AI coding assistants in any direct technical sense. The historical
+programs are loaded with proto-programs or cliches, whereas LLMs are
+trained on huge volumes of example code, as well as
+programming-related content, such as advice garnered from online
+forums, such as Stack Overflow.\footenote{One could argue that
+  ``training'' and ``loading'' are not very different in concept as
+  they both build up a knowledge base of one sort or another. However
+  the loading of cliches and the training of a neural net are, of
+  course, completely different forms of building up a knowledge base.}
+Also, the Heuristic Compiler and KBEmacs operateon an explicit
+internal representations of the code, whereas LLMs operate the program
+text and contextual materials such as the programmer's guidance
+prompts.\footnote{Certainly an LLM harbours a tacit internal
+representation relevant to the structure of the code it is working on,
+but this is, as far as anyone can tell, quite unlike the explicit
+representations involved in the reasoning carried out by the
+historical programs studied here.} Nonetheless the questions these two
+systems were built to explore are recognizably the questions that
+shape AI-assisted programming today. But the comparisons that follow
 are conceptual continuities, not architectural equivalences.
 
 \textbf{How is a programming task specified?} Simon's two compilers
 differ precisely in how the task is described. A state description
 says what the machine looks like before and after, which is close to
-what we would now call a specification by examples or by
-pre- and post-conditions, and close to the role unit tests play in
-directing a modern assistant. A functional description is an imperative
-phrase, which is close to a natural-language prompt. Simon drew a
-conclusion that remains apt: programmers use both, but ``at the higher
-levels \ldots\ a language of functions appears generally the more
-natural and powerful,'' and ``the mappings from functional descriptions
-to process language are simpler and more direct than the mappings from
-state descriptions''~\cite[p.~506]{simon1963jacm}. KBEmacs chose the
-functional side and gave it a vocabulary of named algorithms. Today's
-assistants accept both kinds of description, and much of the craft of
-using them lies in combining a functional request with a test-like
-check.
+what we would now call a specification by examples or by pre- and
+post-conditions, and close to the role unit tests play in directing a
+modern assistant. A functional description is an imperative phrase,
+which is close to a natural-language prompt. Simon drew a conclusion
+that remains apt: programmers use both, but ``at the higher levels
+\ldots\ a language of functions appears generally the more natural and
+powerful,'' and ``the mappings from functional descriptions to process
+language are simpler and more direct than the mappings from state
+descriptions''~\cite[p.~506]{simon1963jacm}. KBEmacs chose the
+functional side and gave it a vocabulary of named algorithms --
+cliches. Today's assistants accept both kinds of description, and much
+of the craft of using them lies in combining functional prompts with
+tests that the AI can use to check it's work and self-correct.
 
 \textbf{Where does the knowledge come from?} Both historical systems
 are knowledge-starved by modern standards. The Heuristic Compiler's
@@ -584,14 +594,16 @@ cliches; Waters estimated that a practical tool would need ``many
 hundreds''~\cite[p.~55]{waters1986aimag}. Both systems identified
 reuse of known solutions as the heart of the matter: Simon's
 functional compiler works by finding an analogous routine and adapting
-it, and the whole Programmer's Apprentice rests on the claim that
+it, and the Programmer's Apprentice rests entirely on the claim that
 programs are built from background knowledge. What neither could solve
-was acquiring that knowledge at scale. Large language models can be
-loosely described as one answer to precisely this bottleneck: in
-effect, an implicit cliche library absorbed from an enormous body of
-code. This is a metaphor, not a claim about what such models actually
-represent, and it comes at the price of having no explicit, inspectable
-representation of what a cliche is or what its roles are. 
+was acquiring that knowledge at scale. LLMs can be loosely described
+as one answer to precisely this bottleneck: in effect, an implicit
+cliche library absorbed from an enormous body of code and code-related
+content. This is a metaphor, not a claim about what such models
+actually represent, and it comes at the price of having no explicit,
+inspectable representation of what a cliche is or what its roles are.
+
+**************************************
 
 \textbf{Who does what?} Simon's Heuristic Compiler was not designed as
 a practical programming assistant. It was a computational experiment
