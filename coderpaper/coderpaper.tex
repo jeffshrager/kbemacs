@@ -121,13 +121,13 @@ of ``cliche'').
 
 Although the Heuristic Compiler and KBEmacs were separated by a
 quarter of a century, by programming language and platform (IPL-V on
-large time-sharing computers v. Zetalisp on personal Lisp machines),
+1960s mainframes v. Zetalisp on MIT Lisp machines and their descendants),
 and by research tradition (the study of human cognition v. applied
 AI), they stake out a great deal of the conceptual territory that
 today's AI coding tools occupy: How a programming task is specified,
 where the knowledge and skill needed to carry it out come from and
 where it resides, how work is divided between human and machine, and
-how the system checks and explains what it has done.
+how the system checks what it has done.
 
 We approach the study of these artifacts as exercises in
 \emph{Executable Archaeology} employing that field's core methodology,
@@ -220,9 +220,9 @@ plans~\cite{waters1978}. Note how these ideas align with those of the
 psychology of programming at that same time, for example Soloway's
 programming plans~\cite{soloway1984}.
 
-KBEmacs was the realization of these ideas in a working editor, called
-Zmacs which ran on MIT Lisp Machines and their descendants, inside the
-Zmacs editor. KBEmacs could create and modify moderately complex
+KBEmacs was the realization of these ideas in a working editor, built
+inside the Zmacs editor of the MIT Lisp machines and their
+descendants. KBEmacs could create and modify moderately complex
 programs, within its range of available cliches -- in both Lisp and
 Ada. Its best-known demonstration builds an Ada report generator,
 \texttt{UNIT-REPAIR-REPORT}, from five commands such as ``Define a
@@ -421,7 +421,7 @@ at
 cover the system as of KBE version 358.0x (December 1984), although
 individual files carry their own dates and versions. Volume~1 opens
 with the output of an extremely useful automatic self-test, run in
-December 1984 on an MIT Lisp Machine. The self-test exercises six
+December 1984 on one of the MIT Lisp machines or their descendants. The self-test exercises six
 command sequences and compares the generated code with the expected
 code.  This specific run reports that three sequences (HASH, SQRT, and
 SUMLIST) succeeded, but that three (BUCKET, DELETE, and MEMQ) failed.
@@ -479,10 +479,10 @@ editor, Lisp Machine processes, a special LetS loop notation, and
 Zetalisp itself, which is similar to, but not exactly the same as,
 modern Common Lisp. Emulators survive for the MIT CADR Lisp Machine
 (usim) and for Symbolics Open Genera, but no usable environment
-compatible with this KBEmacs release (Symbolics Release 4.5) was
+compatible with this KBEmacs release was
 available to us. Both include Flavors, but Open Genera, the closer of
-the two, is not freely available, and it corresponds to a Genera
-release about a decade later than the one KBEmacs ran on.
+the two, is not freely available, and it corresponds to a system
+about a decade later than the one KBEmacs ran on.
 
 The reanimation targeted the \emph{headless} core: the database,
 analyzer, cliche library, command language, knowledge-based editor,
@@ -596,13 +596,18 @@ hundreds''~\cite[p.~55]{waters1986aimag}. Both systems identified
 reuse of known solutions as the heart of the matter: Simon's
 functional compiler works by finding an analogous routine and adapting
 it, and the Programmer's Apprentice rests entirely on the claim that
-programs are built from background knowledge. What neither could solve
+programs are built from background knowledge. That claim was also a
+psychological one: it is essentially what Soloway and his colleagues
+were finding in human programmers, whose expertise lay in a store of
+``programming plans''~\cite{soloway1984}. What neither could solve
 was acquiring that knowledge at scale. LLMs can be loosely described
 as one answer to precisely this bottleneck: in effect, an implicit
 cliche library absorbed from an enormous body of code and code-related
 content. This is a metaphor, not a claim about what such models
 actually represent, and it comes at the price of having no explicit,
-inspectable representation of what a cliche is or what its roles are.
+inspectable representation of what a cliche is or what its roles are,
+and so of no theory of programming knowledge that could be examined or
+tested.
 
 \textbf{Who does what?} Simon's Heuristic Compiler was not designed as
 a practical programming assistant. It was a computational experiment
@@ -622,14 +627,25 @@ question.
 \textbf{How does the system know it is making progress?} The Heuristic
 Compiler's executive is a loop that directly implements GPS's
 means-ends analysis: apply a compiler, test whether the routine has
-improved, stop if it reaches the goal or has not progressed. Modern
-coding agents commonly run a loop of a similar
-shape~\cite{yang2024sweagent}: make a change, run the tests or the
-compiler, examine the difference between what happened and what was
-wanted, and try again. The difference detector is now an executed test
-suite rather than a hand-coded comparison of states, and the operator
-is a learned model rather than a table of connections, but the
-architecture of means-ends iteration is recognizable. The resemblance
+improved, stop if it reaches the goal or has not progressed. For
+Simon, this loop was not merely an engineering choice: means-ends
+analysis was Newell and Simon's theory of how people solve
+problems~\cite{newelletat1958,newell1972hps}, and the Heuristic
+Compiler was a test of whether that theory extended to programming.
+Modern coding agents run a loop of a similar shape, explicitly coded
+into the harnesses that make these tools work so well: reason about
+the task, act on the code, run the tests or the compiler, examine the
+difference between what happened and what was wanted, and repair what
+fails~\cite{yao2023react,yang2024sweagent,schluntz2024agents,claudecodeworks}.\footnote{It
+  has not escaped our notice that the harness used for the
+  reanimations reported here is among those so described.} The
+difference detector is now an executed test suite rather than a
+hand-coded comparison of states, and the operator is a learned model
+rather than a table of connections, but the
+architecture of means-ends iteration is recognizable. What survives,
+however, is the architecture, not the theory: such harnesses are built
+because the loop works, not as claims about how people program. The
+resemblance
 goes beyond the loop. A coding agent of this kind is not a purely
 neural system: the language model chooses what to do next and
 interprets the results, but the processes of compiling, executing,
@@ -641,14 +657,11 @@ heuristics have moved from a hand-written table of connections or
 cliche library, to a neural net, the operators and the difference
 tests are still ordinary programs.
 
-\textbf{Representation and explanation.} As we have said, the two historical systems never treated code merely as text. The
+\textbf{Representation.} As we have said, the two historical systems never treated code merely as text. The
 Heuristic Compiler builds IPL instructions out of description lists
 and prints them only at the end; KBEmacs reasons about cliches and
 plans and regenerates code after every command, taking pains to keep
-code and plan consistent when the user edits the code directly. That
-internal representation is what allowed KBEmacs to describe a program
-in terms of its design (``The program MYSQRT is a
-successive-approximation \ldots''). Waters reports that ``well over
+code and plan consistent when the user edits the code directly. Waters reports that ``well over
 half of all the effort expended on KBEmacs went into implementing an
 analyzer and coder''~\cite[p.~55]{waters1986aimag}. Today's assistants
 also only operate on text at the edges of the network, but their core
@@ -711,13 +724,10 @@ programming that could be run and tested, and we now can do so again.
 Today's AI coding assistants program far better than either the
 Heuristic Compiler or KBEmacs, yet the LLMs at their core embody no
 comparable explicit theory of cliches or of the problem solving
-involved in programming. To some extent, an explicit theory of
-programming has reappeared in the harnesses that make these tools work
-so well. Their cycle of reasoning, acting on the code, running tests,
-and repairing what fails~\cite{yao2023react,yang2024sweagent,schluntz2024agents,claudecodeworks} is a
-form of means-end analysis, with the test suite detecting the
-differences between what the program does and what it should do.\footnote{It has not escaped our notice that the harness
-used for the reanimations reported here is among those so described.} What
+involved in programming. As we noted in
+Section~\ref{sec:thenandnow}, something of Simon's theory survives,
+as engineering, in the means-ends loop of the harnesses that drive
+these tools. What
 the harness leaves to the model, we venture, includes an implicit
 theory of problem solving, an implicit library of programming
 cliches, and an implicit skill in combining them, all distributed
