@@ -17,7 +17,7 @@
 
 \begin{document}
 
-\title{Executable Archaeology of Early AI Programming Systems: Reanimating the 1961 Heuristic Compiler and the Programmer's Apprentice's 1984 KBEmacs}
+\title{Executable Archaeology of Early Autonomous Programming Systems: Reanimating the 1961 Heuristic Compiler and the Programmer's Apprentice's 1984 KBEmacs}
 
 \author[1]{Jeff Shrager}
 \author[2]{Kent M.~Pitman}
@@ -36,7 +36,7 @@ computational systems by running their original code in a process
 called ``reanimation''. Although AI-assisted programming is usually
 considered a new invention, the idea of a program that helps write
 programs is nearly as old as artificial intelligence itself. Here we
-report on the reanimation of two early AI systems concerned with
+report on the reanimation of two early programs concerned with
 programming, but developed for quite different purposes. The first,
 Herbert Simon's Heuristic Compiler (1961), was an experimental model
 of programming as problem-solving, applying the means-end analysis
@@ -47,14 +47,13 @@ Programmer's Apprentice project.  It let a programmer build up
 programs by combining standard ``clich\'es'' through a stylized
 English command language. Our reanimation of the Heuristic Compiler
 reproduces the compiled code printed in Simon's 1963 paper, and our
-reanimation of KBEmacs exactly reproduces the SQRT sequence of its
-December 1984 self-test; the other five sequences remain to be run.
-Reflexively, most of the detailed reanimation reported here was
+reanimation of KBEmacs reproduces the SQRT sequence of its December
+1984 self-test. In order to highlight the reflexivity of this project,
+we tried to have most of the detailed effort in these reanimations
 carried out by a modern AI-assisted programming tool, Anthropic's
-Claude Code, although it started from a significant base of existing software, including a
-modern IPL-V interpreter, modern Common Lisp, and an existing Common
-Lisp port of Spice Lisp Flavors, a reimplementation of the Lisp
-Machine's object system.
+Claude Code, although it started from a significant base of existing
+software, including a modern IPL-V interpreter, modern Common Lisp,
+and an existing Common Lisp port of the Lisp Machine's object system.
 
 \end{abstract}
 
@@ -234,7 +233,7 @@ natural-language front end (a character scanner, dictionary, and
 parser) intended to let the compiler accept English definitions; and a
 small knowledge base about IPL-V, encoded as data, which the compilers
 use to reason. The listing ends with the data and has no start card
-(IPL-V type 5 card).\footnote{We borrow the start card from
+(IPL-V type 5 card).\footnote{We borrowed the start card from
 \cite{simonRM3588}.}
 
 \subsection{Everything Is a Description List}
