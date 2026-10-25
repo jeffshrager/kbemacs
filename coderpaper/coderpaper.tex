@@ -603,8 +603,6 @@ content. This is a metaphor, not a claim about what such models
 actually represent, and it comes at the price of having no explicit,
 inspectable representation of what a cliche is or what its roles are.
 
-**************************************
-
 \textbf{Who does what?} Simon's Heuristic Compiler was not designed as
 a practical programming assistant. It was a computational experiment
 intended to illuminate the processes involved in programming. KBEmacs,
@@ -621,96 +619,94 @@ central to the Programmer's Apprentice, is again a live design
 question.
 
 \textbf{How does the system know it is making progress?} The Heuristic
-Compiler's executive is a loop: apply a compiler, test whether the
-routine has moved to a better kind of definition, and stop if it has
-not. Its state description compiler implements difference reduction in
-the strict GPS sense. Modern coding agents commonly run a loop of a
-similar shape~\cite{yang2024sweagent}: make a change, run the tests or
-the compiler, examine the difference between what happened and what
-was wanted, and try again. The difference detector is now an executed
-test suite rather than a hand-coded comparison of states, and the
-operator is a learned model rather than a table of connections, but
-the architecture of means-ends iteration is recognizable. The
-resemblance goes beyond the loop. A coding agent of this kind is not a
-purely neural system: the language model chooses what to do next and
+Compiler's executive is a loop that directly implements GPS's
+means-ends analysis: apply a compiler, test whether the routine has
+improved, stop if it reaches the goal or has not progressed. Modern
+coding agents commonly run a loop of a similar
+shape~\cite{yang2024sweagent}: make a change, run the tests or the
+compiler, examine the difference between what happened and what was
+wanted, and try again. The difference detector is now an executed test
+suite rather than a hand-coded comparison of states, and the operator
+is a learned model rather than a table of connections, but the
+architecture of means-ends iteration is recognizable. The resemblance
+goes beyond the loop. A coding agent of this kind is not a purely
+neural system: the language model chooses what to do next and
 interprets the results, but the processes of compiling, executing,
 comparing outputs, tracking changes, and so on, are done by
-conventional symbolic programs. In the work reported here these were a
-Common Lisp compiler, an IPL-V interpreter, and the 1984 self-test's
-own comparison of generated with expected code. Although the
-heuristics have moved from a hand-written table of connections into a
-learned model, the operators and the difference tests are still
-ordinary programs. KBEmacs, for its part, came with a self-test in
-which the expected output was code, which is exactly what made it
-possible to check its reanimation.
+conventional symbolic programs (albeit not, for the most part,
+symbolic AIs). In the work reported here these were a Common Lisp
+compiler, an IPL-V interpreter, and KBEmacs's self-test. Although the
+heuristics have moved from a hand-written table of connections or
+cliche library, to a neural net, the operators and the difference
+tests are still ordinary programs.
 
-\textbf{Representation and explanation.} The two historical systems
-never treated code merely as text. The Heuristic Compiler builds IPL
-instructions out of description lists and prints them only at the end;
-KBEmacs reasons about plans and regenerates code after every command,
-taking pains to keep code and plan consistent when the user edits the
-code directly. That explicit representation is what allowed KBEmacs to
-describe a program in terms of its design (``The program MYSQRT is a
-successive-approximation \ldots''). Today's assistants operate on text
-and also explain code fluently, but their explanations are generated
-from text, not read off an explicit representation of the design. The
-trade-off between the robustness of working with text, which KBEmacs
-found painfully expensive to analyze---Waters reports that ``well
-over half of all the effort expended on KBEmacs went into implementing
-an analyzer and coder''~\cite[p.~55]{waters1986aimag}---and the
-inspectability of working with plans, has not gone away.
+\textbf{Representation and explanation.} As we have said many time,
+the two historical systems never treated code merely as text. The
+Heuristic Compiler builds IPL instructions out of description lists
+and prints them only at the end; KBEmacs reasons about cliches and
+plans and regenerates code after every command, taking pains to keep
+code and plan consistent when the user edits the code directly. That
+internal representation is what allowed KBEmacs to describe a program
+in terms of its design (``The program MYSQRT is a
+successive-approximation \ldots''). Waters reports that ``well over
+half of all the effort expended on KBEmacs went into implementing an
+analyzer and coder''~\cite[p.~55]{waters1986aimag}. Today's assistants
+also only operate on text at the edges of the network, but their core
+technology is incsruitable.
 
 \section{Technical Next Steps}
 \label{sec:next}
 
-For the Heuristic Compiler, the largest piece of unexplored territory
-is the English front end: the scanner, dictionary, and parser, and the
-routine that converts a parse into a functional description. Simon
-credited H.~S.~Kelly with ``linguistic components for the compiler
-which are omitted from this report''~\cite[p.~506]{simon1963jacm};
-these routines may be them. Running them requires input sentences,
-which are not in the listing. 
+For the Heuristic Compiler, the undiscovered country is the English
+front end: the scanner, dictionary, and parser, and the routine that
+converts a parse into a functional description. Simon credited
+H.~S.~Kelly with ``linguistic components for the compiler which are
+omitted from this report''~\cite[p.~506]{simon1963jacm}; these
+routines may be them. Running them requires input sentences, which are
+not in the listing.
 
-For KBEmacs, the compatibility layer was debugged against the one
-self-test sequence whose expected output was known, so a skeptic may
-reasonably ask whether it is tuned to SQRT. The next step is therefore
-to run the other five sequences of the 1984 self-test without changing
-the layer after seeing their results, aiming to reproduce both the
-three successes and the three failures, and to build a new KBEmacs
-program that is not among the self-tests. After that comes the Ada
-front end, which would allow Waters's
-\texttt{UNIT-REPAIR-REPORT} demonstration to be reproduced.
+For KBEmacs, first, the compatibility layer was debugged against the
+one self-test sequence whose expected output was known, so the obvious
+next step is to run the other five sequences of the 1984
+self-test. After that one could work on the Ada front end, which could
+allow Waters's main \texttt{UNIT-REPAIR-REPORT} demonstration to be
+reproduced. Another possibility would be to hook KBEmacs in an Emacs!
+Reproducing Zmacs would be difficult and useless, but it would be
+pleasing and amuzing to be able to enter Control-Meta-Cokebottle into
+a modern unix-based Emacs and have it bring up KBEmacs!
 
 \section{Conclusion}
 \label{sec:conc}
 
-These two reanimations illuminate a history of AI and programming that
-is not simply a progression from primitive to increasingly
-sophisticated coding assistants. Simon's Heuristic Compiler
-investigated the nature of programming as problem solving. KBEmacs
-applied AI to assist human programmers by combining explicitly
-represented programming knowledge. Although today's AI coding agents
-take on more and more of the work of programming themselves, these
-systems are not stages in a single technical lineage. Rather, they
-mark three different relationships between machines and programming:
-using methods now central to AI\footnote{Newell and Simon themselves
-long preferred the term ``complex information processing'' to
-``artificial intelligence.''} to understand programming, using AI to
-assist human programmers (while also, as we discuss below, proposing a
-theory of how they program), and using AI to do more and more of the
-programming autonomously. By recovering and executing the original
-systems, the methodology of Executable Archaeology allows us to
-examine these relationships through the detailed study of the
-computational mechanisms themselves.
+Our reanimation of Simon's Heuristic Compiler and MIT's KBEmacs
+illuminate a history of AI and programming that is not simply a
+progression from primitive to increasingly sophisticated coding
+assistants. Simon's Heuristic Compiler investigated the nature of
+programming as problem solving. KBEmacs applied AI to assist human
+programmers. Both systems viewed the programming task as that of
+appropriately utilizing explicitly represented background
+knowledge. Although today's AI coding agents take on more and more of
+the work of programming themselves, these systems are not stages in a
+single technical lineage. Rather, they mark three different
+relationships between machines and programming: using methods now
+central to AI to understand programming, using AI to assist human
+programmers while also instantiating a theory of how human programmers
+program, and using AI to do more and more of the programming
+autonomously. By recovering and executing the original systems, the
+methodology of Executable Archaeology allows us to examine these
+relationships through the detailed study of the computational
+mechanisms themselves.
 
 Like most early AI, both of the historical systems we have reanimated
 were, at least in part, attempts to understand how people
-program. Simon's Heuristic Compiler treated programming as means-ends
-problem solving. The Programmer's Apprentice understood programming as
-combining together familiar cliches. And note that Simon's Heuristic
+program. Newell and Simon themselves long preferred the term ``complex
+information processing'' to ``artificial intelligence.'' Simon's
+Heuristic Compiler treated programming as means-ends problem
+solving. The Programmer's Apprentice understood programming as
+combining together familiar cliches. And note that the Heuristic
 Compiler also depended upon having a knowledge based of what amount to
 cliches. More importantly to the present effort, each was a theory of
-programming that could be run and tested, and now can again.
+programming that could be run and tested, and we now can do so again.
 
 Today's AI coding assistants program far better than either the
 Heuristic Compiler or KBEmacs, yet the LLMs at their core embody no
