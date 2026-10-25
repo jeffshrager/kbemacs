@@ -44,18 +44,17 @@ intelligent programming assistant developed by MIT's Programmer's
 Apprentice project, built on the view that expert programmers
 recognize and combine familiar patterns, or ``cliches.''  It let a
 programmer build up programs by combining cliches through a stylized
-English command language. We approach both through Executable
-Archaeology, the study of historical computational systems by running
-their original code, a process we call ``reanimation.'' Our reanimation of the Heuristic Compiler
-reproduces the compiled code printed in Simon's 1963 paper, and our
-reanimation of KBEmacs reproduces the SQRT sequence of its December
-1984 self-test. In order to highlight the reflexivity of this project,
-we tried to have most of the detailed effort in these reanimations
-carried out by a modern AI-assisted programming tool, Anthropic's
-Claude Code, although it started from a significant base of existing
-software, including a modern IPL-V interpreter, modern Common Lisp,
-and an existing Common Lisp port of the Lisp Machine's object system.
-The explicit, executable theories of programming that both systems
+English command language. We approach both through the methodology of
+Executable Archaeology, the study of historical computational systems
+by running their original code, a process we call ``reanimation.'' Our
+reanimation of the Heuristic Compiler reproduces the compiled code
+appearing in Simon's 1963 paper, and our reanimation of KBEmacs
+reproduces the SQRT sequence of its December 1984 self-test. In order
+to highlight the reflexivity of this project, we tried to have most of
+the detailed effort in these reanimations carried out by a modern
+AI-assisted programming tool, Anthropic's Claude Code (Opus 5.5),
+although it started from a significant base of existing software. The
+explicit, executable theories of programming that both systems
 embodied are largely absent from today's far more capable AI coding
 assistants.
 
@@ -64,17 +63,18 @@ assistants.
 \noindent\textbf{Keywords:} Executable Archaeology, History of AI,
 Automatic Programming, Heuristic Compiler, KBEmacs, Programmer's
 Apprentice, Programming Cliches, Psychology of Programming, Cognitive
-Models of Programming
+Models of Programming, Claude Code
 
 \section{Introduction}
 \label{sec:intro}
 
 Modern programmers increasingly work alongside AI-based tools built on
-large language models and trained on enormous corpora of source
-code. Although the scale and fluency of the modern tools are truly
-novel, the aspiration of a program that takes part in the work of
-programming is nearly as old as programming itself. In the 1950s what
-we now call compilation was referred to as ``automatic
+large language models (LLMs) and trained on enormous corpora of source
+code and other progamming-related materials. Although the scale and
+fluency of the modern tools is truly novel, the aspiration of a
+program that takes part in the work of programming is nearly as old as
+programming itself. In the 1950s what we now call ``compilation'' was
+referred to as ``automatic
 programming''~\cite{backus1957fortran,richwaters1988myths}. And within
 a few years of the founding of artificial intelligence, researchers
 were asking whether the methods of AI could be turned on the task of
@@ -82,15 +82,16 @@ programming itself~\cite{balzer1973}.
 
 Programming has also long been studied as a human activity. Weinberg's
 \textit{The Psychology of Computer Programming}~\cite{weinberg1971}
-treated it as behavior to be observed, and by the early 1980s Soloway
-and his colleagues at Yale demonstrated that expert programmers work
-from stereotyped ``programming plans'' -- reusable code schemas --
-rather than from first principles~\cite{soloway1984}. Most early AI
-was intended either as theories of how people do complex things
-(e.g.,~\cite{newelletat1958, newell1972hps}), or depended on intuitive
-theories of this. And in that framing, a program that writes programs,
-or helps a programmer do so, is at least an intuitive theory of
-programming, but one that could be helpful to a human programmer.
+treated programming as a behavior to be observed, and by the early
+1980s Soloway and others theorized that expert programmers usually
+work from stereotyped ``programming plans'' -- reusable code schemas
+-- rather than from first principles~\cite{soloway1984}. Similarly,
+most early AI was intended either as formal theories of human
+cognition (e.g.,~\cite{newelletat1958, newell1972hps}), or depended
+upon intuitive theories of human cognition. In that framing, a program
+that writes programs, or helps a programmer do so, is at least an
+intuitive theory of programming, but one that could also be helpful to
+a human programmer.
 
 This paper describes the reanimation of two historical systems that
 offer two such theories, though they were built for different ends.
@@ -98,49 +99,50 @@ The first is Herbert A.~Simon's \emph{Heuristic Compiler}, written in
 IPL-V in 1961 and described in a RAND report that
 year~\cite{simonP2349} and in the \textit{Journal of the ACM} in
 1963~\cite{simon1963jacm}. Simon treated programming as a `problem' in
-the sense in which that term was used in GPS,'' the General Problem
+the sense in which that term was used in GPS, the General Problem
 Solver of Newell, Shaw, and Simon~\cite{newell1959gps}: Given a
-description of what a routine should do, Simon's program searched for
-differences between the routine as it stands and the desired routine,
-and applied operators to reduce those differences.
+description of what a routine should do, Simon's Heuristic Compiler
+searched for differences between the routine as it stands and the
+desired routine, and applied operators to reduce those differences.
 
 The second system is \emph{KBEmacs}, the Knowledge-Based Editor (in
 Emacs). Built at MIT's Artificial Intelligence Laboratory, KBEmacs was
 the culminating demonstration of the Programmer's Apprentice
 project~\cite{waters1985tr,waters1986aimag,richwaters1987overview}.
-The user of KBEmacs guided the computer by indicating standard
-``cliches'' to combine in stylized English. KBEmacs supplied the
-details and wrote the code by combining together the indicated
-cliches. This process was in close accorded with the psychologists
-studying programming (e.g.,~\cite{soloway1984}), who proposed that
-much of what a skilled programmer knows consists of such familiar
-patterns (``programming plans''), each with roles to be filled, and
-the skill required to combine them into a correct program.
+The user of KBEmacs guided the computer by describing the desired
+program using stylized English and mentioning specific
+``cliches''. KBEmacs looked up the proto-code underlying the indicated
+cliches, supplied the details, and wrote the code by combining the
+cliche proto-code into the program under construction. This process
+was quite similar to how psychologists studying programming, such as
+Soloway (e.g.,~\cite{soloway1984}) theorized human programmers
+reasoned (although Soloway used the term ``programming plan'' instead
+of ``cliche'').
 
-Although these two systems were separated by a quarter of a century,
-by programming language (IPL-V v. ZetaLisp) and platform (large
-multi-user computers v. personal Lisp machines), and by research
-tradition (the study of human cognition v. applied AI), they stake out
-a great deal of the conceptual territory that today's AI coding tools
-occupy: How a programming task is specified, where the knowledge and
-skill needed to carry it out comes from and where it resides, how work
-is divided between human and machine, and how the system checks and
-explains what it has done.
+Although the Heuristic Compiler and KBEmacs were separated by a
+quarter of a century, by programming language and platform (IPL-V on
+large time-sharing computers v. Zetalisp on personal Lisp machines),
+and by research tradition (the study of human cognition v. applied
+AI), they stake out a great deal of the conceptual territory that
+today's AI coding tools occupy: How a programming task is specified,
+where the knowledge and skill needed to carry it out come from and
+where it resides, how work is divided between human and machine, and
+how the system checks and explains what it has done.
 
 We approach the study of these artifacts as exercises in
-\emph{Executable Archaeology} employing the core methodology of
+\emph{Executable Archaeology} employing that field's core methodology,
 ``reanimation'': studying historical programs by running them on
 emulation stacks from code that is as close as possible to the
-original~\cite{lane2025eliza,shrager2026,moewsshrager2026}. The
-Heuristic Compiler was transcribed from a 1961 line-printer listing
-recovered from Simon's papers at CMU, and run on the Common Lisp IPL-V
-interpreter built earlier to run the Logic Theorist. KBEmacs was
-transcribed from a four-volume January 1985 printout and run under a
-Zetalisp compatibility layer for SBCL, a modern Common Lisp. Both
-reanimations were themselves carried out largely by an AI coding
-assistant: Anthropic's Claude~\cite{claude}, working in its
-command-line form, Claude Code. The division of labor is described in
-``Author Contributions and Use of AI''.
+original~\cite{lane2025eliza,moewsshrager2026}. The Heuristic Compiler
+was transcribed from a 1961 line-printer listing recovered from
+Simon's papers at CMU, and run on the Common Lisp IPL-V interpreter
+built earlier to run the Logic Theorist~\cite{shrager2026}. KBEmacs
+was transcribed from a four-volume January 1985 printout and run under
+a Zetalisp compatibility layer on top of SBCL, a modern Common
+Lisp. Both reanimations were themselves carried out largely by an AI
+coding assistant: Anthropic's Claude~\cite{claude}, working in its
+command-line form, Claude Code. (The division of labor is described in
+``Author Contributions and Use of AI''.)
 
 \section{Historical Background}
 \label{sec:history}
