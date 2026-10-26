@@ -23,7 +23,7 @@
 \author[2]{Kent M.~Pitman}
 \author[3]{Mia Golec}
 \affil[1]{\url{https://jshrager.org}}
-\affil[2]{\url{https://github.com/netsettler}}
+\affil[2]{\url{https://nhplace.com/kent}}
 \affil[3]{Carnegie Mellon University, Pittsburgh, PA, USA}
 \date{}
 
@@ -229,11 +229,12 @@ plans~\cite{waters1978}. Note how these ideas align with those of the
 psychology of programming at that same time, for example, Soloway's
 programming plans~\cite{soloway1984}.
 
-KBEmacs was the realization of these ideas in a working editor, built
-inside the Zmacs editor of the MIT Lisp machines and their
+KBEmacs was the realization of these ideas in a working editor. It
+ran in Zetalisp, the MIT Lisp Machine implementation language, inside
+the Zmacs editor of the MIT Lisp machines and their
 descendants. KBEmacs could create and modify moderately complex
-programs, within its range of available cliches -- in both Lisp and
-Ada. Its best-known demonstration builds an Ada report generator,
+programs, within its range of available cliches -- in Lisp and Ada,
+with some support for PL/I. Its best-known demonstration builds an Ada report generator,
 \texttt{UNIT-REPAIR-REPORT}, from five commands such as ``Define a
 simple-report procedure UNIT-REPAIR-REPORT'' and ``Fill the enumerator
 with a chain-enumeration of UNITS and
@@ -245,8 +246,9 @@ know many hundreds,'' and that, its ideas having been used ``for
 essentially all [they are] worth,'' KBEmacs ``has been
 mothballed''~\cite[pp.~54--55]{waters1986aimag}. The project continued
 with work on the Plan Calculus, on automated reasoning, and on
-requirements and design apprentices, culminating in Rich and Waters's
-1990 book~\cite{richwaters1990book}. 
+requirements and design apprentices, culminating in the 1990 book
+\textit{The Programmer's Apprentice} by Rich and
+Waters~\cite{richwaters1990book}. 
 
 \section{Reanimating the Heuristic Compiler}
 \label{sec:hc}
@@ -346,18 +348,18 @@ symbol identity. The English front end in the deck has not yet been
 reanimated (see ``Next Steps'').
 
 \begin{figure}[H]
-\begin{lstlisting}
- FIND THE VALUE-OF THE ATTRIBUTE (0) OF (1)              <- an already-compiled routine
+\begin{lstlisting}[escapechar=|]
+ FIND THE VALUE-OF THE ATTRIBUTE (0) OF (1)              |$\leftarrow$ \textit{\rmfamily an already-compiled routine}|
 
                                        J10   0
 
-                                       J65   0           <- the code of INSERT (0) AT END OF (1)
+                                       J65   0           |$\leftarrow$ \textit{\rmfamily the code of INSERT (0) AT END OF (1)}|
 
-                                     11W1                <- fetch argument (1), now in W1
+                                     11W1                |$\leftarrow$ \textit{\rmfamily fetch argument (1), now in W1}|
                                        J65   0
 
-                                     11W2                <- fetch the determiner's arguments
-                                     11W0                   and apply its code (J10)
+                                     11W2                |$\leftarrow$ \textit{\rmfamily fetch the determiner's arguments}|
+                                     11W0                   |\phantom{$\leftarrow$} \textit{\rmfamily and apply its code (J10)}|
                                        J10
                                      11W1
                                        J65   0
@@ -365,20 +367,20 @@ reanimated (see ``Next Steps'').
  J13
  INSERT (1) AT END OF  THE VALUE-OF THE ATTRIBUTE (0) OF (2)
 
-                               J13     J52               <- preserve working cells W0-W2
+                               J13     J52               |$\leftarrow$ \textit{\rmfamily preserve working cells W0-W2}|
                                      11W2
                                      11W0
                                        J10
                                      11W1
                                        J65
-                                       J32   0           <- restore them and exit
+                                       J32   0           |$\leftarrow$ \textit{\rmfamily restore them and exit}|
 \end{lstlisting}
 \caption{Output from the reanimated Heuristic Compiler compiling
   INSERT AT END OF VALUE LIST from its functional description. The
   intermediate stages are printed by the program (via a print in
   routine U113 that appears to be a debugging aid left in the
   deck). The final code matches that displayed in Simon's 1963 paper.
-  (Annotations after \texttt{<-} are ours.)}
+  (The italic annotations marked $\leftarrow$ are ours.)}
 \label{fig:insert}
 \end{figure}
 
@@ -429,7 +431,8 @@ printout comprised of four bound volumes of Zetalisp code, preserved
 by Kent~Pitman, a member of the KBEmacs team. The scans are available
 at
 \url{https://github.com/netsettler/netsettlement/tree/main/kbe}~\cite{pitmanscans}. These
-cover the system as of KBE version 358.0x (December 1984), although
+cover the system as of KBE version 358.0x, a shorthand of the time for ``358.0
+(experimental)'' (December 1984), although
 individual files carry their own dates and versions. Volume~1 opens
 with the output of an extremely useful automatic self-test, run in
 December 1984 on one of the MIT Lisp machines or their descendants. The self-test exercises six
@@ -502,8 +505,8 @@ assumed about its machine.
 
 The reanimation targeted the \emph{headless} core: the database,
 analyzer, cliche library, command language, knowledge-based editor,
-and coder, leaving out the editor, windows, actors, and the Ada front
-end~\cite{kbemacsrepo}.
+and coder, leaving out the editor, windows, actors, and the Ada and PL/I
+front ends~\cite{kbemacsrepo}.
 
 The 1985 source, with correction of minor typos and transcription
 errors, is loaded into SBCL (\url{https://www.sbcl.org}), a modern
@@ -707,7 +710,7 @@ The KBEmacs compatibility layer was debugged against one sequence of
 the 1984 self-test, SQRT, whose fourteen commands build two programs,
 \texttt{MYSQRT} and \texttt{MYOTHERSQRT}. The obvious next step is to
 run the remaining five sequences. After that, one could work on the
-Ada front end, which would allow Waters's main
+Ada front end (and the PL/I one), which would allow Waters's main
 \texttt{UNIT-REPAIR-REPORT} demonstration to be reproduced. Another
 possibility would be to hook KBEmacs in a modern Emacs; reproducing
 Zmacs would be difficult and useless, but it would be pleasing and
@@ -1003,7 +1006,13 @@ Executable Archaeology, he is developing CogLean, a Lean-based library
 of formal components that can be used to prove claims about cognitive
 models. He is currently Chief Scientist of Bennu Climate, Inc.
 
-\noindent\textbf{Kent M.~Pitman} \{Kent M.~Pitman to provide\}
+\noindent\textbf{Kent M.~Pitman} has been involved in design and
+development of innovative technologies to assist with a broad range of
+topics, such as hypertext, symbolic algebra, programming languages,
+document formatting, and web services---to name just a few. He blogs
+about social justice, writes poetry about Climate Change, and has made
+a history curation project of computer-related artifacts dredged up
+from his basement.
 
 \noindent\textbf{Mia Golec} \{Mia Golec to provide\}
 
