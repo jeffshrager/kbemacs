@@ -494,6 +494,11 @@ compatible with this KBEmacs release was
 available to us. Both include Flavors, but Open Genera, the closer of
 the two, is not freely available, and it corresponds to a system
 about a decade later than the one KBEmacs ran on.
+Even with such an environment, running this release would likely have
+required adapting it to a different system version. We chose instead
+to write the adaptation explicitly, against modern Common Lisp: the
+resulting compatibility layer is itself a record of what KBEmacs
+assumed about its machine.
 
 The reanimation targeted the \emph{headless} core: the database,
 analyzer, cliche library, command language, knowledge-based editor,
