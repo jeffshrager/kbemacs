@@ -565,7 +565,7 @@ LLMs are numerical networks trained on enormous corpora of code and
 related materials, including discussions on sites such as Stack
 Overflow.\footnote{One could argue that ``training'' and ``loading''
 are not very different in concept as they both build up background
-knowledge. However the loading of cliches and the training of a neural
+knowledge. However, the loading of cliches and the training of a neural
 net are, of course, completely different forms of representation.}
 Also, the Heuristic Compiler and KBEmacs operate on explicit internal
 representations of the code, whereas LLMs operate on the program text
@@ -612,10 +612,10 @@ same process has already been compiled. KBEmacs knew ``a few dozen''
 cliches; Waters estimated that a practical tool would need ``many
 hundreds''~\cite[p.~55]{waters1986aimag}. What neither could solve was
 acquiring that knowledge at scale. LLMs can be loosely described as
-one answer to precisely this bottleneck: in effect, an LLM is an
-enormous implicit cliche library absorbed from an enormous body of
+one answer to precisely this bottleneck: in effect, an LLM is a
+vast implicit cliche library absorbed from an enormous body of
 code and code-related content. This scale and the LLM's flexibility
-comes at the price of having no explicit, inspectable representation
+come at the price of having no explicit, inspectable representation
 of what that body of knowledge is.
 
 \textbf{Who does what?} Simon's Heuristic Compiler was not designed as
@@ -654,9 +654,9 @@ Modern coding agents run a loop of a similar shape, explicitly coded
 into the harnesses that make these tools work so well: reason about
 the task, act on the code, run the tests or the compiler, examine the
 difference between what happened and what was wanted, and repair what
-fails~\cite{yao2023react,yang2024sweagent,schluntz2024agents,claudecodeworks}.\It
-has not escaped our notice that the harness used for the reanimations
-reported here is among those so described. The difference detector is
+fails~\cite{yao2023react,yang2024sweagent,schluntz2024agents,claudecodeworks}.\footnote{It
+  has not escaped our notice that the harness used for the reanimations
+  reported here is among those so described.} The difference detector is
 now an executed test suite rather than a hand-coded comparison of
 states, and the operator is a learned model rather than a table of
 connections, but the architecture of means-ends iteration is
@@ -676,8 +676,8 @@ programs.
 never treated code merely as text. Both the Heuristic Compiler and
 KBEmacs reason from complex internal representations of routines and
 cliches, rendering code only when it is time to report the final code,
-or (in the case of KBEmacs) the step commanded by the user is
-completed. KBEmacs takes additional pain to keep code and plan
+or, in the case of KBEmacs, when each step commanded by the user is
+completed. KBEmacs takes additional pains to keep code and plan
 consistent in case the user hand-edits the code directly. Waters
 reports that ``well over half of all the effort expended on KBEmacs
 went into implementing an analyzer and
