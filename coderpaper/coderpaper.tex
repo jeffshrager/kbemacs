@@ -597,28 +597,26 @@ description, and much of the craft of using them lies in combining
 functional prompts with tests that the AI can use to check its work
 and self-correct.
 
-\textbf{Where does the knowledge come from?} Both historical systems
-are knowledge-starved by modern standards. The Heuristic Compiler's
-state description compiler knows exactly two operators; its functional
-description compiler can compile a routine only if a routine with the
-same process has already been compiled. KBEmacs knew ``a few dozen''
-cliches; Waters estimated that a practical tool would need ``many
-hundreds''~\cite[p.~55]{waters1986aimag}. Both systems identified
+\textbf{Where does the knowledge come from?} Both systems identified
 reuse of known solutions as the heart of the matter: Simon's
 functional compiler works by finding an analogous routine and adapting
 it, and the Programmer's Apprentice rests entirely on the claim that
 programs are built from background knowledge. That claim was also a
 psychological one: it is essentially what Soloway and his colleagues
 were finding in human programmers, whose expertise lay in a store of
-``programming plans''~\cite{soloway1984}. What neither could solve
-was acquiring that knowledge at scale. LLMs can be loosely described
-as one answer to precisely this bottleneck: in effect, an implicit
-cliche library absorbed from an enormous body of code and code-related
-content. This is a metaphor, not a claim about what such models
-actually represent, and it comes at the price of having no explicit,
-inspectable representation of what a cliche is or what its roles are,
-and so of no theory of programming knowledge that could be examined or
-tested.
+``programming plans''~\cite{soloway1984}. Yet both were
+knowledge-starved by modern standards. The Heuristic Compiler's state
+description compiler knows exactly two operators; its functional
+description compiler can compile a routine only if a routine with the
+same process has already been compiled. KBEmacs knew ``a few dozen''
+cliches; Waters estimated that a practical tool would need ``many
+hundreds''~\cite[p.~55]{waters1986aimag}. What neither could solve was
+acquiring that knowledge at scale. LLMs can be loosely described as
+one answer to precisely this bottleneck: in effect, an LLM is an
+enormous implicit cliche library absorbed from an enormous body of
+code and code-related content. This scale and the LLM's flexibility
+comes at the price of having no explicit, inspectable representation
+of what that body of knowledge is.
 
 \textbf{Who does what?} Simon's Heuristic Compiler was not designed as
 a practical programming assistant. It was a computational experiment
