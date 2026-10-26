@@ -49,11 +49,11 @@ Executable Archaeology, the study of historical computational systems
 by running their original code, a process we call ``reanimation.'' Our
 reanimation of the Heuristic Compiler reproduces the compiled code
 appearing in Simon's 1963 paper, and our reanimation of KBEmacs
-reproduces the SQRT sequence of its December 1984 self-test. In order
-to highlight the reflexivity of this project, we tried to have most of
-the detailed effort in these reanimations carried out by a modern
-AI-assisted programming tool, Anthropic's Claude Code (Opus 5.5),
-although it started from a significant base of existing software. The
+reproduces the SQRT sequence of its December 1984 self-test. To
+highlight the reflexivity of this project, we deliberately used a
+modern AI-assisted programming tool, Anthropic's Claude Code (Opus
+5.5), to carry out much of the detailed reanimation work, building on
+a significant base of existing software. The
 explicit, executable theories of programming that both systems
 embodied are largely absent from today's far more capable AI coding
 assistants.
@@ -86,7 +86,7 @@ treated programming as a behavior to be observed, and by the early
 1980s Soloway and others theorized that expert programmers usually
 work from stereotyped ``programming plans'' -- reusable code schemas
 -- rather than from first principles~\cite{soloway1984}. Similarly,
-most early AI was intended either as formal theories of human
+most early AI either embodied formal theories of human
 cognition (e.g.,~\cite{newelletat1958, newell1972hps}), or depended
 upon intuitive theories of human cognition. In that framing, a program
 that writes programs, or helps a programmer do so, is at least an
@@ -102,7 +102,7 @@ year~\cite{simonP2349} and in the \textit{Journal of the ACM} in
 the sense in which that term was used in GPS, the General Problem
 Solver of Newell, Shaw, and Simon~\cite{newell1959gps}: Given a
 description of what a routine should do, Simon's Heuristic Compiler
-searched for differences between the routine as it stands and the
+searched for differences between the routine as it stood and the
 desired routine, and applied operators to reduce those differences.
 
 The second system is \emph{KBEmacs}, the Knowledge-Based Editor (in
@@ -111,7 +111,7 @@ the culminating demonstration of the Programmer's Apprentice
 project~\cite{waters1985tr,waters1986aimag,richwaters1987overview}.
 The user of KBEmacs guided the computer by describing the desired
 program using stylized English and mentioning specific
-``cliches''. KBEmacs looked up the proto-code underlying the indicated
+``cliches.'' KBEmacs looked up the proto-code underlying the indicated
 cliches, supplied the details, and wrote the code by combining the
 cliche proto-code into the program under construction. This process
 was quite similar to how psychologists studying programming, such as
@@ -120,12 +120,12 @@ reasoned (although Soloway used the term ``programming plan'' instead
 of ``cliche'').
 
 Although the Heuristic Compiler and KBEmacs were separated by a
-quarter of a century, by programming language (IPL-V v. Zetalisp),
-and by research tradition (the study of human cognition v. applied
+quarter of a century, by programming language (IPL-V vs.\ Zetalisp),
+and by research tradition (the study of human cognition vs.\ applied
 AI), they stake out a great deal of the conceptual territory that
 today's AI coding tools occupy: How a programming task is specified,
-where the knowledge and skill needed to carry it out come from and
-where it resides, how work is divided between human and machine, and
+where the knowledge and skills needed to carry it out come from and
+where they reside, how work is divided between human and machine, and
 how the system checks what it has done.
 
 We approach the study of these artifacts as exercises in
@@ -141,7 +141,7 @@ a Zetalisp compatibility layer on top of SBCL, a modern Common
 Lisp. Both reanimations were themselves carried out largely by an AI
 coding assistant: Anthropic's Claude~\cite{claude}, working in its
 command-line form, Claude Code. (The division of labor is described in
-``Author Contributions and Use of AI''.)
+``Author Contributions and Use of AI.'')
 
 \section{Historical Background}
 \label{sec:history}
@@ -151,12 +151,12 @@ command-line form, Claude Code. (The division of labor is described in
 The goal of Newell, Shaw, and Simon's work at RAND and Carnegie Tech
 in the 1950s was to instantiate theories of human thought as computer
 programs -- what we (and many others) call ``computational models of
-cognition'', or merely ``models''. Their first model, in 1955/6, was
-called the ``Logic Theorist'' (LT). LT searched for proofs of theorems
+cognition,'' or merely ``models.'' Their first model, developed in 1955--56, was
+the Logic Theorist (LT). LT searched for proofs of theorems
 in \textit{Principia
   Mathematica}~\cite{LT1957,moewsshrager2026}. Later, they created the
-``General Problem Solver'' (1959) which generalized the method applied
-in LT into a theory of ``means-ends analysis'', theorizing that this
+``General Problem Solver'' (1959), which generalized the method applied
+in LT into a theory of ``means-ends analysis,'' theorizing that this
 is a core cognitive skill~\cite{newell1959gps}. Simon's 1963 summary
 of means-ends analysis is worth quoting in full, because the Heuristic
 Compiler implements it almost literally:
@@ -190,7 +190,13 @@ described here as practical approaches to the construction of
 compilers. Their interest lies in what they teach us about the nature
 of the programming task''~\cite[p.~493]{simon1963jacm}.\footnote{This
 method is called, appropriately, ``task analysis'' in
-\cite{newell1972hps}}
+\cite{newell1972hps}} Two decades later, in a 1984 keynote to the
+International Conference on Software Engineering, Simon described
+programming by heuristic search from a state description, finding ``a
+linking series of operators'' each yielding ``a situation that is, you
+hope, a little closer to the final programming goal,'' and judged the
+systems built this way to be ``almost toy
+systems''~\cite[p.~728]{simon1986}.
 
 \subsection{The Programmer's Apprentice}
 
@@ -216,7 +222,7 @@ approach} was a division of labor wherein the programmer makes design
 decisions and the apprentice handles the routine details.  Waters's
 dissertation developed the analysis of programs into
 plans~\cite{waters1978}. Note how these ideas align with those of the
-psychology of programming at that same time, for example Soloway's
+psychology of programming at that same time, for example, Soloway's
 programming plans~\cite{soloway1984}.
 
 KBEmacs was the realization of these ideas in a working editor, built
@@ -227,7 +233,7 @@ Ada. Its best-known demonstration builds an Ada report generator,
 \texttt{UNIT-REPAIR-REPORT}, from five commands such as ``Define a
 simple-report procedure UNIT-REPAIR-REPORT'' and ``Fill the enumerator
 with a chain-enumeration of UNITS and
-REPAIRS''~\cite[p.~48]{waters1986aimag},\cite{waters1985tse}.
+REPAIRS''~\cite[p.~48]{waters1986aimag}, \cite{waters1985tse}.
 
 KBEmacs was admittedly a research prototype. Waters wrote that it knew
 ``only a few dozen cliches'' where a practical tool ``would need to
@@ -247,9 +253,9 @@ The source used here for the Heuristic Compiler is a line-printer
 listing headed \texttt{HEURISTIC CODER 7/16/61}, discovered in the
 Herbert A.~Simon Papers at the Carnegie Mellon University
 Archives~\cite{simonlisting1961}. This listing is dated shortly after
-the RAND report P-2349 (\cite{simonP2349}), and is very nearly the
-program described in that report. The listing is 94 line-printer
-pages, and about 4,470 lines (cards). We call this ``the deck''. The
+the RAND report P-2349~\cite{simonP2349}, and is very nearly the
+program described in that report. The listing comprises 94 line-printer
+pages and about 4,470 lines (cards). We call this ``the deck.'' The
 listing also carries various hand markings indicating a handful of
 proposed corrections. The deck contains an executive and two
 ``compilers''\footnote{Simon uses ``compiler'' at two levels. The
@@ -265,7 +271,7 @@ which the program's internal representation is printed as IPL-V text.
 
 The central representational idea of the Heuristic Compiler is that a
 \emph{routine} is an object with attributes stored as an IPL-V
-description list (analogous to a lisp property list). Each attribute
+description list (analogous to a Lisp property list). Each attribute
 is one possible definition of the routine: its IPL name, its
 \emph{functional description} (i.e., a process name plus arguments,
 such as ``INSERT ( ) AT END OF ( )''), its \emph{state description}
@@ -280,12 +286,12 @@ and the renderer prints them out as IPL-V text only at the end.
 
 The Heuristic Compiler's executive implements a means-ends
 problem-solving loop whose \emph{differences} are kinds of definitions
-and whose \emph{operators} are called ``compilers''. The executive
+and whose \emph{operators} are called ``compilers.'' The executive
 finds the closest definition for the routine, looks up the relevant
 compiler in a table of connections, applies it, and tests whether the
 routine has improved. If the routine has not improved, the executive
 gives up. (There was no search in the AI sense, no handling of failed
-paths nor any backtracking.)
+paths, and no backtracking.)
 
 The \emph{state description compiler} is the most GPS-like part of the
 Heuristic Compiler. It compares the input and output states of each
@@ -310,7 +316,7 @@ compiling code to fetch each argument, recursing when an argument is
 itself a described computation (a ``determiner''), and wrapping the
 result in instructions that save and restore the working cells.
 
-\subsection{Running The Heuristic Compiler}
+\subsection{Running the Heuristic Compiler}
 
 The recovered deck runs on the Common Lisp IPL-V interpreter
 originally written to run the Logic
@@ -324,10 +330,9 @@ recovered deck reproduces Simon's published examples.
 description of INSERT AT END OF VALUE LIST, the program produces
 \texttt{J13 J52 11W2 11W0 J10 11W1 J65 J32 0}, exactly matching the
 code in the 1963 paper~\cite[pp.~499--500]{simon1963jacm}
-(Figure~\ref{fig:insert}). A print apparently left in routine U113
-shows the code growing one argument at a time, which fortuitously
-prints out the sequence of stages through which the paper walks its
-readers. In Simon's runs, as in ours, the functional description is
+(Figure~\ref{fig:insert}). A print statement apparently left in routine U113
+fortuitously reveals the intermediate stages, one argument at a time,
+through which Simon's paper walks its readers. In Simon's runs, as in ours, the functional description is
 supplied as a hand-coded list structure, not as typed English; the
 phrase is printed from it, but the compiler matches processes by
 symbol identity. The English front end in the deck has not yet been
@@ -389,12 +394,12 @@ executive always prefers the functional description on the assumption
 that ``it is easier to compile from a functional description than from
 a state description''~\cite[p.~502]{simon1963jacm}. As no
 already-compiled routine shares J3's process, the functional
-description compiler fails, the executive sees no progress and gives
+description compiler fails; the executive sees no progress, and gives
 up without trying the state description. The published paper's J3
 result is only produced by our reanimation when the deck is repaired
 by \emph{removing} J3's functional description, after which the state
 description compiler produces exactly the published code. In the 1963
-listing (in \cite{simonRM3588}) the executive is identical, but the
+listing (in \cite{simonRM3588}), the executive is identical, but the
 cards that give J3 a functional description are numbered as though
 they were later additions, suggesting that the paper's J3 came from an
 earlier version in which, like our repair, J3 had only a state
@@ -404,7 +409,7 @@ description.
 branches and loops by decomposing them into \emph{segments} joined by
 a flow diagram. Our reanimation reassembles routine J77 (``test
 whether there is a symbol equal to 0ACCUMULATOR on list
-1ACCUMULATOR'') from its segments, and decomposes it again into the
+1ACCUMULATOR'') from its segments and decomposes it again into the
 paper's flow diagram.
 
 \section{Reanimating KBEmacs}
@@ -453,9 +458,9 @@ The braces are KBEmacs read syntax marking \emph{roles}, the parts that
 vary from use to use; the surrounding code is fixed.}
 \label{fig:cliche}
 \end{figure}
-Similar to the way in which the Heuristic Compiler worked with
-internal representation of IPL-V code, KBEmacs's cliches are not
-stored as text. When the library loads, each definition is run through
+Like the Heuristic Compiler, which worked with internal
+representations of IPL-V code, KBEmacs does not store its cliches as
+text. When the library loads, each definition is run through
 KBEmacs's \emph{analyzer}, which turns the cliche code into a plan: a
 set of representations describing segments, ports, data flow, control
 flow, and roles. In a plan, a \texttt{LOOP} with a \texttt{SETQ}
@@ -495,8 +500,8 @@ CMU, where Simon and Newell taught, begat CMUCL, and SBCL is a fork of
 CMUCL.}, on top of a Zetalisp compatibility layer that Claude
 assembled and debugged. The bulk of that layer derives from g000001's
 Common Lisp port of Spice Lisp Flavors~\cite{g000001}. The rest of the
-layer supplies the parts of Zetalisp and the Lisp Machine that Common
-Lisp lacks or does differently. A small test harness was also created
+layer supplies missing Zetalisp and Lisp Machine functionality and
+accommodates differences in Common Lisp behavior. A small test harness was also created
 to replay the self-test sequences from the 1984 code and compare the
 results with what was expected.
 
@@ -540,7 +545,7 @@ The criterion is an equality-within-epsilon ...
 
 All fourteen commands are parsed correctly and the generated programs
 are \texttt{equal} (in the Lisp sense) to the 1984 generated
-code. These programs also actually work: \texttt{(mysqrt 2.0)} returns
+code. The generated programs also work: \texttt{(mysqrt 2.0)} returns
 1.4142157.
 
 \section{Then and Now: Two Historical Systems and Today's AI Coding Assistants}
@@ -549,9 +554,8 @@ code. These programs also actually work: \texttt{(mysqrt 2.0)} returns
 Neither the Heuristic Compiler nor KBEmacs is an ancestor of today's
 AI coding assistants in any direct technical sense. The historical
 programs are loaded with proto-programs or cliches, whereas LLMs are
-trained on huge volumes of example code, as well as
-programming-related content, such as advice garnered from online
-forums, such as Stack Overflow.\footnote{One could argue that
+trained on enormous corpora of code and related materials, including
+discussions on sites such as Stack Overflow.\footnote{One could argue that
   ``training'' and ``loading'' are not very different in concept as
   they both build up a knowledge base of one sort or another. However
   the loading of cliches and the training of a neural net are, of
@@ -563,7 +567,7 @@ prompts.\footnote{Certainly an LLM harbours a tacit internal
 representation relevant to the structure of the code it is working on,
 but this is, as far as anyone can tell, quite unlike the explicit
 representations involved in the reasoning carried out by the
-historical programs studied here.} Nonetheless the questions these two
+historical programs studied here.} Nonetheless, the questions these two
 systems were built to explore are recognizably the questions that
 shape AI-assisted programming today. But the comparisons that follow
 are conceptual continuities, not architectural equivalences.
@@ -621,7 +625,16 @@ plan, edit, and test across a code base with varying degrees of
 supervision~\cite{yang2024sweagent,jimenez2024swebench}. The question
 of where the programmer's decisions end and the machine's begin,
 central to the Programmer's Apprentice, is again a live design
-question.
+question. Simon himself put it this way in 1984: ``what part of the
+responsibility can we invest in the system itself? \ldots\ what part
+of the responsibility still has to be exercised by human beings?
+\ldots\ how do we organize things so that the intelligent part of the
+automatic system can communicate effectively with the human part of
+the intelligence system?''~\cite[p.~727]{simon1986}. His answer was to start with
+interactive systems and gradually move ``a boundary between human
+beings who are thinking about programs and the intelligent component
+of a computer which is thinking about the same
+program''~\cite[p.~730]{simon1986}.
 
 \textbf{How does the system know it is making progress?} The Heuristic
 Compiler's executive is a loop that directly implements GPS's
@@ -653,7 +666,7 @@ conventional symbolic programs (albeit not, for the most part,
 symbolic AIs). In the work reported here these were a Common Lisp
 compiler, an IPL-V interpreter, and KBEmacs's self-test. Although the
 heuristics have moved from a hand-written table of connections or
-cliche library, to a neural net, the operators and the difference
+a cliche library to a neural net, the operators and the difference
 tests are still ordinary programs.
 
 \textbf{Representation.} As we have said, the two historical systems never treated code merely as text. The
@@ -677,15 +690,15 @@ omitted from this report''~\cite[p.~506]{simon1963jacm}; these
 routines may be them. Running them requires input sentences, which are
 not in the listing.
 
-For KBEmacs, first, the compatibility layer was debugged against the
-one self-test sequence whose expected output was known, so the obvious
-next step is to run the other five sequences of the 1984
-self-test. After that one could work on the Ada front end, which could
+The KBEmacs compatibility layer was debugged against one sequence of
+the 1984 self-test, SQRT, whose fourteen commands build two programs,
+\texttt{MYSQRT} and \texttt{MYOTHERSQRT}. The obvious next step is to
+run the remaining five sequences. After that, one could work on the Ada front end, which could
 allow Waters's main \texttt{UNIT-REPAIR-REPORT} demonstration to be
 reproduced. Another possibility would be to hook KBEmacs in an Emacs!
 Reproducing Zmacs would be difficult and useless, but it would be
 pleasing and amusing to be able to enter Control-Meta-Cokebottle into
-a modern unix-based Emacs and have it bring up KBEmacs!
+a modern Unix-based Emacs and have it bring up KBEmacs!
 
 \section{Conclusion}
 \label{sec:conc}
@@ -704,8 +717,16 @@ the recognition and combination of familiar cliches, each with roles
 to be filled. The two accounts are closer than they first appear. The
 Heuristic Compiler's functional description compiler worked by finding
 an already-compiled routine with the same process and adapting it, in
-effect drawing on a small library of cliches. Both systems, in other
-words, saw programming as the skilled use of explicitly represented
+effect drawing on a small library of cliches. Simon himself drew the
+two together in 1984. Means-ends analysis alone, he said, was not
+enough: a programming system also needs its operators ``stored away in
+a highly indexed form, so that when a particular function has to be
+performed, there is immediate or almost immediate access to one or
+more procedures that might perform that function,'' and a large body
+of ``strategies, that is, higher level procedures that have to be
+assembled out of lower procedures,'' amounting to ``pretty much the
+contents of Volume II or Volume III, of Knuth''~\cite[pp.~728--730]{simon1986}.
+Both systems, in other words, saw programming as the skilled use of explicitly represented
 knowledge. Where they differed most was in the place they gave the
 human: Simon's program was an experiment in programming, KBEmacs was
 an assistant to programmers. Today's agents increasingly do the
@@ -742,7 +763,11 @@ prove anything about what one cannot represent. For building software,
 this may not matter: we need not derive programs from an interpretable
 substrate like a cliche library, nor by a proof-like process, so long
 as the code itself can be verified, and in most everyday cases it is
-enough that it passes the tests. But for understanding programming,
+enough that it passes the tests. Simon expected as much: in practice,
+he observed, programs are checked by ``running programs on sets of
+test problems to see if they work,'' and correctness proofs would be
+``probably for a long time to come a minor one'' of the tools
+used~\cite[p.~732]{simon1986}. But for understanding programming,
 which was Simon's purpose, it is not enough. A system that programs
 well but cannot be inspected tells us little about how programming is
 done. The early systems made their theories of programming explicit,
@@ -779,7 +804,7 @@ the listings from the page images was done by ChatGPT
 Code~\cite{claude} with the Claude Opus~5.5 model, corrected the
 transcriptions by running the code and checking the scans; adapted and
 extended Shrager's IPL-V interpreter; adapted g000001's 
-Common Lisp ports of Spice Lisp Flavors and LetS~\cite{g000001},
+Common Lisp ports of Spice Lisp Flavors and LetS~\cite{g000001};
 developed the Zetalisp compatibility layer for KBEmacs, and ran and
 debugged both programs until they reproduced their historical
 output. Claude also drafted this paper. The draft was then carefully
@@ -925,7 +950,7 @@ project, on whose work this paper rests.
   Mar. 13, 2026, \textit{arXiv:2603.13514v1}. [Online]. Available:
   \url{https://arxiv.org/abs/2603.13514}
 
-\bibitem{shragerrepo} J. Shrager. ``An IPL-V interpreter in Common Lisp
+\bibitem{shragerrepo} J. Shrager, ``An IPL-V interpreter in Common Lisp
   that runs the original Logic Theorist,'' GitHub (archived; superseded
   by~\cite{earepo}). [Online]. Available:
   \url{https://github.com/jeffshrager/IPL-V}
@@ -945,6 +970,11 @@ project, on whose work this paper rests.
   Corp., Santa Monica, CA, USA, Memorandum RM-3588-PR, May 1963.
   [Online]. Available:
   \url{https://bitsavers.trailing-edge.com/pdf/rand/ipl/RM-3588-PR_The_Heuristic_Compiler_May63.pdf}
+
+\bibitem{simon1986} H. A. Simon, ``Whether software engineering
+  needs to be artificially intelligent,'' \textit{IEEE Trans. Softw.
+  Eng.}, vol. SE-12, no. 7, pp. 726--732, Jul. 1986. (Adapted from a
+  keynote at the 7th Int. Conf. Softw. Eng., Orlando, FL, Mar. 1984.)
 
 \bibitem{soloway1984} E. Soloway and K. Ehrlich, ``Empirical studies of
   programming knowledge,'' \textit{IEEE Trans. Softw. Eng.}, vol. SE-10,
