@@ -34,7 +34,7 @@
 Early AI programs were often also theories of how people think, and
 programs that wrote programs were, in part, theories of how people
 program. Here we report on the reanimation of two such programs that
-offer two different theories of programming and were developed for
+offer two seemingly different theories of programming and were developed for
 quite different purposes. The first, Herbert Simon's Heuristic
 Compiler (1961), was an experimental model of programming as
 problem-solving, applying the means-ends analysis methods of the
@@ -49,7 +49,11 @@ Executable Archaeology, the study of historical computational systems
 by running their original code, a process we call ``reanimation.'' Our
 reanimation of the Heuristic Compiler reproduces the compiled code
 appearing in Simon's 1963 paper, and our reanimation of KBEmacs
-reproduces the SQRT sequence of its December 1984 self-test. To
+reproduces the SQRT sequence of its December 1984 self-test.
+Examined side by side, the two theories turn out to be closer than
+they appear: the Heuristic Compiler also works by adapting existing
+routines, and Simon later argued that search alone requires a large
+body of programming knowledge. To
 highlight the reflexivity of this project, we deliberately used a
 modern AI-assisted programming tool, Anthropic's Claude Code (Opus
 5.5), to carry out much of the detailed reanimation work, building on
@@ -707,7 +711,7 @@ a modern Unix-based Emacs and have it bring up KBEmacs!
 \label{sec:conc}
 
 Our reanimations of Simon's Heuristic Compiler and MIT's KBEmacs
-recover two quite different attempts to make programming itself a
+recover two apparently different attempts to make programming itself a
 subject of computation. Neither was simply an early, less capable
 version of today's AI coding assistants; both embodied explicit
 accounts of how people program. The Heuristic Compiler treated
