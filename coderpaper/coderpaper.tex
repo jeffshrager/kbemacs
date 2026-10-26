@@ -50,8 +50,8 @@ by running their original code, a process we call ``reanimation.'' Our
 reanimation of the Heuristic Compiler reproduces the compiled code
 appearing in Simon's 1963 paper, and our reanimation of KBEmacs
 reproduces the SQRT sequence of its December 1984 self-test.
-Examined side by side, the two theories turn out to be closer than
-they appear: the Heuristic Compiler also works by adapting existing
+Examined side by side, the two theories turn out to have much in
+common: the Heuristic Compiler also works by adapting existing
 routines, and Simon later argued that search alone requires a large
 body of programming knowledge. To
 highlight the reflexivity of this project, we deliberately used a
@@ -734,8 +734,9 @@ strategies~\cite{simon1986}.
 
 Reanimation lets us examine these accounts in a way the publications
 alone do not. The recovered programs reproduce Simon's published
-examples and KBEmacs's 1984 SQRT sequence, generating code that is
-\texttt{equal} to the historical output and that runs. These are
+examples and KBEmacs's 1984 SQRT sequence, generating code that
+matches the historical output (for KBEmacs, code that is
+\texttt{equal} to it and that runs). These are
 partial recoveries, and reproducing historical behavior does not
 establish that the theories behind it are right. It does mean that the
 mechanisms described in the literature can once again be executed,
@@ -755,8 +756,7 @@ activity, it is not: to understand how a system programs, we must be
 able to reason about how it does so, and we cannot reason about what
 is not represented. The Heuristic Compiler and KBEmacs stated their
 claims about programming in executable form, and Executable
-Archaeology lets us examine those claims again, and ask what these
-early theories of programming can still teach us.
+Archaeology lets us examine those claims again.
 
 \section{Code Availability}
 \label{sec:code}
