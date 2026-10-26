@@ -321,10 +321,13 @@ result in instructions that save and restore the working cells.
 The recovered deck runs on the Common Lisp IPL-V interpreter
 originally written to run the Logic
 Theorist~\cite{shrager2026,shragerrepo}. Claude extended the
-interpreter with several primitives (J-functions) needed by the
-Heuristic Compiler but not required by the Logic Theorist, and added a
-start card, borrowed from \cite{simonRM3588}. With these changes, the
-recovered deck reproduces Simon's published examples.
+interpreter with eleven primitives (J-functions) needed by the
+Heuristic Compiler but not required by the Logic Theorist, fixed
+several others, and taught its card reader the conventions of the 1961
+deck. Two things missing from the 1961 listing were taken from the
+1963 listing in RM-3588~\cite{simonRM3588}: a start card, and the
+routine U126, which prints a routine's descriptive name. With these
+changes, the recovered deck reproduces Simon's published examples.
 
 \textbf{Compiling from a functional description.} Given the functional
 description of INSERT AT END OF VALUE LIST, the program produces
@@ -535,11 +538,11 @@ seven commands the plan has 32 segments and the program is complete.
 The program MYSQRT is a successive-approximation. The initial-approximation is 1.
 The criterion is an equality-within-epsilon ...
 \end{lstlisting}
-\caption{KBEmacs, running in 2026, replaying the first half of the
-  SQRT sequence from its December 14, 1984 self-test. The generated
-  code is \texttt{equal} to the code recorded in 1984.  The final
-  lines are KBEmacs's own description of the program, generated from
-  its plan, as recorded in the 1984 self-test (abridged).}
+\caption{The first half of the SQRT sequence from KBEmacs's December
+  14, 1984 self-test: the commands, the generated code, and KBEmacs's
+  own description of the program, generated from its plan, all as
+  recorded in 1984 (the description is abridged). Replayed in 2026,
+  the reanimation generates code \texttt{equal} to this code.}
 \label{fig:sqrt}
 \end{figure}
 
