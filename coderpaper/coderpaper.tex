@@ -22,9 +22,9 @@
 \author[1]{Jeff Shrager}
 \author[2]{Kent M.~Pitman}
 \author[3]{Mia Golec}
-\affil[1]{\url{https://jshrager.org}}
-\affil[2]{\url{https://nhplace.com/kent}}
-\affil[3]{Carnegie Mellon University, Pittsburgh, PA, USA}
+\affil[1]{\href{mailto:jshrager@gmail.com}{jshrager@gmail.com}, \url{https://jshrager.org}}
+\affil[2]{\href{mailto:kmp@nhplace.com}{kmp@nhplace.com}, \url{https://nhplace.com/kent}}
+\affil[3]{\href{mailto:mgolec@andrew.cmu.edu}{mgolec@andrew.cmu.edu}, Carnegie Mellon University, Pittsburgh, PA, USA}
 \date{}
 
 \maketitle
@@ -227,14 +227,17 @@ decisions and the apprentice handles the routine details.  Waters's
 dissertation developed the analysis of programs into
 plans~\cite{waters1978}. Note how these ideas align with those of the
 psychology of programming at that same time, for example, Soloway's
-programming plans~\cite{soloway1984}.
+programming plans~\cite{soloway1984}. Indeed, the project described
+its ultimate goal as tools ``based on theories of how today's expert
+programmers analyze, synthesize, modify, explain, and verify their
+programs''~\cite{pitman1983wp244}.
 
 KBEmacs was the realization of these ideas in a working editor. It
 ran in Zetalisp, the MIT Lisp Machine implementation language, inside
 the Zmacs editor of the MIT Lisp machines and their
-descendants. KBEmacs could create and modify moderately complex
+descendants~\cite{pitman1983wp244}. KBEmacs could create and modify moderately complex
 programs, within its range of available cliches -- in Lisp and Ada,
-with some support for PL/I. Its best-known demonstration builds an Ada report generator,
+with a mock-up of a PL/I interface~\cite{pitman1983wp244}. Its best-known demonstration builds an Ada report generator,
 \texttt{UNIT-REPAIR-REPORT}, from five commands such as ``Define a
 simple-report procedure UNIT-REPAIR-REPORT'' and ``Fill the enumerator
 with a chain-enumeration of UNITS and
@@ -439,6 +442,8 @@ December 1984 on one of the MIT Lisp machines or their descendants. The self-tes
 command sequences and compares the generated code with the expected
 code.  This specific run reports that three sequences (HASH, SQRT, and
 SUMLIST) succeeded, but that three (BUCKET, DELETE, and MEMQ) failed.
+SQRT was a standing example: an early version of the same scenario
+appears in a 1983 description of the KBEmacs interface~\cite{pitman1983wp244}.
 
 The 87 files were transcribed (mostly by ChatGPT~\cite{chatgpt}) into
 about 34,500 lines of source, available at
@@ -631,6 +636,9 @@ a practical programming assistant. It was a computational experiment
 intended to illuminate the processes involved in programming. KBEmacs,
 by contrast, was deliberately conceived as an assistant, leaving
 design decisions to the programmer while taking over routine details.
+Its interface was designed to be ``non-invasive'' and
+``non-prescriptive,'' always ``willing to defer to the
+user''~\cite{pitman1983wp244}.
 Waters's argument for the apprentice was practical: full automation
 was not near, and a semiexpert assistant could be useful at
 once. Modern tools have traversed the same axis in a few years, from
@@ -686,7 +694,9 @@ KBEmacs reason from complex internal representations of routines and
 cliches, rendering code only when it is time to report the final code,
 or, in the case of KBEmacs, when each step commanded by the user is
 completed. KBEmacs takes additional pains to keep code and plan
-consistent in case the user hand-edits the code directly. Waters
+consistent in case the user hand-edits the code directly,
+re-analyzing the program when the text no longer matches the code it
+last produced~\cite{pitman1983wp244}. Waters
 reports that ``well over half of all the effort expended on KBEmacs
 went into implementing an analyzer and
 coder''~\cite[p.~55]{waters1986aimag}. Today's assistants also only
@@ -890,6 +900,10 @@ project, on whose work this paper rests.
   heuristic,'' in \textit{Proc. Western Joint Comput. Conf.}, 1957,
   pp. 218--230.
 
+\bibitem{pitman1983wp244} K. M. Pitman, ``Interfacing to the
+  Programmer's Apprentice,'' MIT AI Lab., Cambridge, MA, USA, Working
+  Paper 244, Feb. 1983.
+
 \bibitem{pitmanscans} K. M. Pitman, ``netsettlement: kbe,'' GitHub
   (scans of \textit{Knowledge-Based Editor}, four-volume listing,
   Jan. 1985). Accessed: Oct. 13, 2026. [Online]. Available:
@@ -1014,6 +1028,10 @@ about social justice, writes poetry about Climate Change, and has made
 a history curation project of computer-related artifacts dredged up
 from his basement.
 
-\noindent\textbf{Mia Golec} \{Mia Golec to provide\}
+\noindent\textbf{Mia Golec} is an undergraduate student at
+Carnegie Mellon University studying Ethics, History, and Public Policy
+and Decision Science. She works as a research and project assistant
+with the University Archives, supporting external researchers and
+various archival projects.
 
 \end{document}
