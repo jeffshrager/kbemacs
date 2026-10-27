@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.4.3)  25 OCT 2026 21:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.4.3)  26 OCT 2026 14:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -332,38 +332,29 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 {figure.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.421 
+l.426 
       ] [7pdfTeX warning (ext4): destination with the same identifier (name{fig
 ure.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.502 
+l.510 
       ] [8] [9pdfTeX warning (ext4): destination with the same identifier (name
 {figure.3}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.604 
-      ] [10] [11] [12] [13] [14]
-LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 1
-006.
-(/usr/local/texlive/2021/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1006.
-
-[15] (./coderpaper.aux)
+l.612 
+      ] [10] [11] [12] [13] [14] [15] (./coderpaper.aux)
 Package rerunfilecheck Info: File `coderpaper.out' has not changed.
 (rerunfilecheck)             Checksum: 04A069C1C2E3446789B90D94F24EE996;2798.
  ) 
 Here is how much of TeX's memory you used:
- 9982 strings out of 478994
- 145164 string characters out of 5858185
- 500973 words of memory out of 5000000
- 27229 multiletter control sequences out of 15000+600000
- 410671 words of font info for 52 fonts, out of 8000000 for 9000
+ 9970 strings out of 478994
+ 144914 string characters out of 5858185
+ 498021 words of memory out of 5000000
+ 27217 multiletter control sequences out of 15000+600000
+ 411184 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 71i,8n,74p,504b,1129s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 71i,8n,74p,516b,1153s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></
@@ -373,14 +364,16 @@ local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/loc
 al/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/
 texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/tex
 live/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
-ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texli
-ve/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texliv
-e/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive
-/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on coderpaper.pdf (15 pages, 245630 bytes).
+ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texliv
+e/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive
+/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2
+021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/20
+21/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/202
+1/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on coderpaper.pdf (15 pages, 270701 bytes).
 PDF statistics:
- 451 PDF objects out of 1000 (max. 8388607)
- 416 compressed objects within 5 object streams
- 141 named destinations out of 1000 (max. 500000)
+ 466 PDF objects out of 1000 (max. 8388607)
+ 429 compressed objects within 5 object streams
+ 142 named destinations out of 1000 (max. 500000)
  129 words of extra memory for PDF output out of 10000 (max. 10000000)
 
